@@ -29,6 +29,7 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     resources :dash_boards, only: [:index]
     resources :articles, only: %i[index show]
     resource :profile, except: %i[create new]
+    resource :business, only: %i[new create edit update show]
   end
 
   # =================================================================

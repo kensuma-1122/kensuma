@@ -2,6 +2,8 @@
 
 module Users
   class DashBoardsController < Users::Base
-    def index; end
+    def index
+      redirect_to new_users_business_path if @business.nil?
+    end
   end
 end
