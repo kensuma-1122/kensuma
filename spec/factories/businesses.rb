@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :business do
     association :user
 
-    uuid { "1" }
+    uuid { SecureRandom.uuid }
     sequence(:name)  { |n| "TEST企業#{n}" }
     sequence(:name_kana) { |n| "テストキギョウ#{n}" }
     sequence(:branch_name) { |n| "TEST支店#{n}" }

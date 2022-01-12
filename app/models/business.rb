@@ -1,7 +1,7 @@
 class Business < ApplicationRecord
   belongs_to :user
 
-  before_validation :set_uuid
+  # before_validation :set_uuid
 
   validates :uuid, presence: true
   validates :name, presence: true
