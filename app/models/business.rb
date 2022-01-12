@@ -1,14 +1,16 @@
 class Business < ApplicationRecord
   belongs_to :user
 
-  # before_validation :set_uuid
+  before_validation :set_uuid
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :uuid, presence: true
   validates :name, presence: true
   validates :name_kana, presence: true
   validates :branch_name, presence: true
   validates :representative_name, presence: true
-  validates :email, presence: true
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :address, presence: true
   validates :post_code, presence: true
   validates :phone_number, presence: true

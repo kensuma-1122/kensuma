@@ -17,6 +17,8 @@ RSpec.describe Business, type: :model do
     end
 
     describe '#uuid' do
+      Business.skip_callback(:validation, :before, :set_uuid)
+      
       context '存在しない場合' do
         before :each do
           subject.uuid = nil
@@ -107,7 +109,7 @@ RSpec.describe Business, type: :model do
           subject.email = nil
         end
 
-        it 'バリデーションが通ること' do
+        it 'バリデーションが落ちること' do
           expect(subject).to be_invalid
         end
 
