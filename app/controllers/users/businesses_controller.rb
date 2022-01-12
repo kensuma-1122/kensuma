@@ -18,5 +18,23 @@ module Users
 
     def show
     end
+
+    private
+
+      def business_params
+        params.require(:business).permit(
+                                          :uuid,
+                                          :name,
+                                          :name_kana,
+                                          :branch_name,
+                                          :representative_name,
+                                          :email, :address,
+                                          :post_code, :phone_number,
+                                          :carrier_up_id,
+                                          :stamp_images,
+                                          :business_type,
+                                          :user_id
+                                        )
+      end
   end
 end

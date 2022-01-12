@@ -1,6 +1,8 @@
 class Business < ApplicationRecord
   belongs_to :user
 
+  before_validation :set_uuid
+
   validates :uuid, presence: true
   validates :name, presence: true
   validates :name_kana, presence: true
@@ -13,4 +15,10 @@ class Business < ApplicationRecord
   validates :business_type, presence: true
 
   enum business_type: { corporation: 0, freelance: 1, Individual_five_over: 2, Individual_five_less: 3 }
+
+  private
+
+    def set_uuid
+      self.uuid = SecureRandom.uuid if self.uuid.nil?
+    end
 end
