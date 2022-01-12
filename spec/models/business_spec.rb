@@ -119,7 +119,6 @@ RSpec.describe Business, type: :model do
         before :each do
           business = create(:business)
           subject.email = business.email
-          binding.pry
         end
 
         it 'バリデーションに落ちること' do
