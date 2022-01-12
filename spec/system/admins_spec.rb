@@ -5,9 +5,9 @@ RSpec.describe 'Admins', type: :system do
     @admin = Admin.create!(email: 'foo@example.com', password: '123456')
   end
 
-  describe "ログイン" do
+  describe "ログイン後の画面表示" do
     context "ログインできる時" do
-      it '保存済みのユーザー情報と合致すればログイン出来ダッシュボードに遷移する' do
+      it '保存済みのadmin情報と合致すればログイン出来ダッシュボードに遷移する' do
         visit new_admin_session_path
         fill_in 'admin[email]', with: 'foo@example.com'
         fill_in 'admin[password]', with: '123456'
@@ -29,7 +29,7 @@ RSpec.describe 'Admins', type: :system do
         end
       end
 
-      context "保存済みのユーザー情報と合致しない場合" do
+      context "保存済みのadmin情報と合致しない場合" do
         it 'エラーと共にログイン画面が表示される' do
           visit new_admin_session_path
           fill_in 'admin[email]', with: 'bar@example.com'
@@ -42,8 +42,8 @@ RSpec.describe 'Admins', type: :system do
     end
   end
 
-  describe "ログアウト" do
-    context "ログアウトした時" do
+  describe "ログアウト後の画面表示" do
+    context "ログアウト時" do
       it 'adminのログイン画面に遷移する' do
         visit new_admin_session_path
         fill_in 'admin[email]', with: 'foo@example.com'
@@ -58,6 +58,106 @@ RSpec.describe 'Admins', type: :system do
     end
   end
 
-  describe ""
+  describe "ヘッダーのリンククリック後の画面" do
+    context "adminがログインしている時" do
+      before do
+        sign_in(@admin)
+        visit _system__dashboard_path
+      end
 
+      context "ダッシュボードクリック時" do
+        it 'ダッシュボード画面に遷移' do
+          click_on 'ダッシュボード'
+          expect(current_path).to eq(_system__dashboard_path)
+          expect(page).to have_content 'ダッシュボード'
+        end
+      end
+
+      context "Adminsクリック時" do
+        it 'admin一覧画面に遷移' do
+          click_on 'Admins'
+          expect(current_path).to eq(_system__admins_path)
+          expect(page).to have_content 'Admins'
+        end
+      end
+
+      context "Commentsクリック時" do
+        it 'comment一覧画面に遷移' do
+          click_on 'Comments'
+          expect(current_path).to eq(_system__comments_path)
+          expect(page).to have_content 'Comments'
+        end
+      end
+
+      context "ユーザークリック時" do
+        it 'ユーザー一覧画面に遷移' do
+          click_on 'ユーザー'
+          expect(current_path).to eq(_system__users_path)
+          expect(page).to have_content 'Comments'
+        end
+      end
+    end
+  end
+
+  describe "admin一覧画面からのCRUD遷移テスト" do
+    before do
+      sign_in(@admin)
+      visit _system__dashboard_path
+      click_on 'Admins'
+      visit _system__admins_path
+    end
+    context "閲覧クリック時" do
+      it '閲覧画面に遷移' do
+        click_on '閲覧'
+        expect(current_path).to eq(_system__admin_path(@admin))
+      end
+    end
+    context "編集クリック時" do
+      it '編集画面に遷移' do
+        click_on '編集'
+        expect(current_path).to eq(edit__system__admin_path(@admin))
+      end
+    end
+    # adminの削除ボタンは必要かどうかまだ不明の為一旦記載無
+  end
+    
+  describe "ユーザー一覧画面からのCRUD遷移テスト" do
+    let!(:user) { create(:user) }
+    before do
+      sign_in(@admin)
+      visit _system__dashboard_path
+      click_on 'ユーザー'
+      visit _system__users_path
+    end
+    context "ユーザーを作成するボタンをクリック時" do
+      it 'ユーザー作成画面に遷移' do
+        click_on 'ユーザー を作成する'
+        expect(current_path).to eq(new__system__user_path)
+      end
+    end
+
+    context "閲覧クリック時" do
+      it '閲覧画面に遷移' do
+        click_on '閲覧', match: :first
+        expect(current_path).to eq(_system__user_path(user))
+      end
+    end
+
+    context "編集クリック時" do
+      it '編集画面に遷移' do
+        click_on '編集', match: :first
+        expect(current_path).to eq(edit__system__user_path(user))
+      end
+    end
+
+    context "削除クリック時", js: true do
+      it '削除アラートから削除できる' do
+        click_on '削除', match: :first
+        page.accept_confirm do
+          click_on 'OK'
+        end
+        expect { user.destroy }.to change(User, :count).by(-1)
+      end
+    end
+  end
 end
