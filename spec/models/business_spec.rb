@@ -17,8 +17,8 @@ RSpec.describe Business, type: :model do
     end
 
     describe '#uuid' do
-      Business.skip_callback(:validation, :before, :set_uuid)
-      
+      described_class.skip_callback(:validation, :before, :set_uuid)
+
       context '存在しない場合' do
         before :each do
           subject.uuid = nil

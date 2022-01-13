@@ -20,7 +20,7 @@ class Business < ApplicationRecord
 
   private
 
-    def set_uuid
-      self.uuid = SecureRandom.uuid if self.uuid.nil?
-    end
+  def set_uuid
+    self.uuid = SecureRandom.uuid if self.uuid.nil?
+  end
 end

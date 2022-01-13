@@ -32,8 +32,8 @@ gem 'rexml', '~> 3.2', '>= 3.2.4'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.9.3', require: false
 
-gem 'devise'
 gem 'activeadmin'
+gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'devise-i18n'
 gem 'rails-i18n', '~> 6.0'
@@ -76,4 +76,4 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-gem "ffi", "~> 1.15"
+gem 'ffi', '~> 1.15'

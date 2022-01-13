@@ -9,22 +9,21 @@ module Users
     end
 
     def create
-      
       # テスト用デフォルト値 ==========================================
-      @business = 
+      @business =
         Business.new(
-          name: "#{current_user.name}会社",
-          name_kana: "テストガイシャ",
-          branch_name: "テスト支店",
-          representative_name: "#{current_user.name}",
-          email: "#{SecureRandom.alphanumeric(10)}@email.com",
-          address: "テスト住所#{rand(1..99)}-#{rand(1..99)}",
-          post_code: "#{rand(100..199)}-#{rand(100..199)}",
-          phone_number: "03-#{rand(1111..9999)}-#{rand(1111..9999)}",
-          carrier_up_id: "#{SecureRandom.alphanumeric(20)}",
-          stamp_images: nil,
-          business_type: "corporation",
-          user_id: current_user.id
+          name:                "#{current_user.name}会社",
+          name_kana:           'テストガイシャ',
+          branch_name:         'テスト支店',
+          representative_name: current_user.name.to_s,
+          email:               "#{SecureRandom.alphanumeric(10)}@email.com",
+          address:             "テスト住所#{rand(1..99)}-#{rand(1..99)}",
+          post_code:           "#{rand(100..199)}-#{rand(100..199)}",
+          phone_number:        "03-#{rand(1111..9999)}-#{rand(1111..9999)}",
+          carrier_up_id:       SecureRandom.alphanumeric(20).to_s,
+          stamp_images:        nil,
+          business_type:       'corporation',
+          user_id:             current_user.id
         )
       # =============================================================
 
@@ -49,26 +48,26 @@ module Users
 
     private
 
-      def set_user_business
-        @business = current_user.business
-      end
+    def set_user_business
+      @business = current_user.business
+    end
 
-      def business_params
-        params.require(:business).permit(
-                                          :uuid,
-                                          :name,
-                                          :name_kana,
-                                          :branch_name,
-                                          :representative_name,
-                                          :email,
-                                          :address,
-                                          :post_code,
-                                          :phone_number,
-                                          :carrier_up_id,
-                                          :stamp_images,
-                                          :business_type,
-                                          :user_id
-                                        )
-      end
+    def business_params
+      params.require(:business).permit(
+        :uuid,
+        :name,
+        :name_kana,
+        :branch_name,
+        :representative_name,
+        :email,
+        :address,
+        :post_code,
+        :phone_number,
+        :carrier_up_id,
+        :stamp_images,
+        :business_type,
+        :user_id
+      )
+    end
   end
 end
