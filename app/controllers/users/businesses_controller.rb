@@ -2,19 +2,21 @@
 
 module Users
   class BusinessesController < Users::Base
+    before_action :set_user_business, only: %i[edit update show]
+
     def new
-      @business = Business.new(uuid: nil)
+      @business = Business.new
     end
 
     def create
-      # テスト用値 ======================================================
+      
+      # テスト用デフォルト値 ==========================================
       @business = 
         Business.new(
-          uuid: nil,
-          name: "テスト企業",
-          name_kana: "テストキギョウ",
+          name: "#{current_user.name}会社",
+          name_kana: "テストガイシャ",
           branch_name: "テスト支店",
-          representative_name: "代表太郎",
+          representative_name: "#{current_user.name}",
           email: "#{SecureRandom.alphanumeric(10)}@email.com",
           address: "テスト住所#{rand(1..99)}-#{rand(1..99)}",
           post_code: "#{rand(100..199)}-#{rand(100..199)}",
@@ -33,16 +35,23 @@ module Users
       end
     end
 
-    def edit
-    end
+    def edit; end
 
     def update
+      if @business.update(business_params)
+        redirect_to users_business_path, flash: { success: "#{@business.name}を更新しました。" }
+      else
+        render :edit
+      end
     end
 
-    def show
-    end
+    def show; end
 
     private
+
+      def set_user_business
+        @business = current_user.business
+      end
 
       def business_params
         params.require(:business).permit(
