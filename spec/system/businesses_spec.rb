@@ -1,48 +1,44 @@
 require 'rails_helper'
 
 RSpec.describe 'Businesses', type: :system do
-
-  before do
-    @user = FactoryBot.create(:user)
+  let :user do
+    create(:user)
   end
 
-  context "ログインできる時" do
-    it '...' do
-      @user.skip_confirmation!
-      @user.save!
-      sign_in @user
-      visit new_users_business_path
-      expect(page).to have_content '事業所作成画面'
-    end  
+  let :business do
+    create(:business)
   end
 
-  # context 'ユーザーがログインしているとき' do
-  #   it 'qq' do
-  #     visit new_user_session_path
-  #     fill_in 'user[email]', with: 'user@example.com'
-  #     fill_in 'user[password]', with: 'password'
-  #     # click_button 'ログイン'
-  #     visit '/users/business/new'
-  #     expect(page).to have_content '事業所作成画面'
-  #   end
+  describe '事業所作成画面表示機能' do
+    subject do
+      business
+    end
 
-    # it 'ログイン後のフラッシュメッセージが表示される' do
-    #   visit '/users/business/new'
-    #   expect(page).to have_content '事業所作成画面'
-    # end
-  # end
+    context 'ユーザーがログインした時' do
+      it '紐づくbusinessモデルがない時、事業所作成画面が表示される' do
+        user.skip_confirmation!
+        user.save!
+        visit new_user_session_path
+        fill_in 'user[email]', with: user.email
+        fill_in 'user[password]', with: user.password
+        click_button 'ログイン'
 
-  
+        visit new_users_business_path
+        expect(page).to have_content '事業所作成画面'
+      end
 
-  # describe '...' do
-  #   it '作成画面が表示されること' do
-  #     @user = User.create(email: 'sample@email.com', password: 'pass')
-  #     visit new_user_session_path
-  #     fill_in 'user_email', with: @user.email
-  #     fill_in 'user_password', with: @user.password
-  #     click_button 'ログイン'
-  #     visit '/users/business/new'
-  #     expect(page).to have_content('事業所作成画面')
-  #   end
-  # end
+      it '紐づくbusinessモデルがある時、ダッシュボードが表示される' do
+        user.skip_confirmation!
+        user.save!
+        business.user_id = user.id
+        visit new_user_session_path
+        fill_in 'user[email]', with: user.email
+        fill_in 'user[password]', with: user.password
+        click_button 'ログイン'
+
+        visit users_dash_boards_path
+        expect(page).to have_content 'DashBoard'
+      end
+    end
+  end
 end
