@@ -1,18 +1,23 @@
-<%= link_to "事業所編集画面へ", edit_users_business_path %>
+<div class="col-sm-6">
+  <h1>事業所詳細画面</h1>
 
-<!-- 表示テストここから -->
-<br><br>表示テスト==========================<br>
-<%= Business.human_attribute_name :uuid %>: <%= @business.uuid %><br>
-<%= Business.human_attribute_name :name %>: <%= @business.name %><br>
-<%= Business.human_attribute_name :name_kana %>: <%= @business.name_kana %><br>
-<%= Business.human_attribute_name :branch_name %>: <%= @business.branch_name %><br>
-<%= Business.human_attribute_name :representative_name %>: <%= @business.representative_name %><br>
-<%= Business.human_attribute_name :email %>: <%= @business.email %><br>
-<%= Business.human_attribute_name :address %>: <%= @business.address %><br>
-<%= Business.human_attribute_name :post_code %>: <%= @business.post_code %><br>
-<%= Business.human_attribute_name :phone_number %>: <%= @business.phone_number %><br>
-<%= Business.human_attribute_name :carrier_up_id %>: <%= @business.carrier_up_id %><br>
-<%= Business.human_attribute_name :stamp_images %>: <%= @business.stamp_images %><br>
-<%= Business.human_attribute_name :business_type %>: <%= @business.business_type %><br>
-====================================
-<!-- 表示テストここまで -->
+  <%= link_to "事業所編集画面へ", edit_users_business_path %>
+
+  <!-- 表示テストここから -->
+  <br><br>表示テスト==========================<br>
+  <%= Business.human_attribute_name :uuid %>: <%= @business.uuid %><br>
+  <%= Business.human_attribute_name :name %>: <%= @business.name %><br>
+  <%= Business.human_attribute_name :name_kana %>: <%= @business.name_kana %><br>
+  <%= Business.human_attribute_name :branch_name %>: <%= @business.branch_name %><br>
+  <%= Business.human_attribute_name :representative_name %>: <%= @business.representative_name %><br>
+  <%= Business.human_attribute_name :email %>: <%= @business.email %><br>
+  <%= Business.human_attribute_name :address %>: <%= @business.address %><br>
+  <%= Business.human_attribute_name :post_code %>: <%= @business.post_code %><br>
+  <%= Business.human_attribute_name :phone_number %>: <%= @business.phone_number %><br>
+  <%= Business.human_attribute_name :carrier_up_id %>: <%= @business.carrier_up_id %><br>
+  <%= Business.human_attribute_name :stamp_images %>: <%= @business.stamp_images %><br>
+  <%= Business.human_attribute_name :business_type %>: <%= @business.business_type %><br>
+  ====================================
+  <!-- 表示テストここまで -->
+
+</div>
