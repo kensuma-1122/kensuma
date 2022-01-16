@@ -1,4 +1,5 @@
 class Business < ApplicationRecord
+  mount_uploaders :stamp_images, StampImageUploader
   belongs_to :user
 
   before_validation :set_uuid

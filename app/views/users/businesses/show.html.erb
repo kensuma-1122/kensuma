@@ -15,7 +15,10 @@
   <%= Business.human_attribute_name :post_code %>: <%= @business.post_code %><br>
   <%= Business.human_attribute_name :phone_number %>: <%= @business.phone_number %><br>
   <%= Business.human_attribute_name :carrier_up_id %>: <%= @business.carrier_up_id %><br>
-  <%= Business.human_attribute_name :stamp_images %>: <%= @business.stamp_images %><br>
+  <%= Business.human_attribute_name :stamp_images %>:
+  <% @business.stamp_images.each do |image| %>
+    <%= image_tag image.to_s %>
+  <% end %><br>
   <%= Business.human_attribute_name :business_type %>: <%= @business.business_type %><br>
   ====================================
   <!-- 表示テストここまで -->

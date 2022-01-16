@@ -37,7 +37,11 @@
   </div>
   <div class="form-group">
     <%= f.label :stamp_images %>
-    <%= f.text_field :stamp_images, class: "form-control", multiple: true %>
+    <%= f.file_field :stamp_images, class: "form-control", multiple: true %>
+    <% @business.stamp_images.each do |image| %>
+      <%= image_tag image.to_s %>
+      <%= f.check_box :remove_stamp_images %>
+    <% end %><br>
   </div>
   <div class="form-group">
     <%= f.label :business_type %>
