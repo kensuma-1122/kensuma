@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Admins', type: :system do
-  before(:each) do
-    @admin = Admin.create!(email: 'foo@example.com', password: '123456')
-  end
+  let!(:admin) { Admin.create!(email: 'foo@example.com', password: '123456') }
 
   describe 'ログイン後の画面表示' do
     context 'ログインできる時' do
@@ -61,7 +59,7 @@ RSpec.describe 'Admins', type: :system do
   describe 'ヘッダーのリンククリック後の画面' do
     context 'adminがログインしている時' do
       before(:each) do
-        sign_in(@admin)
+        sign_in(admin)
         visit _system__dashboard_path
       end
 
@@ -101,7 +99,7 @@ RSpec.describe 'Admins', type: :system do
 
   describe 'admin一覧画面からのCRUD遷移テスト' do
     before(:each) do
-      sign_in(@admin)
+      sign_in(admin)
       visit _system__dashboard_path
       click_on 'Admins'
       visit _system__admins_path
@@ -110,14 +108,14 @@ RSpec.describe 'Admins', type: :system do
     context '閲覧クリック時' do
       it '閲覧画面に遷移' do
         click_on '閲覧'
-        expect(page).to have_current_path(_system__admin_path(@admin), ignore_query: true)
+        expect(page).to have_current_path(_system__admin_path(admin), ignore_query: true)
       end
     end
 
     context '編集クリック時' do
       it '編集画面に遷移' do
         click_on '編集'
-        expect(page).to have_current_path(edit__system__admin_path(@admin), ignore_query: true)
+        expect(page).to have_current_path(edit__system__admin_path(admin), ignore_query: true)
       end
     end
     # adminの削除ボタンは必要かどうかまだ不明の為一旦記載無
@@ -127,7 +125,7 @@ RSpec.describe 'Admins', type: :system do
     let!(:user) { create(:user) }
 
     before(:each) do
-      sign_in(@admin)
+      sign_in(admin)
       visit _system__dashboard_path
       click_on 'ユーザー'
       visit _system__users_path
