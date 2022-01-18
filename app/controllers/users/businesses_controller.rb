@@ -20,7 +20,7 @@ module Users
     def create
       @business_new = Business.new(business_params)
       if @business_new.save
-        redirect_to users_dash_boards_path
+        redirect_to users_dash_boards_url
       else
         render :new
       end
@@ -31,7 +31,7 @@ module Users
     def update
       if @business.update(business_params)
         flash[:success] = '更新しました'
-        redirect_to users_business_path
+        redirect_to users_business_url
       else
         render 'edit'
       end
@@ -48,14 +48,16 @@ module Users
       # 削除した後のstamp_imageをupdateする
       @business.update!(stamp_images: remain_stamp_images)
       flash[:danger] = '削除しました'
-      redirect_to edit_users_business_path
+      redirect_to edit_users_business_url
     end
 
     private
 
     def business_params
-      params.require(:business).permit(:uuid, :name, :name_kana, :branch_name, :representative_name, :email, :address, :post_code,
-        :phone_number, :carrier_up_id, :business_type, { stamp_images: [] }, :user_id)
+      params.require(:business).permit(
+        :uuid, :name, :name_kana, :branch_name, :representative_name, :email, :address, :post_code,
+        :phone_number, :carrier_up_id, :business_type, { stamp_images: [] }, :user_id
+      )
     end
   end
 end

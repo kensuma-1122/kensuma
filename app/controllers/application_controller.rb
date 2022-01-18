@@ -32,17 +32,16 @@ class ApplicationController < ActionController::Base
     @business = current_user.business
     if @business.present?
       # URLが　"/users/business/new" または URLが "/users/business" ＆ メソッド名が "POST" であれば
-      if request.fullpath == "/users/business/new" || request.fullpath == "/users/business" && request.method == "POST"
+      if request.fullpath == '/users/business/new' || request.fullpath == '/users/business' && request.method == 'POST'
         flash[:danger] = '事業所はすでに登録済みです'
         redirect_to users_dash_boards_url
       end
     else
       # URLが　"/users/business/new" または URLが "/users/business" ＆ メソッド名が "POST" でなければ
-      unless request.fullpath == "/users/business/new" || request.fullpath == "/users/business" && request.method == "POST"
+      unless request.fullpath == '/users/business/new' || request.fullpath == '/users/business' && request.method == 'POST'
         flash[:danger] = '事業所を登録して下さい'
         redirect_to new_users_business_url
       end
     end
-    
   end
 end
