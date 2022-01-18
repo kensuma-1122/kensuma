@@ -27,21 +27,22 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
   end
 
-  # 事業所が登録してあればダッシュボードへ
-  def business_present_access
-    business = Business.find_by(user_id: current_user.id)
-    if business.present?
-      flash[:danger] = '事業所はすでに登録済みです'
-      redirect_to users_dash_boards_path
+  # 事業所が登録してあればダッシュボードへ、事業所が登録してなければ事業所登録画面へ
+  def check_business_exist
+    @business = current_user.business
+    if @business.present?
+      # URLが　"/users/business/new" または URLが "/users/business" ＆ メソッド名が "POST" であれば
+      if request.fullpath == "/users/business/new" || request.fullpath == "/users/business" && request.method == "POST"
+        flash[:danger] = '事業所はすでに登録済みです'
+        redirect_to users_dash_boards_url
+      end
+    else
+      # URLが　"/users/business/new" または URLが "/users/business" ＆ メソッド名が "POST" でなければ
+      unless request.fullpath == "/users/business/new" || request.fullpath == "/users/business" && request.method == "POST"
+        flash[:danger] = '事業所を登録して下さい'
+        redirect_to new_users_business_url
+      end
     end
-  end
-
-  # 事業所が登録してなければ事業所登録画面へ
-  def business_nil_access
-    business = Business.find_by(user_id: current_user.id)
-    if business.nil?
-      flash[:danger] = '事業所を登録して下さい'
-      redirect_to new_users_business_path
-    end
+    
   end
 end

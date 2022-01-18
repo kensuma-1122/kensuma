@@ -1,16 +1,13 @@
 module Users
   class BusinessesController < Users::Base
-    before_action :set_business, except: %i[new create]
-    before_action :business_present_access, only: :new
-    before_action :business_nil_access, except: %i[new create]
     def new
-      @business = Business.new(uuid: '1', name: 'test企業', name_kana: 'テストキギョウ', branch_name: 'test支店', representative_name: 'test代表', email: 'test@email.com',
+      @business_new = Business.new(uuid: '1', name: 'test企業', name_kana: 'テストキギョウ', branch_name: 'test支店', representative_name: 'test代表', email: 'test@email.com',
         address: 'test', post_code: '0123456', phone_number: '01234567898', carrier_up_id: 'test', business_type: 0, user_id: current_user.id)
     end
 
     def create
-      @business = Business.new(business_params)
-      if @business.save
+      @business_new = Business.new(business_params)
+      if @business_new.save
         redirect_to users_dash_boards_path
       else
         render :new
@@ -43,10 +40,6 @@ module Users
     end
 
     private
-
-    def set_business
-      @business = Business.find_by(user_id: current_user.id)
-    end
 
     def business_params
       params.require(:business).permit(:uuid, :name, :name_kana, :branch_name, :representative_name, :email, :address, :post_code,
