@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case resource
     when User
-      business = Business.find_by(user_id: resource)
+      business = resource.business
       if business.nil?
         new_users_business_path
       else
