@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
+Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
   # admin関連=========================================================
@@ -29,8 +29,8 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     resources :dash_boards, only: [:index]
     resources :articles, only: %i[index show]
     resource :profile, except: %i[create new]
+    resource :business, except: %i[index]
   end
-
   # =================================================================
 
   # manager関連=======================================================

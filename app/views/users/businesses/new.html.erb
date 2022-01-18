@@ -1,0 +1,13 @@
+<% provide(:title, "事業所登録") %>
+<% provide(:btn_text, "登録") %>
+
+<div class="card">
+  <div class="card-body">
+    <%= form_with model: @business, url: users_business_path, method: :post, local: true do |f| %>
+      <%= render partial: "form", locals: { f: f, business: @business } %>
+  </div>
+  <div class="card-footer">
+      <%= f.submit yield(:btn_text), class: "btn btn-md btn-block btn-primary" %>
+  </div>
+    <% end %>
+</div>

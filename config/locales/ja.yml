@@ -106,6 +106,13 @@ ja:
       day: 日
       month: 月
       year: 年
+  enums:
+    business:
+      business_type:
+        corporation: 法人
+        freelance: 一人親方
+        Individual_five_over: 個人事務所(雇用5人以上)
+        Individual_five_less: 個人事務所(雇用5人未満)
   errors:
     format: "%{attribute}%{message}"
     messages:

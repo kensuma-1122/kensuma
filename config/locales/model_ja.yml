@@ -16,3 +16,6 @@ ja:
         carrier_up_id: 事業者ID
         stamp_images: 電子印
         business_type: 会社形態
+  attributes:
+    created_at: 作成日
+    updated_at: 更新日

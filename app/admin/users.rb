@@ -1,5 +1,4 @@
 ActiveAdmin.register User do
-
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -14,7 +13,7 @@ ActiveAdmin.register User do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+
   index do
     selectable_column
     id_column
@@ -27,7 +26,7 @@ ActiveAdmin.register User do
     column :sign_in_count
     column :created_at
     actions
-  
+
     # # （例）belongs_to でつながっている parent_model のリンク付きの項目
     # column :parent_model do |model_name|
     #   link_to model_name.parent_model.title, admin_parent_model_path(model_name.parent_model)
@@ -54,5 +53,4 @@ ActiveAdmin.register User do
     end
     f.actions
   end
-
 end
