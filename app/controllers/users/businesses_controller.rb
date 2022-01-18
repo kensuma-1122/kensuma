@@ -39,7 +39,7 @@ module Users
 
     def show; end
 
-    def destroy
+    def update_images
       # 残りstamp_imageを定義
       remain_stamp_images = @business.stamp_images
       # stamp_imageを削除する

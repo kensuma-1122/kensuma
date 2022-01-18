@@ -29,7 +29,9 @@ Rails.application.routes.draw do
     resources :dash_boards, only: [:index]
     resources :articles, only: %i[index show]
     resource :profile, except: %i[create new]
-    resource :business, except: %i[index]
+    resource :business, except: %i[index destroy] do
+      patch 'update_images'
+    end
   end
   # =================================================================
 
