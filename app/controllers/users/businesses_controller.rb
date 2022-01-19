@@ -1,5 +1,9 @@
 module Users
   class BusinessesController < Users::Base
+    before_action :set_business, except: %i[new create]
+    before_action :business_present_access, only: :new
+    skip_before_action :business_nil_access, only: %i[new create]
+
     def new
       @business_new = Business.new(
         uuid:                '1',
@@ -52,6 +56,10 @@ module Users
     end
 
     private
+
+    def set_business
+      @business = current_user.business
+    end
 
     def business_params
       params.require(:business).permit(
