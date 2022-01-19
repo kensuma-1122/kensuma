@@ -40,8 +40,8 @@
   <% end %>
   <br>
 <% end %>
-
+<br>
 <%= f.label :stamp_images %>
 <%= f.file_field :stamp_images, multiple: true, class: "form-control" %>
 
-<%= f.hidden_field :user_id, value: current_user.id %>
+<%= f.hidden_field :user_id, value: current_user.id %><br>
