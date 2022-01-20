@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Admins', type: :system do
-  let!(:admin) { Admin.create!(email: 'foo@example.com', password: '123456') }
+  let!(:admin) { create(:admin, email: 'foo@example.com', password: '123456', password_confirmation: '123456') }
 
   describe 'ログイン後の画面表示' do
     context 'ログインできる時' do
