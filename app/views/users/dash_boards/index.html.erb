@@ -2,8 +2,29 @@
 <div class="content">
   <div class="container-fluid">
     <div class="row">
-      <%= link_to "事業所詳細画面へ", users_business_path, class: "btn btn-lg byn-block btn-outline-primary" %>
-    </div>
-    <!-- /.row -->
+      <div class="col-md-6">
+        <td>
+          <button type="button" class="btn btn-block btn-outline-primary btn-lg">発注</button>
+        </td>
+      </div>
+      <div class="col-md-6">
+        <td>
+          <button type="button" class="btn btn-block btn-outline-primary btn-lg">作業員</button>
+        </td>
+      </div>
+      <div class="col-md-6">  
+        <td>
+          <button type="button" class="btn btn-block btn-outline-primary btn-lg">事業所</button>
+        </td>
+      </div>
+      <div class="col-md-6">
+        <td>
+          <button type="button" class="btn btn-block btn-outline-primary btn-lg">ユーザー</button>
+        </td>
+      </div>
+
+      <!-- ↓上記リンクの遷移実装時に使用するかもしれないのでコメントアウト↓ -->
+      <%# link_to "事業所詳細画面へ", users_business_path, class: "btn btn-lg byn-block btn-outline-primary" %>
+    </div><!-- /.row -->
   </div><!-- /.container-fluid -->
 </div>
