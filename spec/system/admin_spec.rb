@@ -4,8 +4,8 @@ RSpec.describe 'Admins', type: :system do
   # テストユーザーを作成する
   let!(:admin) { create(:admin, email: 'foo@example.com', password: '123456', password_confirmation: '123456') }
 
-  describe 'active_admin/devise/sessions' do
-    context '管理者ログインページへアクセスした場合' do
+  describe '管理者ログイン・ログアウト' do
+    context 'ログインページへアクセスした場合' do
       it 'ログイン画面を表示' do
         visit new_admin_session_path
         expect(page).to have_content('ログイン')
@@ -14,7 +14,7 @@ RSpec.describe 'Admins', type: :system do
 
     context 'メールアドレスとパスワードが登録済み情報と合致する場合' do
       it 'ログインしダッシュボードを表示' do
-        login(admin)
+        admin_login(admin)
         # ログイン後遷移先変更時に修正の必要あり
         expect(page).to have_current_path _system__dashboard_path, ignore_query: true
         expect(page).to have_content('ログインしました。')
@@ -45,7 +45,7 @@ RSpec.describe 'Admins', type: :system do
 
     context 'ログアウトをクリックした場合' do
       it 'ログアウトしログイン画面を表示' do
-        login(admin)
+        admin_login(admin)
         click_link 'ログアウト'
         expect(page).to have_current_path new_admin_session_path, ignore_query: true
         expect(page).to have_content('ログイン')
@@ -54,7 +54,7 @@ RSpec.describe 'Admins', type: :system do
   end
 
   describe '管理者ログイン後' do
-    before(:each) { login(admin) }
+    before(:each) { admin_login(admin) }
 
     let!(:user) { create(:user) }
 
