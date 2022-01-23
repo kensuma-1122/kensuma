@@ -7,8 +7,8 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :validatable,
     :confirmable
 
-  has_many :other_users, :class_name => 'User', :foreign_key => 'admin_id', dependent: :destroy
-  belongs_to :admin, :class_name => 'User', optional: true
+  has_many :other_users, class_name: 'User', foreign_key: 'admin_id', dependent: :destroy
+  belongs_to :admin, class_name: 'User', optional: true
 
   has_many :articles, dependent: :destroy
   has_one :business, dependent: :destroy
