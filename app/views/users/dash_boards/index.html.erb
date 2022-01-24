@@ -2,29 +2,46 @@
 <div class="content">
   <div class="container-fluid">
     <div class="row">
+    
       <div class="col-md-6">
-        <td>
-          <button type="button" class="btn btn-block btn-outline-primary btn-lg">発注</button>
-        </td>
-      </div>
-      <div class="col-md-6">
-        <td>
-          <button type="button" class="btn btn-block btn-outline-primary btn-lg">作業員</button>
-        </td>
+        <div class="card">
+          <div class="card-header border-0"></div>
+          <div class="card-body">
+            <div class="m-md-5">
+              <%= link_to "発注", "#", class: "btn btn-lg btn-block py-md-5" %>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header border-0"></div>
+          <div class="card-body">
+            <div class="m-md-5">
+              <%= link_to "事業所", "#", class: "btn btn-lg btn-block py-md-5" %>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-md-6">  
-        <td>
-          <button type="button" class="btn btn-block btn-outline-primary btn-lg">事業所</button>
-        </td>
-      </div>
-      <div class="col-md-6">
-        <td>
-          <button type="button" class="btn btn-block btn-outline-primary btn-lg">ユーザー</button>
-        </td>
+        <div class="card">
+          <div class="card-header border-0"></div>
+          <div class="card-body">
+            <div class="m-md-5">
+              <%= link_to "作業員", "#", class: "btn btn-lg btn-block py-md-5" %>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header border-0"></div>
+          <div class="card-body">
+            <div class="m-md-5">
+              <%= link_to "ユーザー", "#", class: "btn btn-lg btn-block py-md-5" %>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- ↓上記リンクの遷移実装時に使用するかもしれないのでコメントアウト↓ -->
-      <%# link_to "事業所詳細画面へ", users_business_path, class: "btn btn-lg byn-block btn-outline-primary" %>
+      <%# link_to "事業所詳細画面へ", users_business_path, class: "btn btn-lg btn-block btn-outline-primary" %>
     </div><!-- /.row -->
   </div><!-- /.container-fluid -->
 </div>
