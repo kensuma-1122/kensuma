@@ -37,3 +37,19 @@ manager.save!
 # admin.skip_confirmation! # deviseの確認メールをスキップ
 # admin.save!
 Admin.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+# 事業所仮作成。user_idは1
+Business.create!(
+  uuid: '1',
+  name: 'test企業',
+  name_kana: 'テストキギョウ',
+  branch_name:'test支店',
+  representative_name: 'test代表',
+  email: "test1@example.com",
+  address: 'test',
+  post_code: '0120123',
+  phone_number: '09001230123',
+  carrier_up_id: '1',
+  business_type: 0,
+  user_id: 1
+)
