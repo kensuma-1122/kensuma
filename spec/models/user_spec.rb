@@ -211,7 +211,7 @@ RSpec.describe User, type: :model do
     let(:association) { described_class.reflect_on_association(target) }
 
     context 'other_usersとの関連づけ' do
-      let(:target) { :other_users }
+      let(:target) { :general_users }
 
       it { expect(association.macro).to eq :has_many }
       it { expect(association.class_name).to eq 'User' }
