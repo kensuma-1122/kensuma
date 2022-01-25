@@ -32,7 +32,12 @@ Rails.application.routes.draw do
     resource :business, except: %i[index destroy] do
       delete 'update_images'
     end
-    get 'general_users', to: 'users#index'
+    get 'general_users', to: 'general_users#index'
+    get 'general_users/:id', to: 'general_users#show'
+    get 'general_users', to: 'general_users#new'
+    post 'general_users', to: 'general_users#edit'
+    patch 'general_users/:id', to: 'general_users#update'
+    delete 'general_users/:id', to: 'general_users#destroy'
   end
   # =================================================================
 
