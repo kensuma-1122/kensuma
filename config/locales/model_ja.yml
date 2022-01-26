@@ -3,6 +3,12 @@ ja:
     models:
       business: 事業部
     attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        name: 名前
+        age: 年齢
+        gender: 性別
       business:
         uuid: 事業所ID
         name: 事業所名

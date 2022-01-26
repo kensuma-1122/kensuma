@@ -1,0 +1,14 @@
+<%= render 'shared/error_massages', object: f.object %>
+
+<%= f.label :name %>
+<%= f.text_field :name, class: "form-control", placeholder: "Enter name" %>
+<br>
+<%= f.label :email %>
+<%= f.email_field :email, class: "form-control", placeholder: "Enter email" %>
+<br>
+<%= f.label :age %>
+<%= f.number_field :age, class: "form-control", placeholder: "Enter age" %>
+<br>
+<%= f.label :gender %>
+<%= f.select :gender, User.genders_i18n.invert, { include_blank: 'Enter gender' }, { class: "form-control" } %>
+<br>
