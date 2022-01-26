@@ -6,26 +6,29 @@ RSpec.describe 'Admins', type: :system do
 
   describe '管理者ログイン・ログアウト' do
     context 'ログインページへアクセスした場合' do
-      it 'ログイン画面を表示' do
+      it 'ログインページを表示' do
         visit new_admin_session_path
         expect(page).to have_content('ログイン')
       end
     end
 
-    context 'メールアドレスとパスワードが登録済み情報と合致する場合' do
+    context 'メールアドレスとパスワードが正しい場合' do
       it 'ログインしダッシュボードを表示' do
-        admin_login(admin)
-        # ログイン後遷移先変更時に修正の必要あり
+        visit new_admin_session_path
+        fill_in 'admin[email]', with: 'foo@example.com'
+        fill_in 'admin[password]', with: '123456'
+        click_button 'ログイン'
+        # ログイン後遷移先変更時は修正の必要あり
         expect(page).to have_current_path _system__dashboard_path, ignore_query: true
         expect(page).to have_content('ログインしました。')
       end
     end
 
-    context 'メールアドレスとパスワードが登録済み情報と合致しない場合' do
+    context 'メールアドレスとパスワードが間違っている場合' do
       it 'ログインできない' do
         visit new_admin_session_path
-        fill_in 'admin[email]', with: 'foo@email.com'
-        fill_in 'admin[password]', with: '123456'
+        fill_in 'admin[email]', with: 'bar@example.com'
+        fill_in 'admin[password]', with: 'password'
         click_button 'ログイン'
         expect(page).to have_current_path new_admin_session_path, ignore_query: true
         expect(page).to have_content('Eメールまたはパスワードが違います。')
