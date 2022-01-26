@@ -2,7 +2,7 @@
 <% provide(:btn_text, "登録") %>
 
 <div class="card">
-  <%= form_with model: @general_user, url: users_business_path, method: :post, local: true do |f| %>
+  <%= form_with model: @general_user, url: users_general_users_path, method: :post, local: true do |f| %>
     <div class="card-body">
       <%= render partial: "form", locals: { f: f, general_user: @general_user } %>
     </div>
