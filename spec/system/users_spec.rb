@@ -7,6 +7,13 @@ RSpec.describe 'Users', type: :system do
   let!(:user2) { create(:user, name: 'user2', email: 'user2@example.com', password: '123456') }
   let!(:business) { create(:business, user: user1) }
 
+  before(:each) do
+    user1.skip_confirmation!
+    user1.save!
+    user2.skip_confirmation!
+    user2.save!
+  end
+
   describe 'ユーザーログイン・ログアウト' do
     context 'ログインページへアクセスした場合' do
       it 'ログインページを表示' do

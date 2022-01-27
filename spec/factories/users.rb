@@ -7,7 +7,5 @@ FactoryBot.define do
     password         { 'password' }
     age              { 20 }
     gender           { 1 }
-    # create時に自動でアカウントを有効化
-    after(:create, &:confirm)
   end
 end
