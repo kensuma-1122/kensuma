@@ -1,1 +1,66 @@
-<%= link_to "ユーザー新規画面へ", new_users_general_user_path, class: "btn btn-lg byn-block btn-outline-primary" %>
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>ユーザー一覧</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><%= link_to '新規登録', new_users_general_user_path %></li>
+          <li class="breadcrumb-item"><%= link_to 'ダッシュボード', users_dash_boards_path %></li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+
+<!-- Default box -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">ユーザー一覧</h3>
+  </div>
+  <div class="card-body p-0">
+    <table class="table table-striped projects">
+      <thead>
+        <tr>
+          <th><%= User.human_attribute_name :name %></th>
+          <th><%= User.human_attribute_name :email %></th>
+          <th><%= User.human_attribute_name :age %></th>
+          <th><%= User.human_attribute_name :gender %></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @general_users.each do |general_user| %>
+          <tr>
+            <td><%= general_user.name %></td>
+            <td><%= general_user.email %></td>
+            <td><%= general_user.age %></td>
+            <td><%= general_user.gender_i18n %></td>
+            <td class="project-actions text-right">
+            <a class="btn btn-primary btn-sm" href="<%= users_general_user_path(general_user) %>">
+              <i class="fas fa-folder"></i>
+              詳細
+            </a>
+            <a class="btn btn-info btn-sm" href="<%= edit_users_general_user_path(general_user) %>">
+              <i class="fas fa-pencil-alt"></i>
+              編集
+            </a>
+            <a class="btn btn-danger btn-sm" data-method="delete" 
+                data-confirm="本当に削除しますか？" href="<%= users_general_user_path(general_user) %>">
+              <i class="fas fa-trash"></i>
+              削除
+            </a>
+          </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <!-- /.card-body -->
+</div>
+<!-- /.card -->
+
+</section>

@@ -1,0 +1,13 @@
+<% provide(:title, "その他のユーザー編集") %>
+<% provide(:btn_text, "更新") %>
+
+<div class="card">
+  <%= form_with model: @general_user, url: users_general_user_path, method: :patch, local: true do |f| %>
+    <div class="card-body">
+      <%= render partial: "form", locals: { f: f, general_user: @general_user } %>
+    </div>
+    <div class="card-footer">
+      <%= f.submit yield(:btn_text), class: "btn btn-md btn-block btn-primary" %>
+    </div>
+  <% end %>
+</div>
