@@ -55,9 +55,6 @@ RSpec.configure do |config|
   # FactoryBotの利用をON
   config.include FactoryBot::Syntax::Methods
 
-  config.include AdminLoginModule
-  config.include UserLoginModule
-
   # DatabaseCleanerの設定
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation

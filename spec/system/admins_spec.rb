@@ -48,7 +48,8 @@ RSpec.describe 'Admins', type: :system do
 
     context 'ログアウトをクリックした場合' do
       it 'ログアウトしログイン画面を表示' do
-        admin_login(admin)
+        sign_in(admin)
+        visit _system__dashboard_path
         click_link 'ログアウト'
         expect(page).to have_current_path new_admin_session_path, ignore_query: true
         expect(page).to have_content('ログイン')
@@ -57,7 +58,10 @@ RSpec.describe 'Admins', type: :system do
   end
 
   describe '管理者ログイン後' do
-    before(:each) { admin_login(admin) }
+    before(:each) do
+      sign_in(admin)
+      visit _system__dashboard_path
+    end
 
     let!(:user) { create(:user) }
 
