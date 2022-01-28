@@ -28,7 +28,7 @@ RSpec.describe User, type: :model do
 
         it 'バリデーションのエラーが正しいこと' do
           subject.valid?
-          expect(subject.errors.full_messages).to include('Eメールを入力してください')
+          expect(subject.errors.full_messages).to include('メールアドレスを入力してください', 'メールアドレスは不正な値です')
         end
       end
 
@@ -44,7 +44,7 @@ RSpec.describe User, type: :model do
 
         it 'バリデーションのエラーが正しいこと' do
           subject.valid?
-          expect(subject.errors.full_messages).to include('Eメールはすでに存在します')
+          expect(subject.errors.full_messages).to include('メールアドレスはすでに存在します')
         end
       end
 
@@ -65,7 +65,7 @@ RSpec.describe User, type: :model do
 
           it 'バリデーションのエラーが正しいこと' do
             subject.valid?
-            expect(subject.errors.full_messages).to include('Eメールは不正な値です')
+            expect(subject.errors.full_messages).to include('メールアドレスは不正な値です')
           end
         end
       end
@@ -83,7 +83,7 @@ RSpec.describe User, type: :model do
 
         it 'バリデーションのエラーが正しいこと' do
           subject.valid?
-          expect(subject.errors.full_messages).to include('Nameを入力してください')
+          expect(subject.errors.full_messages).to include('名前を入力してください', '名前は1文字以上で入力してください')
         end
       end
 
@@ -118,7 +118,7 @@ RSpec.describe User, type: :model do
 
         it 'バリデーションのエラーが正しいこと' do
           subject.valid?
-          expect(subject.errors.full_messages).to include('Nameは10文字以内で入力してください')
+          expect(subject.errors.full_messages).to include('名前は10文字以内で入力してください')
         end
       end
     end
@@ -157,7 +157,7 @@ RSpec.describe User, type: :model do
 
         it 'バリデーションのエラーが正しいこと' do
           subject.valid?
-          expect(subject.errors.full_messages).to include('Ageは10以上の値にしてください')
+          expect(subject.errors.full_messages).to include('年齢は10以上の値にしてください')
         end
       end
 

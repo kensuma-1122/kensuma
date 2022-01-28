@@ -57,4 +57,7 @@ manager.save!
 
 # admin.skip_confirmation! # deviseの確認メールをスキップ
 # admin.save!
-Admin.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+# 本番環境での確認の為、一時的に本番環境でもデータ作成されるように変更。本番運用時は元に戻す事。
+# Admin.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+Admin.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
