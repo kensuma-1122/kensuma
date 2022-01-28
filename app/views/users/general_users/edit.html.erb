@@ -1,4 +1,4 @@
-<% provide(:title, "その他のユーザー編集") %>
+<% provide(:title, "ユーザー編集") %>
 <% provide(:btn_text, "更新") %>
 
 <div class="card">
@@ -8,6 +8,7 @@
     </div>
     <div class="card-footer">
       <%= f.submit yield(:btn_text), class: "btn btn-md btn-block btn-primary" %>
+      <%= link_to "戻る", users_general_users_path, class: "btn btn-md btn-block btn-default" %>
     </div>
   <% end %>
 </div>
