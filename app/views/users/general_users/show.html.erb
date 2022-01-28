@@ -26,6 +26,7 @@
   </div>
   <div class="card-footer">
     <%= link_to "編集", edit_users_general_user_path, class: "btn btn-md btn-block btn-success" %>
+    <%= link_to '削除', users_general_user_path(@general_user), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-md btn-block btn-danger" %>
     <%= link_to "戻る", users_general_users_path, class: "btn btn-md btn-block btn-default" %>
   </div>
 </div>

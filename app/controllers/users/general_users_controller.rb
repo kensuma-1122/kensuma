@@ -9,7 +9,14 @@ module Users
     def show; end
 
     def new
-      @general_user = User.new
+      @general_user = User.new(
+        # テスト用デフォルト値=======================
+        name: 'TsetUser',
+        email: "#{SecureRandom.hex(2)}@email.com",
+        age: rand(20..60),
+        gender: rand(0..2)
+        # =======================================
+      )
     end
 
     def create

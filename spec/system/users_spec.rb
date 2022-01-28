@@ -82,8 +82,21 @@ RSpec.describe 'Users', type: :system do
     end
 
     context 'ユーザー削除' do
-      it '削除したあと一覧画面から同画面にリダイレクトすること', js: true do
+      it '一覧画面から削除したあと同画面にリダイレクトすること', js: true do
         visit users_general_users_path
+        click_on '削除'
+
+        expect {
+          expect(page.accept_confirm).to eq '本当に削除しますか？'
+          expect(page).to have_content "#{general_user.name}を削除しました"
+        }.to change(User, :count).by(-1)
+
+        visit users_general_users_path
+        expect(page).to have_content 'ユーザー一覧'
+      end
+
+      it '編集画面から削除したあと一覧画面に遷移すること', js: true do
+        visit edit_users_general_user_path(general_user)
         click_on '削除'
 
         expect {
