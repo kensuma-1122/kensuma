@@ -2,8 +2,22 @@
 <div class="content">
   <div class="container-fluid">
     <div class="row">
-      <%= link_to "事業所詳細画面へ", users_business_path, class: "btn btn-lg byn-block btn-outline-primary" %>
+      <div class="col-lg-6">
+        <div class="card pt-5 pb-5">
+          <%= link_to "発注", '#', class: "btn btn-lg byn-block mt-5 mb-5", style: 'font-size:40px;' %>
+        </div>
+        <div class="card pt-5 pb-5">
+          <%= link_to "事業所", '#', class: "btn btn-lg byn-block mt-5 mb-5", style: 'font-size:40px;' %>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card pt-5 pb-5">
+          <%= link_to "作業員", '#', class: "btn btn-lg byn-block mt-5 mb-5", style: 'font-size:40px;' %>
+        </div>
+        <div class="card pt-5 pb-5">
+          <%= link_to "ユーザー", '#', class: "btn btn-lg byn-block mt-5 mb-5", style: 'font-size:40px;' %>
+        </div>
+      </div>
     </div>
-    <!-- /.row -->
-  </div><!-- /.container-fluid -->
+  </div>
 </div>

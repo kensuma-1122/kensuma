@@ -1,7 +1,5 @@
 FactoryBot.define do
   factory :business do
-    association :user
-
     uuid { SecureRandom.uuid }
     name { 'TEST企業' }
     name_kana { 'テストキギョウ' }
@@ -13,5 +11,6 @@ FactoryBot.define do
     phone_number { '09001230123' }
     carrier_up_id { '1' }
     business_type { 0 }
+    user
   end
 end

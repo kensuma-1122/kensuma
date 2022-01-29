@@ -36,7 +36,7 @@
 <% if business.stamp_images.present? %>
   <% business.stamp_images.each_with_index do |image, index| %>
     <%= image_tag(image.url) %>
-    <%= link_to "削除", users_business_path(index: index), :method => :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
+    <%= link_to "削除", update_images_users_business_path(index: index), :method => :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
   <% end %>
   <br>
 <% end %>

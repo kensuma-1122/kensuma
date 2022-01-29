@@ -206,4 +206,22 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe '自己結合のアソシエーションテスト' do
+    let(:association) { described_class.reflect_on_association(target) }
+
+    context 'general_usersとの関連づけ' do
+      let(:target) { :general_users }
+
+      it { expect(association.macro).to eq :has_many }
+      it { expect(association.class_name).to eq 'User' }
+    end
+
+    context 'admin_userとの関連づけ' do
+      let(:target) { :admin_user }
+
+      it { expect(association.macro).to eq :belongs_to }
+      it { expect(association.class_name).to eq 'User' }
+    end
+  end
 end
