@@ -16,6 +16,20 @@ ja:
         carrier_up_id: 事業者ID
         stamp_images: 電子印
         business_type: 会社形態
+      car:
+        owner_name: 車両所有者氏名
+        safety_manager: 安全運転管理者 
+        vehicle_model: 車両型式
+        vehicle_number: 車両番号
+        vehicle_inspection_start_on: 車検初め
+        vehicle_inspection_end_on: 車検終わり
+        liability_securities_number: 自賠責証券番号
+        liability_insurance_start_on: 自賠責保険初め
+        liability_insurance_end_on: 自賠責保険終わり
+        voluntary_securities_number: 任意保険証券番号
+        voluntary_insurance_start_on: 任意保険初め
+        voluntary_insurance_end_on: 任意保険終わり
+        images: 画像添付
   attributes:
     created_at: 作成日
     updated_at: 更新日
