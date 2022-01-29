@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_22_045207) do
+ActiveRecord::Schema.define(version: 2022_01_29_124206) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
@@ -82,6 +82,26 @@ ActiveRecord::Schema.define(version: 2022_01_22_045207) do
     t.index ["user_id"], name: "index_businesses_on_user_id"
   end
 
+  create_table "cars", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "owner_name", null: false
+    t.string "safety_manager"
+    t.string "vehicle_model", null: false
+    t.string "vehicle_number", null: false
+    t.date "vehicle_inspection_start_on", null: false
+    t.date "vehicle_inspection_end_on", null: false
+    t.string "liability_securities_number", null: false
+    t.date "liability_insurance_start_on", null: false
+    t.date "liability_insurance_end_on", null: false
+    t.string "voluntary_securities_number"
+    t.date "voluntary_insurance_start_on"
+    t.date "voluntary_insurance_end_on"
+    t.json "images"
+    t.bigint "business_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_cars_on_business_id"
+  end
+
   create_table "managers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -143,4 +163,5 @@ ActiveRecord::Schema.define(version: 2022_01_22_045207) do
 
   add_foreign_key "articles", "users"
   add_foreign_key "businesses", "users"
+  add_foreign_key "cars", "businesses"
 end
