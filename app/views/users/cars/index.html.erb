@@ -1,0 +1,24 @@
+<% provide(:title,  "車両一覧") %>
+
+<%= link_to "車両新規作成画面へ", new_users_car_path, class: "btn btn-lg btn-block btn-outline-primary" %>
+<br>
+<div class="card">
+  <div class="card-body table-responsive p-0">
+    <table class="table table-hover text-nowrap">
+      <thead>
+        <tr align="center">
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr align="center">
+          <td></td>
+          <td><%= link_to "編集", "#", class: "btn btn-md btn-success" %></td>
+          <td><%= link_to "削除", "#", method: :delete, data: { confirm: "「#{"#"}」を削除します。本当によろしいですか？" }, class: "btn btn-md btn-danger" %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

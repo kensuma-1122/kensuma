@@ -2,7 +2,9 @@ module Users
   class Users::CarsController < Users::Base
     def index; end
 
-    def new; end
+    def new
+      @car = @business.cars.new
+    end
 
     def create; end
 
