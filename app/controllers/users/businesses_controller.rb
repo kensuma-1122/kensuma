@@ -5,7 +5,7 @@ module Users
     skip_before_action :business_nil_access, only: %i[new create]
 
     def new
-      @business = Business.new(
+      @business = current_user.business.new(
         uuid:                '1',
         name:                'test企業',
         name_kana:           'テストキギョウ',
@@ -16,13 +16,12 @@ module Users
         post_code:           '0123456',
         phone_number:        '01234567898',
         carrier_up_id:       'test',
-        business_type:       0,
-        user_id:             current_user.id
+        business_type:       0
       )
     end
 
     def create
-      @business = Business.new(business_params)
+      @business = current_user.business.new(business_params)
       if @business.save
         redirect_to users_dash_boards_url
       else
@@ -59,7 +58,7 @@ module Users
 
     def business_params
       params.require(:business).permit(:uuid, :name, :name_kana, :branch_name, :representative_name, :email, :address, :post_code,
-        :phone_number, :carrier_up_id, :business_type, { stamp_images: [] }, :user_id)
+        :phone_number, :carrier_up_id, :business_type, { stamp_images: [] })
     end
   end
 end

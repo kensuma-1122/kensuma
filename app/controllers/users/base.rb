@@ -17,6 +17,7 @@ module Users
       redirect_to new_users_business_path, flash: { danger: '事業所を登録して下さい' } if current_user.business.nil?
     end
 
+    # current_userに紐づく事業所を取得
     def set_business
       @business = current_user.business
     end
