@@ -1,6 +1,6 @@
 class Business < ApplicationRecord
   belongs_to :user
-  has_many :cars
+  has_many :cars, dependent: :destroy
   
   mount_uploaders :stamp_images, StampImagesUploader
   before_create -> { self.uuid = SecureRandom.uuid }
