@@ -1,4 +1,4 @@
-class StampImagesUploader < CarrierWave::Uploader::Base
+class ImagesUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
   # 画像の上限を100pxにする

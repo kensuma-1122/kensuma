@@ -1,6 +1,6 @@
 module Users
   class Users::CarsController < Users::Base
-    before_action :car_set, except: %i[index new create]
+    before_action :car_set, except: %i[index new create update_images]
 
     def index
       @cars = @business.cars.all
@@ -49,6 +49,19 @@ module Users
       @car.destroy
       flash[:danger] = "#{@car.owner_name}を削除しました"
       redirect_to users_cars_url
+    end
+
+    def update_images
+      car = @business.cars.find(params[:car_id])
+      # 残りimageを定義
+      remain_images = car.images
+      # imageを削除する
+      deleted_image = remain_images.delete_at(params[:index].to_i)
+      deleted_image.try(:remove!)
+      # 削除した後のimageをupdateする
+      car.update!(images: remain_images)
+      flash[:danger] = '削除しました'
+      redirect_to edit_users_car_url(car)
     end
 
     private

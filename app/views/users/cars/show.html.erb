@@ -64,6 +64,14 @@
           <th><%= Car.human_attribute_name(:voluntary_insurance_end_on) %></th>
           <td><%= @car.voluntary_insurance_end_on %></td>
         </tr>
+        <tr>
+          <th><%= Car.human_attribute_name(:images) %></th>
+          <td>
+            <% @car.images.each do |image| %>
+              <%= image_tag(image.url) %>
+            <% end %>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
