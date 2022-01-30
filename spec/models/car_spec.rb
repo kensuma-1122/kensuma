@@ -154,32 +154,18 @@ RSpec.describe Car, type: :model do
       let :business do
         create(:business, cars: cars)
       end
-  
+
       let :cars do
         create_list(:car, 2)
       end
-  
-      context '紐つく記事がある場合' do
+
+      context '紐つく車両情報がある場合' do
         subject do
           business.cars
         end
-  
-        it '紐つく記事を返すこと' do
+
+        it '紐つく車両情報を返すこと' do
           expect(subject).to eq(cars)
-        end
-      end
-  
-      context 'businessを削除した場合' do
-        subject do
-          business.destroy
-        end
-  
-        before :each do
-          business
-        end
-  
-        it '記事も削除されること' do
-          expect { subject }.to change(Car, :count).by(-2)
         end
       end
     end

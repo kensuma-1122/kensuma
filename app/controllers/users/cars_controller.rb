@@ -74,8 +74,8 @@ module Users
       params.require(:car).permit(
         :owner_name, :safety_manager, :vehicle_model, :vehicle_number, :vehicle_inspection_start_on,
         :vehicle_inspection_end_on, :liability_securities_number, :liability_insurance_start_on,
-        :liability_insurance_end_on, :voluntary_securities_number, :voluntary_insurance_start_on, :voluntary_insurance_end_on, { images: [] }
-      )
+        :liability_insurance_end_on, :voluntary_securities_number, :voluntary_insurance_start_on,
+        :voluntary_insurance_end_on, { images: [] })
     end
   end
 end
