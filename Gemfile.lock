@@ -125,6 +125,9 @@ GEM
     enum_help (0.0.18)
       activesupport (>= 3.0.0)
     erubi (1.10.0)
+    exception_notification (4.5.0)
+      actionmailer (>= 5.2, < 8)
+      activesupport (>= 5.2, < 8)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
@@ -318,6 +321,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
+    slack-notifier (2.4.0)
     spring (4.0.0)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -372,6 +376,7 @@ DEPENDENCIES
   devise-i18n
   dotenv-rails
   enum_help
+  exception_notification
   factory_bot_rails
   ffi (~> 1.15)
   jbuilder (~> 2.7)
@@ -391,6 +396,7 @@ DEPENDENCIES
   rubocop-rspec
   sass-rails (>= 6)
   selenium-webdriver
+  slack-notifier
   spring
   turbolinks (~> 5)
   tzinfo-data

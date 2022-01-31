@@ -47,6 +47,12 @@ gem 'rmagick'
 # enum日本語化
 gem 'enum_help'
 
+# エラー通知用
+gem 'exception_notification'
+
+# slack通知用
+gem 'slack-notifier'
+
 group :development, :test do
   # ERD生成
   gem 'rails-erd'
