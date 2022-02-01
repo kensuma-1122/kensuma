@@ -56,6 +56,10 @@ module Users
 
     private
 
+    def set_business
+      @business = current_business
+    end
+
     def business_params
       params.require(:business).permit(:uuid, :name, :name_kana, :branch_name, :representative_name, :email, :address, :post_code,
         :phone_number, :carrier_up_id, :business_type, { stamp_images: [] }, :user_id)
