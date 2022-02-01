@@ -4,7 +4,6 @@ module Users
   class Base < ApplicationController
     before_action :authenticate_user!
     before_action :business_nil_access
-    before_action :set_business
     layout 'users'
 
     # 事業所が登録してあればダッシュボードへ
@@ -17,9 +16,13 @@ module Users
       redirect_to new_users_business_path, flash: { danger: '事業所を登録して下さい' } if current_user.business.nil?
     end
 
-    # current_userに紐づく事業所を取得
-    def set_business
-      @business = current_user.business
+    # 現在のユーザーの事業所を取得
+    def current_business
+      if current_user.admin_user_id.nil?
+        @current_business ||= current_user&.business
+      elsif current_user.admin_user_id.present?
+        @current_business ||= current_user&.admin_user&.business
+      end
     end
   end
 end

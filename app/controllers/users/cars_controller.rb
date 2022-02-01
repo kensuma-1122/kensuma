@@ -3,11 +3,11 @@ module Users
     before_action :car_set, except: %i[index new create update_images]
 
     def index
-      @cars = @business.cars.all
+      @cars = current_business.cars.all
     end
 
     def new
-      @car = @business.cars.new(
+      @car = current_business.cars.new(
         owner_name:                   'test車両所有者',
         safety_manager:               'test安全運転管理者',
         vehicle_model:                'test車両型式',
@@ -24,7 +24,7 @@ module Users
     end
 
     def create
-      @car = @business.cars.new(car_params)
+      @car = current_business.cars.new(car_params)
       if @car.save
         redirect_to users_car_url(@car)
       else
@@ -52,7 +52,7 @@ module Users
     end
 
     def update_images
-      car = @business.cars.find(params[:car_id])
+      car = current_business.cars.find(params[:car_id])
       # 残りimageを定義
       remain_images = car.images
       # imageを削除する
@@ -67,7 +67,7 @@ module Users
     private
 
     def car_set
-      @car = @business.cars.find(params[:id])
+      @car = current_business.cars.find(params[:id])
     end
 
     def car_params
