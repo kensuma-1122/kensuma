@@ -6,7 +6,7 @@ ja:
       business:
         uuid: 事業所ID
         name: 事業所名
-        name_kane: 事業所名(カナ)
+        name_kana: 事業所名(カナ)
         branch_name: 支店名、営業所名
         representative_name: 代表者名
         email: 事業所メールアドレス
