@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       business: 事業部
+      worker: 作業員
     attributes:
       business:
         uuid: 事業所ID
@@ -30,6 +31,24 @@ ja:
         voluntary_insurance_start_on: 任意保険初め
         voluntary_insurance_end_on: 任意保険終わり
         images: 画像添付
+      worker:
+        name: 名前
+        name_kana: 名前カナ
+        country: 国籍
+        my_address: 住所
+        my_phone_number: 電話番号
+        family_address: 家族住所
+        family_phone_number: 家族電話番号
+        birth_day_on: 生年月日
+        abo_blood_type: 血液型(ABO)
+        rh_blood_type: 血液型(Rh)
+        job_type: 職種
+        hiring_on: 雇入年月日
+        experience_term_before_hiring: 雇入前経験年数
+        blank_term: ブランク年数
+        carrier_up_id: 技能者ID
+        images: 免許
+        business: 事業所
   attributes:
     created_at: 作成日
     updated_at: 更新日
