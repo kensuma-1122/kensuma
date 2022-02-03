@@ -34,7 +34,7 @@ ja:
         images: 添付画像
       worker:
         name: 名前
-        name_kana: 名前カナ
+        name_kana: 名前(カナ)
         country: 国籍
         my_address: 住所
         my_phone_number: 電話番号
