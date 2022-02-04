@@ -4,5 +4,5 @@ class CarInsuranceCompany < ApplicationRecord
   has_many :car_voluntary_insurances
   has_many :cars, through: :car_voluntary_insurances
 
-  validates :name, presence :true
+  validates :name, presence: true
 end
