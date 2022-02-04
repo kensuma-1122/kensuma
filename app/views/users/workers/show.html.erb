@@ -1,0 +1,79 @@
+<% provide(:title, "作業者詳細") %>
+
+<div class="card">
+  <div class="card-body table-responsive p-0">
+    <table class="table table-hover text-nowrap">
+      <tbody>
+        <tr>
+          <th><%= Worker.human_attribute_name(:name) %></th>
+          <td><%=  %></td>
+        </tr>
+        <tr>
+          <th><%= Worker.human_attribute_name(:name_kana) %></th>
+          <td><%=  %></td>
+        </tr>
+        <tr>
+          <th><%= Worker.human_attribute_name(:country) %></th>
+          <td><%=  %></td>
+        </tr>
+        <tr>
+          <th><%= Worker.human_attribute_name(:my_address) %></th>
+          <td><%=  %></td>
+        </tr>
+        <tr>
+          <th><%= Worker.human_attribute_name(:my_phone_number) %></th>
+          <td><%=  %></td>
+        </tr>
+        <tr>
+          <th><%= Worker.human_attribute_name(:family_address) %></th>
+          <td><%=  %></td>
+        </tr>
+        <tr>
+          <th><%= Worker.human_attribute_name(:family_phone_number) %></th>
+          <td><%=  %></td>
+        </tr>
+        <tr>
+          <th><%= Worker.human_attribute_name(:birth_day_on) %></th>
+          <td><%=  %></td>
+        </tr>
+        <tr>
+          <th><%= Worker.human_attribute_name(:abo_blood_type) %></th>
+          <td><%=  %></td>
+        </tr>
+        <tr>
+          <th><%= Worker.human_attribute_name(:rh_blood_type) %></th>
+          <td><%=  %></td>
+        </tr>
+        <tr>
+          <th><%= Worker.human_attribute_name(:job_type) %></th>
+          <td><%=  %></td>
+        </tr>
+        <tr>
+          <th><%= Worker.human_attribute_name(:hiring_on) %></th>
+          <td><%=  %></td>
+        </tr>
+        <tr>
+          <th><%= Worker.human_attribute_name(:experience_term_before_hiring) %></th>
+          <td><%=  %></td>
+        </tr>
+        <tr>
+          <th><%= Worker.human_attribute_name(:blank_term) %></th>
+          <td><%=  %></td>
+        </tr>
+        <tr>
+          <th><%= Worker.human_attribute_name(:carrier_up_id) %></th>
+          <td><%=  %></td>
+        </tr>
+        <tr>
+          <th><%= Worker.human_attribute_name(:images) %></th>
+          <td><%=  %></td>
+        </tr>
+      </tbody>
+    </table>
+      
+  </div>
+  <div class="card-footer">
+    <%= link_to "編集", edit_users_worker_path, class: "btn btn-md btn-block btn-success" %>
+    <%= link_to "作業者一覧へ", users_workers_path, class: "btn btn-md btn-block btn-default" %>
+  </div>
+</div>

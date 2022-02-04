@@ -1,1 +1,27 @@
-<h1>作業者一覧</h1>
+<% provide(:title, "作業者一覧") %>
+
+<div class="card">
+  <div class="card-body table-responsive p-0">
+    <table class="table table-hover text-nowrap">
+      <tbody>
+        <tr>
+          <th><%= Worker.human_attribute_name(:name) %></th>
+          <th><%= Worker.human_attribute_name(:name_kana) %></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+      
+  </div>
+  <div class="card-footer">
+    <%# link_to "編集", edit_users_worker_path, class: "btn btn-md btn-block btn-success" %>
+    <%# link_to "作業者一覧へ", users_workers_path, class: "btn btn-md btn-block btn-default" %>
+  </div>
+</div>

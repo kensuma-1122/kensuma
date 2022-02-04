@@ -1,0 +1,52 @@
+<%= render 'shared/error_massages', object: f.object %>
+
+<%= f.label :name %>
+<%= f.text_field :name, class: "form-control", placeholder: "名前を入力してください" %>
+<br>
+<%= f.label :name_kana %>
+<%= f.text_field :name_kana, class: "form-control", placeholder: "名前(カナ)を入力してください" %>
+<br>
+<%= f.label :country %>
+<%= f.text_field :country, class: "form-control", placeholder: "国籍を入力してください" %>
+<br>
+<%= f.label :my_address %>
+<%= f.text_field :my_address, class: "form-control", placeholder: "住所を入力してください" %>
+<br>
+<%= f.label :my_phone_number %>
+<%= f.text_field :my_phone_number, class: "form-control", placeholder: "家族番号を入力してください" %>
+<br>
+<%= f.label :family_address %>
+<%= f.email_field :family_address, class: "form-control", placeholder: "家族住所を入力してください" %>
+<br>
+<%= f.label :family_phone_number %>
+<%= f.text_field :family_phone_number, class: "form-control", placeholder: "家族電話番号を入力してください" %>
+<br>
+<%= f.label :birth_day_on %>
+<%= f.text_field :birth_day_on, class: "form-control", placeholder: "生年月日を入力してください" %>
+<br>
+<%= f.label :abo_blood_type %>
+<%= f.text_field :abo_blood_type, class: "form-control", placeholder: "血液型(ABO)を選択してください" %>
+<br>
+<%= f.label :rh_blood_type %>
+<%= f.text_field :rh_blood_type, class: "form-control", placeholder: "血液型(Rh)を選択してください" %>
+<br>
+<%= f.label :job_type %>
+<%= f.text_field :job_type, class: "form-control", placeholder: "職種を選択してください" %>
+<br>
+<%= f.label :hiring_on %>
+<%= f.text_field :hiring_on, class: "form-control", placeholder: "雇入年月日を選択してください" %>
+<br>
+<%= f.label :experience_term_before_hiring %>
+<%= f.text_field :experience_term_before_hiring, class: "form-control", placeholder: "雇入前経験年数を入力してください" %>
+<br>
+<%= f.label :blank_term %>
+<%= f.text_field :blank_term, class: "form-control", placeholder: "ブランク年数を入力してください" %>
+<br>
+<%= f.label :carrier_up_id %>
+<%= f.text_field :carrier_up_id, class: "form-control", placeholder: "技能者IDを入力してください" %>
+<br>
+<%= f.label :images %>
+<%= f.text_field :images, class: "form-control", placeholder: "免許を選択してください" %>
+<br>
+
+<%# f.hidden_field :user_id, value: current_user.id %>
