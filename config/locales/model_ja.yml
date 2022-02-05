@@ -3,6 +3,7 @@ ja:
     models:
       business: 事業部
       car_insurance_company: ⾃動⾞保険会社
+      car_voluntary_insurance: 任意保険
       car: 車両情報
       worker: 作業員
     attributes:
@@ -21,6 +22,9 @@ ja:
         business_type: 会社形態
       car_insurance_company:
         name: 保険会社名
+      car_voluntary_insurance:
+        personal_insurance: 対人保険金
+        objective_insurance: 対物保険金
       car:
         owner_name: 車両所有者氏名
         safety_manager: 安全運転管理者

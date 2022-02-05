@@ -17,6 +17,7 @@ RSpec.describe CarInsuranceCompany, type: :model do
     it '保険会社名が無い場合、無効であること' do
       subject.name = nil
       expect(subject).to be_invalid
+      expect(subject.errors.full_messages).to include('保険会社名を入力してください')
     end
   end
 end
