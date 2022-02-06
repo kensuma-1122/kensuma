@@ -3,8 +3,8 @@ class Worker < ApplicationRecord
 
   enum abo_blood_type: { a: 0, b: 1, ab: 2, o: 3 }
   enum rh_blood_type: { plus: 0, minus: 1 }
-  # ↓内訳未定のためコメントアウト
-  # enum job_type: {  }
+  # ↓種類は仮
+  enum job_type: { job1: 0, job2: 1, job3: 2 }
 
   VALID_PHONE_NUMBER_REGEX = /\A\d{10,11}\z/
   validates :name, presence: true

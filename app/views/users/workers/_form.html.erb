@@ -13,28 +13,28 @@
 <%= f.text_field :my_address, class: "form-control", placeholder: "住所を入力してください" %>
 <br>
 <%= f.label :my_phone_number %>
-<%= f.text_field :my_phone_number, class: "form-control", placeholder: "家族番号を入力してください" %>
+<%= f.number_field :my_phone_number, class: "form-control", placeholder: "家族番号を入力してください" %>
 <br>
 <%= f.label :family_address %>
 <%= f.email_field :family_address, class: "form-control", placeholder: "家族住所を入力してください" %>
 <br>
 <%= f.label :family_phone_number %>
-<%= f.text_field :family_phone_number, class: "form-control", placeholder: "家族電話番号を入力してください" %>
+<%= f.number_field :family_phone_number, class: "form-control", placeholder: "家族電話番号を入力してください" %>
 <br>
 <%= f.label :birth_day_on %>
-<%= f.text_field :birth_day_on, class: "form-control", placeholder: "生年月日を入力してください" %>
+<%= f.date_field :birth_day_on, class: "form-control" %>
 <br>
 <%= f.label :abo_blood_type %>
-<%= f.text_field :abo_blood_type, class: "form-control", placeholder: "血液型(ABO)を選択してください" %>
+<%= f.select :abo_blood_type, Worker.abo_blood_types.keys.to_a, {}, class: "form-control" %>
 <br>
 <%= f.label :rh_blood_type %>
-<%= f.text_field :rh_blood_type, class: "form-control", placeholder: "血液型(Rh)を選択してください" %>
+<%= f.select :rh_blood_type, Worker.rh_blood_types.keys.to_a, {}, class: "form-control" %>
 <br>
 <%= f.label :job_type %>
-<%= f.text_field :job_type, class: "form-control", placeholder: "職種を選択してください" %>
+<%= f.select :job_type, Worker.job_types.keys.to_a, {}, class: "form-control" %>
 <br>
 <%= f.label :hiring_on %>
-<%= f.text_field :hiring_on, class: "form-control", placeholder: "雇入年月日を選択してください" %>
+<%= f.date_field :hiring_on, class: "form-control" %>
 <br>
 <%= f.label :experience_term_before_hiring %>
 <%= f.text_field :experience_term_before_hiring, class: "form-control", placeholder: "雇入前経験年数を入力してください" %>

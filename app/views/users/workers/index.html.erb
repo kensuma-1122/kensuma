@@ -1,5 +1,8 @@
 <% provide(:title, "作業者一覧") %>
 
+<div class="card-header">
+    <%= link_to "作業者登録", new_users_worker_path, class: "btn btn-md btn-block btn-success" %>
+  </div>
 <div class="card">
   <div class="card-body table-responsive p-0">
     <table class="table table-hover text-nowrap">
@@ -7,21 +10,30 @@
         <tr>
           <th><%= Worker.human_attribute_name(:name) %></th>
           <th><%= Worker.human_attribute_name(:name_kana) %></th>
-          <th></th>
+          <th><%= Worker.human_attribute_name(:job_type) %></th>
+          <th><%= Worker.human_attribute_name(:abo_blood_type) %></th>
+          <th><%= Worker.human_attribute_name(:rh_blood_type) %></th>
           <th></th>
         </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+        <% @workers.each do |worker| %>
+          <tr>
+            <td><%= link_to "#{worker.name}", users_worker_path(worker) %></td>
+            <td><%= worker.name_kana %></td>
+            <td><%= worker.job_type %></td>
+            <td><%= worker.abo_blood_type %></td>
+            <td><%= worker.rh_blood_type %></td>
+            <td class="text-center">
+              <%= link_to "編集", edit_users_worker_path(worker), class: "btn btn-md btn-success" %>
+              <%= link_to "削除", users_worker_path(worker),  method: :delete, data: {confirm: "本当に削除しますか？"},
+                                                      class: "btn btn-md btn-danger" %>
+            </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
       
   </div>
   <div class="card-footer">
-    <%# link_to "編集", edit_users_worker_path, class: "btn btn-md btn-block btn-success" %>
-    <%# link_to "作業者一覧へ", users_workers_path, class: "btn btn-md btn-block btn-default" %>
+    <%= link_to "ダッシュボードへ", users_dash_boards_path, class: "btn btn-md btn-block btn-default" %>
   </div>
 </div>
