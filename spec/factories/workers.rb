@@ -4,9 +4,9 @@ FactoryBot.define do
     name { 'TestWorker' }
     name_kana { 'テストワーカー' }
     country { '日本' }
-    my_address { '東京都' }
+    my_address { '東京都テスト区1-1-1' }
     my_phone_number { '09012345678' }
-    family_address { '東京都' }
+    family_address { '東京都テスト区1-1-1' }
     family_phone_number { '08087654321' }
     birth_day_on { '2022-01-28' }
     abo_blood_type { 0 }
