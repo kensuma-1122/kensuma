@@ -26,5 +26,5 @@ CarInsuranceCompany.seed(:id, [
   { id: 25, name: '教職員共済' },
   { id: 26, name: '都市職員共済' },
   { id: 27, name: '町村職員共済' },
-  { id: 28, name: '日火連（旧：中小企業共済）' },
+  { id: 28, name: '日火連（旧：中小企業共済）' }
 ])

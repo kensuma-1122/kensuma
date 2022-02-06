@@ -1,6 +1,6 @@
 class CarVoluntaryInsurance < ApplicationRecord
-  belongs_to :car
-  belongs_to :car_insurance_company
+  belongs_to :car, dependent: :destroy
+  belongs_to :car_insurance_company, dependent: :destroy
 
   validates :personal_insurance, presence: true
   validates :objective_insurance, presence: true
