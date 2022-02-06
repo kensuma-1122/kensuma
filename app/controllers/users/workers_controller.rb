@@ -1,6 +1,6 @@
 module Users
   class WorkersController < Users::Base
-    before_action :set_worker, only: [:show, :edit, :destroy]
+    before_action :set_worker, only: [:show, :edit, :update, :destroy]
 
     def index
       @workers = current_user.business.workers
@@ -8,12 +8,13 @@ module Users
 
     def new
       @worker = Worker.new(
+        # テスト用デフォルト値 ==========================
         name: 'TestWorker',
         name_kana: 'テストワーカー',
         country: '日本',
-        my_address: '東京都',
+        my_address: '東京都テスト区1-1-1',
         my_phone_number: '09012345678',
-        family_address: '東京都',
+        family_address: '東京都テスト区1-1-1',
         family_phone_number: '08087654321',
         birth_day_on: '2022-01-28',
         abo_blood_type: 0,
@@ -23,13 +24,15 @@ module Users
         experience_term_before_hiring: 1,
         blank_term: 1,
         carrier_up_id: '1'
+        # ============================================
       )
     end
 
     def create
       @worker = Worker.new(worker_params)
       if @worker.save
-        redirect_to users_workers_url
+        flash[:success] = "情報を登録しました"
+        redirect_to users_worker_url(@worker)
       else
         render :new
       end
@@ -41,11 +44,24 @@ module Users
 
     def update
       if @worker.update(worker_params)
-        flash[:success] = '更新しました'
-        redirect_to users_workers_url
+        flash[:success] = "情報を更新しました"
+        redirect_to users_worker_url(@worker)
       else
-        render 'edit'
+        render :edit
       end
+    end
+
+    def update_images
+      # 残りimageを定義
+      worker = current_business.workers.find(params[:worker_id])
+      remain_images = worker.images
+      # imageを削除する
+      deleted_image = remain_images.delete_at(params[:index].to_i)
+      deleted_image.try(:remove!)
+      # 削除した後のimageをupdateする
+      worker.update!(images: remain_images)
+      flash[:danger] = '削除しました'
+      redirect_to edit_users_worker_url(worker)
     end
 
     def destroy
@@ -57,7 +73,7 @@ module Users
 
     private
       def set_worker
-        @worker = current_user.business.workers.find(params[:id])
+        @worker = current_business.workers.find(params[:id])
       end
 
       def worker_params

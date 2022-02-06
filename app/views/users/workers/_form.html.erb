@@ -16,7 +16,7 @@
 <%= f.number_field :my_phone_number, class: "form-control", placeholder: "家族番号を入力してください" %>
 <br>
 <%= f.label :family_address %>
-<%= f.email_field :family_address, class: "form-control", placeholder: "家族住所を入力してください" %>
+<%= f.text_field :family_address, class: "form-control", placeholder: "家族住所を入力してください" %>
 <br>
 <%= f.label :family_phone_number %>
 <%= f.number_field :family_phone_number, class: "form-control", placeholder: "家族電話番号を入力してください" %>
@@ -40,13 +40,19 @@
 <%= f.text_field :experience_term_before_hiring, class: "form-control", placeholder: "雇入前経験年数を入力してください" %>
 <br>
 <%= f.label :blank_term %>
-<%= f.text_field :blank_term, class: "form-control", placeholder: "ブランク年数を入力してください" %>
+<%= f.text_field :blank_term, class: "form-control" %>
 <br>
 <%= f.label :carrier_up_id %>
-<%= f.text_field :carrier_up_id, class: "form-control", placeholder: "技能者IDを入力してください" %>
+<%= f.text_field :carrier_up_id, class: "form-control" %>
 <br>
+<% if worker.images.present? %>
+  <% worker.images.each_with_index do |image, index| %>
+    <%= image_tag(image.url) %>
+    <%= link_to "削除", users_worker_update_images_path(worker, index: index), method: :patch, data: { confirm: "本当に削除してもよろしいですか？" } %>
+  <% end %>
+  <br>
+<% end %>
 <%= f.label :images %>
-<%= f.text_field :images, class: "form-control", placeholder: "免許を選択してください" %>
-<br>
+<%= f.file_field :images, multiple: true, class: "form-control" %>
 
-<%# f.hidden_field :user_id, value: current_user.id %>
+<%= f.hidden_field :business_id, value: current_user.business.id %>

@@ -1,11 +1,10 @@
-<% provide(:title, "作業者登録") %>
+<% provide(:title, "作業員登録") %>
 <% provide(:btn_text, "登録") %>
 
 <div class="card">
   <%= form_with model: @worker, url: users_workers_path, method: :post, local: true do |f| %>
     <div class="card-body">
-      <%= render partial: "form", locals: { f: f } %>
-      <%# render partial: "form", locals: { f: f, worker: @worker } %>
+      <%= render partial: "form", locals: { f: f, worker: @worker } %>
     </div>
     <div class="card-footer">
       <%= f.submit yield(:btn_text), class: "btn btn-md btn-block btn-primary" %>

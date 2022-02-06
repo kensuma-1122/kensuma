@@ -36,7 +36,9 @@ Rails.application.routes.draw do
     resource :business, except: %i[index destroy] do
       patch 'update_images'
     end
-    resources :workers
+    resources :workers do
+      patch 'update_images'
+    end
   end
   # =================================================================
 
