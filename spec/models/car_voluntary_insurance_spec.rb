@@ -71,5 +71,27 @@ RSpec.describe CarVoluntaryInsurance, type: :model do
         end
       end
     end
+
+    describe 'アソシエーションテスト' do
+      let(:association) do
+        described_class.reflect_on_association(target)
+      end
+  
+      context 'CarInsuranceCompanyモデルとのアソシエーション' do
+        let(:target) { :car_insurance_company }
+  
+        it 'CarInsuranceCompanyとの関連付けはbelongs_toであること' do
+          expect(association.macro).to eq :belongs_to
+        end
+      end
+  
+      context 'Carモデルとのアソシエーション' do
+        let(:target) { :car }
+  
+        it 'Carとの関連付けはbelongs_toであること' do
+          expect(association.macro).to eq :belongs_to
+        end
+      end
+    end
   end
 end

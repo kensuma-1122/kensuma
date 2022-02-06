@@ -44,7 +44,7 @@ RSpec.describe CarLiabilityInsurance, type: :model do
       described_class.reflect_on_association(target)
     end
 
-    context 'Definitionモデルとのアソシエーション' do
+    context 'CarInsuranceCompanyモデルとのアソシエーション' do
       let(:target) { :car_insurance_company }
 
       it 'CarInsuranceCompanyとの関連付けはbelongs_toであること' do
