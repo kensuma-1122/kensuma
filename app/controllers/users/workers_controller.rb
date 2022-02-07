@@ -7,7 +7,7 @@ module Users
     end
 
     def new
-      @worker = Worker.new(
+      @worker = current_business.workers.new(
         # テスト用デフォルト値 ==========================
         name: 'TestWorker',
         name_kana: 'テストワーカー',
@@ -29,7 +29,7 @@ module Users
     end
 
     def create
-      @worker = Worker.new(worker_params)
+      @worker = current_business.workers.new(worker_params)
       if @worker.save
         flash[:success] = "情報を登録しました"
         redirect_to users_worker_url(@worker)
