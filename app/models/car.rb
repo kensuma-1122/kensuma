@@ -1,9 +1,10 @@
 class Car < ApplicationRecord
   belongs_to :business
-  has_one :car_liability_insurance
-  has_one :car_insurance_company, through: :car_liability_insurance
-  has_many :car_voluntary_insurances
-  has_many :car_insurance_companies, through: :car_voluntary_insurances
+  has_one :car_liability_insurance, class_name: 'CarLiabilityInsurance', foreign_key: :car_liability_id, dependent: :destroy
+  has_one :company_liability, through: :car_liability_insurance, source: :company_liability
+  has_many :car_voluntary_insurances, class_name: 'CarVoluntaryInsurance', foreign_key: :car_voluntary_id, dependent: :destroy
+  has_many :company_voluntaries, through: :car_voluntary_insurances, source: :company_voluntary
+  
   mount_uploaders :images, ImagesUploader
 
   validates :owner_name, presence: true
