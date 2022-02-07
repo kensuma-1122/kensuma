@@ -1,72 +1,53 @@
 require 'rails_helper'
 
 RSpec.describe CarLiabilityInsurance, type: :model do
-  let :car_liability_insurance do
-    create(:car_liability_insurance)
-  end
+  # let :car_liability_insurance do
+  #   create(:car_liability_insurance)
+  # end
 
-  describe 'バリデーションについて' do
-    subject do
-      car_liability_insurance
-    end
+  let(:car) { create(:car) }
+  let(:car_insurance_company) { create(:car_insurance_company) }
+  let(:car_liability_insurance) { create(:car_liability_insurance, company_liability: car_insurance_company, car_liability: car) }
 
-    it 'バリデーションが通ること' do
-      expect(subject).to be_valid
-    end
-
-    describe '#car_id' do
-      context '存在しない場合' do
-        before :each do
-          subject.car_id = nil
-        end
-
-        it 'バリデーションに落ちること' do
-          expect(subject).to be_invalid
-        end
+  describe 'アソシエーションについて' do
+    context '紐つく車両がある場合' do
+      subject do
+        car_liability_insurance.car_liability
       end
 
-      context 'uniqueでない場合' do
-        before :each do
-          car_liability_insurance = create(:car_liability_insurance)
-          subject.car_id = car_liability_insurance.car_id
-        end
-
-        it 'バリデーションに落ちること' do
-          expect(subject).to be_invalid
-        end
+      it '紐つく車両を返すこと' do
+        expect(subject).to eq(car)
       end
     end
 
-    describe '#car_insurance_company_id' do
-      context '存在しない場合' do
-        before :each do
-          subject.car_insurance_company_id = nil
-        end
+    context '紐つく保険会社がある場合' do
+      subject do
+        car_liability_insurance.company_liability
+      end
 
-        it 'バリデーションに落ちること' do
-          expect(subject).to be_invalid
-        end
+      it '紐つく保険会社を返すこと' do
+        expect(subject).to eq(car_insurance_company)
       end
     end
   end
 
-  describe 'アソシエーションテスト' do
+  describe '関連付け' do
     let(:association) do
       described_class.reflect_on_association(target)
     end
 
-    context 'CarInsuranceCompanyモデルとのアソシエーション' do
-      let(:target) { :car_insurance_company }
+    context 'CarInsuranceCompanyモデルとの関連付け' do
+      let(:target) { :company_liability }
 
-      it 'CarInsuranceCompanyとの関連付けはbelongs_toであること' do
+      it 'belongs_toであること' do
         expect(association.macro).to eq :belongs_to
       end
     end
 
-    context 'Carモデルとのアソシエーション' do
-      let(:target) { :car }
+    context 'Carモデルとの関連付け' do
+      let(:target) { :car_liability }
 
-      it 'Carとの関連付けはbelongs_toであること' do
+      it 'belongs_toであること' do
         expect(association.macro).to eq :belongs_to
       end
     end
