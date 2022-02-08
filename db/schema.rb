@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 2022_02_08_002048) do
     t.bigint "company_liability_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["car_liability_id"], name: "index_car_liability_insurances_on_car_liability_id"
+    t.index ["car_liability_id"], name: "index_car_liability_insurances_on_car_liability_id", unique: true
     t.index ["company_liability_id"], name: "index_car_liability_insurances_on_company_liability_id"
   end
 

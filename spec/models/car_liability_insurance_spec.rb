@@ -24,6 +24,17 @@ RSpec.describe CarLiabilityInsurance, type: :model do
           expect(subject).to be_invalid
         end
       end
+
+      context 'uniqueでない場合' do
+        before :each do
+          car_liability_insurance = build(:car_liability_insurance)
+          subject.car_liability_id = car_liability_insurance.car_liability_id
+        end
+
+        it 'バリデーションに落ちること' do
+          expect(subject).to be_invalid
+        end
+      end
     end
 
     describe '#company_liability_id' do
