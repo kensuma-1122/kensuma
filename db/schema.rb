@@ -98,8 +98,8 @@ ActiveRecord::Schema.define(version: 2022_02_08_002048) do
   end
 
   create_table "car_voluntary_insurances", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "personal_insurance", null: false
-    t.integer "objective_insurance", null: false
+    t.integer "personal_insurance"
+    t.integer "objective_insurance"
     t.bigint "car_voluntary_id", null: false
     t.bigint "company_voluntary_id", null: false
     t.datetime "created_at", precision: 6, null: false

@@ -38,34 +38,6 @@ RSpec.describe CarVoluntaryInsurance, type: :model do
       end
     end
 
-    describe '#personal_insurance' do
-      context '存在しない場合' do
-        before :each do
-          subject.personal_insurance = nil
-        end
-
-        it 'バリデーションに落ちること' do
-          expect(subject).to be_invalid
-          subject.valid?
-          expect(subject.errors.full_messages).to include('対人保険金を入力してください')
-        end
-      end
-    end
-
-    describe '#objective_insurance' do
-      context '存在しない場合' do
-        before :each do
-          subject.objective_insurance = nil
-        end
-
-        it 'バリデーションに落ちること' do
-          expect(subject).to be_invalid
-          subject.valid?
-          expect(subject.errors.full_messages).to include('対物保険金を入力してください')
-        end
-      end
-    end
-
     describe 'アソシエーションについて' do
       context '紐つく車両がある場合' do
         subject do
