@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe CarLiabilityInsurance, type: :model do
-  # let :car_liability_insurance do
-  #   create(:car_liability_insurance)
-  # end
-
   let(:car) { create(:car) }
   let(:car_insurance_company) { create(:car_insurance_company) }
   let(:car_liability_insurance) { create(:car_liability_insurance, company_liability: car_insurance_company, car_liability: car) }
