@@ -12,7 +12,7 @@ require("jquery");
 require ("./users/auth");
 
 import 'bootstrap';
-import '../stylesheets/users'; // This file will contain your custom CSS
+import '../stylesheets/users';
 import "@fortawesome/fontawesome-free/js/all";
 
 document.addEventListener("turbolinks:load", () => {
