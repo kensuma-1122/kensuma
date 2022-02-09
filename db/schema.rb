@@ -88,15 +88,6 @@ ActiveRecord::Schema.define(version: 2022_02_08_002048) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "car_liability_insurances", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "car_liability_id", null: false
-    t.bigint "company_liability_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["car_liability_id"], name: "index_car_liability_insurances_on_car_liability_id", unique: true
-    t.index ["company_liability_id"], name: "index_car_liability_insurances_on_company_liability_id"
-  end
-
   create_table "car_voluntary_insurances", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "personal_insurance"
     t.integer "objective_insurance"
@@ -212,8 +203,6 @@ ActiveRecord::Schema.define(version: 2022_02_08_002048) do
 
   add_foreign_key "articles", "users"
   add_foreign_key "businesses", "users"
-  add_foreign_key "car_liability_insurances", "car_insurance_companies", column: "company_liability_id"
-  add_foreign_key "car_liability_insurances", "cars", column: "car_liability_id"
   add_foreign_key "car_voluntary_insurances", "car_insurance_companies", column: "company_voluntary_id"
   add_foreign_key "car_voluntary_insurances", "cars", column: "car_voluntary_id"
   add_foreign_key "cars", "businesses"
