@@ -20,8 +20,8 @@
             <td><%= link_to "#{worker.name}", users_worker_path(worker) %></td>
             <td><%= worker.name_kana %></td>
             <td><%= worker.job_type %></td>
-            <td><%= worker.abo_blood_type %></td>
-            <td><%= worker.rh_blood_type %></td>
+            <td><%= worker.abo_blood_type_i18n %></td>
+            <td><%= worker.rh_blood_type_i18n %></td>
             <td class="text-center">
               <%= link_to "編集", edit_users_worker_path(worker), class: "btn btn-md btn-success" %>
               <%= link_to "削除", users_worker_path(worker),  method: :delete, data: {confirm: "本当に削除しますか？"},

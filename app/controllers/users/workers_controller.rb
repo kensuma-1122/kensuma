@@ -31,7 +31,7 @@ module Users
     def create
       @worker = current_business.workers.new(worker_params)
       if @worker.save
-        flash[:success] = "情報を登録しました"
+        flash[:success] = "作業員情報を登録しました"
         redirect_to users_worker_url(@worker)
       else
         render :new
@@ -44,7 +44,7 @@ module Users
 
     def update
       if @worker.update(worker_params)
-        flash[:success] = "情報を更新しました"
+        flash[:success] = "作業員情報を更新しました"
         redirect_to users_worker_url(@worker)
       else
         render :edit
@@ -52,15 +52,12 @@ module Users
     end
 
     def update_images
-      # 残りimageを定義
       worker = current_business.workers.find(params[:worker_id])
       remain_images = worker.images
-      # imageを削除する
       deleted_image = remain_images.delete_at(params[:index].to_i)
       deleted_image.try(:remove!)
-      # 削除した後のimageをupdateする
       worker.update!(images: remain_images)
-      flash[:danger] = '削除しました'
+      flash[:danger] = '免許を削除しました'
       redirect_to edit_users_worker_url(worker)
     end
 
