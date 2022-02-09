@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_08_002048) do
+ActiveRecord::Schema.define(version: 2022_02_09_061141) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
@@ -116,7 +116,9 @@ ActiveRecord::Schema.define(version: 2022_02_08_002048) do
     t.bigint "business_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "car_insurance_company_id"
     t.index ["business_id"], name: "index_cars_on_business_id"
+    t.index ["car_insurance_company_id"], name: "index_cars_on_car_insurance_company_id"
   end
 
   create_table "managers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -206,5 +208,6 @@ ActiveRecord::Schema.define(version: 2022_02_08_002048) do
   add_foreign_key "car_voluntary_insurances", "car_insurance_companies", column: "company_voluntary_id"
   add_foreign_key "car_voluntary_insurances", "cars", column: "car_voluntary_id"
   add_foreign_key "cars", "businesses"
+  add_foreign_key "cars", "car_insurance_companies"
   add_foreign_key "workers", "businesses"
 end
