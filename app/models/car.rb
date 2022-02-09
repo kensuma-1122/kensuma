@@ -1,5 +1,7 @@
 class Car < ApplicationRecord
   belongs_to :business
+  has_many :car_insurance_companies, through: :car_voluntary_insurances
+  has_many :car_voluntary_insurances, dependent: :destroy
   # has_many :car_voluntary_insurances, class_name: 'CarVoluntaryInsurance', foreign_key: :car_voluntary_id, dependent: :destroy
   # has_many :company_voluntaries, through: :car_voluntary_insurances, source: :company_voluntary
 
