@@ -44,7 +44,7 @@ RSpec.describe Worker, type: :model do
 
         it 'バリデーションのエラーが正しいこと' do
           subject.valid?
-          expect(subject.errors.full_messages).to include('名前カナを入力してください')
+          expect(subject.errors.full_messages).to include('名前(カナ)を入力してください')
         end
 
         %i[
@@ -62,7 +62,7 @@ RSpec.describe Worker, type: :model do
 
             it 'バリデーションのエラーが正しいこと' do
               subject.valid?
-              expect(subject.errors.full_messages).to include('名前カナはカタカナで入力してください')
+              expect(subject.errors.full_messages).to include('名前(カナ)はカタカナで入力してください')
             end
           end
         end

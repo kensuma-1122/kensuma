@@ -3,7 +3,7 @@ class WorkerImagesUploader < CarrierWave::Uploader::Base
 
   # 画像の上限を100pxにする
   process resize_to_limit: [100, 100]
-  
+
   # 使用するストレージの種類
   storage :file
 
@@ -14,6 +14,6 @@ class WorkerImagesUploader < CarrierWave::Uploader::Base
 
   # 許可する拡張子
   def extension_allowlist
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 end

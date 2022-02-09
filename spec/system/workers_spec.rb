@@ -67,7 +67,7 @@ RSpec.describe 'Workers', type: :system do
         end
       end
     end
-    
+
     describe '作業員参照' do
       context '作業員一覧ページへ遷移した場合' do
         it '作業員の一覧が表示されること' do
@@ -110,7 +110,7 @@ RSpec.describe 'Workers', type: :system do
           fill_in 'worker[blank_term]', with: 1
           click_on '更新'
 
-          expect(current_path).to eq users_worker_path(worker)
+          expect(page).to have_current_path users_worker_path(worker), ignore_query: true
           expect(page).to have_content '作業員詳細'
           expect(page).to have_content '作業員情報を更新しました'
         end
@@ -151,7 +151,7 @@ RSpec.describe 'Workers', type: :system do
           click_on '削除'
           expect {
             page.accept_confirm
-            expect(page).to have_content "#{worker.name}の情報を削除しました" 
+            expect(page).to have_content "#{worker.name}の情報を削除しました"
           }.to change(Worker, :count).by(-1)
         end
       end
@@ -163,7 +163,7 @@ RSpec.describe 'Workers', type: :system do
           click_on '削除'
           expect {
             page.accept_confirm
-            expect(page).to have_content "#{worker.name}の情報を削除しました" 
+            expect(page).to have_content "#{worker.name}の情報を削除しました"
           }.to change(Worker, :count).by(-1)
         end
       end
