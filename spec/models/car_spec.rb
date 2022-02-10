@@ -185,14 +185,6 @@ RSpec.describe Car, type: :model do
       described_class.reflect_on_association(target)
     end
 
-    context 'CarInsuranceCompanyモデルとの関連付け' do
-      let(:target) { :car_insurance_companies }
-
-      it 'has_manyであること' do
-        expect(association.macro).to eq :has_many
-      end
-    end
-
     context '自賠責経由でのcar_insurance_companyモデルとの関連付け' do
       let(:target) { :company_voluntaries }
 
