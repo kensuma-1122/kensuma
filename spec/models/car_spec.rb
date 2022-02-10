@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Car, type: :model do
-  let(:car_insurance_companies) { create_list(:car_insurance_company, 2) }
   let(:car) { create(:car) }
 
   describe 'バリデーションについて' do
@@ -181,8 +180,14 @@ RSpec.describe Car, type: :model do
   end
 
   describe '関連付けについて' do
-    let(:association) do
-      described_class.reflect_on_association(target)
+    let(:association) { described_class.reflect_on_association(target) }
+
+    context 'car_insurance_companyモデルとの関連付け' do
+      let(:target) { :car_insurance_company }
+
+      it 'has_manyであること' do
+        expect(association.macro).to eq :belongs_to
+      end
     end
 
     context '自賠責経由でのcar_insurance_companyモデルとの関連付け' do

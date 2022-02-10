@@ -14,6 +14,5 @@ FactoryBot.define do
     voluntary_insurance_end_on { '2022-01-30' }
     business
     car_insurance_company
-
   end
 end

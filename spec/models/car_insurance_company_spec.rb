@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe CarInsuranceCompany, type: :model do
-  let(:cars) { create_list(:car, 2) }
   let(:car_insurance_company) { create(:car_insurance_company) }
+  let(:cars) { create_list(:car, 2) }
 
   describe 'バリデーションについて' do
     subject do
