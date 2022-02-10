@@ -29,6 +29,10 @@
           <td><%= @car.vehicle_inspection_end_on %></td>
         </tr>
         <tr>
+          <th>自賠責保険会社</th>
+          <td><%= @car.car_insurance_company.name %></td>
+        </tr>
+        <tr>
           <th><%= Car.human_attribute_name(:liability_securities_number) %></th>
           <td><%= @car.liability_securities_number %></td>
         </tr>

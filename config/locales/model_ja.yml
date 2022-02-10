@@ -30,6 +30,7 @@ ja:
         safety_manager: 安全運転管理者
         vehicle_model: 車両型式
         vehicle_number: 車両番号
+        car_insurance_company: 自賠責保険会社
         vehicle_inspection_start_on: 車検初め
         vehicle_inspection_end_on: 車検終わり
         liability_securities_number: 自賠責証券番号

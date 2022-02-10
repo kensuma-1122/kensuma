@@ -22,7 +22,8 @@ module Users
         liability_insurance_end_on:   Date.today.next_year,
         voluntary_securities_number:  SecureRandom.hex(5),
         voluntary_insurance_start_on: Date.today,
-        voluntary_insurance_end_on:   Date.today.next_year
+        voluntary_insurance_end_on:   Date.today.next_year,
+        car_insurance_company_id:     1
         # ============================================
       )
     end
@@ -74,7 +75,7 @@ module Users
         :vehicle_model, :vehicle_number, :vehicle_inspection_start_on, :vehicle_inspection_end_on,
         :liability_securities_number, :liability_insurance_start_on, :liability_insurance_end_on,
         :voluntary_securities_number, :voluntary_insurance_start_on, :voluntary_insurance_end_on,
-        { images: [] })
+        :car_insurance_company_id, { images: [] })
     end
   end
 end

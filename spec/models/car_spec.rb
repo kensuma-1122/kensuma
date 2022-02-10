@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Car, type: :model do
-  let :car do
-    build(:car)
-  end
+  let(:car_insurance_companies) { create_list(:car_insurance_company, 2) }
+  let(:car) { create(:car) }
 
   describe 'バリデーションについて' do
     subject do
@@ -147,6 +146,58 @@ RSpec.describe Car, type: :model do
           subject.valid?
           expect(subject.errors.full_messages).to include('自賠責保険終わりを入力してください')
         end
+      end
+    end
+  end
+
+  describe '保険会社(自賠責,任意)とのアソシエーションについて' do
+    let :liability_company do
+      create(:car_insurance_company) # 自賠責保険会社
+    end
+
+    let :voluntary_companies do
+      create_list(:car_insurance_company, 2) # 任意保険会社
+    end
+
+    context '紐つく自賠責保険会社がある場合' do
+      subject do
+        car.car_insurance_company = liability_company
+      end
+
+      it '紐つく自賠保険会社を返すこと' do
+        expect(subject).to eq(liability_company)
+      end
+    end
+
+    context '紐つく任意保険会社がある場合' do
+      subject do
+        car.company_voluntaries << voluntary_companies
+      end
+
+      it '紐つく任意保険会社を返すこと' do
+        expect(subject).to eq(voluntary_companies)
+      end
+    end
+  end
+
+  describe '関連付けについて' do
+    let(:association) do
+      described_class.reflect_on_association(target)
+    end
+
+    context 'CarInsuranceCompanyモデルとの関連付け' do
+      let(:target) { :car_insurance_companies }
+
+      it 'has_manyであること' do
+        expect(association.macro).to eq :has_many
+      end
+    end
+
+    context '自賠責経由でのcar_insurance_companyモデルとの関連付け' do
+      let(:target) { :company_voluntaries }
+
+      it 'has_manyであること' do
+        expect(association.macro).to eq :has_many
       end
     end
   end

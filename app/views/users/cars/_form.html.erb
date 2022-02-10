@@ -18,6 +18,9 @@
 <%= f.label :vehicle_inspection_end_on %>
 <%= f.date_field :vehicle_inspection_end_on, class: "form-control", placeholder: Car.human_attribute_name(:vehicle_inspection_end_on) %>
 <br>
+<%= f.label '自賠責保険会社' %>
+<%= f.select :car_insurance_company_id, CarInsuranceCompany.all.map { |company| [company.name, company.id] }, {}, { required: true, class: "form-control" } %>
+<br>
 <%= f.label :liability_securities_number %>
 <%= f.text_field :liability_securities_number, class: "form-control", placeholder: Car.human_attribute_name(:liability_securities_number) %>
 <br>
