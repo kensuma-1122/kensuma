@@ -20,6 +20,8 @@ ja:
         carrier_up_id: 事業者ID
         stamp_images: 電子印
         business_type: 会社形態
+      car_insurance_company:
+        name: 保険会社名
       car:
         owner_name: 車両所有者氏名
         safety_manager: 安全運転管理者
@@ -35,9 +37,9 @@ ja:
         voluntary_insurance_start_on: 任意保険初め
         voluntary_insurance_end_on: 任意保険終わり
         images: 添付画像
-      car_insurance_company:
-        name: 保険会社名
       car_voluntary_insurance:
+        car_voluntary_id: 任意保険車両情報
+        company_voluntary_id: 任意保険会社
         personal_insurance: 対人保険金
         objective_insurance: 対物保険金
       worker:
