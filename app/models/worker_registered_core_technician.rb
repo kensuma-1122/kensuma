@@ -1,0 +1,2 @@
+class WorkerRegisteredCoreTechnician < ApplicationRecord
+end

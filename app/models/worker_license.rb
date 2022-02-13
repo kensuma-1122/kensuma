@@ -1,0 +1,2 @@
+class WorkerLicense < ApplicationRecord
+end

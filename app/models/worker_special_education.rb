@@ -1,0 +1,2 @@
+class WorkerSpecialEducation < ApplicationRecord
+end

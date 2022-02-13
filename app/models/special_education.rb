@@ -1,0 +1,2 @@
+class SpecialEducation < ApplicationRecord
+end

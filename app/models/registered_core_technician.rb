@@ -1,0 +1,2 @@
+class RegisteredCoreTechnician < ApplicationRecord
+end
