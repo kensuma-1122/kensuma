@@ -8,5 +8,6 @@ class CreateWorkerSkillTrainings < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    add_index :worker_skill_trainings, [:worker_id, :skill_training_id], unique: true
   end
 end

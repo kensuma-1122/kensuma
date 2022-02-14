@@ -8,5 +8,6 @@ class CreateWorkerLicenses < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    add_index :worker_licenses, [:worker_id, :license_id], unique: true
   end
 end
