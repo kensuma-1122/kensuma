@@ -1,0 +1,2 @@
+class WorkerInsurance < ApplicationRecord
+end
