@@ -6,6 +6,7 @@ ja:
       car_voluntary_insurance: 任意保険
       car: 車両情報
       worker: 作業員
+      worker_insurance: 保険情報
     attributes:
       business:
         uuid: 事業所ID
@@ -59,6 +60,14 @@ ja:
         carrier_up_id: 技能者ID
         images: 免許
         business: 事業所
+      worker_insurance:
+        health_insurance_type: 健康保険
+        health_insurance_name: 健康保険名
+        pension_insurance_type: 年金保険
+        employment_insurance_type: 雇用保険
+        employment_insurance_number: 被保険者番号(下4桁)
+        severance_pay_mutual_aid_type: 建設業退職⾦共済制度
+        severance_pay_mutual_aid_name: 建設業退職⾦共済制度名
   attributes:
     created_at: 作成日
     updated_at: 更新日
