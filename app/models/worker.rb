@@ -1,4 +1,16 @@
 class Worker < ApplicationRecord
+  has_many :licenses, through: :worker_licenses
+  has_many :worker_licenses, dependent: :destroy
+  accepts_nested_attributes_for :worker_licenses, allow_destroy: true
+  has_many :registered_core_technicians, through: :worker_registered_core_technicians
+  has_many :worker_registered_core_technicians, dependent: :destroy
+  accepts_nested_attributes_for :worker_registered_core_technicians, allow_destroy: true
+  has_many :skill_trainings, through: :worker_skill_trainings
+  has_many :worker_skill_trainings, dependent: :destroy
+  accepts_nested_attributes_for :worker_skill_trainings, allow_destroy: true
+  has_many :special_educations, through: :worker_special_educations
+  has_many :worker_special_educations, dependent: :destroy
+  accepts_nested_attributes_for :worker_special_educations, allow_destroy: true
   belongs_to :business
   mount_uploaders :images, WorkersUploader
 
