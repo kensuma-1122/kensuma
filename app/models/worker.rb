@@ -1,5 +1,6 @@
 class Worker < ApplicationRecord
   belongs_to :business
+  has_many :worker_insurances
   mount_uploaders :images, WorkersUploader
 
   enum abo_blood_type: { a: 0, b: 1, ab: 2, o: 3 }

@@ -1,4 +1,6 @@
 class WorkerInsurance < ApplicationRecord
+  belongs_to :worker
+  
   enum health_insurance_type: {
     health_insurance_association: 0, japan_health_insurance_association: 1,
     construction_national_health_insurance: 2, national_health_insurance: 3, exemption: 4

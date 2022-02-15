@@ -7,6 +7,7 @@ FactoryBot.define do
     employment_insurance_number { '1234' }
     severance_pay_mutual_aid_type { 'kentaikyo' }
     severance_pay_mutual_aid_name { 'aid_name' }
+    association :worker
 
     # enumをまとめて定義(enumの各値が使える)
     WorkerInsurance.health_insurance_types.each_value do |type|
