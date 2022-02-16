@@ -319,13 +319,14 @@ RSpec.describe Worker, type: :model do
   end
 
   describe '保険情報とのアソシエーションについて' do
-    let(:worker_insurances) { create_list(:worker_insurance, 2, worker: worker) }
+    let(:worker) { create(:worker, worker_insurance: worker_insurance) }
+    let(:worker_insurance) { create(:worker_insurance) }
 
     context '紐つく保険情報がある場合' do
-      subject { worker.worker_insurances }
+      subject { worker.worker_insurance }
 
       it '紐つく保険情報を返すこと' do
-        expect(subject).to eq(worker_insurances)
+        expect(subject).to eq(worker_insurance)
       end
     end
   end
