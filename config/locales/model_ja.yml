@@ -42,8 +42,9 @@ ja:
       car_insurance_company:
         name: 保険会社名
       car_voluntary_insurance:
-        personal_insurance: 対人保険金
-        objective_insurance: 対物保険金
+        personal_insurance: 対人保険金(万円)
+        objective_insurance: 対物保険金(万円)
+        company_voluntary_id: 任意保険会社
       worker:
         name: 名前
         name_kana: 名前カナ

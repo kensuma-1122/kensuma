@@ -3,6 +3,7 @@ class Car < ApplicationRecord
   belongs_to :car_insurance_company
   has_many :car_voluntary_insurances, class_name: 'CarVoluntaryInsurance', foreign_key: :car_voluntary_id, dependent: :destroy
   has_many :company_voluntaries, through: :car_voluntary_insurances, source: :company_voluntary
+  accepts_nested_attributes_for :car_voluntary_insurances
 
   mount_uploaders :images, CarsUploader
 
