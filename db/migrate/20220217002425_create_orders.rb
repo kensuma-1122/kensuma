@@ -4,6 +4,7 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.integer :status, null: false
       t.string :site_uu_id, null: false
       t.string :site_name, null: false
+      t.string :order_name, null: false
       t.string :order_post_code, null: false
       t.string :order_address, null: false
       t.references :business, foreign_key: true, null: false

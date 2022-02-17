@@ -152,6 +152,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_002425) do
     t.integer "status", null: false
     t.string "site_uu_id", null: false
     t.string "site_name", null: false
+    t.string "order_name", null: false
     t.string "order_post_code", null: false
     t.string "order_address", null: false
     t.bigint "business_id", null: false
