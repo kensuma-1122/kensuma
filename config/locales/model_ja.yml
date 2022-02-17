@@ -2,11 +2,12 @@ ja:
   activerecord:
     models:
       business: 事業部
+      car: 車両情報
       car_insurance_company: ⾃動⾞保険会社
       car_voluntary_insurance: 任意保険
-      car: 車両情報
       worker: 作業員
       worker_insurance: 保険情報
+      order: 発注
     attributes:
       business:
         uuid: 事業所ID
@@ -68,6 +69,13 @@ ja:
         employment_insurance_number: 被保険者番号の下4桁
         severance_pay_mutual_aid_type: 建設業退職金共済制度
         severance_pay_mutual_aid_name: 建設業退職金共済制度名前
+      order:
+        status: 状態
+        site_uu_id: 現場ID
+        site_name: 現場名
+        order_name: 発注者名前
+        order_post_code: 発注者郵便番号
+        order_ address: 発注者住所
   attributes:
     created_at: 作成日
     updated_at: 更新日
