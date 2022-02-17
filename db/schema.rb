@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_14_120441) do
+ActiveRecord::Schema.define(version: 2022_02_17_002425) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
@@ -146,6 +146,16 @@ ActiveRecord::Schema.define(version: 2022_02_14_120441) do
     t.index ["email"], name: "index_managers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_managers_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_managers_on_unlock_token", unique: true
+  end
+
+  create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "status", null: false
+    t.string "site_uu_id", null: false
+    t.string "site_name", null: false
+    t.string "order_post_code", null: false
+    t.string "order_address", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
