@@ -158,6 +158,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_002425) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["business_id"], name: "index_orders_on_business_id"
+    t.index ["site_uu_id"], name: "index_orders_on_site_uu_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
