@@ -8,6 +8,8 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.string :order_address, null: false
       t.references :business, foreign_key: true, null: false
 
+      t.index :site_uu_id
+
       t.timestamps
     end
   end
