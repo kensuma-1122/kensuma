@@ -1,12 +1,6 @@
 class WorkerInsurance < ApplicationRecord
   belongs_to :worker
 
-  validates :health_insurance_type, presence: true
-  validates :pension_insurance_type, presence: true
-  validates :employment_insurance_type, presence: true
-  validates :employment_insurance_number, { length: { is: 4 } }
-  validates :severance_pay_mutual_aid_type, presence: true
-
   enum health_insurance_type: {
     health_insurance_association:           0,
     japan_health_insurance_association:     1,
@@ -33,4 +27,10 @@ class WorkerInsurance < ApplicationRecord
     other:     2,
     none:      3
   }, _prefix: true
+
+  validates :health_insurance_type, presence: true
+  validates :pension_insurance_type, presence: true
+  validates :employment_insurance_type, presence: true
+  validates :employment_insurance_number, { length: { is: 4 } }
+  validates :severance_pay_mutual_aid_type, presence: true
 end
