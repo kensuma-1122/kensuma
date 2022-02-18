@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_12_140713) do
+ActiveRecord::Schema.define(version: 2022_02_12_140609) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
@@ -221,18 +221,6 @@ ActiveRecord::Schema.define(version: 2022_02_12_140713) do
     t.index ["worker_id"], name: "index_worker_licenses_on_worker_id"
   end
 
-  create_table "worker_registered_core_technicians", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.date "got_on", null: false
-    t.json "images"
-    t.bigint "worker_id", null: false
-    t.bigint "core_technician_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["core_technician_id"], name: "index_worker_registered_core_technicians_on_core_technician_id"
-    t.index ["worker_id", "core_technician_id"], name: "worker_registered_core_technicians_index", unique: true
-    t.index ["worker_id"], name: "index_worker_registered_core_technicians_on_worker_id"
-  end
-
   create_table "worker_skill_trainings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.date "got_on", null: false
     t.json "images"
@@ -288,8 +276,6 @@ ActiveRecord::Schema.define(version: 2022_02_12_140713) do
   add_foreign_key "cars", "car_insurance_companies"
   add_foreign_key "worker_licenses", "licenses"
   add_foreign_key "worker_licenses", "workers"
-  add_foreign_key "worker_registered_core_technicians", "worker_registered_core_technicians", column: "core_technician_id"
-  add_foreign_key "worker_registered_core_technicians", "workers"
   add_foreign_key "worker_skill_trainings", "skill_trainings"
   add_foreign_key "worker_skill_trainings", "workers"
   add_foreign_key "worker_special_educations", "worker_special_educations", column: "special_education_id"
