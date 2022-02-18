@@ -9,7 +9,6 @@ ja:
       license: 免許
       skill_training: 技能講習
       special_education: 特別教育
-      registered_core_technician: 登録基幹技能者
     attributes:
       business:
         uuid: 事業所ID
@@ -81,11 +80,6 @@ ja:
         name: 免許名
         description: 説明
       worker_special_education:
-        got_on: 取得年月日
-        images: 証明画像
-      registered_core_technician:
-        name: 免許名
-      worker_registered_core_technician:
         got_on: 取得年月日
         images: 証明画像
   attributes:
