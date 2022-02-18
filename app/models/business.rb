@@ -19,6 +19,6 @@ class Business < ApplicationRecord
   validates :business_type, presence: true
 
   before_create -> { self.uuid = SecureRandom.uuid }
-  
+
   mount_uploaders :stamp_images, StampImagesUploader
 end
