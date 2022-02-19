@@ -13,12 +13,12 @@ RSpec.describe WorkerLicense, type: :model do
     end
 
     context 'バリデーションに引っかかる場合' do
-      it "worker_idがない場合、無効であること" do
+      it 'worker_idがない場合、無効であること' do
         worker_license.worker_id = ''
         expect(worker_license).to be_invalid
       end
 
-      it "license_idがない場合、無効であること" do
+      it 'license_idがない場合、無効であること' do
         worker_license.license_id = ''
         expect(worker_license).to be_invalid
       end

@@ -13,12 +13,12 @@ RSpec.describe WorkerSpecialEducation, type: :model do
     end
 
     context 'バリデーションに引っかかる場合' do
-      it "worker_idがない場合、無効であること" do
+      it 'worker_idがない場合、無効であること' do
         worker_special_education.worker_id = ''
         expect(worker_special_education).to be_invalid
       end
 
-      it "special_education_idがない場合、無効であること" do
+      it 'special_education_idがない場合、無効であること' do
         worker_special_education.special_education_id = ''
         expect(worker_special_education).to be_invalid
       end

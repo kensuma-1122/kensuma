@@ -17,11 +17,5 @@ FactoryBot.define do
     carrier_up_id { '1' }
     images { '' }
     business
-    # worker作成後に、各テーブルデータが作成される処理↓
-    # after(:create) do |worker|
-    #   create_list(:worker_license, 1, worker: worker, license: create(:license))
-    #   create_list(:worker_skill_training, 1, worker: worker, skill_training: create(:skill_training))
-    #   create_list(:worker_special_education, 1, worker: worker, special_education: create(:special_education))
-    # end
   end
 end

@@ -13,12 +13,12 @@ RSpec.describe WorkerSkillTraining, type: :model do
     end
 
     context 'バリデーションに引っかかる場合' do
-      it "worker_idがない場合、無効であること" do
+      it 'worker_idがない場合、無効であること' do
         worker_skill_training.worker_id = ''
         expect(worker_skill_training).to be_invalid
       end
 
-      it "skill_training_idがない場合、無効であること" do
+      it 'skill_training_idがない場合、無効であること' do
         worker_skill_training.skill_training_id = ''
         expect(worker_skill_training).to be_invalid
       end
