@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_12_140609) do
+ActiveRecord::Schema.define(version: 2022_02_14_120441) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
@@ -237,6 +237,18 @@ ActiveRecord::Schema.define(version: 2022_02_12_140609) do
     t.index ["special_education_id"], name: "index_worker_special_educations_on_special_education_id"
     t.index ["worker_id", "special_education_id"], name: "worker_special_educations_index", unique: true
     t.index ["worker_id"], name: "index_worker_special_educations_on_worker_id"
+  create_table "worker_insurances", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "health_insurance_type", null: false
+    t.string "health_insurance_name"
+    t.integer "pension_insurance_type", null: false
+    t.integer "employment_insurance_type", null: false
+    t.string "employment_insurance_number"
+    t.integer "severance_pay_mutual_aid_type", null: false
+    t.string "severance_pay_mutual_aid_name"
+    t.bigint "worker_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["worker_id"], name: "index_worker_insurances_on_worker_id"
   end
 
   create_table "workers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -274,5 +286,6 @@ ActiveRecord::Schema.define(version: 2022_02_12_140609) do
   add_foreign_key "worker_skill_trainings", "workers"
   add_foreign_key "worker_special_educations", "worker_special_educations", column: "special_education_id"
   add_foreign_key "worker_special_educations", "workers"
+  add_foreign_key "worker_insurances", "workers"
   add_foreign_key "workers", "businesses"
 end

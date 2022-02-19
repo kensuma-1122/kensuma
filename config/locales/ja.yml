@@ -127,6 +127,26 @@ ja:
       rh_blood_type:
         plus: ＋
         minus: −
+    worker_insurance:
+      health_insurance_type:
+        health_insurance_association: 健康保険組合
+        japan_health_insurance_association: 協会けんぽ
+        construction_national_health_insurance: 建設国保
+        national_health_insurance: 国民健康保険
+        exemption: 適応除外
+      pension_insurance_type:
+        welfare: 厚生年金
+        national: 国民年金
+        recipient: 受給者
+      employment_insurance_type:
+        insured: 被保険者
+        day: 日雇保険
+        exemption: 適応除外
+      severance_pay_mutual_aid_type:
+        kentaikyo: 建退共手帳
+        tyutaikyo: 中退共手帳
+        other: その他
+        none: 無し
   errors:
     format: "%{attribute}%{message}"
     messages:

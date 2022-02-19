@@ -1,5 +1,7 @@
 class Worker < ApplicationRecord
   belongs_to :business
+  has_one :worker_insurance, dependent: :destroy
+  mount_uploaders :images, WorkersUploader
   has_many :worker_licenses, dependent: :destroy
   has_many :licenses, through: :worker_licenses
   accepts_nested_attributes_for :worker_licenses, allow_destroy: true
@@ -9,7 +11,6 @@ class Worker < ApplicationRecord
   has_many :worker_special_educations, dependent: :destroy
   has_many :special_educations, through: :worker_special_educations
   accepts_nested_attributes_for :worker_special_educations, allow_destroy: true
-  mount_uploaders :images, WorkersUploader
 
   enum abo_blood_type: { a: 0, b: 1, ab: 2, o: 3 }
   enum rh_blood_type: { plus: 0, minus: 1 }
