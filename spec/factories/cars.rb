@@ -9,9 +9,6 @@ FactoryBot.define do
     sequence(:liability_securities_number) { |n| "12345#{n}" }
     liability_insurance_start_on { '2022-01-30' }
     liability_insurance_end_on { '2022-01-30' }
-    sequence(:voluntary_securities_number) { |n| "67890#{n}" }
-    voluntary_insurance_start_on { '2022-01-30' }
-    voluntary_insurance_end_on { '2022-01-30' }
     business
     car_insurance_company
   end

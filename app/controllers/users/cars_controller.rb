@@ -21,9 +21,6 @@ module Users
         liability_securities_number:  SecureRandom.hex(5),
         liability_insurance_start_on: Date.today,
         liability_insurance_end_on:   Date.today.next_year,
-        voluntary_securities_number:  SecureRandom.hex(5),
-        voluntary_insurance_start_on: Date.today,
-        voluntary_insurance_end_on:   Date.today.next_year,
         car_insurance_company_id:     1
         # ============================================
       )
@@ -31,7 +28,10 @@ module Users
         # テスト用デフォルト値 ==========================
         personal_insurance:   1,
         objective_insurance:  2,
-        company_voluntary_id: 3
+        company_voluntary_id: 3,
+        voluntary_securities_number:  SecureRandom.hex(5),
+        voluntary_insurance_start_on: Date.today,
+        voluntary_insurance_end_on:   Date.today.next_year
         # ============================================
       )
     end
@@ -86,10 +86,10 @@ module Users
       params.require(:car).permit(:owner_name, :safety_manager,
         :vehicle_model, :vehicle_number, :vehicle_inspection_start_on, :vehicle_inspection_end_on,
         :liability_securities_number, :liability_insurance_start_on, :liability_insurance_end_on,
-        :voluntary_securities_number, :voluntary_insurance_start_on, :voluntary_insurance_end_on,
         :car_insurance_company_id, { images: [] },
         car_voluntary_insurances_attributes: %i[
           id personal_insurance objective_insurance company_voluntary_id
+          voluntary_securities_number voluntary_insurance_start_on voluntary_insurance_end_on
         ]
       )
     end
