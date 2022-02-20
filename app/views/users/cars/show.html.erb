@@ -69,16 +69,28 @@
           </td>
         </tr>
         <tr>
-          <th><%= Car.human_attribute_name(:voluntary_securities_number) %></th>
-          <td><%= @car.voluntary_securities_number %></td>
+          <th><%= CarVoluntaryInsurance.human_attribute_name(:voluntary_securities_number) %></th>
+          <td>
+            <% @car.car_voluntary_insurances.each do |voluntary| %>
+              <%= voluntary.voluntary_securities_number %>
+            <% end %>
+          </td>
         </tr>
         <tr>
-          <th><%= Car.human_attribute_name(:voluntary_insurance_start_on) %></th>
-          <td><%= @car.voluntary_insurance_start_on %></td>
+          <th><%= CarVoluntaryInsurance.human_attribute_name(:voluntary_insurance_start_on) %></th>
+          <td>
+            <% @car.car_voluntary_insurances.each do |voluntary| %>
+              <%= voluntary.voluntary_insurance_start_on %>
+            <% end %>
+          </td>
         </tr>
         <tr>
-          <th><%= Car.human_attribute_name(:voluntary_insurance_end_on) %></th>
-          <td><%= @car.voluntary_insurance_end_on%></td>
+          <th><%= CarVoluntaryInsurance.human_attribute_name(:voluntary_insurance_end_on) %></th>
+          <td>
+            <% @car.car_voluntary_insurances.each do |voluntary| %>
+              <%= voluntary.voluntary_insurance_end_on %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <th><%= Car.human_attribute_name(:images) %></th>
