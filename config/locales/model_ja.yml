@@ -5,6 +5,7 @@ ja:
       car_insurance_company: ⾃動⾞保険会社
       car_voluntary_insurance: 任意保険
       car: 車両情報
+      order: 発注
       worker: 作業員
       license: 免許
       skill_training: 技能講習
@@ -45,6 +46,12 @@ ja:
         personal_insurance: 対人保険金(万円)
         objective_insurance: 対物保険金(万円)
         company_voluntary_id: 任意保険会社
+      order:
+        site_uu_id: 現場ID
+        site_name: 現場名
+        order_name: 発注者名前
+        order_post_code: 発注者郵便番号
+        order_address: 発注者住所
       worker:
         name: 名前
         name_kana: 名前カナ

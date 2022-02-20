@@ -290,4 +290,24 @@ RSpec.describe Business, type: :model do
       end
     end
   end
+
+  describe '発注とのアソシエーションについて' do
+    let :business do
+      create(:business, orders: orders)
+    end
+
+    let :orders do
+      create_list(:order, 2)
+    end
+
+    context '紐つく発注がある場合' do
+      subject do
+        business.orders
+      end
+
+      it '紐つく発注を返すこと' do
+        expect(subject).to eq(orders)
+      end
+    end
+  end
 end

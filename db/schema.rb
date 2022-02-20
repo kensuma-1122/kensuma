@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_14_120441) do
+ActiveRecord::Schema.define(version: 2022_02_17_014304) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
@@ -156,6 +156,19 @@ ActiveRecord::Schema.define(version: 2022_02_14_120441) do
     t.index ["unlock_token"], name: "index_managers_on_unlock_token", unique: true
   end
 
+  create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "status", default: 0, null: false
+    t.string "site_uu_id", null: false
+    t.string "site_name", null: false
+    t.string "order_name", null: false
+    t.string "order_post_code", null: false
+    t.string "order_address", null: false
+    t.bigint "business_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_orders_on_business_id"
+  end
+
   create_table "skill_trainings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "short_name", null: false
@@ -282,6 +295,7 @@ ActiveRecord::Schema.define(version: 2022_02_14_120441) do
   add_foreign_key "car_voluntary_insurances", "cars", column: "car_voluntary_id"
   add_foreign_key "cars", "businesses"
   add_foreign_key "cars", "car_insurance_companies"
+  add_foreign_key "orders", "businesses"
   add_foreign_key "worker_insurances", "workers"
   add_foreign_key "worker_licenses", "licenses"
   add_foreign_key "worker_licenses", "workers"
