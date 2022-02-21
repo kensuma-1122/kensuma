@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe CarVoluntaryInsurance, type: :model do
-  let :company do
-    create(:car_insurance_company)
-  end
-
-  let :car do
-    create(:car)
-  end
-
+  let(:company) { create(:car_insurance_company) }
+  let(:car) { create(:car) }
   let :voluntary do
     create(:car_voluntary_insurance, company_voluntary: company, car_voluntary: car)
+  end
+
+  describe 'バリデーションについて' do
+    it 'バリデーションが通ることこと' do
+      expect(voluntary).to be_valid
+    end
   end
 
   describe 'アソシエーションについて' do
