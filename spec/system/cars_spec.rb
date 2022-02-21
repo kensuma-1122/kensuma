@@ -3,7 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Cars', type: :system do
   let(:user) { create(:user) }
   let(:business) { create(:business, user: user) }
-  let(:car) { create(:car, business: business) }
+  let(:car_insurance_company) { create(:car_insurance_company) }
+  let(:car) { create(:car, business: business, car_insurance_company: car_insurance_company) }
+  let(:car_voluntary_insurance) do
+    create(:car_voluntary_insurance, car_voluntary_id: car.id, company_voluntary_id: car_insurance_company.id)
+  end
 
   describe '車両関連' do
     before(:each) do
@@ -23,6 +27,8 @@ RSpec.describe 'Cars', type: :system do
 
     context '車両情報登録' do
       it '新規登録したあと詳細画面へ遷移すること' do
+        CarInsuranceCompany.create!(name: 'test_company')
+
         visit new_users_car_path
 
         fill_in 'car[owner_name]', with: car.owner_name
@@ -31,12 +37,17 @@ RSpec.describe 'Cars', type: :system do
         fill_in 'car[vehicle_number]', with: car.vehicle_number
         fill_in 'car[vehicle_inspection_start_on]', with: car.vehicle_inspection_start_on
         fill_in 'car[vehicle_inspection_end_on]', with: car.vehicle_inspection_end_on
+        # 自賠責保険
         fill_in 'car[liability_securities_number]', with: car.liability_securities_number
         fill_in 'car[liability_insurance_start_on]', with: car.liability_insurance_start_on
         fill_in 'car[liability_insurance_end_on]', with: car.liability_insurance_end_on
-        fill_in 'car[voluntary_securities_number]', with: car.voluntary_securities_number
-        fill_in 'car[voluntary_insurance_start_on]', with: car.voluntary_insurance_start_on
-        fill_in 'car[voluntary_securities_number]', with: car.voluntary_insurance_end_on
+        # 任意保険
+        select 'test_company', from: 'car_car_voluntary_insurances_attributes_0_company_voluntary_id'
+        select car_voluntary_insurance.personal_insurance, from: 'car_car_voluntary_insurances_attributes_0_personal_insurance'
+        select car_voluntary_insurance.objective_insurance, from: 'car_car_voluntary_insurances_attributes_0_objective_insurance'
+        fill_in 'car[car_voluntary_insurances_attributes][0][voluntary_securities_number]',	with: car_voluntary_insurance.voluntary_securities_number
+        fill_in 'car[car_voluntary_insurances_attributes][0][voluntary_insurance_start_on]', with: car_voluntary_insurance.voluntary_insurance_start_on
+        fill_in 'car[car_voluntary_insurances_attributes][0][voluntary_insurance_end_on]', with: car_voluntary_insurance.voluntary_insurance_end_on
         click_button '登録'
 
         visit users_car_path(car)

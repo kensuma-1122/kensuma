@@ -26,9 +26,9 @@ module Users
       )
       @car.car_voluntary_insurances.build(
         # テスト用デフォルト値 ==========================
-        personal_insurance:   1,
-        objective_insurance:  2,
-        company_voluntary_id: 3,
+        personal_insurance:           1,
+        objective_insurance:          2,
+        company_voluntary_id:         3,
         voluntary_securities_number:  SecureRandom.hex(5),
         voluntary_insurance_start_on: Date.today,
         voluntary_insurance_end_on:   Date.today.next_year
