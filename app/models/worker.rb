@@ -3,6 +3,15 @@ class Worker < ApplicationRecord
   has_one :worker_insurance, dependent: :destroy
   mount_uploaders :images, WorkersUploader
 
+  has_many :worker_licenses, dependent: :destroy
+  has_many :licenses, through: :worker_licenses
+
+  has_many :worker_skill_trainings, dependent: :destroy
+  has_many :skill_trainings, through: :worker_skill_trainings
+
+  has_many :worker_special_educations, dependent: :destroy
+  has_many :special_educations, through: :worker_special_educations
+
   enum abo_blood_type: { a: 0, b: 1, ab: 2, o: 3 }
   enum rh_blood_type: { plus: 0, minus: 1 }
   # ↓内訳未定のためコメントアウト

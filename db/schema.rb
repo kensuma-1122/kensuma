@@ -121,6 +121,14 @@ ActiveRecord::Schema.define(version: 2022_02_20_095216) do
     t.index ["car_insurance_company_id"], name: "index_cars_on_car_insurance_company_id"
   end
 
+  create_table "licenses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.integer "license_type", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "managers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -159,6 +167,21 @@ ActiveRecord::Schema.define(version: 2022_02_20_095216) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["business_id"], name: "index_orders_on_business_id"
+  end
+
+  create_table "skill_trainings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "short_name", null: false
+    t.json "details"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "special_educations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -207,6 +230,42 @@ ActiveRecord::Schema.define(version: 2022_02_20_095216) do
     t.index ["worker_id"], name: "index_worker_insurances_on_worker_id"
   end
 
+  create_table "worker_licenses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.date "got_on", null: false
+    t.json "images"
+    t.bigint "worker_id", null: false
+    t.bigint "license_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["license_id"], name: "index_worker_licenses_on_license_id"
+    t.index ["worker_id", "license_id"], name: "index_worker_licenses_on_worker_id_and_license_id", unique: true
+    t.index ["worker_id"], name: "index_worker_licenses_on_worker_id"
+  end
+
+  create_table "worker_skill_trainings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.date "got_on", null: false
+    t.json "images"
+    t.bigint "worker_id", null: false
+    t.bigint "skill_training_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["skill_training_id"], name: "index_worker_skill_trainings_on_skill_training_id"
+    t.index ["worker_id", "skill_training_id"], name: "index_worker_skill_trainings_on_worker_id_and_skill_training_id", unique: true
+    t.index ["worker_id"], name: "index_worker_skill_trainings_on_worker_id"
+  end
+
+  create_table "worker_special_educations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.date "got_on", null: false
+    t.json "images"
+    t.bigint "worker_id", null: false
+    t.bigint "special_education_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["special_education_id"], name: "index_worker_special_educations_on_special_education_id"
+    t.index ["worker_id", "special_education_id"], name: "worker_special_education_index", unique: true
+    t.index ["worker_id"], name: "index_worker_special_educations_on_worker_id"
+  end
+
   create_table "workers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "name_kana", null: false
@@ -238,5 +297,11 @@ ActiveRecord::Schema.define(version: 2022_02_20_095216) do
   add_foreign_key "cars", "car_insurance_companies"
   add_foreign_key "orders", "businesses"
   add_foreign_key "worker_insurances", "workers"
+  add_foreign_key "worker_licenses", "licenses"
+  add_foreign_key "worker_licenses", "workers"
+  add_foreign_key "worker_skill_trainings", "skill_trainings"
+  add_foreign_key "worker_skill_trainings", "workers"
+  add_foreign_key "worker_special_educations", "special_educations"
+  add_foreign_key "worker_special_educations", "workers"
   add_foreign_key "workers", "businesses"
 end
