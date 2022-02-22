@@ -50,6 +50,9 @@ gem 'enum_help'
 # seedデータ分割
 gem 'seed-fu'
 
+# 入力フォーム
+gem 'chosen-rails'
+
 # エラー通知用
 gem 'exception_notification'
 

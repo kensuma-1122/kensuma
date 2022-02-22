@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require('admin-lte');
 require("jquery");
+require('chosen-jquery');
 require ("./users/auth");
 
 import 'bootstrap';
