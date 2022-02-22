@@ -1,6 +1,8 @@
 module Users
   class OrdersController < Users::Base
-    def index; end
+    def index
+      @orders = current_business.orders.all
+    end
 
     def show; end
 
