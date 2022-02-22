@@ -11,6 +11,8 @@ require('admin-lte');
 require("jquery");
 require('chosen-jquery');
 require ("./users/auth");
+require ("./users/workers");
+
 
 import 'bootstrap';
 import '../stylesheets/users';
