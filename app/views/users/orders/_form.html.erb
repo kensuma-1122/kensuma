@@ -1,7 +1,7 @@
 <%= render 'shared/error_massages', object: f.object %>
 
 <%= f.label :status %>
-<%= f.select :status, Order.statuses.keys.to_a, { prompt: true }, { class: "form-control" } %>
+<%= f.select :status, Order.statuses.keys.map { |k| [I18n.t("enums.order.status.#{k}"), k]}, { prompt: true }, { class: "form-control" } %>
 <br>
 <%= f.label :site_name %>
 <%= f.text_field :site_name, class: "form-control", placeholder: Order.human_attribute_name(:site_name) %>

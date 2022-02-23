@@ -17,7 +17,7 @@ RSpec.describe Order, type: :model do
         it 'バリデーションに落ちること' do
           expect(subject).to be_invalid
           subject.valid?
-          expect(subject.errors.full_messages).to include('Statusを入力してください')
+          expect(subject.errors.full_messages).to include('ステータスを入力してください')
         end
       end
     end

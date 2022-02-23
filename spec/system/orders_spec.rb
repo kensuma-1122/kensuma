@@ -26,7 +26,7 @@ RSpec.describe 'Order', type: :system do
         visit new_users_order_path
 
         # 車両所有者氏名
-        select 'created', from: 'order_status'
+        select '作成済み', from: 'order_status'
         # 安全運転管理者
         fill_in 'order[site_name]', with: order.site_name
         # 車両型式
