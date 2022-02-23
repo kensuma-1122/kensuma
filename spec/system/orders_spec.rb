@@ -23,7 +23,6 @@ RSpec.describe 'Order', type: :system do
 
     context '発注登録' do
       it '新規登録したあと詳細画面へ遷移すること' do
-
         visit new_users_order_path
 
         # 車両所有者氏名
