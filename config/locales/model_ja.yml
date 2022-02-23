@@ -51,7 +51,7 @@ ja:
         voluntary_insurance_end_on: 任意保険終わり
       order:
         site_uu_id: 現場ID
-        status: 状態
+        status: ステータス
         site_name: 現場名
         order_name: 発注者名前
         order_post_code: 発注者郵便番号
