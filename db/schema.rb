@@ -156,6 +156,15 @@ ActiveRecord::Schema.define(version: 2022_02_21_215957) do
     t.index ["unlock_token"], name: "index_managers_on_unlock_token", unique: true
   end
 
+  create_table "news", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "title", default: "", null: false
+    t.text "content"
+    t.datetime "delivered_at"
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "orders", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.integer "status", default: 0, null: false
     t.string "site_uu_id", null: false
