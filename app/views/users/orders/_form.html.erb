@@ -1,0 +1,17 @@
+<%= render 'shared/error_massages', object: f.object %>
+
+<%= f.label :status %>
+<%= f.select :status, Order.statuses.keys.to_a, { prompt: true }, { class: "form-control" } %>
+<br>
+<%= f.label :site_name %>
+<%= f.text_field :site_name, class: "form-control", placeholder: Order.human_attribute_name(:site_name) %>
+<br>
+<%= f.label :order_name %>
+<%= f.text_field :order_name, class: "form-control", placeholder: Order.human_attribute_name(:order_name) %>
+<br>
+<%= f.label :order_post_code %>
+<%= f.text_field :order_post_code, class: "form-control", placeholder: Order.human_attribute_name(:order_post_code) %>
+<br>
+<%= f.label :order_address %>
+<%= f.text_field :order_address, class: "form-control", placeholder: Order.human_attribute_name(:order_address) %>
+<br>

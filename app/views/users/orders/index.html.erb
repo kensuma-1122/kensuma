@@ -2,7 +2,7 @@
 
 <%= link_to "発注新規作成画面へ", new_users_order_path, class: "btn btn-lg btn-block btn-outline-primary" %>
 <br>
-<% if @cars.present? %>
+<% if @orders.present? %>
   <div class="card">
     <div class="card-body table-responsive p-0">
       <table class="table table-hover text-nowrap">
@@ -10,6 +10,7 @@
           <tr align="center">
             <th><%= Order.human_attribute_name(:status) %></th>
             <th><%= Order.human_attribute_name(:order_name) %></th>
+            <th></th>
             <th></th>
           </tr>
         </thead>
@@ -19,6 +20,7 @@
             <td><%= order.status %></td>
             <td><%= link_to order.order_name, users_order_path(order) %></td>
             <td><%= link_to "編集", edit_users_order_path(order), class: "btn btn-md btn-success" %></td>
+            <td><%= link_to "削除", users_order_path(order), method: :delete, data: { confirm: "#{order.order_name}の車両情報を削除します。本当によろしいですか？" }, class: "btn btn-md btn-danger" %></td>
           </tr>
           <% end %>
         </tbody>
