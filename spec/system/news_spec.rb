@@ -2,63 +2,79 @@ require 'rails_helper'
 
 RSpec.describe 'News', type: :system do
   let!(:admin) { create(:admin, email: 'foo@example.com', password: '123456', password_confirmation: '123456') }
-  let!(:news_a) { create(:news, title: 'ニュースA', content: 'これはニュースAの内容です', status: 'draft', delivered_at: DateTime.now) }
+  let!(:user) { create(:user, email: 'userx@example.com', password: '123456', password_confirmation: '123456') }
+  let!(:business) { create(:business, user: user) } # userのbusinessが無いとログイン後にダッシュボードに遷移できないので追加
+  let!(:news_a) { create(:news, title: 'お知らせ-A', content: 'これはお知らせ-Aの内容です', status: 'draft', delivered_at: DateTime.now.yesterday) }
+  let!(:news_b) { create(:news, title: 'お知らせ-B', content: 'これはお知らせ-Bの内容です', status: 'published', delivered_at: DateTime.now.yesterday) }
 
   before(:each) do
-    sign_in(admin)
-    visit _system__dashboard_path
+    user.skip_confirmation! # ユーザー作成時のメールによる認証をスキップできる
+    user.save!
   end
 
-  describe 'ニュース一覧ページ' do
-    it 'ニュース一覧ページを表示' do
-      click_link 'News'
-      expect(page).to have_current_path _system__news_index_path, ignore_query: true
-      expect(page).to have_content('News')
+  describe 'active_admin/newsに遷移した場合' do
+    before(:each) do
+      sign_in(admin)
+      visit _system__dashboard_path
+      visit _system__news_index_path
+      visit edit__system__news_path(news_a)
     end
-  end
 
-  describe 'ニュース一覧ページにアクセスした場合' do
-    before(:each) { visit _system__news_index_path }
-
-    context 'ニュース編集をクリックした場合' do
-      it do
-        click_link '編集'
-        expect(page).to have_current_path edit__system__news_path(news_a), ignore_query: true
-        expect(page).to have_content('News を編集する')
+    context 'お知らせ編集ページを表示(正常系)' do
+      it 'お知らせ編集ページで各項目を入力(正常系)' do
+        fill_in 'news[title]', with: 'お知らせ-Aの編集' # 内容を書き換える
+        fill_in 'news[content]', with: 'お知らせ-Aの内容の編集です' # 内容を書き換える
+        select '2022', from: 'news[delivered_at(1i)]'
+        select '1月', from: 'news[delivered_at(2i)]'
+        select '1', from: 'news[delivered_at(3i)]'
+        select '01', from: 'news[delivered_at(4i)]'
+        select '01', from: 'news[delivered_at(5i)]'
+        select 'Published', from: 'news[status]' # 全ての項目が入力された状態で「Published」を選択する
+        click_button 'お知らせを更新'
+        expect(page).to have_content('お知らせ')
       end
     end
 
-    describe 'ニュース編集ページ' do
-      before(:each) { visit edit__system__news_path(news_a) }
+    context 'お知らせ編集ページを表示(異常系)' do
+      it 'お知らせ編集ページで各項目を入力(異常系)' do
+        fill_in 'news[title]', with: nil # 「タイトル」にnilを入力
+        fill_in 'news[content]', with: 'お知らせ-Aの内容の編集です'
+        select '2022', from: 'news[delivered_at(1i)]'
+        select '1月', from: 'news[delivered_at(2i)]'
+        select '1', from: 'news[delivered_at(3i)]'
+        select '01', from: 'news[delivered_at(4i)]'
+        select '01', from: 'news[delivered_at(5i)]'
+        select 'Published', from: 'news[status]' # 「タイトル」がnilのまま「Published」を選択
+        click_button 'お知らせを更新'
+        # 入力項目に空が一つでもあると、「Published」では更新できない
+        expect(page).not_to have_content('お知らせ の詳細')
+      end
+    end
+  end
 
-      context 'ニュース編集ページを表示(正常系)' do
-        it 'ニュース編集ページで各項目を入力(正常系)' do
-          fill_in 'news[title]', with: 'ニュースAの編集'
-          fill_in 'news[content]', with: 'ニュースAの内容の編集です'
-          select '2022', from: 'news[delivered_at(1i)]'
-          select '1月', from: 'news[delivered_at(2i)]'
-          select '1', from: 'news[delivered_at(3i)]'
-          select '01', from: 'news[delivered_at(4i)]'
-          select '01', from: 'news[delivered_at(5i)]'
-          select 'Draft', from: 'news[status]'
-          click_button 'Newsを更新'
-          expect(page).to have_content('News の詳細')
-        end
+  describe 'users/newsに遷移した場合' do
+    before(:each) do
+      visit root_url
+      sign_in(user)
+      # あらかじめbusinessを作成しているため、ダッシュボードに遷移できる
+      visit users_dash_boards_path
+      visit users_news_index_path
+    end
+
+    context 'お知らせ一覧ページに遷移した場合' do
+      it 'お知らせ一覧ページを表示' do
+        expect(page).to have_content('お知らせ一覧')
+      end
+    end
+
+    describe 'お知らせ詳細ページに遷移した場合' do
+      before(:each) do
+        visit users_news_path(news_b)
       end
 
-      context 'ニュース編集ページを表示(異常系)' do
-        it 'ニュース編集ページで各項目を入力(異常系)' do
-          # 入力項目に空が一つでもあると、'Published'では更新できない
-          fill_in 'news[title]', with: nil
-          fill_in 'news[content]', with: 'ニュースAの内容の編集です'
-          select '2022', from: 'news[delivered_at(1i)]'
-          select '1月', from: 'news[delivered_at(2i)]'
-          select '1', from: 'news[delivered_at(3i)]'
-          select '01', from: 'news[delivered_at(4i)]'
-          select '01', from: 'news[delivered_at(5i)]'
-          select 'Published', from: 'news[status]'
-          click_button 'Newsを更新'
-          expect(page).not_to have_content('News の詳細')
+      context 'お知らせ詳細ページを表示' do
+        it 'お知らせ詳細ページにタイトルが含まれること' do
+          expect(page).to have_content(news_b.title)
         end
       end
     end

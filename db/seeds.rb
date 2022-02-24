@@ -33,3 +33,12 @@ user.create_business!(
   stamp_images:        [open("#{Rails.root}/public/sample_stamp.png")],
   business_type:       0
 )
+
+10.times do |i|
+  news = News.create!(
+    title: "お知らせ-#{i+1}", # sample: "お知らせ-1"
+    content: Faker::Lorem.sentence(word_count: 20),
+    delivered_at: DateTime.now.yesterday,
+    status: 'published'
+  )
+end

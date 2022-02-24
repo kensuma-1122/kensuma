@@ -118,6 +118,10 @@ ja:
         freelance: 一人親方
         Individual_five_over: 個人事務所(雇用5人以上)
         Individual_five_less: 個人事務所(雇用5人未満)
+    news:
+      status:
+        draft: 下書き
+        published: 公開
     order:
       status:
         created: 作成済み

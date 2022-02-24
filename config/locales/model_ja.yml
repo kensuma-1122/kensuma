@@ -14,6 +14,7 @@ ja:
       special_education: 特別教育マスタ
       worker_special_education: 中間テーブル(特別教育マスタ)
       worker_insurance: 保険情報
+      news: お知らせ
     attributes:
       business:
         uuid: 事業所ID
@@ -108,6 +109,11 @@ ja:
         employment_insurance_number: 被保険者番号の下4桁
         severance_pay_mutual_aid_type: 建設業退職金共済制度
         severance_pay_mutual_aid_name: 建設業退職金共済制度名前
+      news:
+        title: タイトル
+        content: 内容
+        delivered_at: 配信日
+        status: 公開状態
   attributes:
     created_at: 作成日
     updated_at: 更新日

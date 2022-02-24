@@ -1,0 +1,16 @@
+<% provide(:title,  "お知らせ詳細") %>
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <table class='table card card-body'>
+        <tbody>
+          <tr><td class='table-secondary'><%= @news.title %></td></tr>
+          <tr><td><%= @news.content %></td></tr>
+          <tr><td>配信日: <%= l(@news.delivered_at, format: :long) %></td></tr>
+          <tr><td>公開状態: <%= @news.status_i18n %></td></tr>
+        </tbody>
+      </table>
+      <%= link_to 'お知らせ一覧に戻る', users_news_index_path %>
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
