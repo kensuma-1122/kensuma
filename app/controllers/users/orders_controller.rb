@@ -12,8 +12,8 @@ module Users
       @order = current_business.orders.new(
         site_name:       current_business.name,
         order_name:      current_user.name,
-        order_post_code: '0123456',
-        order_address:   'TEST'
+        order_post_code: current_business.post_code,
+        order_address:   current_business.address
       )
     end
 
