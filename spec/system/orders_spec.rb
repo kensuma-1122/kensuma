@@ -63,8 +63,8 @@ RSpec.describe 'Order', type: :system do
         click_on '削除'
 
         expect {
-          expect(page.accept_confirm).to eq "#{order.order_name}を削除します。本当によろしいですか？"
-          expect(page).to have_content "#{order.order_name}を削除しました"
+          expect(page.accept_confirm).to eq "#{order.site_name}の発注情報を削除します。本当によろしいですか？"
+          expect(page).to have_content "#{order.site_name}を削除しました"
         }.to change(Order, :count).by(-1)
 
         visit users_orders_path
