@@ -10,9 +10,8 @@ module Users
 
     def new
       @order = current_business.orders.new(
-        status:          0,
-        site_name:       '現場A',
-        order_name:      '発注者A',
+        site_name:       current_business.name,
+        order_name:      current_user.name,
         order_post_code: '0123456',
         order_address:   'TEST'
       )
