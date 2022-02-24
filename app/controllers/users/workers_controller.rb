@@ -52,7 +52,7 @@ module Users
     end
 
     def destroy
-      @worker.destroy
+      @worker.destroy!
       flash[:danger] = "#{@worker.name}を削除しました"
       redirect_to users_workers_url
     end
