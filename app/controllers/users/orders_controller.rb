@@ -3,7 +3,7 @@ module Users
     before_action :set_order, except: %i[index new create]
 
     def index
-      @orders = current_business.orders.all
+      @orders = current_business.orders
     end
 
     def show; end
