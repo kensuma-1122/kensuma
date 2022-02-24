@@ -10,4 +10,8 @@ class Order < ApplicationRecord
   validates :order_address, presence: true
 
   before_create -> { self.site_uu_id = SecureRandom.uuid }
+
+  def to_param
+    site_uu_id
+  end
 end

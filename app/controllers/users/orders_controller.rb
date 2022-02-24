@@ -47,7 +47,7 @@ module Users
     private
 
     def set_order
-      @order = current_business.orders.find(params[:id])
+      @order = current_business.orders.find_by(site_uu_id: params[:site_uu_id])
     end
 
     def order_params

@@ -7,7 +7,7 @@
       <%= render partial: "form", locals: { f: f, order: @order } %>
       
       <%= f.submit yield(:btn_text), class: "btn btn-md btn-block btn-primary" %>
-      <%= link_to "一覧画面へ", users_cars_path, class: "btn btn-md btn-block btn-default" %>
+      <%= link_to "一覧画面へ", users_orders_path, class: "btn btn-md btn-block btn-default" %>
     <% end %>
   </div>
 </div>
