@@ -19,7 +19,7 @@ cat <<EOS
 === run docker-compose up -it db ===
 ====================================
 EOS
-docker-compose up db -d
+docker-compose up -d db
 
 # railsコンテナだけを一回削除して、railsコンテナを再度立ち上げ、コンテナ内に入りrailsを起動させる（いつも通りデバックができる）
 cat <<EOS
