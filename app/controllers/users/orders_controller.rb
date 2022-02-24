@@ -38,7 +38,7 @@ module Users
     end
 
     def destroy
-      @order.destroy
+      @order.destroy!
       flash[:danger] = "#{@order.site_name}を削除しました"
       redirect_to users_orders_url
     end
