@@ -13,10 +13,10 @@
 <%= f.text_field :vehicle_number, class: "form-control", placeholder: Car.human_attribute_name(:vehicle_number) %>
 <br>
 <%= f.label :vehicle_inspection_start_on %>
-<%= f.date_field :vehicle_inspection_start_on, class: "form-control", placeholder: Car.human_attribute_name(:vehicle_inspection_start_on) %>
+<%= f.date_field :vehicle_inspection_start_on, class: "form-control" %>
 <br>
 <%= f.label :vehicle_inspection_end_on %>
-<%= f.date_field :vehicle_inspection_end_on, class: "form-control", placeholder: Car.human_attribute_name(:vehicle_inspection_end_on) %>
+<%= f.date_field :vehicle_inspection_end_on, class: "form-control" %>
 <br>
 <!-- 自賠責保険ここから -->
 <%= f.label :car_insurance_company_id %>
@@ -26,10 +26,10 @@
 <%= f.text_field :liability_securities_number, class: "form-control", placeholder: Car.human_attribute_name(:liability_securities_number) %>
 <br>
 <%= f.label :liability_insurance_start_on %>
-<%= f.date_field :liability_insurance_start_on, class: "form-control", placeholder: Car.human_attribute_name(:liability_insurance_start_on) %>
+<%= f.date_field :liability_insurance_start_on, class: "form-control" %>
 <br>
 <%= f.label :liability_insurance_end_on %>
-<%= f.date_field :liability_insurance_end_on, class: "form-control", placeholder: Car.human_attribute_name(:liability_insurance_end_on) %>
+<%= f.date_field :liability_insurance_end_on, class: "form-control" %>
 <!-- 自賠責保険ここまで -->
 <br>
 <!-- 任意保険ここから -->
@@ -42,18 +42,18 @@
   <br>
   <%= voluntary.label :objective_insurance %>
   <%= voluntary.select :objective_insurance, CarVoluntaryInsurance.objective_insurances.keys.to_a, { prompt: true }, { class: "form-control" } %>
+  <br>
+  <%= voluntary.label :voluntary_securities_number %>
+  <%= voluntary.text_field :voluntary_securities_number, class: "form-control", placeholder: Car.human_attribute_name(:voluntary_securities_number) %>
+  <br>
+  <%= voluntary.label :voluntary_insurance_start_on %>
+  <%= voluntary.date_field :voluntary_insurance_start_on, class: "form-control" %>
+  <br>
+  <%= voluntary.label :voluntary_insurance_end_on %>
+  <%= voluntary.date_field :voluntary_insurance_end_on, class: "form-control" %>
 <% end %>
 <br>
-<%= f.label :voluntary_securities_number %>
-<%= f.text_field :voluntary_securities_number, class: "form-control", placeholder: Car.human_attribute_name(:voluntary_securities_number) %>
-<br>
-<%= f.label :voluntary_insurance_start_on %>
-<%= f.date_field :voluntary_insurance_start_on, class: "form-control", placeholder: Car.human_attribute_name(:voluntary_insurance_start_on) %>
-<br>
-<%= f.label :voluntary_insurance_end_on %>
-<%= f.date_field :voluntary_insurance_end_on, class: "form-control", placeholder: Car.human_attribute_name(:voluntary_insurance_end_on) %>
 <!-- 任意保険ここまで -->
-<br>
 <% if car.images.present? %>
   <% car.images.each_with_index do |image, index| %>
     <%= image_tag(image.url) %>

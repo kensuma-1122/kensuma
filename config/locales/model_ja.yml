@@ -39,16 +39,16 @@ ja:
         liability_securities_number: 自賠責証券番号
         liability_insurance_start_on: 自賠責保険初め
         liability_insurance_end_on: 自賠責保険終わり
-        voluntary_securities_number: 任意保険証券番号
-        voluntary_insurance_start_on: 任意保険初め
-        voluntary_insurance_end_on: 任意保険終わり
         images: 添付画像
       car_insurance_company:
         name: 保険会社名
       car_voluntary_insurance:
-        personal_insurance: 対人保険金(万円)
-        objective_insurance: 対物保険金(万円)
         company_voluntary_id: 任意保険会社
+        personal_insurance: 任意保険 対人保険金(万円)
+        objective_insurance: 任意保険 対物保険金(万円)
+        voluntary_securities_number: 任意保険証券番号
+        voluntary_insurance_start_on: 任意保険初め
+        voluntary_insurance_end_on: 任意保険終わり
       order:
         site_uu_id: 現場ID
         site_name: 現場名

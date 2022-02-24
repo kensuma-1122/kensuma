@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_17_014304) do
+ActiveRecord::Schema.define(version: 2022_02_21_215957) do
 
-  create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_014304) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
   end
 
-  create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "admins", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_014304) do
     t.index ["unlock_token"], name: "index_admins_on_unlock_token", unique: true
   end
 
-  create_table "articles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "articles", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "title", null: false
     t.string "sub_title"
     t.text "content", null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_014304) do
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
-  create_table "businesses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "businesses", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "uuid", null: false
     t.string "name", null: false
     t.string "name_kana", null: false
@@ -82,24 +82,27 @@ ActiveRecord::Schema.define(version: 2022_02_17_014304) do
     t.index ["user_id"], name: "index_businesses_on_user_id"
   end
 
-  create_table "car_insurance_companies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "car_insurance_companies", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "car_voluntary_insurances", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "car_voluntary_insurances", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.integer "personal_insurance"
     t.integer "objective_insurance"
     t.bigint "car_voluntary_id", null: false
     t.bigint "company_voluntary_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "voluntary_securities_number"
+    t.date "voluntary_insurance_start_on"
+    t.date "voluntary_insurance_end_on"
     t.index ["car_voluntary_id"], name: "index_car_voluntary_insurances_on_car_voluntary_id"
     t.index ["company_voluntary_id"], name: "index_car_voluntary_insurances_on_company_voluntary_id"
   end
 
-  create_table "cars", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "cars", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "owner_name", null: false
     t.string "safety_manager"
     t.string "vehicle_model", null: false
@@ -109,9 +112,6 @@ ActiveRecord::Schema.define(version: 2022_02_17_014304) do
     t.string "liability_securities_number", null: false
     t.date "liability_insurance_start_on", null: false
     t.date "liability_insurance_end_on", null: false
-    t.string "voluntary_securities_number"
-    t.date "voluntary_insurance_start_on"
-    t.date "voluntary_insurance_end_on"
     t.json "images"
     t.bigint "business_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_014304) do
     t.index ["car_insurance_company_id"], name: "index_cars_on_car_insurance_company_id"
   end
 
-  create_table "licenses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "licenses", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "description"
     t.integer "license_type", null: false
@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_014304) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "managers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "managers", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -156,7 +156,16 @@ ActiveRecord::Schema.define(version: 2022_02_17_014304) do
     t.index ["unlock_token"], name: "index_managers_on_unlock_token", unique: true
   end
 
-  create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "news", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "title", default: "", null: false
+    t.text "content"
+    t.datetime "delivered_at"
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.integer "status", default: 0, null: false
     t.string "site_uu_id", null: false
     t.string "site_name", null: false
@@ -169,7 +178,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_014304) do
     t.index ["business_id"], name: "index_orders_on_business_id"
   end
 
-  create_table "skill_trainings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "skill_trainings", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "short_name", null: false
     t.json "details"
@@ -177,14 +186,14 @@ ActiveRecord::Schema.define(version: 2022_02_17_014304) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "special_educations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "special_educations", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -216,7 +225,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_014304) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  create_table "worker_insurances", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "worker_insurances", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.integer "health_insurance_type", null: false
     t.string "health_insurance_name"
     t.integer "pension_insurance_type", null: false
@@ -230,7 +239,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_014304) do
     t.index ["worker_id"], name: "index_worker_insurances_on_worker_id"
   end
 
-  create_table "worker_licenses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "worker_licenses", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.date "got_on", null: false
     t.json "images"
     t.bigint "worker_id", null: false
@@ -242,7 +251,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_014304) do
     t.index ["worker_id"], name: "index_worker_licenses_on_worker_id"
   end
 
-  create_table "worker_skill_trainings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "worker_skill_trainings", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.date "got_on", null: false
     t.json "images"
     t.bigint "worker_id", null: false
@@ -254,7 +263,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_014304) do
     t.index ["worker_id"], name: "index_worker_skill_trainings_on_worker_id"
   end
 
-  create_table "worker_special_educations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "worker_special_educations", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.date "got_on", null: false
     t.json "images"
     t.bigint "worker_id", null: false
@@ -266,7 +275,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_014304) do
     t.index ["worker_id"], name: "index_worker_special_educations_on_worker_id"
   end
 
-  create_table "workers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "workers", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "name_kana", null: false
     t.string "country", null: false

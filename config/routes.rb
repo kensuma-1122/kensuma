@@ -51,4 +51,5 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
   # 利用規約
   get 'use' => 'use#index'
   # =================================================================
+  resources :news
 end

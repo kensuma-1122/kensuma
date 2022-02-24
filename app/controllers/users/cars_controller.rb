@@ -21,17 +21,17 @@ module Users
         liability_securities_number:  SecureRandom.hex(5),
         liability_insurance_start_on: Date.today,
         liability_insurance_end_on:   Date.today.next_year,
-        voluntary_securities_number:  SecureRandom.hex(5),
-        voluntary_insurance_start_on: Date.today,
-        voluntary_insurance_end_on:   Date.today.next_year,
         car_insurance_company_id:     1
         # ============================================
       )
       @car.car_voluntary_insurances.build(
         # テスト用デフォルト値 ==========================
-        personal_insurance:   1,
-        objective_insurance:  2,
-        company_voluntary_id: 3
+        personal_insurance:           1,
+        objective_insurance:          2,
+        voluntary_securities_number:  SecureRandom.hex(5),
+        voluntary_insurance_start_on: Date.today,
+        voluntary_insurance_end_on:   Date.today.next_year,
+        company_voluntary_id:         3
         # ============================================
       )
     end
@@ -89,7 +89,8 @@ module Users
         :voluntary_securities_number, :voluntary_insurance_start_on, :voluntary_insurance_end_on,
         :car_insurance_company_id, { images: [] },
         car_voluntary_insurances_attributes: %i[
-          id personal_insurance objective_insurance company_voluntary_id
+          id personal_insurance objective_insurance voluntary_securities_number
+          voluntary_insurance_start_on voluntary_insurance_end_on company_voluntary_id
         ]
       )
     end
