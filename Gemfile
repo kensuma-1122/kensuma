@@ -50,6 +50,9 @@ gem 'enum_help'
 # seedデータ分割
 gem 'seed-fu'
 
+# ツリー構造
+gem 'closure_tree'
+
 # エラー通知用
 gem 'exception_notification'
 
