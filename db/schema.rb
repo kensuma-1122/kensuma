@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_21_215957) do
+ActiveRecord::Schema.define(version: 2022_02_26_014912) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "namespace"
@@ -178,6 +178,16 @@ ActiveRecord::Schema.define(version: 2022_02_21_215957) do
     t.index ["business_id"], name: "index_orders_on_business_id"
   end
 
+  create_table "request_orders", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.integer "status"
+    t.bigint "business_id", null: false
+    t.bigint "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_request_orders_on_business_id"
+    t.index ["order_id"], name: "index_request_orders_on_order_id"
+  end
+
   create_table "skill_trainings", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "short_name", null: false
@@ -305,6 +315,8 @@ ActiveRecord::Schema.define(version: 2022_02_21_215957) do
   add_foreign_key "cars", "businesses"
   add_foreign_key "cars", "car_insurance_companies"
   add_foreign_key "orders", "businesses"
+  add_foreign_key "request_orders", "businesses"
+  add_foreign_key "request_orders", "orders"
   add_foreign_key "worker_insurances", "workers"
   add_foreign_key "worker_licenses", "licenses"
   add_foreign_key "worker_licenses", "workers"
