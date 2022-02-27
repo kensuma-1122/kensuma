@@ -6,6 +6,7 @@ ja:
       car_voluntary_insurance: 任意保険
       car: 車両情報
       order: 発注
+      request_order: 発注依頼
       worker: 作業員
       license: 免許マスタ
       worker_license: 中間テーブル(免許マスタ)
@@ -57,6 +58,8 @@ ja:
         order_name: 発注者名前
         order_post_code: 発注者郵便番号
         order_address: 発注者住所
+      request_order:
+        status: ステータス
       worker:
         name: 名前
         name_kana: 名前カナ

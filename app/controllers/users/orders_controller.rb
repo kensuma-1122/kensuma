@@ -21,7 +21,8 @@ module Users
 
     def create
       @order = current_business.orders.build(order_params)
-      if @order.save
+      if @order.save!
+        @order.request_orders.create!(request_order_params)
         redirect_to users_order_url(@order)
       else
         render :new
@@ -53,6 +54,10 @@ module Users
 
     def order_params
       params.require(:order).permit(:status, :site_name, :order_name, :order_post_code, :order_address)
+    end
+
+    def request_order_params
+      params.require(:order).permit(:status, :order_id).merge(business_id: @current_business.id)
     end
   end
 end

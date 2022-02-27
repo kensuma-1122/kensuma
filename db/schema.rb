@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_21_215957) do
+ActiveRecord::Schema.define(version: 2022_02_26_020738) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "namespace"
@@ -91,13 +91,13 @@ ActiveRecord::Schema.define(version: 2022_02_21_215957) do
   create_table "car_voluntary_insurances", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.integer "personal_insurance"
     t.integer "objective_insurance"
-    t.string "voluntary_securities_number"
-    t.date "voluntary_insurance_start_on"
-    t.date "voluntary_insurance_end_on"
     t.bigint "car_voluntary_id", null: false
     t.bigint "company_voluntary_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "voluntary_securities_number"
+    t.date "voluntary_insurance_start_on"
+    t.date "voluntary_insurance_end_on"
     t.index ["car_voluntary_id"], name: "index_car_voluntary_insurances_on_car_voluntary_id"
     t.index ["company_voluntary_id"], name: "index_car_voluntary_insurances_on_company_voluntary_id"
   end
@@ -176,6 +176,25 @@ ActiveRecord::Schema.define(version: 2022_02_21_215957) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["business_id"], name: "index_orders_on_business_id"
+  end
+
+  create_table "request_order_hierarchies", id: false, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.integer "ancestor_id", null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations", null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "request_order_anc_desc_idx", unique: true
+    t.index ["descendant_id"], name: "request_order_desc_idx"
+  end
+
+  create_table "request_orders", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.integer "status"
+    t.bigint "business_id", null: false
+    t.bigint "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "parent_id"
+    t.index ["business_id"], name: "index_request_orders_on_business_id"
+    t.index ["order_id"], name: "index_request_orders_on_order_id"
   end
 
   create_table "skill_trainings", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
@@ -305,6 +324,8 @@ ActiveRecord::Schema.define(version: 2022_02_21_215957) do
   add_foreign_key "cars", "businesses"
   add_foreign_key "cars", "car_insurance_companies"
   add_foreign_key "orders", "businesses"
+  add_foreign_key "request_orders", "businesses"
+  add_foreign_key "request_orders", "orders"
   add_foreign_key "worker_insurances", "workers"
   add_foreign_key "worker_licenses", "licenses"
   add_foreign_key "worker_licenses", "workers"
