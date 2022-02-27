@@ -22,7 +22,7 @@
 <%= f.text_field :family_phone_number, class: "form-control", placeholder: Worker.human_attribute_name(:family_phone_number) %><br>
 
 <%= f.label :birth_day_on %>
-<%= f.date_field :birth_day_on, class: "form-control", placeholder: Worker.human_attribute_name(:birth_day_on) %><br>
+<%= f.date_field :birth_day_on, class: "form-control" %><br>
 
 <%= f.label :abo_blood_type %>
 <%= f.select :abo_blood_type, Worker.abo_blood_types_i18n.invert, {}, {class: "form-control"} %><br>
@@ -36,7 +36,7 @@
 <!-- -->
 
 <%= f.label :hiring_on %>
-<%= f.date_field :hiring_on, class: "form-control", placeholder: Worker.human_attribute_name(:hiring_on) %><br>
+<%= f.date_field :hiring_on, class: "form-control" %><br>
 
 <%= f.label :experience_term_before_hiring %>
 <%= f.number_field :experience_term_before_hiring, class: "form-control", min: 0 %><br>
@@ -47,14 +47,44 @@
 <%= f.label :carrier_up_id %>
 <%= f.text_field :carrier_up_id, class: "form-control", placeholder: Worker.human_attribute_name(:carrier_up_id) %><br>
 
-<%= f.label :license_id %>
-<%= f.collection_select :license_id, License.all, :id, :name, { prompt: '免許を選択してください' }, { class: 'form-control' } %><br>
+<%= f.fields_for :worker_licenses do |wl| %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= wl.label :license_id %>
+      <%= wl.collection_select :license_id, License.all, :id, :name, { prompt: '免許を選択してください' }, { class: 'form-control' } %><br>
+    </div>
+    <div class="col-md-6">
+      <%= wl.label :got_on %>
+      <%= wl.date_field :got_on, class: 'form-control' %><br>
+    </div>
+  </div>
+<% end %>
 
-<%= f.label :skill_training_id %>
-<%= f.collection_select :skill_training_id, SkillTraining.all, :id, :name,{ prompt: '技能講習を選択してください' }, { class: 'form-control' } %><br>
+<%= f.fields_for :worker_skill_trainings do |wst| %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= wst.label :skill_training_id %>
+      <%= wst.collection_select :skill_training_id, SkillTraining.all, :id, :name, { prompt: '技能講習を選択してください' }, { class: 'form-control' } %><br>
+    </div>
+    <div class="col-md-6">
+      <%= wst.label :got_on %>
+      <%= wst.date_field :got_on, class: 'form-control' %><br>
+    </div>
+  </div>
+<% end %>
 
-<%= f.label :special_education_id %>
-<%= f.collection_select :special_education_id, SpecialEducation.all, :id, :name, { prompt: '特別教育を選択してください' }, { class: 'form-control' } %><br>
+<%= f.fields_for :worker_special_educations do |wse| %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= wse.label :special_education_id %>
+      <%= wse.collection_select :special_education_id, SpecialEducation.all, :id, :name, { prompt: '特別教育を選択してください' }, { class: 'form-control' } %><br>
+    </div>
+    <div class="col-md-6">
+      <%= wse.label :got_on %>
+      <%= wse.date_field :got_on, class: 'form-control' %><br>
+    </div>
+  </div>
+<% end %>
 
 <% if worker.images.present? %>
   <% worker.images.each_with_index do |image, index| %>

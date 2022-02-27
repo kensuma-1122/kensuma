@@ -26,10 +26,14 @@ module Users
         carrier_up_id:                 '1'
         # ============================================
       )
+      @worker.worker_licenses.build
+      @worker.worker_skill_trainings.build
+      @worker.worker_special_educations.build
     end
 
     def create
       @worker = current_business.workers.build(worker_params)
+      binding.irb
       if @worker.save
         flash[:success] = '作業員を作成しました'
         redirect_to users_worker_path(@worker)
@@ -78,7 +82,11 @@ module Users
         :country, :my_address, :my_phone_number, :family_address,
         :family_phone_number, :birth_day_on, :abo_blood_type,
         :rh_blood_type, :job_type, :hiring_on, :experience_term_before_hiring,
-        :blank_term, :carrier_up_id, { images: [] })
+        :blank_term, :carrier_up_id, { images: [] },
+        worker_licenses_attributes: [:license_id, :got_on, :_destroy],
+        worker_skill_trainings_attributes: [:skill_training_id, :got_on, :_destroy],
+        worker_special_education_attributes: [:special_education_id, :got_on, :_destroy]
+      )
     end
   end
 end
