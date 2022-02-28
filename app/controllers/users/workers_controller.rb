@@ -87,8 +87,8 @@ module Users
         :rh_blood_type, :job_type, :hiring_on, :experience_term_before_hiring,
         :blank_term, :carrier_up_id, { images: [] },
         worker_licenses_attributes: [:id, :license_id, :got_on, { images: [] }, :_destroy],
-        worker_skill_trainings_attributes: [:id, :skill_training_id, :got_on, :_destroy],
-        worker_special_educations_attributes: [:id, :special_education_id, :got_on, :_destroy]
+        worker_skill_trainings_attributes: [:id, :skill_training_id, :got_on, { images: [] }, :_destroy],
+        worker_special_educations_attributes: [:id, :special_education_id, :got_on, { images: [] }, :_destroy]
       )
     end
   end

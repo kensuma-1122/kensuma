@@ -75,9 +75,11 @@
         <tr>
           <th><%= WorkerLicense.human_attribute_name(:images) %></th>
           <% @worker.worker_licenses.each do |worker_license| %>
-            <% worker_license.images.each do |image|%>
-              <td><%= image_tag(image.url) %></td>
-            <% end %>
+            <td>
+              <% worker_license.images.each do |image|%>
+                <%= image_tag(image.url) %>
+              <% end %>
+            </td>
           <% end %>
         </tr>
         <tr>
@@ -91,9 +93,11 @@
         <tr>
           <th><%= WorkerSkillTraining.human_attribute_name(:images) %></th>
           <% @worker.worker_skill_trainings.each do |worker_skill_training| %>
-            <% worker_skill_training.images.each do |image|%>
-              <td><%= image_tag(image.url) %></td>
-            <% end %>
+            <td>
+              <% worker_skill_training.images.each do |image|%>
+                <%= image_tag(image.url) %>
+              <% end %>
+            </td>
           <% end %>
         </tr>
         <tr>
@@ -107,9 +111,11 @@
         <tr>
           <th><%= WorkerSpecialEducation.human_attribute_name(:images) %></th>
           <% @worker.worker_special_educations.each do |worker_special_education| %>
-            <% worker_special_education.images.each do |image|%>
-              <td><%= image_tag(image.url) %></td>
-            <% end %>
+            <td>
+              <% worker_special_education.images.each do |image|%>
+                <%= image_tag(image.url) %>
+              <% end %>
+            </td>
           <% end %>
         </tr>
         <!--<tr>
