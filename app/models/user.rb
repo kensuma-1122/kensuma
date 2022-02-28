@@ -8,6 +8,7 @@ class User < ApplicationRecord
     :confirmable
 
   has_many :articles, dependent: :destroy
+  has_many :news_users, dependent: :destroy
   has_one :business, dependent: :destroy
 
   has_many :general_users, class_name: 'User', foreign_key: 'admin_user_id', dependent: :destroy
