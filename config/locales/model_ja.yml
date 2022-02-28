@@ -81,7 +81,7 @@ ja:
         license_id: 免許
         worker_id:
         got_on: 取得年月日
-        images: 証明画像
+        images: 免許証明画像
       skill_training:
         name: ライセンス名
         short_name: 略称
@@ -89,14 +89,14 @@ ja:
       worker_skill_training:
         skill_training_id: 技能講習
         got_on: 取得年月日
-        images: 証明画像
+        images: 技能講習証明画像
       special_education:
         name: ライセンス名
         description: 説明
       worker_special_education:
         special_education_id: 特別教育
         got_on: 取得年月日
-        images: 証明画像
+        images: 特別教育証明画像
       worker_insurance:
         health_insurance_type: 健康保険のタイプ
         health_insurance_name: 健康保険の名前

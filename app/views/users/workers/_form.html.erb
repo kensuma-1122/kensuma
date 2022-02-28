@@ -53,9 +53,13 @@
       <%= wl.label :license_id %>
       <%= wl.collection_select :license_id, License.all, :id, :name, { prompt: '免許を選択してください' }, { class: 'form-control' } %><br>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-2">
       <%= wl.label :got_on %>
       <%= wl.date_field :got_on, class: 'form-control' %><br>
+    </div>
+    <div class="col-md-4">
+      <%= wl.label :images %>
+      <%= wl.file_field :images, accept: 'image/jpg, image/jpeg, image/png', multiple: true, class: "form-control" %><br>
     </div>
   </div>
 <% end %>
@@ -66,9 +70,13 @@
       <%= wst.label :skill_training_id %>
       <%= wst.collection_select :skill_training_id, SkillTraining.all, :id, :name, { prompt: '技能講習を選択してください' }, { class: 'form-control' } %><br>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-2">
       <%= wst.label :got_on %>
       <%= wst.date_field :got_on, class: 'form-control' %><br>
+    </div>
+    <div class="col-md-4">
+      <%= wst.label :images %>
+      <%= wst.file_field :images, accept: 'image/jpg, image/jpeg, image/png', multiple: true, class: "form-control" %><br>
     </div>
   </div>
 <% end %>
@@ -79,9 +87,13 @@
       <%= wse.label :special_education_id %>
       <%= wse.collection_select :special_education_id, SpecialEducation.all, :id, :name, { prompt: '特別教育を選択してください' }, { class: 'form-control' } %><br>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-2">
       <%= wse.label :got_on %>
       <%= wse.date_field :got_on, class: 'form-control' %><br>
+    </div>
+    <div class="col-md-4">
+      <%= wse.label :images %>
+      <%= wse.file_field :images, accept: 'image/jpg, image/jpeg, image/png', multiple: true, class: "form-control" %><br>
     </div>
   </div>
 <% end %>

@@ -1,4 +1,6 @@
 class Worker < ApplicationRecord
+  VALID_PHONE_NUMBER_REGEX = /\A\d{10,11}\z/
+  
   belongs_to :business
   has_one :worker_insurance, dependent: :destroy
   mount_uploaders :images, WorkersUploader
@@ -26,7 +28,6 @@ class Worker < ApplicationRecord
   # ↓内訳未定のためコメントアウト
   # enum job_type: {  }
 
-  VALID_PHONE_NUMBER_REGEX = /\A\d{10,11}\z/
   validates :name, presence: true
   validates :name_kana, presence: true, format: { with: /\A[ァ-ヴー]+\z/u, message: 'はカタカナで入力してください' }
   validates :country, presence: true
