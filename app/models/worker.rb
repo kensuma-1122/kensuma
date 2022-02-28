@@ -5,15 +5,21 @@ class Worker < ApplicationRecord
 
   has_many :worker_licenses, dependent: :destroy
   has_many :licenses, through: :worker_licenses
-  accepts_nested_attributes_for :worker_licenses, allow_destroy: true
+  accepts_nested_attributes_for :worker_licenses,
+    allow_destroy: true,
+    reject_if: proc { |attributes| attributes['license_id'].blank? }
 
   has_many :worker_skill_trainings, dependent: :destroy
   has_many :skill_trainings, through: :worker_skill_trainings
-  accepts_nested_attributes_for :worker_skill_trainings, allow_destroy: true
+  accepts_nested_attributes_for :worker_skill_trainings,
+    allow_destroy: true,
+    reject_if: proc { |attributes| attributes['skill_training_id'].blank? }
 
   has_many :worker_special_educations, dependent: :destroy
   has_many :special_educations, through: :worker_special_educations
-  accepts_nested_attributes_for :worker_special_educations, allow_destroy: true
+  accepts_nested_attributes_for :worker_special_educations,
+    allow_destroy: true,
+    reject_if: proc { |attributes| attributes['special_education_id'].blank? }
 
   enum abo_blood_type: { a: 0, b: 1, ab: 2, o: 3 }
   enum rh_blood_type: { plus: 0, minus: 1 }

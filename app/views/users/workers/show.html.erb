@@ -65,6 +65,30 @@
           <td><%= @worker.carrier_up_id %></td>
         </tr>
         <tr>
+          <th><%= WorkerLicense.human_attribute_name(:license_id) %></th>
+          <td>
+            <% @worker.licenses.each do |license| %>
+              <%= license.name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th><%= WorkerSkillTraining.human_attribute_name(:skill_training_id) %></th>
+          <td>
+            <% @worker.skill_trainings.each do |skill_training| %>
+              <%= skill_training.name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th><%= WorkerSpecialEducation.human_attribute_name(:special_education_id) %></th>
+          <td>
+            <% @worker.special_educations.each do |special_education| %>
+              <%= special_education.name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
           <th><%= Worker.human_attribute_name(:images) %></th>
           <td>
             <% @worker.images.each do |image| %>
