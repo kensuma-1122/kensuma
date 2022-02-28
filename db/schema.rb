@@ -165,6 +165,15 @@ ActiveRecord::Schema.define(version: 2022_02_26_020738) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "news_users", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "news_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["news_id"], name: "index_news_users_on_news_id"
+    t.index ["user_id"], name: "index_news_users_on_user_id"
+  end
+
   create_table "orders", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.integer "status", default: 0, null: false
     t.string "site_uu_id", null: false
@@ -187,7 +196,7 @@ ActiveRecord::Schema.define(version: 2022_02_26_020738) do
   end
 
   create_table "request_orders", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.bigint "business_id", null: false
     t.bigint "order_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -323,6 +332,8 @@ ActiveRecord::Schema.define(version: 2022_02_26_020738) do
   add_foreign_key "car_voluntary_insurances", "cars", column: "car_voluntary_id"
   add_foreign_key "cars", "businesses"
   add_foreign_key "cars", "car_insurance_companies"
+  add_foreign_key "news_users", "news"
+  add_foreign_key "news_users", "users"
   add_foreign_key "orders", "businesses"
   add_foreign_key "request_orders", "businesses"
   add_foreign_key "request_orders", "orders"

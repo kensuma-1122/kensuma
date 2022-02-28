@@ -1,7 +1,7 @@
 class CreateRequestOrders < ActiveRecord::Migration[6.1]
   def change
     create_table :request_orders do |t|
-      t.integer :status
+      t.integer :status, null: false, default: 0
       t.references :business, foreign_key: true, null: false
       t.references :order, foreign_key: true, null: false
 
