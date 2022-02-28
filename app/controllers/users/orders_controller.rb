@@ -21,12 +21,19 @@ module Users
 
     def create
       @order = current_business.orders.build(order_params)
-      if @order.save!
-        @order.request_orders.create!(request_order_params)
-        redirect_to users_order_url(@order)
-      else
-        render :new
+
+      ActiveRecord::Base.transaction do
+        if @order.save!
+          @order.request_orders.create!(requets_order_params)
+          redirect_to users_order_url(@order)
+        end
       end
+    rescue ActiveRecord::RecordInvalid
+      render :new
+    rescue => e
+      logger.error e  
+      flash[:danger] = '登録処理にエラーが発生しました。再度入力してください。'
+      redirect_to new_users_order_url
     end
 
     def edit; end
@@ -57,7 +64,7 @@ module Users
     end
 
     def request_order_params
-      params.require(:order).permit(:status, :order_id).merge(business_id: @current_business.id)
+      params.require(:order).permit(:status).merge(business_id: @current_business.id)
     end
   end
 end

@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_02_26_020738) do
-=======
-ActiveRecord::Schema.define(version: 2022_02_24_135812) do
->>>>>>> main
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "namespace"
@@ -200,7 +196,7 @@ ActiveRecord::Schema.define(version: 2022_02_24_135812) do
   end
 
   create_table "request_orders", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.bigint "business_id", null: false
     t.bigint "order_id", null: false
     t.datetime "created_at", precision: 6, null: false
