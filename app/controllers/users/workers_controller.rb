@@ -1,6 +1,6 @@
 module Users
   class WorkersController < Users::Base
-    before_action :set_worker, except: %i[index new create update_images]
+    before_action :set_worker, except: %i[index new create update_images update_license_images]
 
     def index
       @workers = current_business.workers
@@ -64,15 +64,26 @@ module Users
       redirect_to users_workers_url
     end
 
-    def update_images
+    def update_license_images
       worker = current_business.workers.find(params[:worker_id])
-      remain_images = worker.images
+      worker_license = worker.worker_licenses.find(params[:license_id])
+      remain_images = worker_license.images
       deleted_image = remain_images.delete_at(params[:index].to_i)
       deleted_image.try(:remove!)
-      worker.update!(images: remain_images)
+      worker_license.update!(images: remain_images)
       flash[:danger] = '添付画像を削除しました'
       redirect_to edit_users_worker_url(worker)
     end
+
+    # def update_images
+    #   worker = current_business.workers.find(params[:worker_id])
+    #   remain_images = worker.images
+    #   deleted_image = remain_images.delete_at(params[:index].to_i)
+    #   deleted_image.try(:remove!)
+    #   worker.update!(images: remain_images)
+    #   flash[:danger] = '添付画像を削除しました'
+    #   redirect_to edit_users_worker_url(worker)
+    # end
 
     private
 

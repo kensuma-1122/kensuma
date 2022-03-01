@@ -32,7 +32,10 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
       patch 'update_images'
     end
     resources :workers do
-      patch 'update_images'
+      patch 'update_license_images'
+      patch 'update_skill_training_images'
+      patch 'update_special_education_images'
+      # patch 'update_images'
     end
   end
   # =================================================================

@@ -49,7 +49,7 @@
 
 <%= f.fields_for :worker_licenses do |wl| %>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-5">
       <%= wl.label :license_id %>
       <%= wl.collection_select :license_id, License.all, :id, :name, { prompt: '免許を選択してください' }, { class: 'form-control' } %><br>
     </div>
@@ -57,16 +57,27 @@
       <%= wl.label :got_on %>
       <%= wl.date_field :got_on, class: 'form-control' %><br>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-2">
       <%= wl.label :images %>
       <%= wl.file_field :images, accept: 'image/jpg, image/jpeg, image/png', multiple: true, class: "form-control" %><br>
+    </div>
+    <div class="col-md-3">
+      <% @worker.worker_licenses.each do |worker_license| %>
+        <% if worker_license.images.any? %>
+          <% worker_license.images.each_with_index do |image, index|%>
+            <%= image_tag(image.url) %>
+            <%= link_to "削除", users_worker_update_license_images_path(worker_license, license_id: worker_license.id, index: index),
+                method: :patch, data: { confirm: "本当に削除してもよろしいですか？" } %>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 <% end %>
 
 <%= f.fields_for :worker_skill_trainings do |wst| %>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-5">
       <%= wst.label :skill_training_id %>
       <%= wst.collection_select :skill_training_id, SkillTraining.all, :id, :name, { prompt: '技能講習を選択してください' }, { class: 'form-control' } %><br>
     </div>
@@ -74,7 +85,7 @@
       <%= wst.label :got_on %>
       <%= wst.date_field :got_on, class: 'form-control' %><br>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-2">
       <%= wst.label :images %>
       <%= wst.file_field :images, accept: 'image/jpg, image/jpeg, image/png', multiple: true, class: "form-control" %><br>
     </div>
@@ -83,7 +94,7 @@
 
 <%= f.fields_for :worker_special_educations do |wse| %>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-5">
       <%= wse.label :special_education_id %>
       <%= wse.collection_select :special_education_id, SpecialEducation.all, :id, :name, { prompt: '特別教育を選択してください' }, { class: 'form-control' } %><br>
     </div>
@@ -91,19 +102,19 @@
       <%= wse.label :got_on %>
       <%= wse.date_field :got_on, class: 'form-control' %><br>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-2">
       <%= wse.label :images %>
       <%= wse.file_field :images, accept: 'image/jpg, image/jpeg, image/png', multiple: true, class: "form-control" %><br>
     </div>
   </div>
 <% end %>
 
-<% if worker.images.present? %>
-  <% worker.images.each_with_index do |image, index| %>
-    <%= image_tag(image.url) %>
-    <%= link_to "削除", users_worker_update_images_path(worker, index: index), method: :patch, data: { confirm: "本当に削除してもよろしいですか？" } %>
-  <% end %>
-<% end %><br>
+<!--<%# if worker.images.present? %>
+  <%# worker.images.each_with_index do |image, index| %>
+    <%# image_tag(image.url) %>
+    <%# link_to "削除", users_worker_update_images_path(worker, index: index), method: :patch, data: { confirm: "本当に削除してもよろしいですか？" } %>
+  <%# end %>
+<%# end %><br>-->
 
-<%= f.label :images %>
-<%= f.file_field :images, accept: 'image/jpg, image/jpeg, image/png', multiple: true, class: "form-control" %><br>
+<%# f.label :images %>
+<%# f.file_field :images, accept: 'image/jpg, image/jpeg, image/png', multiple: true, class: "form-control" %><br>
