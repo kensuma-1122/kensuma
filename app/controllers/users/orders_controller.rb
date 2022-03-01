@@ -24,14 +24,13 @@ module Users
 
       ActiveRecord::Base.transaction do
         if @order.save!
-          @order.request_orders.create!(requets_order_params)
+          @order.request_orders.create!(request_order_params)
           redirect_to users_order_url(@order)
         end
       end
     rescue ActiveRecord::RecordInvalid
       render :new
-    rescue => e
-      logger.error e  
+    rescue StandardError
       flash[:danger] = '登録処理にエラーが発生しました。再度入力してください。'
       redirect_to new_users_order_url
     end
