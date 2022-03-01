@@ -1,6 +1,6 @@
 module Users
   class WorkersController < Users::Base
-    before_action :set_worker, except: %i[index new create update_images update_license_images]
+    before_action :set_worker, except: %i[index new create update_images update_license_images update_skill_training_images update_special_education_images]
 
     def index
       @workers = current_business.workers
@@ -71,7 +71,29 @@ module Users
       deleted_image = remain_images.delete_at(params[:index].to_i)
       deleted_image.try(:remove!)
       worker_license.update!(images: remain_images)
-      flash[:danger] = '添付画像を削除しました'
+      flash[:danger] = '免許証明画像を削除しました'
+      redirect_to edit_users_worker_url(worker)
+    end
+
+    def update_skill_training_images
+      worker = current_business.workers.find(params[:worker_id])
+      worker_skill_training = worker.worker_skill_trainings.find(params[:skill_training_id])
+      remain_images = worker_skill_training.images
+      deleted_image = remain_images.delete_at(params[:index].to_i)
+      deleted_image.try(:remove!)
+      worker_skill_training.update!(images: remain_images)
+      flash[:danger] = '技能講習証明画像を削除しました'
+      redirect_to edit_users_worker_url(worker)
+    end
+
+    def update_special_education_images
+      worker = current_business.workers.find(params[:worker_id])
+      worker_special_education = worker.worker_special_educations.find(params[:special_education_id])
+      remain_images = worker_special_education.images
+      deleted_image = remain_images.delete_at(params[:index].to_i)
+      deleted_image.try(:remove!)
+      worker_special_education.update!(images: remain_images)
+      flash[:danger] = '特別教育証明画像を削除しました'
       redirect_to edit_users_worker_url(worker)
     end
 
