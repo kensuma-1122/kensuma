@@ -31,7 +31,7 @@ module Users
     rescue ActiveRecord::RecordInvalid
       render :new
     rescue StandardError
-      flash[:danger] = '登録処理にエラーが発生しました。再度入力してください。'
+      flash[:danger] = '登録処理にエラーが発生しました。再度入力してください'
       redirect_to new_users_order_url
     end
 
@@ -63,7 +63,7 @@ module Users
     end
 
     def request_order_params
-      params.require(:order).permit(:status).merge(business_id: @current_business.id)
+      params.require(:order).permit(:status).merge(business_id: current_business.id)
     end
   end
 end

@@ -24,18 +24,6 @@ RSpec.describe RequestOrder, type: :model do
       end
     end
 
-    describe '#request_order' do
-      context '存在しない場合' do
-        before(:each) { subject.status = nil }
-
-        it 'バリデーションに落ちること' do
-          expect(subject).to be_invalid
-          subject.valid?
-          expect(subject.errors.full_messages).to include('ステータスを入力してください')
-        end
-      end
-    end
-
     describe '#business_id' do
       context '存在しない(nil)場合' do
         before(:each) { subject.business_id = nil }
