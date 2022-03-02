@@ -1,5 +1,4 @@
 class RequestOrder < ApplicationRecord
-
   belongs_to :business
   belongs_to :order
 
@@ -7,6 +6,5 @@ class RequestOrder < ApplicationRecord
 
   validates :status, presence: true
 
-  # ツリー構造 親id未実装のためコメントアウト
-  # has_closure_tree
+  has_closure_tree
 end
