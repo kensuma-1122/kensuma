@@ -99,4 +99,16 @@ RSpec.describe Order, type: :model do
       end
     end
   end
+
+  describe 'アソシエーションについて' do
+    let(:request_orders) { create_list(:request_order, 2, order: order) }
+
+    context '紐つく発注依頼がある場合' do
+      subject { order.request_orders }
+
+      it '紐つく発注依頼を返すこと' do
+        expect(subject).to eq(request_orders)
+      end
+    end
+  end
 end
