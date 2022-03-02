@@ -74,13 +74,13 @@
         </tr>
         <tr>
           <th><%= WorkerLicense.human_attribute_name(:images) %></th>
-          <% @worker.worker_licenses.each do |worker_license| %>
-            <td>
+          <td>
+            <% @worker.worker_licenses.each do |worker_license| %>
               <% worker_license.images.each do |image|%>
                 <%= image_tag(image.url) %>
               <% end %>
-            </td>
-          <% end %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <th><%= WorkerSkillTraining.human_attribute_name(:skill_training_id) %></th>
@@ -92,13 +92,13 @@
         </tr>
         <tr>
           <th><%= WorkerSkillTraining.human_attribute_name(:images) %></th>
-          <% @worker.worker_skill_trainings.each do |worker_skill_training| %>
-            <td>
+          <td>
+            <% @worker.worker_skill_trainings.each do |worker_skill_training| %>
               <% worker_skill_training.images.each do |image|%>
                 <%= image_tag(image.url) %>
               <% end %>
-            </td>
-          <% end %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <th><%= WorkerSpecialEducation.human_attribute_name(:special_education_id) %></th>
@@ -110,13 +110,13 @@
         </tr>
         <tr>
           <th><%= WorkerSpecialEducation.human_attribute_name(:images) %></th>
-          <% @worker.worker_special_educations.each do |worker_special_education| %>
-            <td>
+          <td>
+            <% @worker.worker_special_educations.each do |worker_special_education| %>
               <% worker_special_education.images.each do |image|%>
                 <%= image_tag(image.url) %>
               <% end %>
-            </td>
-          <% end %>
+            <% end %>
+          </td>
         </tr>
         <!--<tr>
           <th><%# Worker.human_attribute_name(:images) %></th>
