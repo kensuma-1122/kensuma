@@ -2,6 +2,7 @@ class Business < ApplicationRecord
   belongs_to :user
   has_many :cars, dependent: :destroy
   has_many :orders, dependent: :destroy
+  has_many :request_orders, dependent: :destroy
   has_many :workers, dependent: :destroy
 
   enum business_type: { corporation: 0, freelance: 1, Individual_five_over: 2, Individual_five_less: 3 }
