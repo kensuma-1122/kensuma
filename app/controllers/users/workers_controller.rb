@@ -1,6 +1,7 @@
 module Users
   class WorkersController < Users::Base
-    before_action :set_worker, except: %i[index new create update_images update_license_images update_skill_training_images update_special_education_images]
+    before_action :set_worker, except: %i[index new create update_images update_license_images 
+                                          update_skill_training_images update_special_education_images]
 
     def index
       @workers = current_business.workers

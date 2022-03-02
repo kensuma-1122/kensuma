@@ -34,7 +34,7 @@
         </tr>
         <tr>
           <th><%= Worker.human_attribute_name(:birth_day_on) %></th>
-          <td><%= @worker.birth_day_on %></td>
+          <td><%= l @worker.birth_day_on, format: :default %></td>
         </tr>
         <tr>
           <th><%= Worker.human_attribute_name(:abo_blood_type) %></th>
@@ -50,7 +50,7 @@
         </tr>
         <tr>
           <th><%= Worker.human_attribute_name(:hiring_on) %></th>
-          <td><%= @worker.hiring_on %></td>
+          <td><%= l @worker.hiring_on, format: :default %></td>
         </tr>
         <tr>
           <th><%= Worker.human_attribute_name(:experience_term_before_hiring) %></th>
