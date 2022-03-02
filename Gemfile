@@ -56,6 +56,11 @@ gem 'exception_notification'
 # slack通知用
 gem 'slack-notifier'
 
+gem 'faker'
+
+# ツリー構造の実装
+gem 'closure_tree'
+
 group :development, :test do
   # ERD生成
   gem 'rails-erd'
@@ -63,6 +68,7 @@ group :development, :test do
   gem 'rubocop'
   gem 'rubocop-rspec'
   # コンソールツール
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'letter_opener_web', '~> 1.0'

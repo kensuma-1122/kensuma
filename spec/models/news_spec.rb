@@ -5,7 +5,7 @@ RSpec.describe News, type: :model do
     build(:news)
   end
 
-  describe 'Newsのバリデーションについて' do
+  describe 'お知らせのバリデーションについて' do
     subject do
       news
     end
@@ -26,7 +26,7 @@ RSpec.describe News, type: :model do
 
         it 'バリデーションのエラーが正しいこと' do
           subject.valid?
-          expect(subject.errors.full_messages).to include('Titleを入力してください')
+          expect(subject.errors.full_messages).to include('タイトルを入力してください')
         end
       end
     end
@@ -43,7 +43,7 @@ RSpec.describe News, type: :model do
 
         it 'バリデーションのエラーが正しいこと' do
           subject.valid?
-          expect(subject.errors.full_messages).to include('Statusを入力してください')
+          expect(subject.errors.full_messages).to include('公開状態を入力してください')
         end
       end
     end

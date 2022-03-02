@@ -1,8 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <%= link_to users_dash_boards_path, class:"brand-link" do %>
-    <%= image_tag "AdminLTELogo.png", class:"brand-image img-circle elevation-3", style: "opacity: .8" %>
-    <span class="brand-text font-weight-light">ネイテク</span>
+  <%= link_to users_dash_boards_path, class:"brand-link", style: "display: flex" do %>
+    <%= image_tag "kensuma/03", class:"brand-image elevation-3", style: "opacity: .8" %>
+    <%# <span class="brand-text font-weight-light">建スマ</span> %>
   <% end %>
 
   <!-- Sidebar -->
@@ -58,10 +58,11 @@
           </ul>
         </li> %>
         <li class="nav-item">
-          <%= link_to users_articles_path, class:"nav-link" do %>
-            <i class="nav-icon fas fa-th"></i>
+          <%= link_to users_news_index_path, class:"nav-link" do %>
+            <%# <i class="nav-icon fas fa-th"></i> %>
+            <i class="nav-icon fas fa-newspaper"></i>
             <p>
-              Notion
+              お知らせ
               <%# <span class="right badge badge-danger">New</span> %>
             </p>
           <% end %>

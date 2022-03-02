@@ -1,0 +1,39 @@
+<% provide(:title, "発注詳細") %>
+
+<div class="card">
+  <div class="card-body table-responsive p-0">
+    <table class="table table-hover text-nowrap">
+      <tbody>
+        <tr>
+          <th><%= Order.human_attribute_name(:status) %></th>
+          <td><%= @order.status_i18n %></td>
+        </tr>
+        <tr>
+          <th><%= Order.human_attribute_name(:site_uu_id) %></th>
+          <td><%= @order.site_uu_id %></td>
+        </tr>
+        <tr>
+          <th><%= Order.human_attribute_name(:site_name) %></th>
+          <td><%= @order.site_name %></td>
+        </tr>
+        <tr>
+          <th><%= Order.human_attribute_name(:order_name) %></th>
+          <td><%= @order.order_name %></td>
+        </tr>
+        <tr>
+          <th><%= Order.human_attribute_name(:order_post_code) %></th>
+          <td><%= @order.order_post_code %></td>
+        </tr>
+        <tr>
+          <th><%= Order.human_attribute_name(:order_address) %></th>
+          <td><%= @order.order_address %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer">
+    <%= link_to "編集", edit_users_order_path(@order), class: "btn btn-md btn-block btn-success" %>
+    <%= link_to "削除", users_order_path(@order), method: :delete, data: { confirm: "#{@order.site_uu_id}を削除します。本当によろしいですか？" }, class: "btn btn-md btn-danger btn-block" %>
+    <%= link_to "一覧画面へ", users_orders_path, class: "btn btn-md btn-block btn-default" %>
+  </div>
+</div>

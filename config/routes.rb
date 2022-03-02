@@ -27,6 +27,7 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     resources :general_users
     resources :dash_boards, only: [:index]
     resources :articles, only: %i[index show]
+    resources :news, only: %i[index show]
     resource :profile, except: %i[create new]
     resource :business, except: %i[index destroy] do
       patch 'update_images'
@@ -37,6 +38,7 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
       patch 'update_special_education_images'
       # patch 'update_images'
     end
+    resources :orders, param: :site_uu_id
   end
   # =================================================================
 
@@ -50,9 +52,10 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
 
   # =================================================================
 
-  # 共通==============================================================
+  # system==============================================================
   # 利用規約
-  get 'use' => 'use#index'
+  get 'use' => 'system#use'
+  # 特商法
+  get 'law' => 'system#law'
   # =================================================================
-  resources :news
 end

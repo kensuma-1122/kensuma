@@ -57,7 +57,7 @@ module Users
     end
 
     def destroy
-      @car.destroy
+      @car.destroy!
       flash[:danger] = "#{@car.vehicle_model}を削除しました"
       redirect_to users_cars_url
     end

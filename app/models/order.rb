@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :business
+  has_many :request_orders, dependent: :destroy
 
   enum status: { created: 0, completed: 1 }
 
@@ -10,4 +11,8 @@ class Order < ApplicationRecord
   validates :order_address, presence: true
 
   before_create -> { self.site_uu_id = SecureRandom.uuid }
+
+  def to_param
+    site_uu_id
+  end
 end

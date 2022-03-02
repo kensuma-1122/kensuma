@@ -1,5 +1,5 @@
 ActiveAdmin.register News do
-  permit_params :title, :content, :status, :delivered_at
+  permit_params :title, :content, :delivered_at, :status
 
   index do
     selectable_column
@@ -31,12 +31,12 @@ ActiveAdmin.register News do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :title, :content, :status, :delivered_at
+  # permit_params :title, :content, :delivered_at, :status
   #
   # or
   #
   # permit_params do
-  #   permitted = [:title, :content, :status, :delivered_at]
+  #   permitted = [:title, :content, :delivered_at, :status]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end

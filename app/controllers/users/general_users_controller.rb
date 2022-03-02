@@ -34,7 +34,7 @@ module Users
     def show; end
 
     def destroy
-      @general_user.destroy
+      @general_user.destroy!
       flash[:danger] = "#{@general_user.name}を削除しました"
       redirect_to users_general_users_url
     end

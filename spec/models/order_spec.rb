@@ -17,7 +17,7 @@ RSpec.describe Order, type: :model do
         it 'バリデーションに落ちること' do
           expect(subject).to be_invalid
           subject.valid?
-          expect(subject.errors.full_messages).to include('Statusを入力してください')
+          expect(subject.errors.full_messages).to include('ステータスを入力してください')
         end
       end
     end
@@ -96,6 +96,22 @@ RSpec.describe Order, type: :model do
           subject.valid?
           expect(subject.errors.full_messages).to include('発注者住所を入力してください')
         end
+      end
+    end
+  end
+
+  describe '発注依頼とのアソシエーションについて' do
+    context '紐つく発注依頼がある場合' do
+      subject do
+        order.request_orders
+      end
+
+      let :request_orders do
+        create_list(:request_order, 2, order: order)
+      end
+
+      it '紐つく発注依頼を返すこと' do
+        expect(subject).to eq(request_orders)
       end
     end
   end

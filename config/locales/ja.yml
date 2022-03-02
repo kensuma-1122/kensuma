@@ -118,10 +118,19 @@ ja:
         freelance: 一人親方
         Individual_five_over: 個人事務所(雇用5人以上)
         Individual_five_less: 個人事務所(雇用5人未満)
+    news:
+      status:
+        draft: 下書き
+        published: 公開
     order:
       status:
         created: 作成済み
         completed: 完成
+    request_order:
+      status:
+        editing: 編集中
+        completed: 完了
+        request: 差し戻し
     worker:
       abo_blood_type:
         a: A型
