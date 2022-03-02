@@ -1,5 +1,6 @@
 class News < ApplicationRecord
   has_many :news_users, dependent: :destroy
+  has_many :users, through: :news_users
 
   # default: 0
   enum status: { draft: 0, published: 1 }
@@ -10,6 +11,10 @@ class News < ApplicationRecord
   # custom validation methods
   validate :unable_to_be_published
   validate :news_must_be_delivered_before_now
+
+  scope :unread, ->(user) { where.not(id: user.news.ids).published }
+
+  private
 
   def unable_to_be_published
     if !title.present? || !content.present? || !delivered_at.present? && (status == 'published')

@@ -4,6 +4,7 @@ module Users
   class Base < ApplicationController
     before_action :authenticate_user!
     before_action :business_nil_access
+    before_action :unread_news_count
     layout 'users'
 
     # 事業所が登録してあればダッシュボードへ
@@ -14,6 +15,10 @@ module Users
     # 事業所が登録してなければ事業所登録画面へ
     def business_nil_access
       redirect_to new_users_business_path, flash: { danger: '事業所を登録して下さい' } if current_user.business.nil?
+    end
+
+    def unread_news_count
+      @unread_news_count = News.unread(current_user).count
     end
 
     # 現在のユーザーの事業所を取得
