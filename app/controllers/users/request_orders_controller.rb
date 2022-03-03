@@ -5,7 +5,7 @@ module Users
     end
 
     def show
-      @request_order = current_business.request_orders.find(params[:id])
+      @request_order = current_business.request_orders.find_by(uuid: params[:uuid])
     end
   end
 end
