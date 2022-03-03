@@ -5,7 +5,7 @@ class RequestOrder < ApplicationRecord
   enum status: { editing: 0, completed: 1, request: 2 }
 
   has_closure_tree
-  
+
   before_create -> { self.uuid = SecureRandom.uuid }
 
   def to_param
