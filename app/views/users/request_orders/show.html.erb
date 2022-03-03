@@ -8,6 +8,10 @@
           <th><%= RequestOrder.human_attribute_name(:status) %></th>
           <td><%= @request_order.status_i18n %></td>
         </tr>
+        <tr>
+          <th><%= Business.human_attribute_name(:name) %></th>
+          <td><%= @request_order.business.name %></td>
+        </tr>
       </tbody>
     </table>
   </div>
