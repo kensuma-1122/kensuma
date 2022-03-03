@@ -27,6 +27,7 @@ RSpec.describe 'RequestOrders', type: :system do
         visit users_request_order_path(request_order)
         expect(page).to have_content '発注依頼詳細'
         expect(page).to have_content request_order.status_i18n
+        expect(page).to have_content request_order.business.name
       end
     end
   end
