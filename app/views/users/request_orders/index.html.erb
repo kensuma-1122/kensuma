@@ -12,10 +12,10 @@
         </thead>
         <tbody>
           <% @request_orders.each do |request_order| %>
-          <tr align="center">
-            <td><%= link_to request_order.status_i18n, users_request_order_path(request_order) %></td>
-            <td><%= request_order.business.name %></td>
-          </tr>
+            <tr align="center">
+              <td><%= link_to request_order.status_i18n, users_request_order_path(request_order) %></td>
+              <td><%= request_order.business.name %></td>
+            </tr>
           <% end %>
         </tbody>
       </table>
