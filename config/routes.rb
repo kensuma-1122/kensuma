@@ -38,6 +38,7 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
       patch 'update_special_education_images'
     end
     resources :orders, param: :site_uu_id
+    resources :request_orders, only: %i[index show], param: :uuid
   end
   # =================================================================
 
