@@ -36,7 +36,9 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
       patch 'update_images'
     end
     resources :orders, param: :site_uu_id
-    resources :request_orders, only: %i[index show], param: :uuid
+    resources :request_orders, only: %i[index show], param: :uuid do
+      resources :sub_request_orders, except: %i[show destroy]
+    end
   end
   # =================================================================
 
