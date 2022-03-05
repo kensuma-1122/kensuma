@@ -3,7 +3,6 @@ class Worker < ApplicationRecord
 
   belongs_to :business
   has_one :worker_insurance, dependent: :destroy
-  mount_uploaders :images, WorkersUploader
 
   has_many :worker_licenses, dependent: :destroy
   has_many :licenses, through: :worker_licenses

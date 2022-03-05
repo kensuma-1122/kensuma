@@ -1,7 +1,6 @@
 module Users
   class WorkersController < Users::Base
-    before_action :set_worker, except: %i[index new create update_images update_license_images
-                                          update_skill_training_images update_special_education_images]
+    before_action :set_worker, only: %i[edit update show destroy]
 
     def index
       @workers = current_business.workers
@@ -98,16 +97,6 @@ module Users
       redirect_to edit_users_worker_url(worker)
     end
 
-    # def update_images
-    #   worker = current_business.workers.find(params[:worker_id])
-    #   remain_images = worker.images
-    #   deleted_image = remain_images.delete_at(params[:index].to_i)
-    #   deleted_image.try(:remove!)
-    #   worker.update!(images: remain_images)
-    #   flash[:danger] = '添付画像を削除しました'
-    #   redirect_to edit_users_worker_url(worker)
-    # end
-
     private
 
     def set_worker
@@ -119,7 +108,7 @@ module Users
         :country, :my_address, :my_phone_number, :family_address,
         :family_phone_number, :birth_day_on, :abo_blood_type,
         :rh_blood_type, :job_type, :hiring_on, :experience_term_before_hiring,
-        :blank_term, :carrier_up_id, { images: [] },
+        :blank_term, :carrier_up_id,
         worker_licenses_attributes:           [:id, :license_id, :got_on, { images: [] }, :_destroy],
         worker_skill_trainings_attributes:    [:id, :skill_training_id, :got_on, { images: [] }, :_destroy],
         worker_special_educations_attributes: [:id, :special_education_id, :got_on, { images: [] }, :_destroy]
