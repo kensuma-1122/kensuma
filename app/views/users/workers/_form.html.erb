@@ -48,6 +48,7 @@
 <%= f.text_field :carrier_up_id, class: "form-control", placeholder: Worker.human_attribute_name(:carrier_up_id) %><br>
 
 <div class="list-group">
+  <!-- WorkerLicenseここから -->
   <% @worker.worker_licenses.each do |worker_license| %>
     <%= f.fields_for :worker_licenses, worker_license do |wl| %>
       <div class="list-group-item">
@@ -77,8 +78,9 @@
       </div>
     <% end %>
   <% end %>
-  
+  <!-- WorkerLicenseここまで -->
 
+  <!-- WorkerSkillTrainingsここから -->
   <% @worker.worker_skill_trainings.each do |worker_skill_training| %>
     <%= f.fields_for :worker_skill_trainings, worker_skill_training do |wst| %>
       <div class="list-group-item">
@@ -109,7 +111,9 @@
       </div>
     <% end %>
   <% end %>
+  <!-- WorkerSkillTrainingsここまで -->
 
+  <!-- WorkerSpecialEducationsここから -->
   <% @worker.worker_special_educations.each do |worker_special_education| %>
     <%= f.fields_for :worker_special_educations, worker_special_education do |wse| %>
       <div class="list-group-item">
@@ -139,5 +143,6 @@
       </div>
     <% end %>
   <% end %>
+  <!-- WorkerSpecialEducationsここまで -->
 </div>
 
