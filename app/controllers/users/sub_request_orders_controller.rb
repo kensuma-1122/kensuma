@@ -2,6 +2,8 @@ module Users
   class SubRequestOrdersController < Users::Base
     before_action :set_request_order, only: %i[new create]
 
+    def index; end
+
     def new
       @businesses = Business.where.not(id: current_business)
       @sub_request_order = @request_order.order.request_orders.build
