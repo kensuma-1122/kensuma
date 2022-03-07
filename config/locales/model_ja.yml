@@ -59,6 +59,7 @@ ja:
         order_post_code: 発注者郵便番号
         order_address: 発注者住所
       request_order:
+        business_id: 事業所
         status: ステータス
       worker:
         name: 名前
