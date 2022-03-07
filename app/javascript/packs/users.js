@@ -14,6 +14,7 @@ require ("./users/auth");
 import 'bootstrap';
 import '../stylesheets/users';
 import "@fortawesome/fontawesome-free/js/all";
+import "@nathanvda/cocoon";
 
 document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip()

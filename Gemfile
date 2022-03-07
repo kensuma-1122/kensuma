@@ -44,6 +44,9 @@ gem 'dotenv-rails'
 gem 'carrierwave', '~> 2.0'
 gem 'rmagick'
 
+# フォーム動的追加
+gem 'cocoon'
+
 # enum日本語化
 gem 'enum_help'
 
