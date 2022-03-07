@@ -30,7 +30,7 @@ module Users
     end
 
     def sub_request_order_params
-      params.require(:request_order).permit(:business_id, :parent_id)
+      params.require(:request_order).permit(:business_id).merge(parent_id: @request_order.id)
     end
   end
 end
