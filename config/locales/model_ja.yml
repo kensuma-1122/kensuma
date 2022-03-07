@@ -84,8 +84,8 @@ ja:
         description: 説明
         license_type: 種別
       worker_license:
-        license_id:
-        worker_id:
+        license_id: ライセンス
+        worker_id: 作業員
         got_on: 取得年月日
         images: 証明画像
       skill_training:
@@ -93,16 +93,16 @@ ja:
         short_name: 略称
         details: 引き当て番号
       worker_skill_training:
-        skill_training_id:
-        worker_id:
+        skill_training_id: 技能講習
+        worker_id: 作業員
         got_on: 取得年月日
         images: 証明画像
       special_education:
         name: ライセンス名
         description: 説明
       worker_special_education:
-        special_education_id:
-        worker_id:
+        special_education_id: 特別教育
+        worker_id: 作業員
         got_on: 取得年月日
         images: 証明画像
       worker_insurance:
