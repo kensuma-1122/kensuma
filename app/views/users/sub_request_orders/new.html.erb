@@ -5,7 +5,7 @@
   <div class="card-body">
     <%= form_with model: @sub_request_order, url: users_request_order_sub_request_orders_path(@request_order), method: :post, local: true do |f| %>
       <%= f.label :business_id %>
-      <%= f.collection_select :business_id, @businesses, :id, :name, { prompt: true }, { required: true, class: "form-control" } %>
+      <%= f.collection_select :business_id, @businesses, :id, :name, { include_hidden: false }, { multiple: true, required: true, class: "form-control" } %>
       <br>
       <%= f.submit yield(:btn_text), class: "btn btn-md btn-block btn-primary" %>
       <%= link_to "一覧画面へ", users_orders_path, class: "btn btn-md btn-block btn-default" %>
