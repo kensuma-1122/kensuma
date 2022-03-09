@@ -42,6 +42,7 @@ gem 'dotenv-rails'
 
 # 画像追加関連
 gem 'carrierwave', '~> 2.0'
+gem 'fog-aws'
 gem 'rmagick'
 
 # enum日本語化
