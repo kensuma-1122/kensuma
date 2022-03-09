@@ -14,7 +14,7 @@ module Users
 
       ActiveRecord::Base.transaction do
         select_businesses.each do |select_business|
-          sub_request_order = @request_order.order.request_orders.create!(business_id: select_business, parent_id: @request_order.id)
+          @request_order.order.request_orders.create!(business_id: select_business, parent_id: @request_order.id)
         end
         flash[:success] = "#{select_businesses.count}件の発注依頼を作成しました。"
         redirect_to users_request_order_url(@request_order)
