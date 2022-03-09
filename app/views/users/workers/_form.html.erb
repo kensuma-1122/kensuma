@@ -50,23 +50,23 @@
 <!-- WorkerLicenseここから -->
 <div class="list-group">
   <div class="list-group-item">
+    <div class="row">
       <%= f.fields_for :worker_licenses do |w_license| %>
-        <div class="row">
-          <div class="col-md-3">
-            <%= w_license.label :license_id %>
-          </div>
-          <div class="col-md-2">
-            <%= w_license.label :got_on %>
-          </div>
-          <div class="col-md-3">
-            <%= w_license.label :images %>
-          </div>
-          <div class="col-md-4"></div>
-        <div>
+        <div class="col-md-3">
+          <%= w_license.label :license_id %>
+        </div>
+        <div class="col-md-2">
+          <%= w_license.label :got_on %>
+        </div>
+        <div class="col-md-3">
+          <%= w_license.label :images %>
+        </div>
+        <div class="col-md-4"></div>
         <%= render "users/workers/worker_license_fields", f: w_license %>
       <% end %>
-    <%# 1つ目のフォームだったら削除ボタンを非表示にしたい、リンクの位置を一番上か一番下にしたい %>
-    <%= link_to_add_association 'ライセンスを追加する', f, :worker_licenses, data: { association_insertion_method: 'append' } %>
+      <%# 1つ目のフォームだったら削除ボタンを非表示にしたい、リンクの位置を一番上か一番下にしたい %>
+      <%= link_to_add_association 'ライセンスを追加する', f, :worker_licenses, data: { association_insertion_method: 'append' } %>
+    </div>
   </div>
 <!-- WorkerLicenseここまで -->
 
@@ -98,26 +98,19 @@
       <%= f.fields_for :worker_special_educations do |w_special_education| %>
         <div class="col-md-3">
           <%= w_special_education.label :special_education_id %>
-          <%= w_special_education.collection_select :special_education_id, SpecialEducation.all, :id, :name, { prompt: '特別教育を選択してください' }, { class: "form-control" } %><br>
         </div>
         <div class="col-md-2">
           <%= w_special_education.label :got_on %>
-          <%= w_special_education.date_field :got_on, class: "form-control" %><br>
         </div>
         <div class="col-md-3">
           <%= w_special_education.label :images %>
-          <%= w_special_education.file_field :images, accept: 'image/jpg, image/jpeg, image/png', multiple: true, class: "form-control" %><br>
         </div>
-        <div class="col-md-4">
-          <% @worker.worker_special_educations.each do |worker_special_education| %>
-            <% worker_special_education.images.each_with_index do |image, index| %>
-              <%= image_tag(image.url) %>
-              <%= link_to "削除", users_worker_update_workerspecialeducation_images_path(worker, index: index), method: :patch, data: { confirm: "本当に削除してもよろしいですか？" } %>
-            <% end %>
-          <% end %>
-        </div>
+        <div class="col-md-4"></div>
+        <%= render "users/workers/worker_special_education_fields", f: w_special_education %>
       <% end %>
-    </div><br>
+      <%# 1つ目のフォームだったら削除ボタンを非表示にしたい、リンクの位置を一番上か一番下にしたい %>
+      <%= link_to_add_association '特別教育を追加する', f, :worker_special_educations, data: { association_insertion_method: 'append' } %>
+    </div>
   </div>
 </div>
 <!-- WorkerSpecialEducationここまで -->
