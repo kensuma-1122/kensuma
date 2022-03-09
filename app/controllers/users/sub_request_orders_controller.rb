@@ -33,9 +33,5 @@ module Users
     def set_request_order
       @request_order = current_business.request_orders.find_by(uuid: params[:request_order_uuid])
     end
-
-    # def sub_request_order_params
-    #   params.require(:request_order).permit(:business_id).merge(parent_id: @request_order.id)
-    # end
   end
 end
