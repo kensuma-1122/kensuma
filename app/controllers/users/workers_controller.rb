@@ -44,6 +44,9 @@ module Users
         special_education_id: 3
         # ============================================
       )
+      # @worker.worker_licenses.build
+      # @worker.worker_skill_trainings.build
+      # @worker.worker_special_educations.build
     end
 
     def create
