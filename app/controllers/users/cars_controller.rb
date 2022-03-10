@@ -1,6 +1,5 @@
 module Users
   class CarsController < Users::Base
-    before_action :set_car_insurance_companies, only: %i[new edit create]
     before_action :set_car, except: %i[index new create update_images]
 
     def index
@@ -73,10 +72,6 @@ module Users
     end
 
     private
-
-    def set_car_insurance_companies
-      @car_insurance_companies = CarInsuranceCompany.all
-    end
 
     def set_car
       @car = current_business.cars.find(params[:id])
