@@ -1,6 +1,10 @@
 module Users
   class DocumentsController < Users::Base
-    def index; end
+    layout 'users_document'
+    
+    def index
+      @documents = Document.all
+    end
 
     def show; end
 
