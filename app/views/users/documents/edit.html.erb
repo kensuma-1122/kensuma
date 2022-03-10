@@ -1,2 +1,14 @@
-<h1>Documents#edit</h1>
-<p>Find me in app/views/documents/edit.html.erb</p>
+<% provide(:title, "書類編集") %>
+
+<div class="card">
+  <div class="card-body table-responsive p-0">
+    <table class="table table-hover text-nowrap">
+      <tbody>
+        <tr>
+          <th><%= Document.human_attribute_name :created_on %></th>
+          <td><%= @document.created_on %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
