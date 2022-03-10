@@ -1,0 +1,22 @@
+<% provide(:title, "書類詳細") %>
+
+<div class="card">
+  <div class="card-body table-responsive p-0">
+    <table class="table table-hover text-nowrap">
+      <tbody>
+        <tr>
+          <th><%= Document.human_attribute_name(:created_on) %></th>
+          <td><%= @document.created_on %></td>
+        </tr>
+        <tr>
+          <th><%= Document.human_attribute_name(:submitted_on) %></th>
+          <td><%= @document.submitted_on %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer">
+    <%= link_to "編集", edit_users_document_path(@document), class: "btn btn-md btn-block btn-success" %>
+    <%= link_to "DashBoardへ", users_dash_boards_path, class: "btn btn-md btn-block btn-default" %>
+  </div>
+</div>
