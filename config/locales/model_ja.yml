@@ -61,6 +61,12 @@ ja:
       request_order:
         business_id: 事業所
         status: ステータス
+      document:
+        created_on: 書類作成日
+        submitted_on: 書類提出日
+      cover_document:
+        business_name: 自社の会社名
+        submitted_on: 書類提出日
       worker:
         name: 名前
         name_kana: 名前カナ
