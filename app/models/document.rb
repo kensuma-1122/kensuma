@@ -1,3 +1,3 @@
 class Document < ApplicationRecord
-  has_many :cover_documents
+  has_one :cover_document
 end

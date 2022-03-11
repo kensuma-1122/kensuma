@@ -1,0 +1,21 @@
+<% provide(:title, "書類編集") %>
+<% provide(:btn_text, "更新") %>
+
+<div class="card">
+  <%= form_with model: @cover_document, url: users_document_path, method: :patch, local: true do |f| %>
+    <div class="card-body">
+      <%= render 'shared/error_massages', object: f.object %>
+      
+      <%= f.label :business_name %>
+      <%= f.text_field :business_name, class: "form-control", placeholder: CoverDocument.human_attribute_name(:business_name) %>
+      <br>
+      <%= f.label :submitted_on %>
+      <%= f.date_field :submitted_on, class: "form-control" %>
+      <br>
+    </div>
+    <div class="card-footer">
+      <%= f.submit yield(:btn_text), class: "btn btn-md btn-block btn-success" %>
+      <%= link_to "詳細画面へ", users_document_path(@document), class: "btn btn-md btn-block btn-default" %>
+    </div>
+  <% end %>
+</div>

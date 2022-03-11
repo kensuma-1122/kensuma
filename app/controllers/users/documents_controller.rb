@@ -1,9 +1,10 @@
 module Users
   class DocumentsController < Users::Base
-    before_action :set_document, expect: [:index]
-    before_action :set_documents
-
     layout 'users_document'
+    
+    before_action :set_document, except: [:index]
+    before_action :set_documents
+    before_action :set_cover_document, except: [:index]
 
     def index; end
 
@@ -11,7 +12,14 @@ module Users
 
     def edit; end
 
-    def update; end
+    def update
+      if @cover_document.update(cover_document_params)
+        flash[:success] = '更新しました'
+        redirect_to users_document_url(@document)
+      else
+        render :edit
+      end
+    end
 
     private
 
@@ -21,6 +29,14 @@ module Users
 
     def set_documents
       @documents = Document.all
+    end
+
+    def set_cover_document
+      @cover_document = @document.cover_document
+    end
+
+    def cover_document_params
+      params.require(:cover_document).permit(:business_name, :submitted_on)
     end
   end
 end
