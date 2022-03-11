@@ -1,7 +1,7 @@
 module Users
   class DocumentsController < Users::Base
     layout 'users_document'
-    
+
     before_action :set_document, except: [:index]
     before_action :set_documents
     before_action :set_cover_document, except: [:index]
@@ -24,7 +24,7 @@ module Users
     private
 
     def set_document
-      @document = Document.find(params[:id])
+      @document = Document.find_by(uuid: params[:uuid])
     end
 
     def set_documents
