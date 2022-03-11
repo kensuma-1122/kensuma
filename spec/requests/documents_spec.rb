@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Documents", type: :request do
-  describe "GET /show" do
+RSpec.describe 'Documents', type: :request do
+  describe 'GET /show' do
     pending "add some examples (or delete) #{__FILE__}"
   end
 end

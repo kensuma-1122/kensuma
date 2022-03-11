@@ -23,7 +23,9 @@
         <%#= image_tag "user2-160x160.jpg", class:"img-circle elevation-2" %>
       </div>
       <div class="info">
-        <%= link_to 'ここに書類一覧', '#', class:"d-block" %>
+        <% @documents.each do |document| %>
+          <%= link_to document.cover_document.business_name, users_document_path(document), class:"d-block mt-3" %>
+        <% end %>
       </div>
     </div>    
 

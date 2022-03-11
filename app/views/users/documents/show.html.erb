@@ -1,4 +1,4 @@
-<% provide(:title, "書類詳細") %>
+<% provide(:title, "書類詳細 #{@document.cover_document.business_name}") %>
 
 <div class="card">
   <div class="card-body table-responsive p-0">
@@ -7,6 +7,10 @@
         <tr>
           <th><%= Document.human_attribute_name :created_on %></th>
           <td><%= @document.created_on %></td>
+        </tr>
+        <tr>
+          <th><%= Document.human_attribute_name :submitted_on %></th>
+          <td><%= @document.submitted_on %></td>
         </tr>
       </tbody>
     </table>

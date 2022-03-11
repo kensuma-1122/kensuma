@@ -1,14 +1,13 @@
-<% provide(:title, "書類編集") %>
+<% provide(:title, "書類編集 #{@document.cover_document.business_name}") %>
+<% provide(:btn_text, "更新") %>
 
 <div class="card">
-  <div class="card-body table-responsive p-0">
-    <table class="table table-hover text-nowrap">
-      <tbody>
-        <tr>
-          <th><%= Document.human_attribute_name :created_on %></th>
-          <td><%= @document.created_on %></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <%= form_with model: @document, url: users_document_path, method: :patch, local: true do |f| %>
+    <div class="card-body">
+      <%= render partial: "form", locals: { f: f, document: @document} %>
+    </div>
+    <div class="card-footer">
+      <%= f.submit yield(:btn_text), class: "btn btn-md btn-block btn-success" %>
+    </div>
+  <% end %>
 </div>

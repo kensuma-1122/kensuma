@@ -5,6 +5,8 @@ ja:
       car_insurance_company: ⾃動⾞保険会社
       car_voluntary_insurance: 任意保険
       car: 車両情報
+      cover_document: 表紙
+      document: 書類
       order: 発注
       request_order: 発注依頼
       worker: 作業員
@@ -51,6 +53,12 @@ ja:
         voluntary_securities_number: 任意保険証券番号
         voluntary_insurance_start_on: 任意保険初め
         voluntary_insurance_end_on: 任意保険終わり
+      cover_document:
+        business_name: 会社名
+        submitted_on: 書類提出日
+      document:
+        created_on: 書類作成日
+        submitted_on: 書類提出日
       order:
         status: ステータス
         site_uu_id: 現場ID
