@@ -7,11 +7,11 @@ module Users
     before_action :set_cover_document, except: [:index]
 
     def index
-      if 3 > @documents.count 
-        3.times{
+      if @documents.count < 3
+        3.times do
           document = Document.create!
           document.build_cover_document.save!
-        }
+        end
       end
     end
 
