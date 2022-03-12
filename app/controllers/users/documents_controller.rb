@@ -7,6 +7,7 @@ module Users
     before_action :set_cover_document, except: [:index]
 
     def index
+      # とりあえず仮でdocumentと紐づくcover_document作成。(特に意味はないですが３つのみ作成できる。)
       if @documents.count < 3
         3.times do
           document = Document.create!
