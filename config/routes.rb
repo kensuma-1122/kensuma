@@ -33,9 +33,9 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
       patch 'update_images'
     end
     resources :workers do
-      patch 'update_workerlicense_images'
-      patch 'update_workerskilltraining_images'
-      patch 'update_workerspecialeducation_images'
+      patch 'update_worker_license_images'
+      patch 'update_worker_skill_training_images'
+      patch 'update_worker_special_education_images'
     end
     resources :orders, param: :site_uu_id
     resources :request_orders, only: %i[index show], param: :uuid
