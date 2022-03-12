@@ -1,6 +1,6 @@
 module Users
   class DocumentsController < Users::Base
-    layout 'document'
+    layout 'documents'
 
     before_action :set_documents
     before_action :set_document, only: %i[show edit update]
