@@ -11,7 +11,7 @@ module Users
       # indexに遷移時、10件までdocument,cover_documentを作成
       if Document.count < 10
         10.times do |n|
-          document = Document.create!(created_on: Date.yesterday,  submitted_on: Date.current)
+          document = Document.create!(created_on: Date.yesterday, submitted_on: Date.current)
           document.build_cover_document(business_name: "事業所#{n + 1}", submitted_on: Date.current)
           document.save!
         end
