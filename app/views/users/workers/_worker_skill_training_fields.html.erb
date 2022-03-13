@@ -13,7 +13,7 @@
       <%= f.label :images %>
       <%= f.file_field :images, accept: 'image/jpg, image/jpeg, image/png', multiple: true, class: 'form-control' %>
     </div>
-    <div class="col-md-4 d-flex align-items-center">
+    <div class="col-md-4 d-flex align-items-end">
       <% f.object.images.each_with_index do |image, index| %>
         <%= image_tag(image.url) %>
         <div class="mx-1">
