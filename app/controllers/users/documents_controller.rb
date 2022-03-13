@@ -4,6 +4,7 @@ module Users
 
     before_action :set_documents
     before_action :set_document, only: %i[show edit update]
+    before_action :set_cover_document, only: %i[show edit update]
 
     def index
       # テスト用デフォルト値============================
@@ -11,7 +12,7 @@ module Users
       if Document.count < 10
         10.times do |n|
           document = Document.create!(created_on: Date.yesterday,  submitted_on: Date.current)
-          document.build_cover_document(business_name: "事業所表紙#{n + 1}", submitted_on: Date.current)
+          document.build_cover_document(business_name: "事業所#{n + 1}", submitted_on: Date.current)
           document.save!
         end
       end
@@ -23,7 +24,7 @@ module Users
     def edit; end
 
     def update
-      if @document.update(document_params)
+      if @cover_document.update(cover_document_params)
         flash[:success] = '更新しました'
         redirect_to users_document_url
       else
@@ -41,8 +42,12 @@ module Users
       @document = Document.find_by(uuid: params[:uuid]) # テスト用 仮
     end
 
-    def document_params
-      params.require(:document).permit(:created_on, :submitted_on)
+    def set_cover_document
+      @cover_document = @document.cover_document
+    end
+
+    def cover_document_params
+      params.require(:cover_document).permit(:business_name, :submitted_on)
     end
   end
 end
