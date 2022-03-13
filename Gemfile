@@ -62,6 +62,9 @@ gem 'faker'
 # ツリー構造の実装
 gem 'closure_tree'
 
+# 都道府県コードと都道府県名を変換
+gem 'jp_prefecture'
+
 group :development, :test do
   # ERD生成
   gem 'rails-erd'

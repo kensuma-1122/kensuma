@@ -9,7 +9,10 @@ require("@rails/activestorage").start()
 require("channels")
 require('admin-lte');
 require("jquery");
-require ("./users/auth");
+require("./users/auth");
+require("packs/jquery.jpostal");
+// orderフォームの郵便番号を入力すると自動で出力
+require("./orders/postcode_address");
 
 import 'bootstrap';
 import '../stylesheets/users';
