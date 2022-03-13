@@ -79,7 +79,7 @@ ja:
         images: 免許
         business: 事業所
       license:
-        name: ライセンス名
+        name: 名称
         description: 説明
         license_type: 種別
       worker_license:
@@ -88,7 +88,7 @@ ja:
         got_on: 取得年月日
         images: 証明画像
       skill_training:
-        name: ライセンス名
+        name: 名称
         short_name: 略称
         details: 引き当て番号
       worker_skill_training:
@@ -97,7 +97,7 @@ ja:
         got_on: 取得年月日
         images: 証明画像
       special_education:
-        name: ライセンス名
+        name: 名称
         description: 説明
       worker_special_education:
         special_education_id: 特別教育

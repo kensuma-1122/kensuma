@@ -7,133 +7,166 @@
         <tr>
           <th><%= Worker.human_attribute_name(:name) %></th>
           <td><%= @worker.name %></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
           <th><%= Worker.human_attribute_name(:name_kana) %></th>
           <td><%= @worker.name_kana %></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
           <th><%= Worker.human_attribute_name(:country) %></th>
           <td><%= @worker.country %></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
           <th><%= Worker.human_attribute_name(:my_address) %></th>
           <td><%= @worker.my_address %></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
           <th><%= Worker.human_attribute_name(:my_phone_number) %></th>
           <td><%= @worker.my_phone_number %></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
           <th><%= Worker.human_attribute_name(:family_address) %></th>
           <td><%= @worker.family_address %></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
           <th><%= Worker.human_attribute_name(:family_phone_number) %></th>
           <td><%= @worker.family_phone_number %></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
           <th><%= Worker.human_attribute_name(:birth_day_on) %></th>
-          <td><%= @worker.birth_day_on %></td>
+          <td><%= l @worker.birth_day_on, format: :default %></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
           <th><%= Worker.human_attribute_name(:abo_blood_type) %></th>
           <td><%= @worker.abo_blood_type_i18n %></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
           <th><%= Worker.human_attribute_name(:rh_blood_type) %></th>
           <td><%= @worker.rh_blood_type_i18n %></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
           <th><%= Worker.human_attribute_name(:job_type) %></th>
           <td><%= @worker.job_type %></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
           <th><%= Worker.human_attribute_name(:hiring_on) %></th>
-          <td><%= @worker.hiring_on %></td>
+          <td><%= l @worker.hiring_on, format: :default %></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
           <th><%= Worker.human_attribute_name(:experience_term_before_hiring) %></th>
           <td><%= @worker.experience_term_before_hiring %></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
           <th><%= Worker.human_attribute_name(:blank_term) %></th>
           <td><%= @worker.blank_term %></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
           <th><%= Worker.human_attribute_name(:carrier_up_id) %></th>
           <td><%= @worker.carrier_up_id %></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <th><%= WorkerLicense.human_attribute_name(:license_id) %></th>
-          <td>
-            <% @worker.licenses.each do |license| %>
-              <%= license.name %>
-            <% end %>
-          <td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
+        <tr>
+          <th></th>
+          <th><%= License.human_attribute_name(:name) %></th>
+          <th><%= WorkerLicense.human_attribute_name(:got_on) %></th>
+          <th><%= WorkerLicense.human_attribute_name(:images) %></th>
+        </tr>
+
         <% @worker.worker_licenses.each do |worker_license| %>
           <tr>
-            <th><%= WorkerLicense.human_attribute_name(:got_on) %></th>
-            <td>
-              <%= worker_license.got_on %>
-            <td>
-          </tr>
-          <tr>
-            <th><%= WorkerLicense.human_attribute_name(:images) %></th>
-            <td>
-            <% worker_license.images.each do |image| %>
-              <%= image_tag(image.url) %>
+            <% if @worker.licenses.first.id == worker_license.license_id %>
+              <th><%= WorkerLicense.human_attribute_name(:license_id) %></th>
+            <% else %>
+              <th></th>
             <% end %>
+            <td><%= worker_license.license.name %></td>
+            <td><%= l worker_license.got_on, format: :default %></td>
             <td>
+              <% worker_license.images.each do |image| %>
+              <%= image_tag(image.url) %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
         <tr>
-          <th><%= WorkerSkillTraining.human_attribute_name(:skill_training_id) %></th>
-          <td>
-            <% @worker.skill_trainings.each do |skill_training| %>
-              <%= skill_training.name %>
-            <% end %>
-          <td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
+
         <% @worker.worker_skill_trainings.each do |worker_skill_training| %>
           <tr>
-            <th><%= WorkerLicense.human_attribute_name(:got_on) %></th>
-            <td>
-              <%= worker_skill_training.got_on %>
-            <td>
-          </tr>
-          <tr>
-            <th><%= WorkerLicense.human_attribute_name(:images) %></th>
-            <td>
-            <% worker_skill_training.images.each do |image| %>
-              <%= image_tag(image.url) %>
+            <% if @worker.skill_trainings.first.id == worker_skill_training.skill_training_id %>
+              <th><%= WorkerSkillTraining.human_attribute_name(:skill_training_id) %></th>
+            <% else %>
+              <th></th>
             <% end %>
+            <td><%= worker_skill_training.skill_training.name %></td>
+            <td><%= l worker_skill_training.got_on, format: :default %></td>
             <td>
+              <% worker_skill_training.images.each do |image| %>
+              <%= image_tag(image.url) %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
         <tr>
-          <th><%= WorkerSpecialEducation.human_attribute_name(:special_education_id) %></th>
-          <td>
-            <% @worker.special_educations.each do |special_education| %>
-              <%= special_education.name %>
-            <% end %>
-          <td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
+
         <% @worker.worker_special_educations.each do |worker_special_education| %>
           <tr>
-            <th><%= WorkerLicense.human_attribute_name(:got_on) %></th>
-            <td>
-              <%= worker_special_education.got_on %>
-            <td>
-          </tr>
-          <tr>
-            <th><%= WorkerLicense.human_attribute_name(:images) %></th>
-            <td>
-            <% worker_special_education.images.each do |image| %>
-              <%= image_tag(image.url) %>
+            <% if @worker.special_educations.first.id == worker_special_education.special_education_id %>
+              <th><%= WorkerSpecialEducation.human_attribute_name(:special_education_id) %></th>
+            <% else %>
+              <th></th>
             <% end %>
+            <td><%= worker_special_education.special_education.name %></td>
+            <td><%= l worker_special_education.got_on, format: :default %></td>
             <td>
+              <% worker_special_education.images.each do |image| %>
+              <%= image_tag(image.url) %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
