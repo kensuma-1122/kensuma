@@ -1,6 +1,7 @@
 module Users
   class WorkersController < Users::Base
     before_action :set_worker, only: %i[show edit update destroy]
+    before_action :request_path, only: %i[new edit]
 
     def index
       @workers = current_business.workers
@@ -128,6 +129,14 @@ module Users
         worker_skill_trainings_attributes:    [:id, :got_on, :skill_training_id, { images: [] }],
         worker_special_educations_attributes: [:id, :got_on, :special_education_id, { images: [] }]
       )
+    end
+
+    # コントローラ名とアクション名を取得する
+    def request_path
+        @path = controller_path + '#' + action_name
+        def @path.is(*str)
+            str.map{|s| self.include?(s)}.include?(true)
+        end
     end
   end
 end
