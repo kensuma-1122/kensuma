@@ -383,10 +383,10 @@
 <text text-anchor="start" x="1331" y="-1149.5" font-family="Arial Italic" font-size="10.00" fill="#999999">datetime (6,0) ∗</text>
 <text text-anchor="start" x="1282" y="-1136.5" font-family="Arial" font-size="10.00">created_on </text>
 <text text-anchor="start" x="1334" y="-1136.5" font-family="Arial Italic" font-size="10.00" fill="#999999">date</text>
-<text text-anchor="start" x="1282" y="-1123.5" font-family="Arial" font-size="10.00">submitted_on </text>
-<text text-anchor="start" x="1344" y="-1123.5" font-family="Arial Italic" font-size="10.00" fill="#999999">date</text>
-<text text-anchor="start" x="1282" y="-1110.5" font-family="Arial" font-size="10.00">type </text>
-<text text-anchor="start" x="1304" y="-1110.5" font-family="Arial Italic" font-size="10.00" fill="#999999">integer</text>
+<text text-anchor="start" x="1282" y="-1123.5" font-family="Arial" font-size="10.00">document_type </text>
+<text text-anchor="start" x="1352" y="-1123.5" font-family="Arial Italic" font-size="10.00" fill="#999999">integer</text>
+<text text-anchor="start" x="1282" y="-1110.5" font-family="Arial" font-size="10.00">submitted_on </text>
+<text text-anchor="start" x="1344" y="-1110.5" font-family="Arial Italic" font-size="10.00" fill="#999999">date</text>
 <text text-anchor="start" x="1282" y="-1097.5" font-family="Arial" font-size="10.00">updated_at </text>
 <text text-anchor="start" x="1334" y="-1097.5" font-family="Arial Italic" font-size="10.00" fill="#999999">datetime (6,0) ∗</text>
 <text text-anchor="start" x="1282" y="-1084.5" font-family="Arial" font-size="10.00">uuid </text>
