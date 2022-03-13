@@ -12,13 +12,15 @@
       <%= f.label :images %>
       <%= f.file_field :images, accept: 'image/jpg, image/jpeg, image/png', multiple: true, class: 'form-control' %>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 d-flex align-items-center">
       <% f.object.images.each_with_index do |image, index| %>
         <%= image_tag(image.url) %>
-        <%= link_to "削除", users_worker_update_worker_license_images_path(worker.id, index: index, worker_license_id: f.object.id),
-          method: :patch, data: { confirm: "本当に削除してもよろしいですか？" } %>
+        <div class="mx-1">
+          <%= link_to "削除", users_worker_update_worker_license_images_path(worker.id, index: index, worker_license_id: f.object.id),
+            method: :patch, data: { confirm: "本当に削除してもよろしいですか？" } %>
+        </div>
       <% end %>
-      <%= link_to_remove_association "×", f, class: "btn btn-danger" %>
+      <div class="mx-3"><%= link_to_remove_association '×', f, class: "btn btn-danger" %></div>
     </div>
   </div><br>
 </div>

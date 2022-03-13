@@ -56,8 +56,9 @@
       <% end %>
       <div id="license-select-form"></div>
       <%# 1つ目のフォームだったら削除ボタンを非表示にしたい %>
-      <%= link_to_add_association 'フォームを追加する', f, :worker_licenses,
-        data: { association_insertion_node: '#license-select-form', association_insertion_method: 'append' } %>
+      <%= link_to_add_association 'フォームを追加', f, :worker_licenses,
+        data: { association_insertion_node: '#license-select-form', association_insertion_method: 'append' },
+        class: "btn btn-default btn-block" %>
     </div>
   </div>
 <!-- WorkerLicenseここまで -->
@@ -70,8 +71,9 @@
       <% end %>
       <div id="skill-training-select-form"></div>
       <%# 1つ目のフォームだったら削除ボタンを非表示にしたい %>
-      <%= link_to_add_association 'フォームを追加する', f, :worker_skill_trainings,
-        data: { association_insertion_node: '#skill-training-select-form', association_insertion_method: 'append' } %>
+      <%= link_to_add_association 'フォームを追加', f, :worker_skill_trainings,
+        data: { association_insertion_node: '#skill-training-select-form', association_insertion_method: 'append' },
+        class: "btn btn-default btn-block" %>
     </div>
   </div>
 <!-- WorkerSkillTrainingここまで -->
@@ -84,8 +86,9 @@
       <% end %>
       <div id="special-education-select-form"></div>
       <%# 1つ目のフォームだったら削除ボタンを非表示にしたい %>
-      <%= link_to_add_association 'フォームを追加する', f, :worker_special_educations,
-        data: { association_insertion_node: '#special-education-select-form', association_insertion_method: 'append' } %>
+      <%= link_to_add_association 'フォームを追加', f, :worker_special_educations,
+        data: { association_insertion_node: '#special-education-select-form', association_insertion_method: 'append' },
+        class: "btn btn-default btn-block" %>
     </div>
   </div>
 </div>

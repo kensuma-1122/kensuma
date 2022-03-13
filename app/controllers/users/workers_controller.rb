@@ -86,6 +86,7 @@ module Users
       deleted_image = remain_images.delete_at(params[:index].to_i)
       deleted_image.try(:remove!)
       worker_license.update!(images: remain_images)
+      # 免許名+削除しましたの方がいい？
       flash[:danger] = '添付画像を削除しました'
       redirect_to edit_users_worker_url(worker)
     end
