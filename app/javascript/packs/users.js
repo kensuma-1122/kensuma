@@ -11,7 +11,7 @@ require('admin-lte');
 require("jquery");
 require("./users/auth");
 require("packs/jquery.jpostal");
-// orderフォームの郵便番号を入力すると自動で出力
+// orderの郵便番号フォームを入力すると自動で住所フォームに出力
 require("./orders/postcode_address");
 
 import 'bootstrap';
