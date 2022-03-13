@@ -106,7 +106,6 @@
           <th><%= WorkerLicense.human_attribute_name(:got_on) %></th>
           <th><%= WorkerLicense.human_attribute_name(:images) %></th>
         </tr>
-
         <% @worker.worker_licenses.each do |worker_license| %>
           <tr>
             <% if @worker.licenses.first.id == worker_license.license_id %>
@@ -130,6 +129,12 @@
           <td></td>
         </tr>
 
+        <tr>
+          <th></th>
+          <th><%= SkillTraining.human_attribute_name(:name) %></th>
+          <th><%= WorkerSkillTraining.human_attribute_name(:got_on) %></th>
+          <th><%= WorkerSkillTraining.human_attribute_name(:images) %></th>
+        </tr>
         <% @worker.worker_skill_trainings.each do |worker_skill_training| %>
           <tr>
             <% if @worker.skill_trainings.first.id == worker_skill_training.skill_training_id %>
@@ -153,6 +158,12 @@
           <td></td>
         </tr>
 
+        <tr>
+          <th></th>
+          <th><%= SpecialEducation.human_attribute_name(:name) %></th>
+          <th><%= WorkerSpecialEducation.human_attribute_name(:got_on) %></th>
+          <th><%= WorkerSpecialEducation.human_attribute_name(:images) %></th>
+        </tr>
         <% @worker.worker_special_educations.each do |worker_special_education| %>
           <tr>
             <% if @worker.special_educations.first.id == worker_special_education.special_education_id %>
