@@ -15,8 +15,6 @@ module Users
           document.save!
         end
       end
-
-      @documents = Document.all
       # ==============================================
     end
 
