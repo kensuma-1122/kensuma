@@ -86,8 +86,7 @@ module Users
       deleted_image = remain_images.delete_at(params[:index].to_i)
       deleted_image.try(:remove!)
       worker_license.update!(images: remain_images)
-      # 免許名+削除しましたの方がいい？
-      flash[:danger] = '添付画像を削除しました'
+      flash[:danger] = "#{worker_license.license.name}の証明画像を削除しました"
       redirect_to edit_users_worker_url(worker)
     end
 
@@ -98,7 +97,7 @@ module Users
       deleted_image = remain_images.delete_at(params[:index].to_i)
       deleted_image.try(:remove!)
       worker_skill_training.update!(images: remain_images)
-      flash[:danger] = '添付画像を削除しました'
+      flash[:danger] = "#{worker_skill_training.skill_training.name}の証明画像を削除しました"
       redirect_to edit_users_worker_url(worker)
     end
 
@@ -109,7 +108,7 @@ module Users
       deleted_image = remain_images.delete_at(params[:index].to_i)
       deleted_image.try(:remove!)
       worker_special_education.update!(images: remain_images)
-      flash[:danger] = '添付画像を削除しました'
+      flash[:danger] = "#{worker_special_education.special_education.name}の証明画像を削除しました"
       redirect_to edit_users_worker_url(worker)
     end
 
