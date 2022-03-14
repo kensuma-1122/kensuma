@@ -1,0 +1,19 @@
+<% provide(:title, '書類編集') %>
+<%= form_with model: @cover_document, url: users_document_path, method: :patch, local: true do |f| %>
+  <div class="card-body">
+    <table class="table">
+      <tr>
+        <th><%= f.label :business_name %></th>
+        <td><%= f.text_field :business_name, class: 'form-control' %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :submitted_on %></th>
+        <td><%= f.date_field :submitted_on, class: 'form-control' %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="card-footer">
+    <%= f.submit '登録', class: 'btn btn-block btn-outline-dark' %>
+    <%= link_to '書類詳細に戻る', users_document_path(@document), class: 'btn btn-block btn-outline-secondary' %>
+  </div>
+<% end %>

@@ -9,7 +9,7 @@ Rails.application.configure do
   config.cache_classes = true
 
   config.hosts << ENV['RAILS_APP_HOST']
-  config.hosts << 'localhost'
+  config.hosts << "#{ENV['HEROKU_APP_NAME']}.herokuapp.com"
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
@@ -67,6 +67,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "app_production"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { host: "#{ENV['HEROKU_APP_NAME']}.herokuapp.com", port: 443 }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

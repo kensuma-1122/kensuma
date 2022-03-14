@@ -1,0 +1,23 @@
+<% provide(:title, '書類詳細') %>
+<div class="card">
+  <div class="card-body">
+    <table class="table">
+      <tr>
+        <th><%= Document.human_attribute_name(:id) %></th>
+        <td><%= @document.id %></td>
+      </tr>
+      <tr>
+        <th><%= CoverDocument.human_attribute_name(:business_name) %></th>
+        <td><%= @cover_document.business_name %></td>
+      </tr>
+      <tr>
+        <th><%= CoverDocument.human_attribute_name(:submitted_on) %></th>
+        <td><%= @cover_document.submitted_on %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="card-footer">
+    <%= link_to '編集', edit_users_document_path(@document), class: "btn btn-block btn-outline-dark" %>
+    <%= link_to '書類一覧に戻る', users_documents_path, class: "btn btn-block btn-outline-secondary" %>
+  </div>
+</div>
