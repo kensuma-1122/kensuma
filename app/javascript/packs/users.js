@@ -9,7 +9,9 @@ require("@rails/activestorage").start()
 require("channels")
 require('admin-lte');
 require("jquery");
-require ("./users/auth");
+require("./users/auth");
+require('packs/jquery.jpostal') // 住所自動入力用
+require('./orders/postcode_address') // 住所自動入力用
 
 import 'bootstrap';
 import '../stylesheets/users';
