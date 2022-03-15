@@ -36,9 +36,9 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
       patch 'update_worker_license_images'
       patch 'update_worker_skill_training_images'
       patch 'update_worker_special_education_images'
-      resources :worker_licenses, only: %i[destroy]
-      resources :worker_skill_trainings, only: %i[destroy]
-      resources :worker_special_educations, only: %i[destroy]
+      delete 'destroy_worker_licenses'
+      delete 'destroy_worker_skill_trainings'
+      delete 'destroy_worker_special_educations'
     end
 
     resources :orders, param: :site_uu_id

@@ -1,7 +1,6 @@
 module Users
   class WorkersController < Users::Base
     before_action :set_worker, only: %i[show edit update destroy]
-    before_action :request_path, only: %i[new edit]
 
     def index
       @workers = current_business.workers
@@ -91,6 +90,14 @@ module Users
       redirect_to edit_users_worker_url(worker)
     end
 
+    def destroy_worker_licenses
+      worker = current_business.workers.find(params[:worker_id])
+      worker_license = worker.worker_licenses.find(params[:worker_license_id])
+      worker_license.destroy!
+      flash[:danger] = "ライセンス「#{worker_license.license.name}を削除しました"
+      redirect_to edit_users_worker_url(worker)
+    end
+
     def update_worker_skill_training_images
       worker = current_business.workers.find(params[:worker_id])
       worker_skill_training = worker.worker_skill_trainings.find(params[:worker_skill_training_id])
@@ -102,6 +109,14 @@ module Users
       redirect_to edit_users_worker_url(worker)
     end
 
+    def destroy_worker_skill_trainings
+      worker = current_business.workers.find(params[:worker_id])
+      worker_skill_training = worker.worker_skill_trainings.find(params[:worker_skill_training_id])
+      worker_skill_training.destroy!
+      flash[:danger] = "技能講習「#{worker_skill_training.skill_training.name}」を削除しました"
+      redirect_to edit_users_worker_url(worker)
+    end
+
     def update_worker_special_education_images
       worker = current_business.workers.find(params[:worker_id])
       worker_special_education = worker.worker_special_educations.find(params[:worker_special_education_id])
@@ -110,6 +125,14 @@ module Users
       deleted_image.try(:remove!)
       worker_special_education.update!(images: remain_images)
       flash[:danger] = "#{worker_special_education.special_education.name}の証明画像を削除しました"
+      redirect_to edit_users_worker_url(worker)
+    end
+
+    def destroy_worker_special_educations
+      worker = current_business.workers.find(params[:worker_id])
+      worker_special_education = worker.worker_special_educations.find(params[:worker_special_education_id])
+      worker_special_education.destroy!
+      flash[:danger] = "特別教育「#{worker_special_education.special_education.name}」を削除しました"
       redirect_to edit_users_worker_url(worker)
     end
 
@@ -131,12 +154,5 @@ module Users
       )
     end
 
-    # コントローラ名とアクション名を取得する
-    def request_path
-        @path = controller_path + '#' + action_name
-        def @path.is(*str)
-            str.map{|s| self.include?(s)}.include?(true)
-        end
-    end
   end
 end

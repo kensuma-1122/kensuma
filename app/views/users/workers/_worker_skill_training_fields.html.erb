@@ -21,11 +21,15 @@
             method: :patch, data: { confirm: "本当に削除してもよろしいですか？" } %>
         </div>
       <% end %>
+
+      <%# 新規登録であればフォーム削除ボタン、登録済み情報であれば免許情報削除ボタンを表示 %>
+      <%# 新規登録時のフォーム1件目は、削除ボタンを表示しない？ %>
       <div class="mx-3">
-        <% if @path.is('users/workers#new') %>
+        <% if WorkerSkillTraining.exists?(f.object.id) %>
+          <%= link_to '×', users_worker_destroy_worker_skill_trainings_path(worker.id, worker_skill_training_id: f.object.id),
+            method: :delete, data: { confirm: "本当に削除してもよろしいですか？" }, class: 'btn btn-danger' %>
+        <% else %>
           <%= link_to_remove_association '×', f, class: "btn btn-danger" %>
-        <% elsif @path.is('users/workers#edit') %>
-          <%= link_to 'ライセンスを削除', "#" %>
         <% end %>
       </div>
     </div>
