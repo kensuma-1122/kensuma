@@ -62,6 +62,8 @@ gem 'faker'
 # ツリー構造の実装
 gem 'closure_tree'
 
+gem 'jp_prefecture'
+
 group :development, :test do
   # ERD生成
   gem 'rails-erd'
