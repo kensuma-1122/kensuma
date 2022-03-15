@@ -1,0 +1,82 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <%= link_to users_dash_boards_path, class:"brand-link", style: "display: flex" do %>
+    <%= image_tag "kensuma/03", class:"brand-image elevation-3", style: "opacity: .8" %>
+    <%# <span class="brand-text font-weight-light">建スマ</span> %>
+  <% end %>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <%#= image_tag "user2-160x160.jpg", class:"img-circle elevation-2" %>
+      </div>
+      <div class="info">
+        <%= link_to current_user.name, users_profile_path, class:"d-block" %>
+        <%= link_to "ログアウト", destroy_user_session_path, class:"d-block mt-3", method: :delete %>
+      </div>
+    </div>
+
+    <!-- SidebarSearch Form -->
+    <%# <div class="form-inline">
+      <div class="input-group" data-widget="sidebar-search">
+        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-sidebar">
+            <i class="fas fa-search fa-fw"></i>
+          </button>
+        </div>
+      </div>
+    </div> %>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+              with font-awesome or any other icon font library -->
+        <%# <li class="nav-item menu-open">
+          <a href="#" class="nav-link active">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Starter Pages
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="#" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Active Page</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Inactive Page</p>
+              </a>
+            </li>
+          </ul>
+        </li> %>
+        <li class="nav-item">
+          <%= link_to users_dash_boards_path, class:"nav-link" do %>
+            <i class="nav-icon fas fa-angle-left"></i>
+            <p>ダッシュボードに戻る</p>
+          <% end %>
+        </li>
+      </ul>
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <% @documents.each do |document| %>
+          <%= link_to users_document_path(document), class:"nav-link" do %>
+          <li class="nav-item">
+            <i class="nav-icon fas fa-file"></i>
+            <p><%= Document.human_attribute_name(:id) %> <%= document.id %></p>
+          </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

@@ -20,7 +20,7 @@
 <br>
 <!-- 自賠責保険ここから -->
 <%= f.label :car_insurance_company_id %>
-<%= f.collection_select :car_insurance_company_id, @car_insurance_companies, :id, :name, { prompt: true }, { required: true, class: "form-control" } %>
+<%= f.collection_select :car_insurance_company_id, CarInsuranceCompany.all, :id, :name, { prompt: true }, { required: true, class: "form-control" } %>
 <br>
 <%= f.label :liability_securities_number %>
 <%= f.text_field :liability_securities_number, class: "form-control", placeholder: Car.human_attribute_name(:liability_securities_number) %>
@@ -35,7 +35,7 @@
 <!-- 任意保険ここから -->
 <%= f.fields_for :car_voluntary_insurances do |voluntary| %>
   <%= voluntary.label :company_voluntary_id %>
-  <%= voluntary.collection_select :company_voluntary_id, @car_insurance_companies, :id, :name, { prompt: true }, { class: "form-control" } %>
+  <%= voluntary.collection_select :company_voluntary_id, CarInsuranceCompany.all, :id, :name, { prompt: true }, { class: "form-control" } %>
   <br>
   <%= voluntary.label :personal_insurance %>
   <%= voluntary.select :personal_insurance, CarVoluntaryInsurance.personal_insurances.keys.to_a, { prompt: true }, { class: "form-control" } %>

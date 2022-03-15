@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_04_003457) do
+ActiveRecord::Schema.define(version: 2022_03_13_060444) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "namespace"
@@ -119,6 +119,24 @@ ActiveRecord::Schema.define(version: 2022_03_04_003457) do
     t.bigint "car_insurance_company_id", null: false
     t.index ["business_id"], name: "index_cars_on_business_id"
     t.index ["car_insurance_company_id"], name: "index_cars_on_car_insurance_company_id"
+  end
+
+  create_table "cover_documents", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.bigint "document_id", null: false
+    t.string "business_name"
+    t.date "submitted_on"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["document_id"], name: "index_cover_documents_on_document_id"
+  end
+
+  create_table "documents", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.integer "document_type"
+    t.date "created_on"
+    t.date "submitted_on"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "uuid", null: false
   end
 
   create_table "licenses", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
@@ -333,6 +351,7 @@ ActiveRecord::Schema.define(version: 2022_03_04_003457) do
   add_foreign_key "car_voluntary_insurances", "cars", column: "car_voluntary_id"
   add_foreign_key "cars", "businesses"
   add_foreign_key "cars", "car_insurance_companies"
+  add_foreign_key "cover_documents", "documents"
   add_foreign_key "news_users", "news"
   add_foreign_key "news_users", "users"
   add_foreign_key "orders", "businesses"

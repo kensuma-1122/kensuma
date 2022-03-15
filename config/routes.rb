@@ -42,7 +42,10 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     end
 
     resources :orders, param: :site_uu_id
-    resources :request_orders, only: %i[index show], param: :uuid
+    resources :request_orders, only: %i[index show], param: :uuid do
+      resources :sub_request_orders, except: %i[edit destroy show]
+    end
+    resources :documents, only: %i[index show edit update], param: :uuid
   end
   # =================================================================
 
@@ -61,5 +64,7 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
   get 'use' => 'system#use'
   # 特商法
   get 'law' => 'system#law'
+  # プライバシーポリシー
+  get 'privacy_policy' => 'system#privacy_policy'
   # =================================================================
 end

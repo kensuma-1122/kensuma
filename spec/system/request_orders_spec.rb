@@ -17,7 +17,7 @@ RSpec.describe 'RequestOrders', type: :system do
       click_button 'ログイン'
     end
 
-    context 'ログイン後' do
+    context '発注依頼' do
       it '発注一覧画面へ遷移できること' do
         visit users_request_orders_path
         expect(page).to have_content '発注依頼一覧'
@@ -28,6 +28,23 @@ RSpec.describe 'RequestOrders', type: :system do
         expect(page).to have_content '発注依頼詳細'
         expect(page).to have_content request_order.status_i18n
         expect(page).to have_content request_order.business.name
+      end
+    end
+
+    context '下請け発注依頼' do
+      it '下請け発注依頼登録画面' do
+        user = create(:user)
+        business = create(:business, user: user, name: 'test')
+
+        visit new_users_request_order_sub_request_order_path(request_order)
+        expect(page).to have_content '下請け発注依頼登録'
+
+        select business.name, from: 'business_ids'
+
+        click_button '登録'
+
+        # 登録後、発注依頼詳細画面へ
+        expect(page).to have_content '発注依頼詳細'
       end
     end
   end

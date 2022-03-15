@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :business do
     uuid { SecureRandom.uuid }
-    name { 'TEST企業' }
+    sequence(:name) { |n| "TEST企業#{n}" }
     name_kana { 'テストキギョウ' }
     branch_name { 'TEST支店' }
     representative_name { 'TEST代表' }
