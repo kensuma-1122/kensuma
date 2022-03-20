@@ -41,7 +41,11 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     resources :request_orders, only: %i[index show], param: :uuid do
       resources :sub_request_orders, except: %i[edit destroy show]
     end
-    resources :documents, only: %i[index show edit update], param: :uuid
+    resources :documents, only: %i[index show edit update], param: :uuid do
+      member do
+        get 'cover.pdf', to: 'documents#cover', as: 'cover'
+      end
+    end
   end
   # =================================================================
 

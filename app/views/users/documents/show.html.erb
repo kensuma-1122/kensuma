@@ -19,5 +19,6 @@
   <div class="card-footer">
     <%= link_to '編集', edit_users_document_path(@document), class: "btn btn-block btn-outline-dark" %>
     <%= link_to '書類一覧に戻る', users_documents_path, class: "btn btn-block btn-outline-secondary" %>
+    <%= link_to "PDF出力", cover_users_document_path(@document), target: :_blank, rel: "noopener noreferrer", class: "btn btn-md btn-block btn-default" %>
   </div>
 </div>

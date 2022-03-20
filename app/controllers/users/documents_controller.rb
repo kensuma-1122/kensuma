@@ -28,6 +28,18 @@ module Users
       end
     end
 
+    def cover
+      respond_to do |format|
+        format.html
+        format.pdf do
+          render pdf: '表紙',
+                layout: 'application',
+                encording: 'UTF-8',
+                page_size: 'A4'
+        end
+      end
+    end
+
     private
 
     def set_documents
