@@ -33,7 +33,7 @@ module Users
         format.html
         format.pdf do
           render pdf: '表紙',
-                layout: 'application',
+                layout: 'pdf',
                 encording: 'UTF-8',
                 page_size: 'A4'
         end
