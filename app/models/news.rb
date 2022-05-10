@@ -14,6 +14,8 @@ class News < ApplicationRecord
 
   scope :unread, ->(user) { where.not(id: user.news.ids).published }
 
+  before_create -> { self.site_uu_id = SecureRandom.uuid }
+
   private
 
   def unable_to_be_published
