@@ -16,6 +16,10 @@ class News < ApplicationRecord
 
   before_create -> { self.uuid = SecureRandom.uuid }
 
+  def to_param
+    uuid
+  end
+
   private
 
   def unable_to_be_published
