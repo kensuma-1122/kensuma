@@ -77,6 +77,12 @@
             <div class="col-md-4 mb-2">
               <%= RequestOrder.human_attribute_name(:status) %>：<%= sub_request_order.status_i18n %>
             </div>
+            <div class="col-md-4 mb-2">
+              <%= link_to "差し戻しする", "#", class: "btn btn-default" %>
+            </div>
+            <div class="col-md-4 mb-2">
+              <%= link_to "承認する", "#", class: "btn btn-default" %>
+            </div>
             <div class="col-md-8 mb-2">
               <%= Business.human_attribute_name(:name) %>：<%= sub_request_order.business.name %>
               <%= link_to "(書類一覧)", users_request_order_documents_path(@request_order) unless @request_order.parent_id.present? %>

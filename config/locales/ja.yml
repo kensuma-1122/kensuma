@@ -135,10 +135,10 @@ ja:
         completed: 完成
     request_order:
       status:
-        editing: 編集中
-        completed: 完了
-        request: 差し戻し
+        requested: リクエスト済
         submitted: 提出済
+        fix_requested: 修正依頼済
+        approved: 承認済
     worker:
       abo_blood_type:
         a: A型

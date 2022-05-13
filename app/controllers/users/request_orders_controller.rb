@@ -19,5 +19,11 @@ module Users
       end
       redirect_to users_request_order_path(@request_order)
     end
+
+    def fix_request
+    end
+
+    def approve
+    end
   end
 end
