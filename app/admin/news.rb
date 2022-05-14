@@ -4,6 +4,7 @@ ActiveAdmin.register News do
   index do
     selectable_column
     id_column
+    column :uuid
     column :title
     column :content
     column :delivered_at
@@ -11,6 +12,7 @@ ActiveAdmin.register News do
     actions
   end
 
+  filter :uuid
   filter :title
   filter :content
   filter :delivered_at
@@ -24,6 +26,12 @@ ActiveAdmin.register News do
       f.input :status
     end
     f.actions
+  end
+
+  controller do
+    def find_resource
+      scoped_collection.where(uuid: params[:id]).first!
+    end
   end
 
   # See permitted parameters documentation:
