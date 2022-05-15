@@ -1,5 +1,11 @@
 ActiveAdmin.register News do
-  permit_params :title, :content, :delivered_at, :status
+  permit_params :uuid, :title, :content, :delivered_at, :status
+
+  controller do
+    def find_resource
+      scoped_collection.where(uuid: params[:id]).first!
+    end
+  end
 
   index do
     selectable_column
@@ -18,6 +24,7 @@ ActiveAdmin.register News do
 
   form do |f|
     f.inputs do
+      f.input :uuid, input_html: { value: SecureRandom.uuid }, as: :hidden
       f.input :title
       f.input :content
       f.input :delivered_at
@@ -31,12 +38,12 @@ ActiveAdmin.register News do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :title, :content, :delivered_at, :status
+  # permit_params :uuid, :title, :content, :delivered_at, :status
   #
   # or
   #
   # permit_params do
-  #   permitted = [:title, :content, :delivered_at, :status]
+  #   permitted = [:uuid, :title, :content, :delivered_at, :status]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end

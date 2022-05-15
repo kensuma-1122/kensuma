@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :news do
+    uuid { SecureRandom.uuid }
     title { 'TEST1_TITLE' }
     content { 'TEST1_CONTENT' }
     delivered_at { '2022-02-15 07:59:49' }

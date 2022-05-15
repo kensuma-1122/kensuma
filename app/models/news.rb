@@ -2,6 +2,8 @@ class News < ApplicationRecord
   has_many :news_users, dependent: :destroy
   has_many :users, through: :news_users
 
+  before_create -> { self.uuid = SecureRandom.uuid }
+
   # default: 0
   enum status: { draft: 0, published: 1 }
 
@@ -13,6 +15,10 @@ class News < ApplicationRecord
   validate :news_must_be_delivered_before_now
 
   scope :unread, ->(user) { where.not(id: user.news.ids).published }
+
+  def to_param
+    uuid
+  end
 
   private
 

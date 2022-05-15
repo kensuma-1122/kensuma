@@ -7,7 +7,7 @@ module Users
     end
 
     def show
-      @news = News.find(params[:id])
+      @news = News.find_by(uuid: params[:uuid])
       update_read_status!
       unread_news_count
     end
