@@ -49,6 +49,10 @@
           <td><%= @business.business_type %></td>
         </tr>
         <tr>
+          <th><%= Business.human_attribute_name(:occupation_ids) %></th>
+          <td><%= @business.occupations.pluck(:name).join(', ') %></td>
+        </tr>
+        <tr>
           <th><%= Business.human_attribute_name(:stamp_images) %></th>
           <td>
             <% @business.stamp_images.each do |image| %>
@@ -58,7 +62,7 @@
         </tr>
       </tbody>
     </table>
-      
+
   </div>
   <div class="card-footer">
     <%= link_to "編集", edit_users_business_path, class: "btn btn-md btn-block btn-success" %>

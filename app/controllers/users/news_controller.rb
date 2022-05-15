@@ -3,7 +3,7 @@ module Users
     after_action :unread_news_count
 
     def index
-      @news_all = News.published.order(delivered_at: 'DESC')
+      @news_all = News.published.page(params[:page]).per(10).order(delivered_at: 'DESC')
     end
 
     def show

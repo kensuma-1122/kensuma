@@ -35,6 +35,9 @@ ja:
         carrier_up_id: 事業者ID
         stamp_images: 電子印
         business_type: 会社形態
+        occupation_ids: 職種（複数選択）
+      business_occupation:
+        occupation_id: 職種
       car:
         owner_name: 車両所有者氏名
         safety_manager: 安全運転管理者

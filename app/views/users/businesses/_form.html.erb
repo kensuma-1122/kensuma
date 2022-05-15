@@ -30,8 +30,12 @@
 <%= f.label :carrier_up_id %>
 <%= f.text_field :carrier_up_id, class: "form-control", placeholder: "Enter carrier_up_id" %>
 <br>
-<%= f.label :business_type%>
+<%= f.label :business_type %>
 <%= f.select :business_type, Business.business_types.keys.map { |k| [I18n.t("enums.business.business_type.#{k}"), k]}, {include_blank: true}, {class: "form-control"} %>
+<br>
+<%= f.label :occupation_ids %><br>
+<%= f.collection_select :occupation_ids, Occupation.all, :id, :name, { selected: f.object.occupations.ids }, { class: "pref form-control", multiple: true } %>
+<br>
 <br>
 <% if business.stamp_images.present? %>
   <% business.stamp_images.each_with_index do |image, index| %>

@@ -2,12 +2,12 @@
 <div class="content">
   <div class="container-fluid">
     <div class="row">
-      <table class='table card card-body'>
+      <table class="table card card-body">
         <tbody>
-          <tr><td class='table-secondary'><%= @news.title %></td></tr>
-          <tr><td><%= @news.content %></td></tr>
-          <tr><td>配信日: <%= l(@news.delivered_at, format: :long) %></td></tr>
-          <tr><td>公開状態: <%= @news.status_i18n %></td></tr>
+          <tr class="card bg-light"><td><%= @news.title %></td></tr>
+          <tr class="card"><td><%= simple_format(@news.content) %></td></tr>
+          <tr class="card"><td>配信日: <%= l(@news.delivered_at, format: :long) %></td></tr>
+          <tr class="card"><td>公開状態: <%= @news.status_i18n %></td></tr>
         </tbody>
       </table>
       <%= link_to 'お知らせ一覧に戻る', users_news_index_path %>

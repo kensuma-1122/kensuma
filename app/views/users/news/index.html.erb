@@ -5,13 +5,12 @@
       <% @news_all.each do |news| %>
         <table class='table card card-body'>
           <tbody>
-            <tr><td class='table-secondary'><%= link_to news.title, users_news_path(news) %></td></tr>
-            <tr><td><%= news.content %></td></tr>
-            <tr><td>配信日: <%= l(news.delivered_at, format: :long) %></td></tr>
-            <tr><td>公開状態: <%= news.status_i18n %></td></tr>
+            <tr class="card bg-light"><td><%= link_to news.title, users_news_path(news) %></td></tr>
+            <tr class="card"><td>配信日: <%= l(news.delivered_at, format: :long) %></td></tr>
           </tbody>
         </table>
       <% end %>
+      <%= paginate @news_all %>
     </div><!-- /.row -->
   </div><!-- /.container-fluid -->
 </div>
