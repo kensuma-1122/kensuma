@@ -13,7 +13,7 @@ class Document < ApplicationRecord
     doc_5th:                    5, # 作業員名簿
     doc_6th:                    6,
     doc_7th:                    7,
-    doc_8th:                    8
+    doc_8th:                    8 # 工事用・通勤用車両届
   }
 
   def to_param

@@ -42,6 +42,14 @@
               %>
             </td>
           </tr>
+          <tr>
+            <td align="center"> <!-- 工事用・通勤用車両届 -->
+              <%= link_to @documents.find_by(document_type: 8).document_type_i18n,
+                          users_request_order_document_path(params[:request_order_uuid],
+                          @documents.find_by(document_type: 8))
+              %>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>

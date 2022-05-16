@@ -60,6 +60,14 @@
             <p><%= @documents.find_by(document_type: 5).document_type_i18n %></p>
           </li>
         <% end %>
+        
+        <!-- 工事用・通勤用車両届 -->
+        <%= link_to users_request_order_document_path(params[:request_order_uuid],  @documents.find_by(document_type: 8)), class:"nav-link" do %>
+          <li class="nav-item">
+            <i class="nav-icon fas fa-file"></i>
+            <p><%= @documents.find_by(document_type: 8).document_type_i18n %></p>
+          </li>
+        <% end %>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

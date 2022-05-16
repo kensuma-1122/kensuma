@@ -81,6 +81,10 @@ gem 'aws-sdk-rails'
 # ページネーション
 gem 'kaminari'
 
+# form object
+gem 'dry-validation'
+gem 'reform'
+
 group :development, :test do
   # ERD生成
   gem 'rails-erd'

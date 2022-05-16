@@ -83,6 +83,54 @@ module Users
           business:      current_business
         )
 
+        # 工事・通勤用車両届
+        request_order.documents.build(
+          document_type: 8,
+          created_on:    Date.current,
+          submitted_on:  Date.current,
+          content:       {
+            'prime_contractor_confirmation':                        '',
+            'submitted_on':                                         '',
+            'construction_or_commute1':                             '',
+            'business_name':                                        '',
+            'prime_contractor_name':                                '',
+            'business_director':                                    '',
+            'subcontractor_name':                                   '',
+            'subcontructor_number':                                 '◯',
+            'site_supervisor':                                      '',
+            'seal':                                                 '印',
+            'construction_or_commute2':                             '',
+            'start_of_use':                                         '',
+            'end_of_use':                                           '',
+            'vehicle_owner':                                        '',
+            'safety_drive_administrator':                           '',
+            'vehicle_type':                                         '',
+            'vehicle_number':                                       '',
+            'start_of_valid_vehicle_inspection':                    '',
+            'end_of_valid_vehicle_inspection':                      '',
+            'vehicle_operator_name':                                '',
+            'vehicle_operator_birth_date':                          '',
+            'vehicle_operator_address':                             '',
+            'vehicle_operator_driving_license_type':                '',
+            'vehicle_operator_driving_license_number':              '',
+            'vehicle_liability_insurance_company_name':             '',
+            'vehicle_liability_insurance_number':                   '',
+            'vehicle_liability_insurance_start_of_validity':        '',
+            'vehicle_liability_insurance_end_of_validity':          '',
+            'voluntary_insurance_company_name':                     '',
+            'voluntary_insurance_number':                           '',
+            'voluntary_insurance_bodily_injury_liability_amount':   '',
+            'voluntary_insurance_property_damage_liability_amount': '',
+            'voluntary_insurance_start_of_validity':                '',
+            'voluntary_insurance_end_of_validity':                  '',
+            'departing_from':                                       '',
+            'routing_point1':                                       '',
+            'routing_point2':                                       '',
+            'arriving_at':                                          ''
+          },
+          business:      current_business
+        )
+
         if @order.save!
           redirect_to users_order_url(@order)
         end

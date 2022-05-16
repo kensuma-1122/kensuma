@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_07_064223) do
+ActiveRecord::Schema.define(version: 2022_05_10_115852) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "namespace"
@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 2022_05_07_064223) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "business_occupations", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.bigint "business_id", null: false
+    t.bigint "occupation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_business_occupations_on_business_id"
+    t.index ["occupation_id"], name: "index_business_occupations_on_occupation_id"
   end
 
   create_table "businesses", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
@@ -186,6 +195,12 @@ ActiveRecord::Schema.define(version: 2022_05_07_064223) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["news_id"], name: "index_news_users_on_news_id"
     t.index ["user_id"], name: "index_news_users_on_user_id"
+  end
+
+  create_table "occupations", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "orders", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
@@ -371,6 +386,8 @@ ActiveRecord::Schema.define(version: 2022_05_07_064223) do
   end
 
   add_foreign_key "articles", "users"
+  add_foreign_key "business_occupations", "businesses"
+  add_foreign_key "business_occupations", "occupations"
   add_foreign_key "businesses", "users"
   add_foreign_key "car_voluntary_insurances", "car_insurance_companies", column: "company_voluntary_id"
   add_foreign_key "car_voluntary_insurances", "cars", column: "car_voluntary_id"
