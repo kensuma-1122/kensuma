@@ -483,21 +483,23 @@
 <!-- m_News -->
 <g id="node11" class="node">
 <title>m_News</title>
-<path fill="none" stroke="black" d="M1369.5,-1074.5C1369.5,-1074.5 1489.5,-1074.5 1489.5,-1074.5 1495.5,-1074.5 1501.5,-1080.5 1501.5,-1086.5 1501.5,-1086.5 1501.5,-1170.5 1501.5,-1170.5 1501.5,-1176.5 1495.5,-1182.5 1489.5,-1182.5 1489.5,-1182.5 1369.5,-1182.5 1369.5,-1182.5 1363.5,-1182.5 1357.5,-1176.5 1357.5,-1170.5 1357.5,-1170.5 1357.5,-1086.5 1357.5,-1086.5 1357.5,-1080.5 1363.5,-1074.5 1369.5,-1074.5"/>
-<text text-anchor="start" x="1413" y="-1169.7" font-family="Arial Bold" font-size="11.00">News</text>
-<polyline fill="none" stroke="black" points="1357.5,-1162.5 1501.5,-1162.5 "/>
-<text text-anchor="start" x="1364.5" y="-1149.5" font-family="Arial" font-size="10.00">content </text>
-<text text-anchor="start" x="1400.5" y="-1149.5" font-family="Arial Italic" font-size="10.00" fill="#999999">text (65535)</text>
-<text text-anchor="start" x="1364.5" y="-1136.5" font-family="Arial" font-size="10.00">created_at </text>
-<text text-anchor="start" x="1413.5" y="-1136.5" font-family="Arial Italic" font-size="10.00" fill="#999999">datetime (6,0) ∗</text>
-<text text-anchor="start" x="1364.5" y="-1123.5" font-family="Arial" font-size="10.00">delivered_at </text>
-<text text-anchor="start" x="1420.5" y="-1123.5" font-family="Arial Italic" font-size="10.00" fill="#999999">datetime (0,0)</text>
-<text text-anchor="start" x="1364.5" y="-1110.5" font-family="Arial" font-size="10.00">status </text>
-<text text-anchor="start" x="1395.5" y="-1110.5" font-family="Arial Italic" font-size="10.00" fill="#999999">integer ∗</text>
-<text text-anchor="start" x="1364.5" y="-1097.5" font-family="Arial" font-size="10.00">title </text>
-<text text-anchor="start" x="1383.5" y="-1097.5" font-family="Arial Italic" font-size="10.00" fill="#999999">string ∗</text>
-<text text-anchor="start" x="1364.5" y="-1084.5" font-family="Arial" font-size="10.00">updated_at </text>
-<text text-anchor="start" x="1416.5" y="-1084.5" font-family="Arial Italic" font-size="10.00" fill="#999999">datetime (6,0) ∗</text>
+<path fill="none" stroke="black" d="M1369.5,-1068C1369.5,-1068 1489.5,-1068 1489.5,-1068 1495.5,-1068 1501.5,-1074 1501.5,-1080 1501.5,-1080 1501.5,-1177 1501.5,-1177 1501.5,-1183 1495.5,-1189 1489.5,-1189 1489.5,-1189 1369.5,-1189 1369.5,-1189 1363.5,-1189 1357.5,-1183 1357.5,-1177 1357.5,-1177 1357.5,-1080 1357.5,-1080 1357.5,-1074 1363.5,-1068 1369.5,-1068"/>
+<text text-anchor="start" x="1413" y="-1176.2" font-family="Arial Bold" font-size="11.00">News</text>
+<polyline fill="none" stroke="black" points="1357.5,-1169 1501.5,-1169 "/>
+<text text-anchor="start" x="1364.5" y="-1155.5" font-family="Arial" font-size="10.00">content </text>
+<text text-anchor="start" x="1400.5" y="-1155.5" font-family="Arial Italic" font-size="10.00" fill="#999999">text (65535)</text>
+<text text-anchor="start" x="1364.5" y="-1142.5" font-family="Arial" font-size="10.00">created_at </text>
+<text text-anchor="start" x="1413.5" y="-1142.5" font-family="Arial Italic" font-size="10.00" fill="#999999">datetime (6,0) ∗</text>
+<text text-anchor="start" x="1364.5" y="-1129.5" font-family="Arial" font-size="10.00">delivered_at </text>
+<text text-anchor="start" x="1420.5" y="-1129.5" font-family="Arial Italic" font-size="10.00" fill="#999999">datetime (0,0)</text>
+<text text-anchor="start" x="1364.5" y="-1116.5" font-family="Arial" font-size="10.00">status </text>
+<text text-anchor="start" x="1395.5" y="-1116.5" font-family="Arial Italic" font-size="10.00" fill="#999999">integer ∗</text>
+<text text-anchor="start" x="1364.5" y="-1103.5" font-family="Arial" font-size="10.00">title </text>
+<text text-anchor="start" x="1383.5" y="-1103.5" font-family="Arial Italic" font-size="10.00" fill="#999999">string ∗</text>
+<text text-anchor="start" x="1364.5" y="-1090.5" font-family="Arial" font-size="10.00">updated_at </text>
+<text text-anchor="start" x="1416.5" y="-1090.5" font-family="Arial Italic" font-size="10.00" fill="#999999">datetime (6,0) ∗</text>
+<text text-anchor="start" x="1364.5" y="-1077.5" font-family="Arial" font-size="10.00">uuid </text>
+<text text-anchor="start" x="1386.5" y="-1077.5" font-family="Arial Italic" font-size="10.00" fill="#999999">string ∗</text>
 </g>
 <!-- m_NewsUser -->
 <g id="node12" class="node">
@@ -517,10 +519,10 @@
 <!-- m_News&#45;&gt;m_NewsUser -->
 <g id="edge1" class="edge">
 <title>m_News&#45;&gt;m_NewsUser</title>
-<path fill="none" stroke="black" d="M1427.67,-1069.28C1425.8,-1009.51 1422.9,-917.38 1421.11,-860.27"/>
-<ellipse fill="none" stroke="black" cx="1427.75" cy="-1071.79" rx="2.4" ry="2.4"/>
-<ellipse fill="black" stroke="black" cx="1420.84" cy="-851.73" rx="2.4" ry="2.4"/>
-<polygon fill="black" stroke="black" points="1423.2,-860.06 1420.92,-854.13 1419.01,-860.2 1423.2,-860.06"/>
+<path fill="none" stroke="black" d="M1427.48,-1063.03C1425.6,-1003.14 1422.83,-915.13 1421.1,-859.99"/>
+<ellipse fill="none" stroke="black" cx="1427.56" cy="-1065.57" rx="2.4" ry="2.4"/>
+<ellipse fill="black" stroke="black" cx="1420.83" cy="-851.49" rx="2.4" ry="2.4"/>
+<polygon fill="black" stroke="black" points="1423.2,-859.82 1420.91,-853.88 1419,-859.95 1423.2,-859.82"/>
 </g>
 <!-- m_Order&#45;&gt;m_RequestOrder -->
 <g id="edge16" class="edge">
