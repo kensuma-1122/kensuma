@@ -71,6 +71,7 @@ ja:
         business_id: 事業所
         status: ステータス
       worker:
+        uuid: uuid
         name: 名前
         name_kana: 名前カナ
         country: 国籍

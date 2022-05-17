@@ -1,7 +1,7 @@
 <%= render 'shared/error_massages', object: f.object %>
 
 <%= f.label :uuid %>
-<%= f.text_field :uuid, class: "form-control", placeholder: "Enter uuid" %>
+<%= f.text_field :uuid, class: "form-control", placeholder: Worker.human_attribute_name(:uuid) %>
 
 <%= f.label :name %>
 <%= f.text_field :name, class: "form-control", placeholder: Worker.human_attribute_name(:name) %><br>
