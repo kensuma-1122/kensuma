@@ -27,7 +27,7 @@ ActiveAdmin.register News do
       f.input :uuid, input_html: { value: SecureRandom.uuid }, as: :hidden
       f.input :title
       f.input :content
-      f.input :delivered_at, label: "公開日予定日", as: :datetime_picker
+      f.input :delivered_at, label: "公開予定日", as: :datetime_picker
       f.input :status
     end
     f.actions
