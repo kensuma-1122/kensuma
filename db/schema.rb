@@ -186,7 +186,6 @@ ActiveRecord::Schema.define(version: 2022_05_16_131856) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "uuid", null: false
   end
 
   create_table "news_users", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
