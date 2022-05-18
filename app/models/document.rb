@@ -1,4 +1,5 @@
 class Document < ApplicationRecord
+  OPERATABLE_DOC_TYPE = %w[cover_document table_of_contents_document doc_2nd doc_5th doc_8th].freeze
   belongs_to :business
   belongs_to :request_order
 

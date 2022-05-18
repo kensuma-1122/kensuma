@@ -55,7 +55,7 @@
             </div>
             <div class="col-md-8 mb-2">
               <%= Business.human_attribute_name(:name) %>：<%= @request_order.business.name %>
-              <%= link_to "(書類一覧)", users_request_order_documents_path(@request_order) unless @request_order.parent_id.present? %>
+              <%= link_to "(書類一覧)", users_request_order_documents_path(@request_order) %>
             </div>
             </div>
           </div>
@@ -108,7 +108,7 @@
             <% end %>
             <div class="col-md-8 mb-2">
               <%= Business.human_attribute_name(:name) %>：<%= sub_request_order.business.name %>
-              <%= link_to "(書類一覧)", users_request_order_documents_path(@request_order) unless @request_order.parent_id.present? %>
+              <%= link_to "(書類一覧)", users_request_order_sub_request_order_documents_path(@request_order, sub_request_order) %>
             </div>
             </div>
           </div>
