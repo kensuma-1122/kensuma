@@ -21,7 +21,8 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
   }
 
   namespace :users do
-    resources :cars do
+    resources :cars, param: :uuid
+    resources :cars, except: %i[index create new show edit update destroy] do
       patch 'update_images'
     end
     resources :general_users

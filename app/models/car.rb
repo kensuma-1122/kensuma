@@ -17,4 +17,8 @@ class Car < ApplicationRecord
   before_create -> { self.uuid = SecureRandom.uuid }
 
   mount_uploaders :images, CarsUploader
+
+  def to_param
+    uuid
+  end
 end
