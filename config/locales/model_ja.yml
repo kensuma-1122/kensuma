@@ -39,6 +39,7 @@ ja:
       business_occupation:
         occupation_id: 職種
       car:
+        uuid: uuid
         owner_name: 車両所有者氏名
         safety_manager: 安全運転管理者
         vehicle_model: 車両型式

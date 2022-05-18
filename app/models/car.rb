@@ -14,5 +14,7 @@ class Car < ApplicationRecord
   validates :liability_insurance_start_on, presence: true
   validates :liability_insurance_end_on, presence: true
 
+  before_create -> { self.uuid = SecureRandom.uuid }
+
   mount_uploaders :images, CarsUploader
 end
