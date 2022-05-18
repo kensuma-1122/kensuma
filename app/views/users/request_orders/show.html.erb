@@ -10,7 +10,7 @@
             <div class="row">
               <div class="col-md-4 mb-2">
                 <% if @request_order.submitted? %>
-                  <button class="btn btn-block btn-outline-primary"disabled>申請済</button> 
+                  <button class="btn btn-block btn-outline-primary"disabled>申請済</button>
                 <% elsif @sub_request_orders.blank? %>
                   <%= link_to "申請する", users_request_order_submit_path(@request_order), method: :post, data: { confirm: "下請けへ未依頼ですが、申請して宜しいでしょうか？" }, class: "btn btn-block btn-outline-primary" %>
                 <% else %>
@@ -45,7 +45,7 @@
             </div>
             <div class="col-md-8 mb-2">
               <%= Business.human_attribute_name(:name) %>：<%= @request_order.business.name %>
-              <%= link_to "(書類一覧)", users_request_order_documents_path(@request_order) unless @request_order.parent_id.present? %>
+              <%= link_to "(書類一覧)", users_request_order_documents_path(@request_order) %>
             </div>
             </div>
           </div>
@@ -79,7 +79,7 @@
             </div>
             <div class="col-md-8 mb-2">
               <%= Business.human_attribute_name(:name) %>：<%= sub_request_order.business.name %>
-              <%= link_to "(書類一覧)", users_request_order_documents_path(@request_order) unless @request_order.parent_id.present? %>
+              <%= link_to "(書類一覧)", users_request_order_sub_request_order_documents_path(@request_order, sub_request_order) %>
             </div>
             </div>
           </div>

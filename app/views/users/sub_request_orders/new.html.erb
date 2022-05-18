@@ -9,7 +9,7 @@
       <%= f.collection_select :business_ids, @businesses, :id, :name, { include_hidden: false }, { required: true, multiple: true, size: 5, class: "form-control" } %>
       <br>
       <%= f.submit yield(:btn_text), class: "btn btn-md btn-block btn-primary" %>
-      <%= link_to "一覧画面へ", users_orders_path, class: "btn btn-md btn-block btn-default" %>
+      <%= link_to "戻る", users_request_order_path(@request_order), class: "btn btn-md btn-block btn-default" %>
     <% end %>
   </div>
 </div>

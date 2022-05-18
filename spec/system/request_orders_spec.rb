@@ -47,5 +47,19 @@ RSpec.describe 'RequestOrders', type: :system do
         expect(page).to have_content '発注依頼詳細'
       end
     end
+
+    context '下請け発注依頼～発注詳細' do
+      before(:each) do
+        visit new_users_request_order_sub_request_order_path(request_order)
+      end
+
+      it '詳細画面へ遷移すること' do
+        expect(page).to have_content '下請け発注依頼登録'
+        click_on '戻る'
+        expect(page).to have_content '発注依頼詳細'
+        expect(page).to have_content request_order.status_i18n
+        expect(page).to have_content request_order.business.name
+      end
+    end
   end
 end

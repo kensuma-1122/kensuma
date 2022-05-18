@@ -62,11 +62,17 @@ docker-compose down
 # bundle install
 docker-compose run --rm app bundle install
 
+# rails db:create
+docker-compose run --rm app rails db:create
+
 # rails db:migrate
 docker-compose run --rm app rails db:migrate
 
 # rails db:seed
 docker-compose run --rm app rails db:seed
+
+# rails db:seed_fu
+docker-compose run --rm app rails db:seed_fu
 ```
 
 ---

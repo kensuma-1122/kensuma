@@ -11,7 +11,7 @@ module Users
         format.html
         format.pdf do
           case @document.document_type
-          when 'cover_document', 'table_of_contents_document', 'doc_2nd'
+          when 'cover_document', 'table_of_contents_document', 'doc_2nd', 'doc_8th'
             render pdf: '書類',
               layout: 'pdf',
               encording: 'UTF-8',
@@ -59,6 +59,8 @@ module Users
         document.update(doc_2nd_params)
       when 'doc_5th'
         document.update(doc_5th_params)
+      when 'doc_8th'
+        document.update(doc_8th_params)
       end
     end
 
@@ -136,6 +138,52 @@ module Users
             doc5_8_040_new_education:                   params.dig(:document, :content, :worker, :doc5_8_040_new_education),
             doc5_8_041_notebook:                        params.dig(:document, :content, :worker, :doc5_8_041_notebook)
           }
+        }
+      )
+    end
+
+    # 工事用・通勤用車両届
+    def doc_8th_params
+      params.require(:document).permit.merge(
+        content: {
+          prime_contractor_confirmation:                        params[:document][:content][0],  # 「元請会社の確認欄」12-001
+          submitted_on:                                         params[:document][:content][1],  # 「提出日（西暦）」12-002
+          construction_or_commute1:                             params[:document][:content][2],  # 工事用 or 通勤用 12-003
+          business_name:                                        params[:document][:content][3],  # 「事業所名」12-004
+          prime_contractor_name:                                params[:document][:content][4],  # 「一次会社名」12-006
+          business_director:                                    params[:document][:content][5],  # 「各会社の現場代理人名」12-005
+          subcontractor_name:                                   params[:document][:content][6],  # 自社の「会社名」12-008
+          subcontructor_number:                                 params[:document][:content][7],  # 「〇次」12-007
+          site_supervisor:                                      params[:document][:content][8],  # 「各会社の現場代理人」12-009
+          seal:                                                 params[:document][:content][9],  # 印鑑 12-010
+          construction_or_commute2:                             params[:document][:content][10], # 工事用 or 通勤用12-011
+          start_of_use:                                         params[:document][:content][11], # 各車両の「使用期間・始期（西暦）」12-012
+          end_of_use:                                           params[:document][:content][12], # 「各車両の使用期間・終期（西暦）」12-013
+          vehicle_owner:                                        params[:document][:content][13], # 各車両の「車両所有者名」12-014
+          safety_drive_administrator:                           params[:document][:content][14], # 各車両の「安全運転管理者」12-015
+          vehicle_type:                                         params[:document][:content][15], # 各車両の「車両型式」12-016
+          vehicle_number:                                       params[:document][:content][16], # 各車両の「車両番号」12-017
+          start_of_valid_vehicle_inspection:                    params[:document][:content][17], # 各車両の「車検期間・始期（西暦）」12-018
+          end_of_valid_vehicle_inspection:                      params[:document][:content][18], # 各車両の「車検期間・終期（西暦）」12-019
+          vehicle_operator_name:                                params[:document][:content][19], # 作業員情報の「氏名」12-020
+          vehicle_operator_birth_date:                          params[:document][:content][20], # 作業員情報の「生年月日」12-021
+          vehicle_operator_address:                             params[:document][:content][21], # 作業員情報の「住所」12-022
+          vehicle_operator_driving_license_type:                params[:document][:content][22], # 作業員情報の「自動車運転免許の種類」12-023
+          vehicle_operator_driving_license_number:              params[:document][:content][23], # 作業員情報の「自動車運転免許の番号」12-024
+          vehicle_liability_insurance_company_name:             params[:document][:content][24], # 各車両の「自賠責保険会社名」12-025
+          vehicle_liability_insurance_number:                   params[:document][:content][25], # 各車両の「自賠責保険の証券番号」12-026
+          vehicle_liability_insurance_start_of_validity:        params[:document][:content][26], # 各車両の「自賠責保険期間・始期（西暦）」12-027
+          vehicle_liability_insurance_end_of_validity:          params[:document][:content][27], # 各車両の「自賠責保険期間・終期（西暦）」12-028
+          voluntary_insurance_company_name:                     params[:document][:content][28], # 各車両の「任意保険会社名」12-029
+          voluntary_insurance_number:                           params[:document][:content][29], # 各車両の「任意保険の証券番号」12-030
+          voluntary_insurance_bodily_injury_liability_amount:   params[:document][:content][30], # 各車両の「任意保険の対人」12-031
+          voluntary_insurance_property_damage_liability_amount: params[:document][:content][31], # 各車両の「任意保険の対物」12-032
+          voluntary_insurance_start_of_validity:                params[:document][:content][32], # 各車両の「任意保険期間・始期（西暦）」12-033
+          voluntary_insurance_end_of_validity:                  params[:document][:content][33], # 各車両の「任意保険期間・終期（西暦）」12-034
+          departing_from:                                       params[:document][:content][34], # 各車両の「運行経路(自)」12-035
+          routing_point1:                                       params[:document][:content][35], # 各車両の「運行経路の経由地1」12-036
+          routing_point2:                                       params[:document][:content][36], # 各車両の「運行経路の経由地2」12-037
+          arriving_at:                                          params[:document][:content][37]  # 各車両の「目的地（至）」12-038
         }
       )
     end

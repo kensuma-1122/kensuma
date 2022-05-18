@@ -18,6 +18,7 @@ module Users
         carrier_up_id:       'test',
         business_type:       0
       )
+      @business.business_occupations.build
     end
 
     def create
@@ -29,7 +30,9 @@ module Users
       end
     end
 
-    def edit; end
+    def edit
+      @business.business_occupations.build
+    end
 
     def update
       if @business.update(business_params)
@@ -61,8 +64,11 @@ module Users
     end
 
     def business_params
-      params.require(:business).permit(:uuid, :name, :name_kana, :branch_name, :representative_name, :email, :address, :post_code,
-        :phone_number, :carrier_up_id, :business_type, { stamp_images: [] }, :user_id)
+      params.require(:business).permit(
+        :uuid, :name, :name_kana, :branch_name, :representative_name, :email, :address, :post_code,
+        :phone_number, :carrier_up_id, :business_type, { stamp_images: [] }, :user_id,
+        occupation_ids: []
+      )
     end
   end
 end

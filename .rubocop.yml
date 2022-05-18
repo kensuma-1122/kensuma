@@ -161,7 +161,7 @@ Lint/SuppressedException:
 Metrics/AbcSize:
   Exclude:
     - 'lib/tasks/helpers/test_data_helper.rb' # テストデータ定義
-  Max: 100
+  Max: 160
 
 # コードの複雑さ判定を無効
 Metrics/PerceivedComplexity:
@@ -204,7 +204,7 @@ Metrics/CyclomaticComplexity:
 Metrics/MethodLength:
   Exclude:
     - 'lib/tasks/helpers/test_data_helper.rb' # テストデータ定義
-  Max: 100
+  Max: 110
 
 # モジュール長カウントの設定を調整
 Metrics/ModuleLength:
