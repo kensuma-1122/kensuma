@@ -9,7 +9,6 @@ module Users
     def new
       @worker = current_business.workers.new(
         # テスト用デフォルト値 ==========================
-        uuid:                          '1',
         name:                          'サンプル作業員',
         name_kana:                     'サンプルサギョウイン',
         country:                       '日本',
@@ -156,7 +155,7 @@ module Users
     end
 
     def worker_params
-      params.require(:worker).permit(:uuid, :name, :name_kana,
+      params.require(:worker).permit(:name, :name_kana,
         :country, :my_address, :my_phone_number, :family_address,
         :family_phone_number, :birth_day_on, :abo_blood_type,
         :rh_blood_type, :job_type, :hiring_on, :experience_term_before_hiring,
