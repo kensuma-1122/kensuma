@@ -152,7 +152,7 @@ module Users
     private
 
     def set_worker
-      @worker = current_business.workers.find(params[:id])
+      @worker = current_business.workers.find_by(uuid: params[:uuid])
     end
 
     def worker_params

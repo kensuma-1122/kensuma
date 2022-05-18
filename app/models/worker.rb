@@ -43,4 +43,8 @@ class Worker < ApplicationRecord
   validates :blank_term, presence: true
 
   before_create -> { self.uuid = SecureRandom.uuid }
+
+  def to_param
+    uuid
+  end
 end
