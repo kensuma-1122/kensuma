@@ -9,14 +9,22 @@
           <div class="card-body">
             <div class="row">
               <div class="col-md-4 mb-2">
-                <% if @request_order.submitted? %>
-                  <button class="btn btn-block btn-outline-primary"disabled>提出済</button>
-                <% elsif @request_order.approved? %> 
+                <!-- 一番元請のボタン -->
+                <% if @request_order.parent_id.nil? && @request_order.approved? %>
                   <button class="btn btn-block btn-outline-primary"disabled>承認済</button>
-                <% elsif @sub_request_orders.blank? %>
-                  <%= link_to "提出する", users_request_order_submit_path(@request_order), method: :post, data: { confirm: "下請けへ未依頼ですが、提出して宜しいですか？" }, class: "btn btn-block btn-outline-primary" %>
+                <% elsif @request_order.parent_id.nil? %>
+                  <%= link_to "承認する", users_request_order_submit_path(@request_order), method: :post, data: { confirm: "書類を承認して宜しいですか？" }, class: "btn btn-block btn-outline-primary" %>
+                <!-- 下請けのボタン -->
                 <% else %>
-                  <%= link_to "提出する", users_request_order_submit_path(@request_order), method: :post, data: { confirm: "書類を提出して宜しいですか？" }, class: "btn btn-block btn-outline-primary" %>
+                  <% if @request_order.submitted? %>
+                    <button class="btn btn-block btn-outline-primary"disabled>提出済</button>
+                  <% elsif @request_order.approved? %> 
+                    <button class="btn btn-block btn-outline-primary"disabled>承認済</button>
+                  <% elsif @sub_request_orders.blank? %>
+                    <%= link_to "提出する", users_request_order_submit_path(@request_order), method: :post, data: { confirm: "下請けへ未依頼ですが、提出して宜しいですか？" }, class: "btn btn-block btn-outline-primary" %>
+                  <% else %>
+                    <%= link_to "提出する", users_request_order_submit_path(@request_order), method: :post, data: { confirm: "書類を提出して宜しいですか？" }, class: "btn btn-block btn-outline-primary" %>
+                  <% end %>
                 <% end %>
               </div>
                 <div class="col-md-4 mb-2">

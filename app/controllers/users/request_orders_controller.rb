@@ -11,7 +11,10 @@ module Users
 
     def submit
       @request_order = current_business.request_orders.find_by(uuid: params[:uuid])
-      if @request_order.children.all? { |r| r.status == 'approved' }
+      if @request_order.parent_id.nil? && @request_order.children.all? { |r| r.status == 'approved' }
+        @request_order.approved!
+        flash[:success] = '発注依頼を承認しました'
+      elsif @request_order.children.all? { |r| r.status == 'approved' }
         @request_order.submitted!
         flash[:success] = '発注依頼を提出済にしました'
       else
