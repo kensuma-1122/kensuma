@@ -18,14 +18,13 @@ import 'bootstrap';
 import '../stylesheets/users';
 import "@fortawesome/fontawesome-free/js/all";
 import "@nathanvda/cocoon"
-// import 'select2'
-// import 'select2/dist/css/select2.css'
 
 document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip()
   $('.js-select').select2({
-    multiple: "multiple",
-    placeholder: '作業員を選択',
+    width: 'resolve',
+    theme: 'classic',
+    multiple: 'multiple',
     allowClear: true
   })
 });
