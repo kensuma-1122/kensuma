@@ -12,22 +12,14 @@ module Users
     end
 
     def submit
-      unless @request_order.parent_id.nil?
-        if @request_order.children.all? { |r| r.status == 'approved' }
-          @request_order.submitted!
-          flash[:success] = '発注依頼を提出済にしました'
-        else
-          flash[:danger] = '下請けの書類がまだ未承認です'
-        end
+      if @request_order.parent_id.nil? && @request_order.children.all? { |r| r.status == 'approved' }
+        @request_order.approved!
+        flash[:success] = '発注依頼を承認しました'
+      elsif @request_order.children.all? { |r| r.status == 'approved' }
+        @request_order.submitted!
+        flash[:success] = '発注依頼を提出済にしました'
       else
-        if !@request_order.children.blank? && @request_order.children.all? { |r| r.status == 'approved' }
-          @request_order.approved!
-          flash[:success] = '発注依頼を承認しました'
-        elsif @request_order.children.blank?
-          flash[:danger] = '下請けへ未依頼です'
-        else
-          flash[:danger] = '下請けの書類がまだ未承認です'
-        end
+        flash[:danger] = '下請けの書類がまだ未承認です'
       end
       redirect_to users_request_order_path(@request_order)
     end
