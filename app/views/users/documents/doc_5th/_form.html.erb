@@ -105,7 +105,7 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <%= f.label '作業員選択' %>
+        <%= f.label '作業員選択1' %>
         <%= f.select :content, @workers.map { |worker| [worker.name, worker.id] },
                                             { include_hidden: false, selected: @document.content["worker_id"] },
                                             { name: "document[content][worker][]", class: "js-select", style: "width: 100%" }
