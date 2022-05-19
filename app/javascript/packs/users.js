@@ -24,7 +24,7 @@ import 'select2/dist/css/select2.css'
 document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip()
   $('.js-select').select2({
-    // multiple: "multiple",
+    multiple: "multiple",
     placeholder: '作業員を選択',
     allowClear: true
   })
