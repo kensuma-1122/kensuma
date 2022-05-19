@@ -4,8 +4,8 @@ RSpec.describe 'News', type: :system do
   let!(:admin) { create(:admin, email: 'foo@example.com', password: '123456', password_confirmation: '123456') }
   let!(:user) { create(:user, email: 'userx@example.com', password: '123456', password_confirmation: '123456') }
   let!(:business) { create(:business, user: user) } # userのbusinessが無いとログイン後にダッシュボードに遷移できないので追加
-  let!(:news_a) { create(:news, title: 'お知らせ-A', content: 'これはお知らせ-Aの内容です', status: 'draft', delivered_at: DateTime.now.yesterday) }
-  let!(:news_b) { create(:news, title: 'お知らせ-B', content: 'これはお知らせ-Bの内容です', status: 'published', delivered_at: DateTime.now.yesterday) }
+  let!(:news_a) { create(:news, title: 'お知らせ-A', content: 'これはお知らせ-Aの内容です', status: 'draft', delivered_at: DateTime.now.yesterday, uuid: SecureRandom.uuid) }
+  let!(:news_b) { create(:news, title: 'お知らせ-B', content: 'これはお知らせ-Bの内容です', status: 'published', delivered_at: DateTime.now.yesterday, uuid: SecureRandom.uuid) }
 
   before(:each) do
     user.skip_confirmation! # ユーザー作成時のメールによる認証をスキップできる
@@ -24,11 +24,7 @@ RSpec.describe 'News', type: :system do
       it 'お知らせ編集ページで各項目を入力(正常系)' do
         fill_in 'news[title]', with: 'お知らせ-Aの編集' # 内容を書き換える
         fill_in 'news[content]', with: 'お知らせ-Aの内容の編集です' # 内容を書き換える
-        select '2022', from: 'news[delivered_at(1i)]'
-        select '1月', from: 'news[delivered_at(2i)]'
-        select '1', from: 'news[delivered_at(3i)]'
-        select '01', from: 'news[delivered_at(4i)]'
-        select '01', from: 'news[delivered_at(5i)]'
+        fill_in 'news[delivered_at]', with: '2022-01-01 09:00' # 内容を書き換える
         select 'Published', from: 'news[status]' # 全ての項目が入力された状態で「Published」を選択する
         click_button 'お知らせを更新'
         expect(page).to have_content('お知らせ')
@@ -39,11 +35,7 @@ RSpec.describe 'News', type: :system do
       it 'お知らせ編集ページで各項目を入力(異常系)' do
         fill_in 'news[title]', with: nil # 「タイトル」にnilを入力
         fill_in 'news[content]', with: 'お知らせ-Aの内容の編集です'
-        select '2022', from: 'news[delivered_at(1i)]'
-        select '1月', from: 'news[delivered_at(2i)]'
-        select '1', from: 'news[delivered_at(3i)]'
-        select '01', from: 'news[delivered_at(4i)]'
-        select '01', from: 'news[delivered_at(5i)]'
+        fill_in 'news[delivered_at]', with: '2022-01-01 09:00' # 内容を書き換える
         select 'Published', from: 'news[status]' # 「タイトル」がnilのまま「Published」を選択
         click_button 'お知らせを更新'
         # 入力項目に空が一つでもあると、「Published」では更新できない

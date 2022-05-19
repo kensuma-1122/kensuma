@@ -117,21 +117,11 @@ RSpec.describe 'Documnents', type: :system do
       it '作業員名簿の詳細画面へ遷移できること' do
         visit users_request_order_document_path(request_order, subject)
         expect(page).to have_content '全建統⼀様式第５号改(作業員名簿)'
-        expect(page).to have_content 'test1'
-        expect(page).to have_content 'test42'
-        expect(page).to have_content 'test12'
-        expect(page).to have_content 'test38'
       end
 
-      it '作業員名簿の編集後、詳細画面へリダイレクトできること' do
+      it '作業員名簿の編集画面へ遷移できること' do
         visit edit_users_request_order_document_path(request_order, subject)
         expect(page).to have_content '全建統⼀様式第５号改(作業員名簿)編集'
-        (all('#document_content')[1]).set('edit1')
-        click_button '登録'
-
-        visit users_request_order_document_path(request_order, subject)
-        expect(page).to have_content '全建統⼀様式第５号改(作業員名簿)'
-        expect(page).to have_content 'edit1'
       end
     end
   end
