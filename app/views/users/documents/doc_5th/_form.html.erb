@@ -108,7 +108,7 @@
         <%= f.label '作業員選択' %>
         <%= f.select :content, @workers.map { |worker| [worker.name, worker.id] },
                                             { include_hidden: false, selected: @document.content["worker_id"] },
-                                            { name: "document[content][worker][]", class: "js-select", style: "width: 100%" }
+                                            { multiple: 'multiple', name: "document[content][worker][]", class: "js-select", style: "width: 100%" }
         %>
       </div>
     </div><br>
