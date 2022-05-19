@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :worker do
     association :business
-    uid { SecureRandom.uuid }
+    uuid { SecureRandom.uuid }
     name { 'TestWorker' }
     name_kana { 'テストワーカー' }
     country { '日本' }
