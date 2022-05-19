@@ -7,6 +7,7 @@
       <table class="table table-hover text-nowrap">
         <thead>
           <tr align="center">
+            <th><%= Order.human_attribute_name(:site_name) %></th>
             <th><%= RequestOrder.human_attribute_name(:status) %></th>
             <th><%= Business.human_attribute_name(:name) %></th>
           </tr>
@@ -14,6 +15,7 @@
         <tbody>
           <% @request_orders.each do |request_order| %>
           <tr align="center">
+            <td><%= request_order.order.site_name %></td>
             <td><%= link_to request_order.status_i18n, users_request_order_path(request_order) %></td>
             <td><%= request_order.business.name %></td>
           </tr>
