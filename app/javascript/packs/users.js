@@ -18,10 +18,16 @@ import 'bootstrap';
 import '../stylesheets/users';
 import "@fortawesome/fontawesome-free/js/all";
 import "@nathanvda/cocoon"
-import "select2/dist/css/select2.min.css";
+import 'select2'
+import 'select2/dist/css/select2.css'
 
 document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip()
+  $('.js-select').select2({
+    // multiple: "multiple",
+    placeholder: '作業員を選択',
+    allowClear: true
+  })
 });
 
 import 'select2';                       // globally assign select2 fn to $ element

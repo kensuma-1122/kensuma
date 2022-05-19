@@ -28,7 +28,7 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     resources :general_users
     resources :dash_boards, only: [:index]
     resources :articles, only: %i[index show]
-    resources :news, only: %i[index show]
+    resources :news, only: %i[index show], param: :uuid
     resource :profile, except: %i[create new]
     resource :business, except: %i[index destroy] do
       patch 'update_images'
@@ -42,7 +42,9 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     end
     resources :orders, param: :site_uu_id
     resources :request_orders, only: %i[index show], param: :uuid do
-      resources :sub_request_orders, except: %i[edit destroy show]
+      resources :sub_request_orders, except: %i[edit destroy show], param: :uuid do
+        resources :documents, only: %i[index show], param: :uuid, controller: 'sub_request_orders/documents'
+      end
       resources :documents, only: %i[index show edit update], param: :uuid
     end
     post 'request_orders/:uuid/submit', to: 'request_orders#submit', as: :request_order_submit

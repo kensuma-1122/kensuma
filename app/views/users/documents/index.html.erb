@@ -10,46 +10,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td align="center"> <!-- 表紙 -->
-              <%= link_to @documents.find_by(document_type: 0).document_type_i18n,
-                          users_request_order_document_path(params[:request_order_uuid],
-                          @documents.find_by(document_type: 0))
-              %>
-            </td>
-          </tr>
-          <tr>
-            <td align="center"> <!-- 目次 -->
-              <%= link_to @documents.find_by(document_type: 1).document_type_i18n,
-                          users_request_order_document_path(params[:request_order_uuid],
-                          @documents.find_by(document_type: 1))
-              %>
-            </td>
-          </tr>
-          <tr>
-            <td align="center"> <!-- 施工体制台帳作成建設工事の通知 -->
-              <%= link_to @documents.find_by(document_type: 2).document_type_i18n,
-                          users_request_order_document_path(params[:request_order_uuid],
-                          @documents.find_by(document_type: 2))
-              %>
-            </td>
-          </tr>
-          <tr>
-            <td align="center"> <!-- 作業員名簿 -->
-              <%= link_to @documents.find_by(document_type: 5).document_type_i18n,
-                          users_request_order_document_path(params[:request_order_uuid],
-                          @documents.find_by(document_type: 5))
-              %>
-            </td>
-          </tr>
-          <tr>
-            <td align="center"> <!-- 工事用・通勤用車両届 -->
-              <%= link_to @documents.find_by(document_type: 8).document_type_i18n,
-                          users_request_order_document_path(params[:request_order_uuid],
-                          @documents.find_by(document_type: 8))
-              %>
-            </td>
-          </tr>
+          <% @documents.each do |document| %>
+            <tr>
+              <td align="center">
+                <%= link_to document.document_type_i18n,
+                            (
+                              controller.controller_path == 'users/documents' ?
+                              users_request_order_document_path(params[:request_order_uuid], document) :
+                              users_request_order_sub_request_order_document_path(params[:request_order_uuid], params[:sub_request_order_uuid], document)
+                            )
+                %>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

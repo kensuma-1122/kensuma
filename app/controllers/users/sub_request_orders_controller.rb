@@ -11,7 +11,8 @@ module Users
     def create
       ActiveRecord::Base.transaction do
         params[:business_ids].each do |business_id|
-          @request_order.order.request_orders.create!(business_id: business_id, parent_id: @request_order.id)
+          request_order = @request_order.order.request_orders.create!(business_id: business_id, parent_id: @request_order.id)
+          create_documents!(request_order)
         end
         flash[:success] = "#{params[:business_ids].count}件の発注依頼を作成しました。"
         redirect_to users_request_order_url(@request_order)
@@ -27,6 +28,12 @@ module Users
 
     def set_request_order
       @request_order = current_business.request_orders.find_by(uuid: params[:request_order_uuid])
+    end
+
+    def create_documents!(request_order)
+      Document::OPERATABLE_DOC_TYPE.each do |document_type|
+        request_order.documents.create!(document_type: document_type, business_id: request_order.business_id)
+      end
     end
   end
 end

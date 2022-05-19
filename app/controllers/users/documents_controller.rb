@@ -28,7 +28,9 @@ module Users
       end
     end
 
-    def edit; end
+    def edit
+      @workers = current_business.workers
+    end
 
     def update
       if update_document(@document)
@@ -58,6 +60,44 @@ module Users
       when 'doc_2nd'
         document.update(doc_2nd_params)
       when 'doc_5th'
+        if params[:document][:content][:worker]
+          # formから作業員idを受け取る。
+          @worker_ids = params[:document][:content][:worker]
+          # 受け取ったidに対応する各作業員テーブル&作業員テーブルに紐づく各テーブルのデータをハッシュ化して登録する。
+          # 「except:」や「only:」で、不要なカラムは登録から除外する。
+          @worker_json = @worker_ids.map do |worker_id|
+            Worker.find(worker_id).to_json(
+              except:  %i[images created_at updated_at], # 作業員
+              include: {
+                worker_medical:            {
+                  except: %i[id worker_id created_at updated_at] # 作業員の健康情報
+                },
+                worker_insurance:          {
+                  except: %i[id worker_id created_at updated_at] # 保険情報
+                },
+                worker_skill_trainings:    {
+                  only: [:skill_training_id] # 中間テーブル(技能講習マスタ)
+                },
+                worker_special_educations: {
+                  only: [:special_education_id] # 中間テーブル(特別教育マスタ)
+                },
+                worker_licenses:           {
+                  only: [:license_id] # 中間テーブル(免許マスタ)
+                }
+              }
+            )
+          end
+        else
+          @worker_json = [
+            "{
+              \"worker_medical\":{\"med_exam_on\":\"\"},
+              \"worker_insurance\":{\"health_insurance_type\":\"\"},
+              \"worker_skill_trainings\":{},
+              \"worker_special_educations\":{},
+              \"worker_licenses\":{}
+            }"
+          ]
+        end
         document.update(doc_5th_params)
       when 'doc_8th'
         document.update(doc_8th_params)
@@ -105,39 +145,8 @@ module Users
           doc5_8_010_my_business_id:        params.dig(:document, :content, :doc5_8_010_my_business_id),
           doc5_8_011_submitted_on:          params.dig(:document, :content, :doc5_8_011_submitted_on),
           doc5_8_042_confirmation:          params.dig(:document, :content, :doc5_8_042_confirmation),
-          worker:                           {
-            doc5_8_012_furigana:                        params.dig(:document, :content, :worker, :doc5_8_012_furigana),
-            doc5_8_013_worker_name:                     params.dig(:document, :content, :worker, :doc5_8_013_worker_name),
-            doc5_8_014_skilled_person_id:               params.dig(:document, :content, :worker, :doc5_8_014_skilled_person_id),
-            doc5_8_015_occupation:                      params.dig(:document, :content, :worker, :doc5_8_015_occupation),
-            doc5_8_016_symbol:                          params.dig(:document, :content, :worker, :doc5_8_016_symbol),
-            doc5_8_017_employment_date:                 params.dig(:document, :content, :worker, :doc5_8_017_employment_date),
-            doc5_8_018_years_of_experience:             params.dig(:document, :content, :worker, :doc5_8_018_years_of_experience),
-            doc5_8_019_birthday:                        params.dig(:document, :content, :worker, :doc5_8_019_birthday),
-            doc5_8_020_age:                             params.dig(:document, :content, :worker, :doc5_8_020_age),
-            doc5_8_021_address:                         params.dig(:document, :content, :worker, :doc5_8_021_address),
-            doc5_8_022_family_contact_address:          params.dig(:document, :content, :worker, :doc5_8_022_family_contact_address),
-            doc5_8_023_telephone_number:                params.dig(:document, :content, :worker, :doc5_8_023_telephone_number),
-            doc5_8_024_family_telephone_number:         params.dig(:document, :content, :worker, :doc5_8_024_family_telephone_number),
-            doc5_8_025_health_check_date:               params.dig(:document, :content, :worker, :doc5_8_025_health_check_date),
-            doc5_8_026_maximum_blood_pressure:          params.dig(:document, :content, :worker, :doc5_8_026_maximum_blood_pressure),
-            doc5_8_027_minimum_blood_pressure:          params.dig(:document, :content, :worker, :doc5_8_027_minimum_blood_pressure),
-            doc5_8_028_blood_type:                      params.dig(:document, :content, :worker, :doc5_8_028_blood_type),
-            doc5_8_029_special_health_examination_date: params.dig(:document, :content, :worker,
-              :doc5_8_029_special_health_examination_date),
-            doc5_8_030_special_health_check_type:       params.dig(:document, :content, :worker, :doc5_8_030_special_health_check_type),
-            doc5_8_031_health_insurance:                params.dig(:document, :content, :worker, :doc5_8_031_health_insurance),
-            doc5_8_032_pension_insurance:               params.dig(:document, :content, :worker, :doc5_8_032_pension_insurance),
-            doc5_8_033_employment_insurance_number:     params.dig(:document, :content, :worker, :doc5_8_033_employment_insurance_number),
-            doc5_8_034_severance_pay:                   params.dig(:document, :content, :worker, :doc5_8_034_severance_pay),
-            doc5_8_035_severance_pay_businesses:        params.dig(:document, :content, :worker, :doc5_8_035_severance_pay_businesses),
-            doc5_8_036_special_education:               params.dig(:document, :content, :worker, :doc5_8_036_special_education),
-            doc5_8_037_skill_training:                  params.dig(:document, :content, :worker, :doc5_8_037_skill_training),
-            doc5_8_038_licence:                         params.dig(:document, :content, :worker, :doc5_8_038_licence),
-            doc5_8_039_beginning:                       params.dig(:document, :content, :worker, :doc5_8_039_beginning),
-            doc5_8_040_new_education:                   params.dig(:document, :content, :worker, :doc5_8_040_new_education),
-            doc5_8_041_notebook:                        params.dig(:document, :content, :worker, :doc5_8_041_notebook)
-          }
+          worker:                           @worker_json,
+          worker_id:                        @worker_ids
         }
       )
     end

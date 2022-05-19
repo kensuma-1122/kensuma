@@ -29,44 +29,13 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- 表紙 -->
-        <%= link_to users_request_order_document_path(params[:request_order_uuid], @documents.find_by(document_type: 0)), class:"nav-link" do %>
-          <li class="nav-item">
-            <i class="nav-icon fas fa-file"></i>
-            <p><%= @documents.find_by(document_type: 0).document_type_i18n %></p>
-          </li>
-        <% end %>
-
-        <!-- 目次 -->
-        <%= link_to users_request_order_document_path(params[:request_order_uuid], @documents.find_by(document_type: 1)), class:"nav-link" do %>
-          <li class="nav-item">
-            <i class="nav-icon fas fa-file"></i>
-            <p><%= @documents.find_by(document_type: 1).document_type_i18n %></p>
-          </li>
-        <% end %>
-
-        <!-- 施⼯体制台帳作成建設⼯事の通知 -->
-        <%= link_to users_request_order_document_path(params[:request_order_uuid],  @documents.find_by(document_type: 2)), class:"nav-link" do %>
-          <li class="nav-item">
-            <i class="nav-icon fas fa-file"></i>
-            <p><%= @documents.find_by(document_type: 2).document_type_i18n %></p>
-          </li>
-        <% end %>
-
-        <!-- 作業員名簿 -->
-        <%= link_to users_request_order_document_path(params[:request_order_uuid],  @documents.find_by(document_type: 5)), class:"nav-link" do %>
-          <li class="nav-item">
-            <i class="nav-icon fas fa-file"></i>
-            <p><%= @documents.find_by(document_type: 5).document_type_i18n %></p>
-          </li>
-        <% end %>
-        
-        <!-- 工事用・通勤用車両届 -->
-        <%= link_to users_request_order_document_path(params[:request_order_uuid],  @documents.find_by(document_type: 8)), class:"nav-link" do %>
-          <li class="nav-item">
-            <i class="nav-icon fas fa-file"></i>
-            <p><%= @documents.find_by(document_type: 8).document_type_i18n %></p>
-          </li>
+        <% @documents.each do |document| %>
+          <%= link_to (controller.controller_path == 'users/documents' ? users_request_order_document_path(params[:request_order_uuid], document, format: :pdf) : users_request_order_sub_request_order_document_path(params[:request_order_uuid], params[:sub_request_order_uuid], document)), class:"nav-link" do %>
+            <li class="nav-item">
+              <i class="nav-icon fas fa-file"></i>
+              <p><%= document.document_type_i18n %></p>
+            </li>
+          <% end %>
         <% end %>
       </ul>
     </nav>

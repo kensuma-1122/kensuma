@@ -5,11 +5,11 @@
     <table class="table">
       <tr>
         <th><%= f.label '事業所名' %></th>
-        <td><%= f.text_field :content, multiple: true, value: @document.content["business_name"], class: 'form-control' %></td>
+        <td><%= f.text_field :content, multiple: true, value: @document.content&.fetch('business_name'), class: 'form-control' %></td>
       </tr>
       <tr>
         <th><%= f.label '書類提出日' %></th>
-        <td><%= f.date_field :content, multiple: true, value: @document.content["submitted_on"], class: 'form-control' %></td>
+        <td><%= f.date_field :content, multiple: true, value: @document.content&.fetch('submitted_on'), class: 'form-control' %></td>
       </tr>
     </table>
   </div>

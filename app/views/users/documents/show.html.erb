@@ -1,3 +1,7 @@
+<% provide(:title, "#{@document.document_type_i18n}") %>
+
+<%= render '/users/documents/shares/show_link', document: @document %>
+
 <% case @document.document_type %>
 <% when 'cover_document' %>
   <%= render 'users/documents/cover_documents/show' %> <!-- 表紙 -->
