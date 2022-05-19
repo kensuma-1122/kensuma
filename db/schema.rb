@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_10_115852) do
+ActiveRecord::Schema.define(version: 2022_05_17_013339) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "namespace"
@@ -186,6 +186,7 @@ ActiveRecord::Schema.define(version: 2022_05_10_115852) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "uuid", null: false
   end
 
   create_table "news_users", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
@@ -385,7 +386,6 @@ ActiveRecord::Schema.define(version: 2022_05_10_115852) do
     t.index ["business_id"], name: "index_workers_on_business_id"
   end
 
-  add_foreign_key "articles", "users"
   add_foreign_key "business_occupations", "businesses"
   add_foreign_key "business_occupations", "occupations"
   add_foreign_key "businesses", "users"
