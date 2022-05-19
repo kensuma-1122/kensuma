@@ -74,7 +74,7 @@ module Users
     private
 
     def set_car
-      @car = current_business.cars..find_by(uuid: params[:uuid])
+      @car = current_business.cars.find_by(uuid: params[:uuid])
     end
 
     def car_params
