@@ -17,6 +17,7 @@ FactoryBot.define do
     blank_term { 1 }
     carrier_up_id { '1' }
     images { '' }
+    uuid { '12345678-11aa-22bb-33cc-1234567890ab' }
 
     after(:create) do |worker|
       create_list(:worker_license, 1, worker: worker, license: License.create!(name: 'テストライセンス', license_type: 0))

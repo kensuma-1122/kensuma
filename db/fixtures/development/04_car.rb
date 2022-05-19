@@ -12,7 +12,8 @@
       vehicle_inspection_end_on:      '2025-01-01',
       liability_securities_number: "12345#{n+1}",
       liability_insurance_start_on:        '2000-01-01',
-      liability_insurance_end_on:     '2030-01-01'
+      liability_insurance_end_on:     '2030-01-01',
+      uuid: SecureRandom.uuid
     }
   )
 end
@@ -31,7 +32,8 @@ end
       vehicle_inspection_end_on:      '2025-01-01',
       liability_securities_number: "12345#{n+4}",
       liability_insurance_start_on:        '2000-01-01',
-      liability_insurance_end_on:     '2030-01-01'
+      liability_insurance_end_on:     '2030-01-01',
+      uuid: SecureRandom.uuid
     }
   )
 end
@@ -50,7 +52,8 @@ end
       vehicle_inspection_end_on:      '2025-01-01',
       liability_securities_number: "12345#{n+7}",
       liability_insurance_start_on:        '2000-01-01',
-      liability_insurance_end_on:     '2030-01-01'
+      liability_insurance_end_on:     '2030-01-01',
+      uuid: SecureRandom.uuid
     }
   )
 end
@@ -69,7 +72,8 @@ end
       vehicle_inspection_end_on:      '2025-01-01',
       liability_securities_number: "12345#{n+10}",
       liability_insurance_start_on:        '2000-01-01',
-      liability_insurance_end_on:     '2030-01-01'
+      liability_insurance_end_on:     '2030-01-01',
+      uuid: SecureRandom.uuid
     }
   )
 end
@@ -88,7 +92,8 @@ end
       vehicle_inspection_end_on:      '2025-01-01',
       liability_securities_number: "12345#{n+13}",
       liability_insurance_start_on:        '2000-01-01',
-      liability_insurance_end_on:     '2030-01-01'
+      liability_insurance_end_on:     '2030-01-01',
+      uuid: SecureRandom.uuid
     }
   )
 end

@@ -15,7 +15,8 @@
       rh_blood_type:       0,
       hiring_on:           '2022-01-01',
       experience_term_before_hiring: 1,
-      blank_term:          1
+      blank_term:          1,
+      uuid: SecureRandom.uuid
     }
   )
 end
@@ -37,7 +38,8 @@ end
       rh_blood_type:       0,
       hiring_on:           '2022-01-01',
       experience_term_before_hiring: 1,
-      blank_term:          1
+      blank_term:          1,
+      uuid: SecureRandom.uuid
     }
   )
 end
@@ -59,7 +61,8 @@ end
       rh_blood_type:       0,
       hiring_on:           '2022-01-01',
       experience_term_before_hiring: 1,
-      blank_term:          1
+      blank_term:          1,
+      uuid: SecureRandom.uuid
     }
   )
 end
@@ -81,7 +84,8 @@ end
       rh_blood_type:       0,
       hiring_on:           '2022-01-01',
       experience_term_before_hiring: 1,
-      blank_term:          1
+      blank_term:          1,
+      uuid: SecureRandom.uuid
     }
   )
 end
@@ -103,7 +107,8 @@ end
       rh_blood_type:       0,
       hiring_on:           '2022-01-01',
       experience_term_before_hiring: 1,
-      blank_term:          1
+      blank_term:          1,
+      uuid: SecureRandom.uuid
     }
   )
 end
