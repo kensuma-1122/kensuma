@@ -1,8 +1,8 @@
 Worker.all.each do |worker|
     WorkerInsurance.seed(:id,
       {
-        id: worker.id,
-        worker_id:         worker.id,
+        id:                            worker.id,
+        worker_id:                     worker.id,
         health_insurance_type:         :national_health_insurance,
         health_insurance_name:         '国民健康保険',
         pension_insurance_type:        :national,
