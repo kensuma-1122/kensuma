@@ -21,6 +21,8 @@ class Worker < ApplicationRecord
   has_one :worker_medical, dependent: :destroy
   accepts_nested_attributes_for :worker_medical, allow_destroy: true
 
+  before_create -> { self.uuid = SecureRandom.uuid }
+
   enum abo_blood_type: { a: 0, b: 1, ab: 2, o: 3 }
   enum rh_blood_type: { plus: 0, minus: 1 }
   # ↓内訳未定のためコメントアウト
@@ -41,4 +43,8 @@ class Worker < ApplicationRecord
   validates :hiring_on, presence: true
   validates :experience_term_before_hiring, presence: true
   validates :blank_term, presence: true
+
+  def to_param
+    uuid
+  end
 end

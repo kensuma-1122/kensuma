@@ -3,6 +3,7 @@
     {
       id: n+1,
       business_id:         1,
+      uuid: SecureRandom.uuid,
       car_insurance_company_id: 1,
       owner_name:                "車両所有者#{n+1}",
       safety_manager:           "安全運転管理者#{n+1}",
@@ -22,6 +23,7 @@ end
     {
       id: n+4,
       business_id:         2,
+      uuid: SecureRandom.uuid,
       car_insurance_company_id: 4,
       owner_name:                "車両所有者#{n+4}",
       safety_manager:           "安全運転管理者#{n+4}",
@@ -41,6 +43,7 @@ end
     {
       id: n+7,
       business_id:         3,
+      uuid: SecureRandom.uuid,
       car_insurance_company_id: 7,
       owner_name:                "車両所有者#{n+7}",
       safety_manager:           "安全運転管理者#{n+7}",
@@ -60,6 +63,7 @@ end
     {
       id: n+10,
       business_id:         4,
+      uuid: SecureRandom.uuid,
       car_insurance_company_id: 10,
       owner_name:                "車両所有者#{n+10}",
       safety_manager:           "安全運転管理者#{n+10}",
@@ -79,6 +83,7 @@ end
     {
       id: n+13,
       business_id:         5,
+      uuid: SecureRandom.uuid,
       car_insurance_company_id: 13,
       owner_name:                "車両所有者#{n+13}",
       safety_manager:           "安全運転管理者#{n+13}",
@@ -92,4 +97,3 @@ end
     }
   )
 end
-

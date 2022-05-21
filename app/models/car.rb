@@ -5,6 +5,8 @@ class Car < ApplicationRecord
   has_many :company_voluntaries, through: :car_voluntary_insurances, source: :company_voluntary
   accepts_nested_attributes_for :car_voluntary_insurances
 
+  before_create -> { self.uuid = SecureRandom.uuid }
+
   validates :owner_name, presence: true
   validates :vehicle_model, presence: true
   validates :vehicle_number, presence: true
@@ -15,4 +17,8 @@ class Car < ApplicationRecord
   validates :liability_insurance_end_on, presence: true
 
   mount_uploaders :images, CarsUploader
+
+  def to_param
+    uuid
+  end
 end

@@ -21,7 +21,7 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
   }
 
   namespace :users do
-    resources :cars do
+    resources :cars, param: :uuid do
       patch 'update_images'
     end
     resources :general_users
@@ -32,7 +32,7 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     resource :business, except: %i[index destroy] do
       patch 'update_images'
     end
-    resources :workers do
+    resources :workers, param: :uuid do
       patch 'update_workerlicense_images'
       patch 'update_workerskilltraining_images'
       patch 'update_workerspecialeducation_images'
