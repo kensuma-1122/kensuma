@@ -26,6 +26,8 @@ class Worker < ApplicationRecord
   # ↓内訳未定のためコメントアウト
   # enum job_type: {  }
 
+  before_create -> { self.uuid = SecureRandom.uuid }
+
   VALID_PHONE_NUMBER_REGEX = /\A\d{10,11}\z/
   validates :name, presence: true
   validates :name_kana, presence: true, format: { with: /\A[ァ-ヴー]+\z/u, message: 'はカタカナで入力してください' }
@@ -41,8 +43,6 @@ class Worker < ApplicationRecord
   validates :hiring_on, presence: true
   validates :experience_term_before_hiring, presence: true
   validates :blank_term, presence: true
-
-  before_create -> { self.uuid = SecureRandom.uuid }
 
   def to_param
     uuid
