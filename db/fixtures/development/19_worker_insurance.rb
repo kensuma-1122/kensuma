@@ -13,4 +13,3 @@ Worker.all.each do |worker|
       }
     )
   end
-  
