@@ -9,6 +9,7 @@ module Users
 
     def show
       @sub_request_orders = @request_order.children
+      @all_children = @request_order.hash_tree
     end
 
     def submit

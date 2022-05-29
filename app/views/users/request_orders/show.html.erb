@@ -65,12 +65,12 @@
   </div>
 </section>
 
-<!-- 下請け依頼一覧 -->
+<!-- 直下の依頼一覧 -->
 <div class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0"><%= '下請け依頼一覧' %></h1>
+        <h1 class="m-0"><%= '直下の依頼一覧' %></h1>
       </div>
     </div>
   </div>
@@ -113,6 +113,51 @@
             </div>
           </div>
         </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- さらに下層の依頼一覧 -->
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0"><%= 'さらに下層の依頼一覧' %></h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <% @sub_request_orders.each do |first| %>
+          <% first.children.each do |second| %>
+        <!-- % @all_children.zip(@sub_request_orders).each do |first, second| % -->
+        <!-- % @all_children.each do |first| % -->
+          <!-- % first.children.each do |second| % -->
+          <div class="card card-secondary card-outline">
+            <div class="card-body">
+              <div class="row">
+              <div class="col-md-2 mb-2">
+                <%= RequestOrder.human_attribute_name(:status) %>：<%= second.status_i18n %>
+              </div>
+              <div class="col-md-1 mb-2"></div>
+              <div class="col-md-1 mb-2"></div>
+              <div class="col-md-4 mb-2">
+                <%= Business.human_attribute_name(:name) %>：<%= second.business.name %>
+                <%= link_to "(書類一覧)", '#' %>
+              </div>
+              <div class="col-md-4 mb-2">
+                <%= "発注元" %>：<%= second.parent.business.name %>
+              </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
         <% end %>
       </div>
     </div>
