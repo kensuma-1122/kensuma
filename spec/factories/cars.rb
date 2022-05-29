@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :car do
+    uuid { SecureRandom.uuid }
     sequence(:owner_name) { |n| "owner#{n}" }
     sequence(:safety_manager) { |n| "manager#{n}" }
     sequence(:vehicle_model) { |n| "model#{n}" }
