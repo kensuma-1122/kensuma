@@ -3,6 +3,7 @@
     {
       id: n+1,
       business_id:         1,
+      uuid:                 SecureRandom.uuid,
       name:                "テスト作業員#{n+1}",
       name_kana:           "テストサギョウイン#{n+1}",
       country:             "日本",
@@ -25,6 +26,7 @@ end
     {
       id: n+4,
       business_id:         2,
+      uuid:                 SecureRandom.uuid,
       name:                "テスト作業員#{n+4}",
       name_kana:           "テストサギョウイン#{n+4}",
       country:             "日本",
@@ -47,6 +49,7 @@ end
     {
       id: n+7,
       business_id:         3,
+      uuid:                 SecureRandom.uuid,
       name:                "テスト作業員#{n+7}",
       name_kana:           "テストサギョウイン#{n+7}",
       country:             "日本",
@@ -69,6 +72,7 @@ end
     {
       id: n+10,
       business_id:         4,
+      uuid:                 SecureRandom.uuid,
       name:                "テスト作業員#{n+10}",
       name_kana:           "テストサギョウイン#{n+10}",
       country:             "日本",
@@ -91,6 +95,7 @@ end
     {
       id: n+13,
       business_id:         5,
+      uuid:                 SecureRandom.uuid,
       name:                "テスト作業員#{n+13}",
       name_kana:           "テストサギョウイン#{n+13}",
       country:             "日本",
