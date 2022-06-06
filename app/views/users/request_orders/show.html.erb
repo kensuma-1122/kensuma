@@ -1,165 +1,305 @@
 <% provide(:title, "発注依頼詳細") %>
 
-<!-- 発注依頼詳細 -->
-<section class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-12 col-12">
-        <div class="card card-primary card-outline">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-4 mb-2">
-                <!-- 一番元請のボタン -->
-                <% if @request_order.parent_id.nil? && @request_order.approved? %>
-                  <button class="btn btn-block btn-outline-primary"disabled>承認済</button>
-                <% elsif @request_order.parent_id.nil? %>
-                  <%= link_to "承認する", users_request_order_submit_path(@request_order), method: :post, data: { confirm: "書類を承認して宜しいですか？" }, class: "btn btn-block btn-outline-primary" %>
-                <!-- 下請けのボタン -->
-                <% else %>
-                  <% if @request_order.submitted? %>
-                    <button class="btn btn-block btn-outline-primary"disabled>提出済</button>
-                  <% elsif @request_order.approved? %> 
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+</head>
+
+<body>
+  <!-- 発注依頼詳細 -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12 col-12">
+          <div class="card card-primary card-outline">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-4 mb-2">
+                  <!-- 一番元請のボタン -->
+                  <% if @request_order.parent_id.nil? && @request_order.approved? %>
                     <button class="btn btn-block btn-outline-primary"disabled>承認済</button>
-                  <% elsif @sub_request_orders.blank? %>
-                    <%= link_to "提出する", users_request_order_submit_path(@request_order), method: :post, data: { confirm: "下請けへ未依頼ですが、提出して宜しいですか？" }, class: "btn btn-block btn-outline-primary" %>
+                  <% elsif @request_order.parent_id.nil? %>
+                    <%= link_to "承認する", users_request_order_submit_path(@request_order), method: :post, data: { confirm: "書類を承認して宜しいですか？" }, class: "btn btn-block btn-outline-primary" %>
+                  <!-- 下請けのボタン -->
                   <% else %>
-                    <%= link_to "提出する", users_request_order_submit_path(@request_order), method: :post, data: { confirm: "書類を提出して宜しいですか？" }, class: "btn btn-block btn-outline-primary" %>
+                    <% if @request_order.submitted? %>
+                      <button class="btn btn-block btn-outline-primary"disabled>提出済</button>
+                    <% elsif @request_order.approved? %> 
+                      <button class="btn btn-block btn-outline-primary"disabled>承認済</button>
+                    <% elsif @sub_request_orders.blank? %>
+                      <%= link_to "提出する", users_request_order_submit_path(@request_order), method: :post, data: { confirm: "下請けへ未依頼ですが、提出して宜しいですか？" }, class: "btn btn-block btn-outline-primary" %>
+                    <% else %>
+                      <%= link_to "提出する", users_request_order_submit_path(@request_order), method: :post, data: { confirm: "書類を提出して宜しいですか？" }, class: "btn btn-block btn-outline-primary" %>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </div>
-                <div class="col-md-4 mb-2">
-                <%= link_to "下請けへ書類作成依頼", new_users_request_order_sub_request_order_path(@request_order),
-                                                      class: "btn btn-block btn-primary"
-                %>
-              </div>
-                <div class="col-md-4 mb-2">
-                <%= link_to "発注依頼一覧", users_request_orders_path, class: "btn btn-block btn-default" %>
+                </div>
+                  <div class="col-md-4 mb-2">
+                  <%= link_to "下請けへ書類作成依頼", new_users_request_order_sub_request_order_path(@request_order),
+                                                        class: "btn btn-block btn-primary"
+                  %>
+                </div>
+                  <div class="col-md-4 mb-2">
+                  <%= link_to "発注依頼一覧", users_request_orders_path, class: "btn btn-block btn-default" %>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card card-primary card-outline">
-          <div class="card-body">
-            <div class="row">
-            <div class="col-md-4 mb-2">
-              <%= RequestOrder.human_attribute_name(:status) %>：<%= @request_order.status_i18n %>
-            </div>
-            <div class="col-md-8 mb-2">
-              <%= Business.human_attribute_name(:name) %>：<%= @request_order.business.name %>
-              <%= link_to "(書類一覧)", users_request_order_documents_path(@request_order) %>
-            </div>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary card-outline">
+            <div class="card-body">
+              <div class="row">
+              <div class="col-md-4 mb-2">
+                <%= RequestOrder.human_attribute_name(:status) %>：<%= @request_order.status_i18n %>
+              </div>
+              <div class="col-md-8 mb-2">
+                <%= Business.human_attribute_name(:name) %>：<%= @request_order.business.name %>
+                <%= link_to "(書類一覧)", users_request_order_documents_path(@request_order) %>
+              </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- 直下の依頼一覧 -->
-<div class="content-header">
-  <div class="container-fluid">
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h1 class="m-0"><%= '直下の依頼一覧' %></h1>
-      </div>
-    </div>
-  </div>
-</div>
-
-<section class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <% @sub_request_orders.each do |sub_request_order| %>
-        <div class="card card-secondary card-outline">
-          <div class="card-body">
-            <div class="row">
-            <div class="col-md-2 mb-2">
-              <%= RequestOrder.human_attribute_name(:status) %>：<%= sub_request_order.status_i18n %>
-            </div>
-            <% if sub_request_order.submitted? %>
-              <div class="col-md-1 mb-2">
-                <% if sub_request_order.fix_requested? %>
-                  <button class="btn btn-default"disabled>差し戻し済</button>
-                <% else %>
-                  <%= link_to "差し戻しする", users_request_order_fix_request_path(@request_order.uuid, sub_request_order), method: :post, data: { confirm: "差し戻しをして宜しいですか？" }, class: "btn btn-warning" %>
-                <% end %>
-              </div>
-              <div class="col-md-1 mb-2">
-                <% if sub_request_order.approved? %>
-                  <button class="btn btn-default"disabled>承認済</button>
-                <% else %>
-                  <%= link_to "承認する", users_request_order_approve_path(@request_order.uuid, sub_request_order), method: :post, data: { confirm: "承認して宜しいでしょうか？" }, class: "btn btn-success" %>
-                <% end%>
-              </div>
-            <% else %>
-              <div class="col-md-1 mb-2"></div>
-              <div class="col-md-1 mb-2"></div>
-            <% end %>
-            <div class="col-md-8 mb-2">
-              <%= Business.human_attribute_name(:name) %>：<%= sub_request_order.business.name %>
-              <%= link_to "(書類一覧)", users_request_order_sub_request_order_documents_path(@request_order, sub_request_order) %>
-            </div>
-            </div>
-          </div>
+  <!-- 直下の依頼一覧 -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0"><%= '直下の依頼一覧' %></h1>
         </div>
-        <% end %>
       </div>
     </div>
   </div>
-</section>
 
-<!-- さらに下層の依頼一覧 -->
-<div class="content-header">
-  <div class="container-fluid">
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h1 class="m-0"><%= 'さらに下層の依頼一覧' %></h1>
-      </div>
-    </div>
-  </div>
-</div>
-
-<section class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <% @sub_request_orders.each do |first| %>
-          <% first.children.each do |second| %>
-        <!-- % @all_children.zip(@sub_request_orders).each do |first, second| % -->
-        <!-- % @all_children.each do |first| % -->
-          <!-- % first.children.each do |second| % -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <% @sub_request_orders.each do |sub_request_order| %>
           <div class="card card-secondary card-outline">
             <div class="card-body">
               <div class="row">
               <div class="col-md-2 mb-2">
-                <%= RequestOrder.human_attribute_name(:status) %>：<%= second.status_i18n %>
+                <%= RequestOrder.human_attribute_name(:status) %>：<%= sub_request_order.status_i18n %>
               </div>
-              <div class="col-md-1 mb-2"></div>
-              <div class="col-md-1 mb-2"></div>
-              <div class="col-md-4 mb-2">
-                <%= Business.human_attribute_name(:name) %>：<%= second.business.name %>
-                <%= link_to "(書類一覧)", '#' %>
-              </div>
-              <div class="col-md-4 mb-2">
-                <%= "発注元" %>：<%= second.parent.business.name %>
+              <% if sub_request_order.submitted? %>
+                <div class="col-md-1 mb-2">
+                  <% if sub_request_order.fix_requested? %>
+                    <button class="btn btn-default"disabled>差し戻し済</button>
+                  <% else %>
+                    <%= link_to "差し戻しする", users_request_order_fix_request_path(@request_order.uuid, sub_request_order), method: :post, data: { confirm: "差し戻しをして宜しいですか？" }, class: "btn btn-warning" %>
+                  <% end %>
+                </div>
+                <div class="col-md-1 mb-2">
+                  <% if sub_request_order.approved? %>
+                    <button class="btn btn-default"disabled>承認済</button>
+                  <% else %>
+                    <%= link_to "承認する", users_request_order_approve_path(@request_order.uuid, sub_request_order), method: :post, data: { confirm: "承認して宜しいでしょうか？" }, class: "btn btn-success" %>
+                  <% end%>
+                </div>
+              <% else %>
+                <div class="col-md-1 mb-2"></div>
+                <div class="col-md-1 mb-2"></div>
+              <% end %>
+              <div class="col-md-8 mb-2">
+                <%= Business.human_attribute_name(:name) %>：<%= sub_request_order.business.name %>
+                <%= link_to "(書類一覧)", users_request_order_sub_request_order_documents_path(@request_order, sub_request_order) %>
               </div>
               </div>
             </div>
           </div>
           <% end %>
-        <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- さらに下層の依頼一覧 -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0"><%= 'さらに下層の依頼一覧' %></h1>
+        </div>
       </div>
     </div>
   </div>
-</section>
+
+  <div id="jstree" data-all-children="<%= @all_children.to_json %>">
+    <!-- %= @all_children.each_with_index do |tree, i| % -->
+      <ul>
+        <li data-jstree='{ "opened" : true }'>一次下請け
+          <ul>
+            <li id="child_node_1">Child node 1</li>
+            <li>Child node 2</li>
+          </ul>
+        </li>
+        <li data-jstree='{ "opened" : true }'>二次下請け</li>
+      </ul>
+    <!-- % end % -->
+  </div>
+
+  <script type="text/javascript">
+    var allchildrenHash = $('#jstree').data('all-children')
+    $.jstree.defaults.core.themes.variant = "large";
+    $.jstree.defaults.core.themes.responsive = true;
+
+    // 試し3
+    $(function () {
+      $("#jstree").jstree({
+        core: {
+          // data: {
+          //   url: function (node) {
+          //     return "treeData.json";
+          //   },
+          //   data: function (node) {
+          //     return { "id": node.id };
+          //   },
+          //   check_callback: true,
+          //   error: function (jqXHR, textStatus, errorThrown) {
+          //     alert("error. " + qXHR.responseText);
+          //   }
+          // },
+          themes: {
+            responsive: false,
+            variant: "small",
+            stripes: true
+          },
+          plugins: [ "types",  "search", "wholerow" ]
+        }
+    });
+
+      // クリックで tree の expand / collapse
+      $("#jstree").bind("select_node.jstree", function (e, data) {
+        return data.instance.toggle_node(data.node);
+      });
+
+      // 末端要素をクリックしたときのアクション
+      $("#jstree").on("changed.jstree", function (e, data) {
+        console.log(data.selected);
+        $("#selected").text(data.selected);
+        if (data.node.original.type == 'file') {
+          alert(data.node.original.code + ":" + data.node.original.text)
+        }
+      });
+    });
+
+
+    // 試し2
+    // $('#jstree').jstree({ 'core':{
+    //   'data':[
+    //       {   "id":1, "text":"Root node",
+    //         "children":[
+    //             {   "id":2, "text":"Child node 1",
+    //               "children":[
+    //                   { "id":3, "text":"aaa" },
+    //                   { "id":4, "text":"bbb" }
+    //               ],
+    //             },
+    //             { "id":5, "text":"Child node 2" }
+    //         ]
+    //       },
+    //       {   "id":6, "text":"Root node2",
+    //         "children":[
+    //             { "id":7, "text":"Child node 1" },
+    //             { "id":8, "text":"Child node 2" }
+    //         ]
+    //       }
+    //   ]
+    // }})
+    // .on("select_node.jstree", function(e, data){
+    //   console.log("selected is : id =" + data.node.id +"  "+ data.node.text);
+    // })
+    // .on("changed.jstree", function(e, data){
+    //     console.log("changed is : id =" + data.node.id +"  "+ data.node.text);
+    // });
+
+
+    // 試し1
+    // $(function () {
+    //   $("#jstree").jstree({
+    //     "json_data" : {
+    //     "ajax" : {
+    //     "url" : "/trees/ruby_created_children.json",
+    //     "data" : function (n) {
+    //     return { id : n.attr ? n.attr("id") : 0 };
+    //     }
+    //     }
+    //     },
+    //     "plugins" : [ "themes", "json_data" ]
+    //   });
+    // });
+
+    // 公式のサンプル↓
+    // $(function () {
+    //   $('#jstree').jstree();
+      
+    //   $('#jstree').on("changed.jstree", function (e, data) {
+    //     console.log(data.selected);
+    //   });
+
+
+    //   $('button').on('click', function () {
+    //     $('#jstree').jstree(true).select_node('child_node_1');
+    //     $('#jstree').jstree('select_node', 'child_node_1');
+    //     $.jstree.reference('#jstree').select_node('child_node_1');
+    //   });
+    // });
+  </script>
+</body>
+</html>
+
+
+
+  <section class="content">
+    <div id="jstree">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <% @sub_request_orders.each do |first| %>
+              <% first.children.each do |second| %>
+            <!-- % @all_children.zip(@sub_request_orders).each do |first, second| % -->
+            <!-- % @all_children.each do |first| % -->
+              <!-- % first.children.each do |second| % -->
+              <div class="card card-secondary card-outline">
+                <div class="card-body">
+                  <div class="row">
+                  <div class="col-md-2 mb-2">
+                    <%= RequestOrder.human_attribute_name(:status) %>：<%= second.status_i18n %>
+                  </div>
+                  <div class="col-md-1 mb-2"></div>
+                  <div class="col-md-1 mb-2"></div>
+                  <div class="col-md-4 mb-2">
+                    <%= Business.human_attribute_name(:name) %>：<%= second.business.name %>
+                    <%= link_to "(書類一覧)", '#' %>
+                  </div>
+                  <div class="col-md-4 mb-2">
+                    <%= "発注元" %>：<%= second.parent.business.name %>
+                  </div>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
