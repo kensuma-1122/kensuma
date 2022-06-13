@@ -237,7 +237,7 @@ ActiveRecord::Schema.define(version: 2022_06_09_061148) do
     t.string "site_agent_name", null: false
     t.string "site_agent_apply", null: false
     t.string "supervising_engineer_name", null: false
-    t.boolean "supervising_engineer_check", null: false
+    t.integer "supervising_engineer_check"
     t.string "supervising_engineer_assistant_name"
     t.string "professional_engineer_name"
     t.string "professional_engineer_construction_details"
