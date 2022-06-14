@@ -7,7 +7,7 @@ class AddSitesToOrders < ActiveRecord::Migration[6.1]
 
     ## 発注者
     add_column :orders, :order_supervisor_name,    :string, null: false # 監督員(氏名)
-    add_column :orders, :order_supervisor_company, :string, null: false # 監督員(所属会社)
+    add_column :orders, :order_supervisor_company, :string              # 監督員(所属会社)
     add_column :orders, :order_supervisor_apply,   :string, null: false # 監督員(権限及び意見の申出方法)
 
     ## 元請会社

@@ -218,7 +218,7 @@ ActiveRecord::Schema.define(version: 2022_06_09_061148) do
     t.string "site_career_up_id"
     t.string "site_address", null: false
     t.string "order_supervisor_name", null: false
-    t.string "order_supervisor_company", null: false
+    t.string "order_supervisor_company"
     t.string "order_supervisor_apply", null: false
     t.string "construction_name", null: false
     t.string "construction_details", null: false
