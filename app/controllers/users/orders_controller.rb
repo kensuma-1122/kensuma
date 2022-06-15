@@ -1,5 +1,6 @@
 module Users
   class OrdersController < Users::Base
+    before_action :set_business_workers_name, only: %i[new create edit update]
     before_action :set_order, except: %i[index new create]
 
     def index
@@ -160,12 +161,21 @@ module Users
 
     private
 
+    def set_business_workers_name
+      @business_workers_name = current_business.workers.pluck(:name) # 自社(事業所)の作業員
+    end
+
     def set_order
       @order = current_business.orders.find_by(site_uu_id: params[:site_uu_id])
     end
 
     def order_params
-      params.require(:order).permit(:status, :site_name, :order_name, :order_post_code, :order_address)
+      params.require(:order).permit(
+        :status, :site_career_up_id, :site_name, :site_address,
+        :order_name, :order_post_code, :order_address, :order_supervisor_name, :order_supervisor_company, :order_supervisor_apply,
+        :construction_name, :construction_details, :start_date, :end_date, :contract_date, :submission_destination,
+        :general_safety_responsible_person_name
+      )
     end
   end
 end

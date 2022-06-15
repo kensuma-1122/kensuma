@@ -26,6 +26,13 @@ document.addEventListener("turbolinks:load", () => {
     theme: 'classic',
     multiple: 'multiple',
     allowClear: true
+  }),
+  $('.worker-select').select2({
+    width: 'resolve',
+    placeholder: '選択してください',
+    theme: 'classic',
+    allowClear: true,
+    tags: true
   })
 });
 

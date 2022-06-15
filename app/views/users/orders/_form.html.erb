@@ -86,19 +86,31 @@
     </div><br>
     <%= f.label :submission_destination %> <!-- 提出先及び担当者(部署･氏名) -->
     <span class="text-danger">※必須</span>
-    <%= f.text_field :submission_destination, class: "form-control", placeholder: Order.human_attribute_name(:submission_destination) %>
+    <%= f.select :submission_destination,
+                  (@business_workers_name << @order.submission_destination).uniq,
+                  {},
+                  { class: "worker-select", style: "width: 100%" }
+    %>
     <br>
   </div>
   <div class="list-group-item">
     <%= f.label :general_safety_responsible_person_name %> <!-- 統括安全衛生責任者(氏名) -->
     <span class="text-danger">※必須</span>
-    <%= f.text_field :general_safety_responsible_person_name, class: "form-control", placeholder: Order.human_attribute_name(:general_safety_responsible_person_name) %>
+    <%= f.select :general_safety_responsible_person_name,
+                  (@business_workers_name << @order.general_safety_responsible_person_name).uniq,
+                  { include_blank: true },
+                  { class: "worker-select", style: "width: 100%" }
+    %>
     <br>
   </div>
   <div class="list-group-item">
     <%= f.label :vice_president_name %> <!-- 副会長(氏名) -->
     <span class="text-danger">※必須</span>
-    <%= f.text_field :vice_president_name, class: "form-control", placeholder: Order.human_attribute_name(:vice_president_name) %>
+    <%= f.select :vice_president_name,
+                      (@business_workers_name << @order.vice_president_name).uniq,
+                      { include_blank: true },
+                      { class: "worker-select", style: "width: 100%" }
+    %>
     <br>
     <%= f.label :vice_president_company_name %> <!-- 副会長(会社名) -->
     <span class="text-danger">※必須</span>
