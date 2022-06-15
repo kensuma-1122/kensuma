@@ -12,3 +12,9 @@
 .brand-link {
     text-decoration: none;
 }
+
+label.input_form_error {
+    color: red;
+    font-weight: normal !important;
+    text-indent: 2rem
+}

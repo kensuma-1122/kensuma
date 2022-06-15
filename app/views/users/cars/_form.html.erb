@@ -1,34 +1,44 @@
 <%= render 'shared/error_massages', object: f.object %>
 
 <%= f.label :owner_name %>
+<span class="p-1 mb-3 rounded bg-danger text-white">必須</span>
 <%= f.text_field :owner_name, class: "form-control", placeholder: Car.human_attribute_name(:owner_name) %>
 <br>
 <%= f.label :safety_manager %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.text_field :safety_manager, class: "form-control", placeholder: Car.human_attribute_name(:safety_manager) %>
 <br>
 <%= f.label :vehicle_model %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.text_field :vehicle_model, class: "form-control", placeholder: Car.human_attribute_name(:vehicle_model) %>
 <br>
 <%= f.label :vehicle_number %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.text_field :vehicle_number, class: "form-control", placeholder: Car.human_attribute_name(:vehicle_number) %>
 <br>
 <%= f.label :vehicle_inspection_start_on %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.date_field :vehicle_inspection_start_on, class: "form-control" %>
 <br>
 <%= f.label :vehicle_inspection_end_on %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.date_field :vehicle_inspection_end_on, class: "form-control" %>
 <br>
 <!-- 自賠責保険ここから -->
 <%= f.label :car_insurance_company_id %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.collection_select :car_insurance_company_id, CarInsuranceCompany.all, :id, :name, { prompt: true }, { required: true, class: "form-control" } %>
 <br>
 <%= f.label :liability_securities_number %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.text_field :liability_securities_number, class: "form-control", placeholder: Car.human_attribute_name(:liability_securities_number) %>
 <br>
 <%= f.label :liability_insurance_start_on %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.date_field :liability_insurance_start_on, class: "form-control" %>
 <br>
 <%= f.label :liability_insurance_end_on %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.date_field :liability_insurance_end_on, class: "form-control" %>
 <!-- 自賠責保険ここまで -->
 <br>
@@ -143,6 +153,11 @@
           required: "任意保険会社を選択してください。"
         },
       },
+      errorClass: "input_form_error"
+    });
+    // 入力欄を変更したときにバリデーションを実行
+    $(".car-form-validation").change(function () {
+      $(this).valid();
     });
   });
 </script>
