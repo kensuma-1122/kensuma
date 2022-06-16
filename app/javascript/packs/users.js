@@ -32,7 +32,9 @@ document.addEventListener("turbolinks:load", () => {
     placeholder: '選択してください',
     theme: 'classic',
     allowClear: true,
-    tags: true
+    tags: true,
+    language: {"noResults": function(){ return "入力してください";}},
+    escapeMarkup: function (markup) { return markup; }
   })
 });
 
