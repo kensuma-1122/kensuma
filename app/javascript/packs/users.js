@@ -21,20 +21,26 @@ import "@nathanvda/cocoon"
 
 document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip()
-  $('.js-select').select2({
+  $('.multiple-select').select2({
     width: 'resolve',
     theme: 'classic',
     multiple: 'multiple',
     allowClear: true
   }),
-  $('.worker-select').select2({
+  $('.single-select').select2({
     width: 'resolve',
     placeholder: '選択してください',
     theme: 'classic',
     allowClear: true,
     tags: true,
-    language: {"noResults": function(){ return "入力してください";}},
-    escapeMarkup: function (markup) { return markup; }
+    language: {
+      "noResults": function() {
+        return "入力してください";
+      }
+    },
+    escapeMarkup: function (markup) {
+      return markup;
+    }
   })
 });
 
