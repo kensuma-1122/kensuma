@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   has_many :request_orders, dependent: :destroy
 
   enum status: { created: 0, completed: 1 }
-  enum supervising_engineer_check: { '専任': 0, '非専任': 1 }
+  enum supervising_engineer_check: { full_time: 0, non_dedicated: 1 }
 
   validates :status, presence: true
   validates :site_name, presence: true

@@ -180,7 +180,7 @@
                       { class: "single-select", style: "width: 100%" }
     %><br><br>
     <%= f.label :supervising_engineer_check %> <!-- 監督技術者・主任技術者(専任or非専任) -->
-    <%= f.select :supervising_engineer_check, Order.supervising_engineer_checks.keys.to_a, { prompt: true }, { class: "form-control" } %>
+    <%= f.select :supervising_engineer_check, Order.supervising_engineer_checks_i18n.invert, { prompt: true }, { class: "form-control" } %>
     <br>
     <%= f.label :supervising_engineer_assistant_name %> <!-- 監督技術者補佐(氏名) -->
     <%= f.select :supervising_engineer_assistant_name,
