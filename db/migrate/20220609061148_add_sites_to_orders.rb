@@ -28,7 +28,7 @@ class AddSitesToOrders < ActiveRecord::Migration[6.1]
     add_column :orders, :site_agent_name,                            :string,  null: false  # 現場代理人(氏名)
     add_column :orders, :site_agent_apply,                           :string,  null: false  # 現場代理人(権限及び意見の申出方法)
     add_column :orders, :supervising_engineer_name,                  :string,  null: false  # 監督技術者･主任技術者(氏名)
-    add_column :orders, :supervising_engineer_check,                 :integer               # 監督技術者・主任技術者(専任or非専任)〇を付ける
+    add_column :orders, :supervising_engineer_check,                 :integer, null: false  # 監督技術者・主任技術者(専任or非専任)〇を付ける
     add_column :orders, :supervising_engineer_assistant_name,        :string                # 監督技術者補佐(氏名)
     add_column :orders, :professional_engineer_name,                 :string                # 専門技術者(氏名)
     add_column :orders, :professional_engineer_construction_details, :string                # 専門技術者(担当工事内容)

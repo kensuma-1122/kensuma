@@ -261,6 +261,16 @@ RSpec.describe Order, type: :model do
       end
     end
 
+    describe '#supervising_engineer_check' do
+      context '存在しない場合' do
+        before(:each) { subject.supervising_engineer_check = nil }
+
+        it 'バリデーションに落ちること' do
+          expect(subject.supervising_engineer_check).to be_falsey
+        end
+      end
+    end
+
     describe '#safety_officer_name' do
       context '存在しない場合' do
         before(:each) { subject.safety_officer_name = nil }
