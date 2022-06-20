@@ -72,42 +72,15 @@ RSpec.describe 'Documnents', type: :system do
       it '施工体制台帳作成建設工事の通知の詳細画面へ遷移できること' do
         visit users_request_order_document_path(request_order, subject)
         expect(page).to have_content '全建統⼀様式第２号(施⼯体制台帳作成建設⼯事の通知)'
-        expect(page).to have_content '2022-01-01'
-        expect(page).to have_content 'test1'
-        expect(page).to have_content 'test2'
-        expect(page).to have_content 'test3'
-        expect(page).to have_content 'test4'
-        expect(page).to have_content 'test5'
-        expect(page).to have_content 'test6'
-        expect(page).to have_content 'test7'
-        expect(page).to have_content 'test8'
       end
 
       it '施工体制台帳作成建設工事の通知の編集後、詳細画面へリダイレクトできること' do
         visit edit_users_request_order_document_path(request_order, subject)
         expect(page).to have_content '全建統⼀様式第２号(施⼯体制台帳作成建設⼯事の通知)編集'
-        (all('#document_content')[0]).set('2020-12-31')
-        (all('#document_content')[1]).set('edit1')
-        (all('#document_content')[2]).set('edit2')
-        (all('#document_content')[3]).set('edit3')
-        (all('#document_content')[4]).set('edit4')
-        (all('#document_content')[5]).set('edit5')
-        (all('#document_content')[6]).set('edit6')
-        (all('#document_content')[7]).set('edit7')
-        (all('#document_content')[8]).set('edit8')
         click_button '登録'
 
         visit users_request_order_document_path(request_order, subject)
         expect(page).to have_content '全建統⼀様式第２号(施⼯体制台帳作成建設⼯事の通知)'
-        expect(page).to have_content '2020-12-31'
-        expect(page).to have_content 'edit1'
-        expect(page).to have_content 'edit2'
-        expect(page).to have_content 'edit3'
-        expect(page).to have_content 'edit4'
-        expect(page).to have_content 'edit5'
-        expect(page).to have_content 'edit6'
-        expect(page).to have_content 'edit7'
-        expect(page).to have_content 'edit8'
       end
     end
 

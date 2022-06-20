@@ -25,12 +25,12 @@
       <span id="sd_t16_1" class="sd_t sd_s2">当工事は、建設業法（昭和24年法律第100号）第24条の7に基づく施工体制台帳の作成を要する建設工事 </span>
       <span id="sd_t17_1" class="sd_t sd_s2">です。 </span>
       <span id="sd_t18_1" class="sd_t sd_s1">(全建統一様式第２号) </span>
-      <span id="sd_t19_1" class="sd_t sd_s2"><%= @document.content["submitted_on"] %> 3-1 </span>
+      <span id="sd_t19_1" class="sd_t sd_s2"><%= "※※ 未実装 日付 ※※" %></span> <!-- 3-001 -->
       <span id="sd_t1a_1" class="sd_t sd_s6">下請負業者の皆さんへ </span>
       <span id="sd_t1b_1" class="sd_t sd_s2">【元請負業者】 </span>
-      <span id="sd_t1c_1" class="sd_t sd_s2"><%= @document.content["prime_contractor_name"] %> 3-2 </span>
+      <span id="sd_t1c_1" class="sd_t sd_s2"><%= @order_info.order.business.name %></span> <!-- 3-002 -->
       <span id="sd_t1f_1_1" class="sd_t sd_s2"></span>
-      <span id="sd_t13_1" class="sd_t sd_s2"><%= @document.content["site_name"] %> 3-3 </span>
+      <span id="sd_t13_1" class="sd_t sd_s2"><%= @order_info.order.site_name %></span> <!-- 3-003 -->
       <span id="sd_t13_1_1" class="sd_t sd_s2"></span>
       <span id="sd_t14_1" class="sd_t sd_s2">事業所の名称 </span>
       <span id="sd_t1d_1" class="sd_t sd_s2">会 </span>
@@ -42,20 +42,20 @@
           <tbody>
             <tr>
               <td class="sd_td_1">元 請 名</td>
-              <td class="sd_td_1" colspan="3"><%= @document.content["business_name"] %> 3-4</td>
+              <td class="sd_td_1" colspan="3"><%= @order_info.order.business.name %></td> <!-- 3-004 -->
             </tr>
             <tr>
               <td class="sd_td_1">発 注 者 名</td>
-              <td class="sd_td_1" colspan="3"><%= @document.content["orderer_name"] %> 3-5</td>
+              <td class="sd_td_1" colspan="3"><%= @order_info.order.order_name %></td> <!-- 3-005 -->
             </tr>
             <tr>
               <td class="sd_td_1">工 事 名</td>
-              <td class="sd_td_1" colspan="3"><%= @document.content["construction_name"] %> 3-6</td>
+              <td class="sd_td_1" colspan="3"><%= "※※ 未実装 下請会社(工事名) ※※" %></td> <!-- 3-006 -->
             <tr>
               <td class="sd_td_1" style="width: 15%">監 督 員 名</td>
-              <td class="sd_td_1" style="width: 20%"><%= @document.content["supervisor_name"] %> 3-7</td>
+              <td class="sd_td_1" style="width: 20%"><%= @order_info.order.supervisor_name %></td> <!-- 3-007 -->
               <td class="sd_td_1" style="width: 15%">権限及び意見<br>申出方法</td>
-              <td class="sd_td_1" style="vertical-align: middle !important"><%= @document.content["apply"] %> 3-8</td>
+              <td class="sd_td_1" style="vertical-align: middle !important"><%= @order_info.order.supervisor_apply %></td> <!-- 3-008 -->
             </tr>
           </tbody>
         </table>
@@ -66,7 +66,7 @@
           <tbody>
             <tr>
               <td class="sd_td_1" style="width: 15%">提出先及び<br>担 当 者</td>
-              <td class="sd_td_1" style="vertical-align: middle !important"><%= @document.content["submission_destination"] %> 3-9</td>
+              <td class="sd_td_1" style="vertical-align: middle !important"><%= @order_info.order.submission_destination %></td> <!-- 3-009 -->
             </tr>
           </tbody>
         </table>
