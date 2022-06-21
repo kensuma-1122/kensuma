@@ -1,7 +1,7 @@
 <%= render 'shared/error_massages', object: f.object %>
 
 <%= f.label :owner_name %>
-<span class="p-1 mb-3 rounded bg-danger text-white">必須</span>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.text_field :owner_name, class: "form-control", placeholder: Car.human_attribute_name(:owner_name) %>
 <br>
 <%= f.label :safety_manager %>
