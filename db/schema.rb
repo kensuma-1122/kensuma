@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_09_061148) do
+ActiveRecord::Schema.define(version: 2022_06_21_065924) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "namespace"
@@ -273,6 +273,31 @@ ActiveRecord::Schema.define(version: 2022_06_09_061148) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "parent_id"
     t.string "uuid", null: false
+    t.string "primary_subcontractor"
+    t.string "sub_company"
+    t.string "construction_name"
+    t.string "construction_details"
+    t.date "start_date"
+    t.date "end_date"
+    t.date "contract_date"
+    t.string "supervisor_name"
+    t.string "supervisor_apply"
+    t.string "professional_engineer_name"
+    t.string "professional_engineer_details"
+    t.integer "professional_construction"
+    t.string "construction_manager_name"
+    t.string "construction_manager_position_name"
+    t.string "site_agent_name"
+    t.string "site_agent_apply"
+    t.string "lead_engineer"
+    t.integer "lead_engineer_check"
+    t.string "work_chief_name"
+    t.string "work_conductor_name"
+    t.string "safety_officer_name"
+    t.string "safety_manager_name"
+    t.string "safety_promoter_name"
+    t.string "foreman_name"
+    t.string "registered_core_engineer_name"
     t.index ["business_id"], name: "index_request_orders_on_business_id"
     t.index ["order_id"], name: "index_request_orders_on_order_id"
   end
