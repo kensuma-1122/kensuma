@@ -18,7 +18,7 @@ class AddSitesToRequestOrders < ActiveRecord::Migration[6.1]
     add_column :request_orders, :construction_manager_position_name, :string  # 工事担任責任者(役職名)
     add_column :request_orders, :site_agent_name,                    :string  # 現場代理人(氏名)
     add_column :request_orders, :site_agent_apply,                   :string  # 現場代理人(権限及び意見の申出方法)
-    add_column :request_orders, :lead_engineer,                      :string  # 主任技術者
+    add_column :request_orders, :lead_engineer_name,                 :string  # 主任技術者(氏名)
     add_column :request_orders, :lead_engineer_check,                :integer # 主任技術者(専任or非専任)
     add_column :request_orders, :work_chief_name,                    :string  # 作業主任者(氏名)
     add_column :request_orders, :work_conductor_name,                :string  # 作業指揮者名(氏名)

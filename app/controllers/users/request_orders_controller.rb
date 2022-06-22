@@ -11,6 +11,12 @@ module Users
       @sub_request_orders = @request_order.children
     end
 
+    def edit; end
+
+    def update
+      redirect_to users_request_orders_url
+    end
+
     def submit
       if @request_order.parent_id.nil? && @request_order.children.all? { |r| r.status == 'approved' }
         @request_order.approved!

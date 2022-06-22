@@ -289,7 +289,7 @@ ActiveRecord::Schema.define(version: 2022_06_21_065924) do
     t.string "construction_manager_position_name"
     t.string "site_agent_name"
     t.string "site_agent_apply"
-    t.string "lead_engineer"
+    t.string "lead_engineer_name"
     t.integer "lead_engineer_check"
     t.string "work_chief_name"
     t.string "work_conductor_name"

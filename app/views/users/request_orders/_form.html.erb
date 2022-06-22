@@ -1,0 +1,110 @@
+<%= render 'shared/error_massages', object: f.object %>
+
+<!-- 下請会社 -->
+<div class="list-group">
+  <div class="list-group-item">
+    <%= f.label :primary_subcontractor %> <!-- 一次下請会社 -->
+    <span class="text-danger">※必須</span>
+    <%= f.text_field :primary_subcontractor, class: "form-control", placeholder: RequestOrder.human_attribute_name(:primary_subcontractor) %>
+    <br>
+    <%= f.label :sub_company %> <!-- 直近下位の会社 -->
+    <span class="text-danger">※必須</span>
+    <%= f.text_field :sub_company, class: "form-control", placeholder: RequestOrder.human_attribute_name(:sub_company) %>
+    <br>
+    <%= f.label :construction_name %> <!-- 工事名 -->
+    <span class="text-danger">※必須</span>
+    <%= f.text_field :construction_name, class: "form-control", placeholder: RequestOrder.human_attribute_name(:construction_name) %>
+    <br>
+    <%= f.label :construction_details %> <!-- 工事内容 -->
+    <span class="text-danger">※必須</span>
+    <%= f.text_field :construction_details, class: "form-control", placeholder: RequestOrder.human_attribute_name(:construction_details) %>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+        <%= f.label :start_date %> <!-- 工期(自) -->
+        <span class="text-danger">※必須</span>
+        <%= f.date_field :start_date, class: "form-control" %>
+      </div>
+      <div class="col-md-3">
+        <%= f.label :end_date %> <!-- 工期(至) -->
+        <span class="text-danger">※必須</span>
+        <%= f.date_field :end_date, class: "form-control" %>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="col-md-3">
+        <%= f.label :contract_date %> <!-- 契約日 -->
+        <span class="text-danger">※必須</span>
+        <%= f.date_field :contract_date, class: "form-control" %>
+      </div>
+    </div><br>
+    <%= f.label :supervisor_name %> <!-- 監督員(氏名) -->
+    <span class="text-danger">※必須</span>
+    <%= f.text_field :supervisor_name, class: "form-control", placeholder: RequestOrder.human_attribute_name(:supervisor_name) %>
+    <br>
+    <%= f.label :supervisor_apply %> <!-- 監督員(権限及び意見の申出方法) -->
+    <span class="text-danger">※必須</span>
+    <%= f.text_field :supervisor_apply, class: "form-control", placeholder: RequestOrder.human_attribute_name(:supervisor_apply) %>
+    <br>
+    <%= f.label :professional_engineer_name %> <!-- 専門技術者(氏名) -->
+    <%= f.text_field :professional_engineer_name, class: "form-control", placeholder: RequestOrder.human_attribute_name(:professional_engineer_name) %>
+    <br>
+    <%= f.label :professional_engineer_details %> <!-- 専門技術者(担当工事内容) -->
+    <%= f.text_field :professional_engineer_details, class: "form-control", placeholder: RequestOrder.human_attribute_name(:professional_engineer_details) %>
+    <br>
+    <%= f.label :professional_construction %> <!-- 特定専門工事(有無) -->
+    <%= f.text_field :professional_construction, class: "form-control", placeholder: RequestOrder.human_attribute_name(:professional_construction) %>
+    <br>
+    <%= f.label :construction_manager_name %> <!-- 工事担任責任者(氏名) -->
+    <span class="text-danger">※必須</span>
+    <%= f.text_field :construction_manager_name, class: "form-control", placeholder: RequestOrder.human_attribute_name(:construction_manager_name) %>
+    <br>
+    <%= f.label :construction_manager_position_name %> <!-- 工事担任責任者(役職名) -->
+    <span class="text-danger">※必須</span>
+    <%= f.text_field :construction_manager_position_name, class: "form-control", placeholder: RequestOrder.human_attribute_name(:construction_manager_position_name) %>
+    <br>
+    <%= f.label :site_agent_name %> <!-- 現場代理人(氏名) -->
+    <span class="text-danger">※必須</span>
+    <%= f.text_field :site_agent_name, class: "form-control", placeholder: RequestOrder.human_attribute_name(:site_agent_name) %>
+    <br>
+    <%= f.label :site_agent_apply %> <!-- 現場代理人(権限及び意見の申出方法) -->
+    <span class="text-danger">※必須</span>
+    <%= f.text_field :site_agent_apply, class: "form-control", placeholder: RequestOrder.human_attribute_name(:site_agent_apply) %>
+    <br>
+    <%= f.label :lead_engineer_name %> <!-- 主任技術者(氏名) -->
+    <span class="text-danger">※必須</span>
+    <%= f.text_field :lead_engineer_name, class: "form-control", placeholder: RequestOrder.human_attribute_name(:lead_engineer_name) %>
+    <br>
+    <%= f.label :lead_engineer_check %> <!-- 主任技術者(専任or非専任) -->
+    <span class="text-danger">※必須</span>
+    <%= f.text_field :lead_engineer_check, class: "form-control", placeholder: RequestOrder.human_attribute_name(:lead_engineer_check) %>
+    <br>
+    <%= f.label :work_chief_name %> <!-- 作業主任者(氏名) -->
+    <span class="text-danger">※必須</span>
+    <%= f.text_field :work_chief_name, class: "form-control", placeholder: RequestOrder.human_attribute_name(:work_chief_name) %>
+    <br>
+    <%= f.label :work_conductor_name %> <!-- 作業指揮者名(氏名) -->
+    <span class="text-danger">※必須</span>
+    <%= f.text_field :work_conductor_name, class: "form-control", placeholder: RequestOrder.human_attribute_name(:work_conductor_name) %>
+    <br>
+    <%= f.label :safety_officer_name %> <!-- 安全衛生担当責任者(氏名) -->
+    <span class="text-danger">※必須</span>
+    <%= f.text_field :safety_officer_name, class: "form-control", placeholder: RequestOrder.human_attribute_name(:safety_officer_name) %>
+    <br>
+    <%= f.label :safety_manager_name %> <!-- 安全衛生責任者(氏名) -->
+    <span class="text-danger">※必須</span>
+    <%= f.text_field :safety_manager_name, class: "form-control", placeholder: RequestOrder.human_attribute_name(:safety_manager_name) %>
+    <br>
+    <%= f.label :safety_promoter_name %> <!-- 安全推進者(氏名) -->
+    <span class="text-danger">※必須</span>
+    <%= f.text_field :safety_promoter_name, class: "form-control", placeholder: RequestOrder.human_attribute_name(:safety_promoter_name) %>
+    <br>
+    <%= f.label :foreman_name %> <!-- 職長(氏名) -->
+    <span class="text-danger">※必須</span>
+    <%= f.text_field :foreman_name, class: "form-control", placeholder: RequestOrder.human_attribute_name(:foreman_name) %>
+    <br>
+    <%= f.label :registered_core_engineer_name %> <!-- 登録基幹技能者(氏名) -->
+    <%= f.text_field :registered_core_engineer_name, class: "form-control", placeholder: RequestOrder.human_attribute_name(:registered_core_engineer_name) %>
+    <br>
+  </div>
+</div><br>
