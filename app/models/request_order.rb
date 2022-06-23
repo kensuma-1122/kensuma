@@ -4,6 +4,8 @@ class RequestOrder < ApplicationRecord
   has_many :documents, dependent: :destroy
 
   enum status: { requested: 0, submitted: 1, fix_requested: 2, approved: 3 }
+  enum professional_construction: { y: 0, n: 1 }
+  enum lead_engineer_check: { full_time: 0, non_dedicated: 1 }
 
   validates :primary_subcontractor,              presence: true, on: :update  # 一次下請会社
   validates :sub_company,                        presence: true, on: :update  # 直近下位の会社
@@ -18,7 +20,7 @@ class RequestOrder < ApplicationRecord
   validates :construction_manager_position_name, presence: true, on: :update  # 工事担任責任者(役職名)
   validates :site_agent_name,                    presence: true, on: :update  # 現場代理人(氏名)
   validates :site_agent_apply,                   presence: true, on: :update  # 現場代理人(権限及び意見の申出方法)
-  validates :lead_engineer_name,                 presence: true, on: :update  # 主任技術者
+  validates :lead_engineer_name,                 presence: true, on: :update  # 主任技術者(氏名)
   validates :lead_engineer_check,                presence: true, on: :update  # 主任技術者(専任or非専任)
   validates :work_chief_name,                    presence: true, on: :update  # 作業主任者(氏名)
   validates :work_conductor_name,                presence: true, on: :update  # 作業指揮者名(氏名)

@@ -142,6 +142,12 @@ ja:
         submitted: 提出済
         fix_requested: 修正依頼済
         approved: 承認済
+      professional_construction:
+        y: 有
+        n: 無
+      lead_engineer_check:
+        full_time: 専任
+        non_dedicated: 非専任
     worker:
       abo_blood_type:
         a: A型

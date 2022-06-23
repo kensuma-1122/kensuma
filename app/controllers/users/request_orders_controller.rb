@@ -1,5 +1,6 @@
 module Users
   class RequestOrdersController < Users::Base
+    before_action :set_business_workers_name, only: %i[edit update]
     before_action :set_request_order, except: :index
     before_action :set_sub_request_order, only: %i[fix_request approve]
 
@@ -14,7 +15,12 @@ module Users
     def edit; end
 
     def update
-      redirect_to users_request_orders_url
+      if @request_order.update(request_order_params)
+        flash[:success] = '更新しました'
+        redirect_to users_request_order_url
+      else
+        render :edit
+      end
     end
 
     def submit
@@ -50,6 +56,36 @@ module Users
 
     def set_sub_request_order
       @sub_request_order = RequestOrder.find_by(uuid: params[:sub_request_uuid])
+    end
+
+    def request_order_params
+      params.require(:request_order).permit(
+        :primary_subcontractor,
+        :sub_company,
+        :construction_name,
+        :construction_details,
+        :start_date,
+        :end_date,
+        :contract_date,
+        :supervisor_name,
+        :supervisor_apply,
+        :professional_engineer_name,
+        :professional_engineer_details,
+        :professional_construction,
+        :construction_manager_name,
+        :construction_manager_position_name,
+        :site_agent_name,
+        :site_agent_apply,
+        :lead_engineer_name,
+        :lead_engineer_check,
+        :work_chief_name,
+        :work_conductor_name,
+        :safety_officer_name,
+        :safety_manager_name,
+        :safety_promoter_name,
+        :foreman_name,
+        :registered_core_engineer_name
+      )
     end
   end
 end

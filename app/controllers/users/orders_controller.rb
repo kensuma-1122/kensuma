@@ -202,10 +202,6 @@ module Users
 
     private
 
-    def set_business_workers_name
-      @business_workers_name = current_business.workers.pluck(:name) # 自社(事業所)の作業員
-    end
-
     def set_order
       @order = current_business.orders.find_by(site_uu_id: params[:site_uu_id])
     end
