@@ -13,6 +13,7 @@ require ("./users/auth");
 require("packs/jquery.jpostal");
 require("./orders/postcode");
 require("./users/select2");
+require("./users/input_form");
 
 import 'bootstrap';
 import '../stylesheets/users';
