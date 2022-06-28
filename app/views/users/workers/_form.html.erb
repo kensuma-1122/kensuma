@@ -30,7 +30,7 @@
 
 <%= f.label :birth_day_on %>
 <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
-<%= f.date_field :birth_day_on, class: "form-control", placeholder: Worker.human_attribute_name(:birth_day_on) %><br>
+<%=f.date_select :birth_day_on, {year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %>
 
 <%= f.label :abo_blood_type %>
 <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
@@ -47,7 +47,7 @@
 
 <%= f.label :hiring_on %>
 <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
-<%= f.date_field :hiring_on, class: "form-control", placeholder: Worker.human_attribute_name(:hiring_on) %><br>
+<%=f.date_select :hiring_on, {year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %>
 
 <%= f.label :experience_term_before_hiring %>
 <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
@@ -111,7 +111,7 @@
     <%= f.fields_for :worker_medical do |worker_medical| %>
        <div class="row mb-3">
         <%= worker_medical.label :med_exam_on %>
-        <%= worker_medical.date_field :med_exam_on, class: "form-control" %>
+        <%=f.date_select :med_exam_on, {year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %>
       </div>
       <div class="row mb-3">
         <%= worker_medical.label :max_blood_pressure %>
@@ -123,7 +123,7 @@
       </div>
       <div class="row mb-3">
         <%= worker_medical.label :special_med_exam_on %>
-        <%= worker_medical.date_field :special_med_exam_on, class: "form-control" %>
+        <%=f.date_select :special_med_exam_on, {year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %>
       </div>
       <%= worker_medical.fields_for :worker_exams do |worker_exam| %>
         <%= render "worker_exam_fields", f: worker_exam %>
