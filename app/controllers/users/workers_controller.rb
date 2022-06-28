@@ -159,7 +159,7 @@ module Users
       params.require(:worker).permit(:name, :name_kana,
         :country, :my_address, :my_phone_number, :family_address,
         :family_phone_number, :birth_day_on, :abo_blood_type,
-        :rh_blood_type, :job_type, :hiring_on, :experience_term_before_hiring,
+        :rh_blood_type, :job_type, :job_type, :hiring_on, :experience_term_before_hiring,
         :blank_term, :carrier_up_id,
         worker_licenses_attributes:           [:id, :got_on, :license_id, { images: [] }, :_destroy],
         worker_skill_trainings_attributes:    [:id, :got_on, :skill_training_id, { images: [] }, :_destroy],
