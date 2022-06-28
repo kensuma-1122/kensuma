@@ -30,7 +30,7 @@
 
 <%= f.label :birth_day_on %>
 <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
-<%=f.date_select :birth_day_on, {year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %>
+<%=f.date_select :birth_day_on, {year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %><br>
 
 <%= f.label :abo_blood_type %>
 <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
@@ -52,7 +52,7 @@
 
 <%= f.label :hiring_on %>
 <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
-<%=f.date_select :hiring_on, {year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %>
+<%=f.date_select :hiring_on, {year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %><br>
 
 <%= f.label :experience_term_before_hiring %>
 <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
