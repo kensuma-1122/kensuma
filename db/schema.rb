@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_18_095346) do
+ActiveRecord::Schema.define(version: 2022_06_28_093612) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "namespace"
@@ -385,6 +385,7 @@ ActiveRecord::Schema.define(version: 2022_05_18_095346) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "uuid", null: false
+    t.string "job_title", null: false
     t.index ["business_id"], name: "index_workers_on_business_id"
   end
 
