@@ -14,7 +14,7 @@
       birth_day_on:        '2000-01-01',
       abo_blood_type:      0,
       rh_blood_type:       0,
-      job_type:            '主任',
+      job_title:            '主任',
       hiring_on:           '2022-01-01',
       experience_term_before_hiring: 1,
       blank_term:          1
@@ -38,7 +38,7 @@ end
       birth_day_on:        '2000-01-01',
       abo_blood_type:      0,
       rh_blood_type:       0,
-      job_type:            '係員',
+      job_title:            '係員',
       hiring_on:           '2022-01-01',
       experience_term_before_hiring: 1,
       blank_term:          1
@@ -62,7 +62,7 @@ end
       birth_day_on:        '2000-01-01',
       abo_blood_type:      0,
       rh_blood_type:       0,
-      job_type:            '係員',
+      job_title:            '係員',
       hiring_on:           '2022-01-01',
       experience_term_before_hiring: 1,
       blank_term:          1
@@ -86,7 +86,7 @@ end
       birth_day_on:        '2000-01-01',
       abo_blood_type:      0,
       rh_blood_type:       0,
-      job_type:            '係員',
+      job_title:            '係員',
       hiring_on:           '2022-01-01',
       experience_term_before_hiring: 1,
       blank_term:          1
@@ -110,7 +110,7 @@ end
       birth_day_on:        '2000-01-01',
       abo_blood_type:      0,
       rh_blood_type:       0,
-      job_type:            '係員',
+      job_title:            '係員',
       hiring_on:           '2022-01-01',
       experience_term_before_hiring: 1,
       blank_term:          1
