@@ -8,8 +8,8 @@ RSpec.describe 'Documnents', type: :system do
   let(:document) { create(:document, business: business, request_order: request_order) }
   let(:cover) { create(:document, :cover, business: business, request_order: request_order) }
   let(:table) { create(:document, :table, business: business, request_order: request_order) }
-  let(:doc_2nd) { create(:document, :doc_2nd, business: business, request_order: request_order) }
-  let(:doc_5th) { create(:document, :doc_5th, business: business, request_order: request_order) }
+  let(:doc_3rd) { create(:document, :doc_3rd, business: business, request_order: request_order) }
+  let(:doc_8th) { create(:document, :doc_8th, business: business, request_order: request_order) }
 
   describe '書類関連' do
     before(:each) do
@@ -67,7 +67,7 @@ RSpec.describe 'Documnents', type: :system do
     end
 
     context '施工体制台帳作成建設工事の通知' do
-      subject { doc_2nd }
+      subject { doc_3rd }
 
       it '施工体制台帳作成建設工事の通知の詳細画面へ遷移できること' do
         visit users_request_order_document_path(request_order, subject)
@@ -85,7 +85,7 @@ RSpec.describe 'Documnents', type: :system do
     end
 
     context '作業員名簿' do
-      subject { doc_5th }
+      subject { doc_8th }
 
       it '作業員名簿の詳細画面へ遷移できること' do
         visit users_request_order_document_path(request_order, subject)

@@ -10,7 +10,7 @@ FactoryBot.define do
 
     # 表紙
     trait :cover do
-      document_type { 0 }
+      document_type { 1 }
       content do
         {
           'business_name': 'test1',
@@ -21,13 +21,13 @@ FactoryBot.define do
 
     # 目次
     trait :table do
-      document_type { 1 }
+      document_type { 2 }
       content { {} }
     end
 
     # 施工体制台帳作成建設工事の通知
-    trait :doc_2nd do
-      document_type { 2 }
+    trait :doc_3rd do
+      document_type { 3 }
       content do
         {
           'submitted_on':           '2022-01-01',
@@ -44,8 +44,8 @@ FactoryBot.define do
     end
 
     # 作業員名簿
-    trait :doc_5th do
-      document_type { 5 }
+    trait :doc_8th do
+      document_type { 8 }
       content do
         {
           'doc5_8_001_business_name':         'test1',
