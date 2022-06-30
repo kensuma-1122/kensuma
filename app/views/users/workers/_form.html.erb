@@ -30,7 +30,7 @@
 
 <%= f.label :birth_day_on %>
 <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
-<%=f.date_select :birth_day_on, {start_year:Time.now.year-90, end_year:Time.now.year-14, year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %><br>
+<%= f.date_select :birth_day_on, {start_year:Time.now.year-90, end_year:Time.now.year-14, year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %><br>
 
 <%= f.label :abo_blood_type %>
 <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
@@ -52,7 +52,7 @@
 
 <%= f.label :hiring_on %>
 <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
-<%=f.date_select :hiring_on, {start_year:Time.now.year-60, end_year:Time.now.year, year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %><br>
+<%= f.date_select :hiring_on, {start_year:Time.now.year-60, end_year:Time.now.year, year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %><br>
 
 <%= f.label :experience_term_before_hiring %>
 <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
@@ -116,7 +116,7 @@
     <%= f.fields_for :worker_medical do |worker_medical| %>
        <div class="row mb-3">
         <%= worker_medical.label :med_exam_on %>
-        <%=f.date_select :med_exam_on, {start_year:Time.now.year-2, end_year:Time.now.year, year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %>
+        <%= worker_medical.date_select :med_exam_on, {start_year:Time.now.year-2, end_year:Time.now.year, year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %>
       </div>
       <div class="row mb-3">
         <%= worker_medical.label :max_blood_pressure %>
@@ -128,7 +128,7 @@
       </div>
       <div class="row mb-3">
         <%= worker_medical.label :special_med_exam_on %>
-        <%=f.date_select :special_med_exam_on, {start_year:Time.now.year-2, end_year:Time.now.year, year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %>
+        <%= worker_medical.date_select :special_med_exam_on, {start_year:Time.now.year-2, end_year:Time.now.year, year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %>
       </div>
       <%= worker_medical.fields_for :worker_exams do |worker_exam| %>
         <%= render "worker_exam_fields", f: worker_exam %>

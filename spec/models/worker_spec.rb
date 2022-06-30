@@ -266,6 +266,23 @@ RSpec.describe Worker, type: :model do
       end
     end
 
+    describe '#job_title' do
+      context '存在しない場合' do
+        before :each do
+          subject.job_title = nil
+        end
+
+        it 'バリデーションに落ちること' do
+          expect(subject).to be_invalid
+        end
+
+        it 'バリデーションのエラーが正しいこと' do
+          subject.valid?
+          expect(subject.errors.full_messages).to include('役職を入力してください')
+        end
+      end
+    end
+
     describe '#hiring_on' do
       context '存在しない場合' do
         before :each do
