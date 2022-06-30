@@ -133,6 +133,9 @@ ja:
       status:
         created: 作成済み
         completed: 完成
+      supervising_engineer_check:
+        full_time: 専任
+        non_dedicated: 非専任
     request_order:
       status:
         requested: リクエスト済
