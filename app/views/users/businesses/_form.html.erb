@@ -1,39 +1,49 @@
 <%= render 'shared/error_massages', object: f.object %>
 
 <%= f.label :uuid %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.text_field :uuid, class: "form-control", placeholder: "Enter uuid" %>
 <br>
 <%= f.label :name %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.text_field :name, class: "form-control", placeholder: "Enter name" %>
 <br>
 <%= f.label :name_kana %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.text_field :name_kana, class: "form-control", placeholder: "Enter name kana" %>
 <br>
 <%= f.label :branch_name %>
 <%= f.text_field :branch_name, class: "form-control", placeholder: "Enter branch name" %>
 <br>
 <%= f.label :representative_name %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.text_field :representative_name, class: "form-control", placeholder: "Enter representative name" %>
 <br>
 <%= f.label :email %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.email_field :email, class: "form-control", placeholder: "Enter email" %>
 <br>
 <%= f.label :address %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.text_field :address, class: "form-control", placeholder: "Enter address" %>
 <br>
 <%= f.label :post_code %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.text_field :post_code, class: "form-control", placeholder: "Enter post code" %>
 <br>
 <%= f.label :phone_number %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.text_field :phone_number, class: "form-control", placeholder: "Enter phone number" %>
 <br>
 <%= f.label :carrier_up_id %>
 <%= f.text_field :carrier_up_id, class: "form-control", placeholder: "Enter carrier_up_id" %>
 <br>
 <%= f.label :business_type %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.select :business_type, Business.business_types.keys.map { |k| [I18n.t("enums.business.business_type.#{k}"), k]}, {include_blank: true}, {class: "form-control"} %>
 <br>
-<%= f.label :occupation_ids %><br>
+<%= f.label :occupation_ids %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.collection_select :occupation_ids, Occupation.all, :id, :name, { selected: f.object.occupations.ids }, { class: "pref multiple-select", multiple: true, style: "width: 100%" } %>
 <br>
 <br>
@@ -66,9 +76,6 @@
         "business[name_kana]": {
           required: true
         },
-        "business[branch_name]": {
-          required: true
-        },
         "business[representative_name]": {
           required: true
         },
@@ -84,10 +91,10 @@
         "business[phone_number]": {
           required: true
         },
-        "business[carrier_up_id]": {
+        "business[business_type]": {
           required: true
         },
-        "business[business_type]": {
+         "business[occupation_ids][]": {
           required: true
         }
       },
@@ -100,9 +107,6 @@
         },
         "business[name_kana]": {
           required: "事業所名(カナ)を入力してください。"
-        },
-        "business[branch_name]": {
-          required: "支店名、営業所名を入力してください。"
         },
         "business[representative_name]": {
           required: "代表者名を入力してください。"
@@ -119,13 +123,18 @@
         "business[phone_number]": {
           required: "電話番号を入力してください。"
         },
-        "business[carrier_up_id]": {
-          required: "事業者IDを入力してください。"
-        },
         "business[business_type]": {
           required: "どれか一つを選択してください。"
-        }
-      }
+        },
+        "business[occupation_ids][]": {
+          required: "職種を選択してください。"
+        },
+      },
+      errorClass: "input_form_error"
+    });
+    // 入力欄を変更したときにバリデーションを実行
+    $(".business-form-validation").change(function () {
+      $(this).valid();
     });
   });
 </script>

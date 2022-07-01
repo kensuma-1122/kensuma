@@ -54,6 +54,7 @@ RSpec.describe 'Cars', type: :system do
         fill_in 'car[liability_insurance_start_on]', with: car.liability_insurance_start_on
         # 自賠責保険終わり
         fill_in 'car[liability_insurance_end_on]', with: car.liability_insurance_end_on
+
         # ========== 自賠責保険ここまで ==========
 
         # ========== 任意保険ここから ==========

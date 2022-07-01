@@ -1,30 +1,39 @@
 <%= render 'shared/error_massages', object: f.object %>
 
 <%= f.label :name %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.text_field :name, class: "form-control", placeholder: Worker.human_attribute_name(:name) %><br>
 
 <%= f.label :name_kana %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.text_field :name_kana, class: "form-control", placeholder: Worker.human_attribute_name(:name_kana) %><br>
 
 <%= f.label :country %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.text_field :country, class: "form-control", placeholder: Worker.human_attribute_name(:country) %><br>
 
 <%= f.label :my_address %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.text_field :my_address, class: "form-control", placeholder: Worker.human_attribute_name(:my_address) %><br>
 
 <%= f.label :my_phone_number %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.text_field :my_phone_number, class: "form-control", placeholder: Worker.human_attribute_name(:my_phone_number) %><br>
 
 <%= f.label :family_address %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.text_field :family_address, class: "form-control", placeholder: Worker.human_attribute_name(:family_address) %><br>
 
 <%= f.label :family_phone_number %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.text_field :family_phone_number, class: "form-control", placeholder: Worker.human_attribute_name(:family_phone_number) %><br>
 
 <%= f.label :birth_day_on %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.date_field :birth_day_on, class: "form-control", placeholder: Worker.human_attribute_name(:birth_day_on) %><br>
 
 <%= f.label :abo_blood_type %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.select :abo_blood_type, Worker.abo_blood_types_i18n.invert, {}, {class: "form-control"} %><br>
 
 <%= f.label :rh_blood_type %>
@@ -32,16 +41,25 @@
 
 <!-- 下記職種はenum未設計の為ひとまずintegerの数字が表示されるようにしています -->
 <%= f.label :job_type %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.number_field :job_type, class: "form-control" %><br>
 <!-- -->
 
+<!-- 下記役職はひとまずテキスト入力にしています -->
+<%= f.label :job_title %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span><br>
+<%= f.text_field :job_title, class: "form-control", placeholder: Worker.human_attribute_name(:job_title) %><br>
+
 <%= f.label :hiring_on %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.date_field :hiring_on, class: "form-control", placeholder: Worker.human_attribute_name(:hiring_on) %><br>
 
 <%= f.label :experience_term_before_hiring %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.number_field :experience_term_before_hiring, class: "form-control", min: 0 %><br>
 
 <%= f.label :blank_term %>
+<span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.number_field :blank_term, class: "form-control", min: 0 %><br>
 
 <%= f.label :carrier_up_id %>
@@ -96,7 +114,7 @@
   <!-- WorkerMedicalここから -->
   <div class="list-group-item">
     <%= f.fields_for :worker_medical do |worker_medical| %>
-      <div class="row mb-3">
+       <div class="row mb-3">
         <%= worker_medical.label :med_exam_on %>
         <%= worker_medical.date_field :med_exam_on, class: "form-control" %>
       </div>
@@ -131,6 +149,7 @@
     <%= f.fields_for :worker_insurance do |worker_insurance| %>
       <div class="mt-3 mb-3">
         <%= worker_insurance.label :health_insurance_type %>
+        <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
         <%= worker_insurance.select :health_insurance_type,
                  WorkerInsurance.health_insurance_types_i18n.keys.map { |k| [WorkerInsurance.health_insurance_types_i18n[k], k] },
                  { include_blank: true }, { class: "form-control",  id: "health_insurance_type", onchange: "getSelectedHealthInsuranceType(this)" } %>
@@ -139,11 +158,13 @@
       <!-- health_insurance_typeがhealth_insurance_associationまたはconstruction_national_health_insuranceで入力可能 -->
       <div class="mb-3 hidden" id="health_insurance_name">
         <%= worker_insurance.label :health_insurance_name %>
+        <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
         <%= worker_insurance.text_field :health_insurance_name, class: "form-control" %>
       </div>
 
       <div class="mb-3">
         <%= worker_insurance.label :pension_insurance_type %>
+        <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
         <%= worker_insurance.select :pension_insurance_type,
                  WorkerInsurance.pension_insurance_types_i18n.keys.map { |k| [WorkerInsurance.pension_insurance_types_i18n[k], k] },
                  { include_blank: true, prompt: "選択してください" }, { class: "form-control" } %>
@@ -151,6 +172,7 @@
 
       <div class="mb-3">
         <%= worker_insurance.label :employment_insurance_type %>
+        <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
         <%= worker_insurance.select :employment_insurance_type,
                  WorkerInsurance.employment_insurance_types_i18n.keys.map { |k| [WorkerInsurance.employment_insurance_types_i18n[k], k] },
                  { include_blank: true, prompt: "選択してください" },
@@ -160,11 +182,13 @@
       <!-- employment_insurance_numberが被保険者(0)で入力可能 -->
       <div class="mt-3 hidden" id="employment_insurance_number">
         <%= worker_insurance.label :employment_insurance_number %>
+        <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
         <%= worker_insurance.text_field :employment_insurance_number, class: "form-control" %>
       </div>
 
       <div class="mb-3">
         <%= worker_insurance.label :severance_pay_mutual_aid_type %>
+        <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
         <%= worker_insurance.select :severance_pay_mutual_aid_type,
                  WorkerInsurance.severance_pay_mutual_aid_types_i18n.keys.map { |k| [WorkerInsurance.severance_pay_mutual_aid_types_i18n[k], k] },
                  { include_blank: true, prompt: "選択してください" }, { class: "form-control", id: "mutual_aid_type", onchange: "getSelectedMutualAidType(this)" } %>
@@ -173,6 +197,7 @@
       <!-- severance_pay_mutual_aid_typeがその他(2)のときに入力可能 -->
       <div class="mb-3 hidden" id="mutual_aid_number">
         <%= worker_insurance.label :severance_pay_mutual_aid_name %>
+        <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
         <%= worker_insurance.text_field :severance_pay_mutual_aid_name, class: "form-control" %>
       </div>
     <% end %>
@@ -259,10 +284,10 @@
         "worker[abo_blood_type]": {
           required: true
         },
-        "worker[rh_blood_type]": {
+        "worker[job_type]": {
           required: true
         },
-        "worker[job_type]": {
+         "worker[job_title]": {
           required: true
         },
         "worker[hiring_on]": {
@@ -274,40 +299,10 @@
         "worker[blank_term]": {
           required: true
         },
-        "worker[worker_licenses_attributes][0][license_id]": {
-          required: true
-        },
-        "worker[worker_licenses_attributes][0][got_on]": {
-          required: true
-        },
-        "worker[worker_skill_trainings_attributes][0][skill_training_id]": {
-          required: true
-        },
-        "worker[worker_skill_trainings_attributes][0][got_on]": {
-          required: true
-        },
-        "worker[worker_special_educations_attributes][0][special_education_id]": {
-          required: true
-        },
-        "worker[worker_special_educations_attributes][0][got_on]": {
-          required: true
-        },
-        "worker[worker_medical_attributes][med_exam_on]": {
-          required: true
-        },
-        "worker[worker_medical_attributes][max_blood_pressure]": {
-          required: true
-        },
-        "worker[worker_medical_attributes][min_blood_pressure]": {
-          required: true
-        },
-        "worker[worker_medical_attributes][worker_exams_attributes][0][special_med_exam_id]": {
-          required: true
-        },
-        "worker[worker_medical_attributes][worker_exams_attributes][0][got_on]": {
-          required: true
-        },
         "worker[worker_insurance_attributes][health_insurance_type]": {
+          required: true
+        },
+         "worker[worker_insurance_attributes][health_insurance_name]": {
           required: true
         },
         "worker[worker_insurance_attributes][pension_insurance_type]": {
@@ -316,7 +311,13 @@
         "worker[worker_insurance_attributes][employment_insurance_type]": {
           required: true
         },
+         "worker[worker_insurance_attributes][employment_insurance_number]": {
+          required: true
+        },
         "worker[worker_insurance_attributes][severance_pay_mutual_aid_type]": {
+          required: true
+        },
+        "worker[worker_insurance_attributes][severance_pay_mutual_aid_name]": {
           required: true
         },
       },
@@ -348,11 +349,11 @@
         "worker[abo_blood_type]": {
           required: "血液型(ABO)を入力してください。"
         },
-        "worker[rh_blood_type]": {
-          required: "血液型(Rh)を入力してください。"
-        },
         "worker[job_type]": {
           required: "職種を入力してください。"
+        },
+        "worker[job_title]": {
+          required: "役職を入力してください。"
         },
         "worker[hiring_on]": {
           required: "雇入年月日を入力してください。"
@@ -363,41 +364,11 @@
         "worker[blank_term]": {
           required: "ブランク年数を入力してください。"
         },
-        "worker[worker_licenses_attributes][0][license_id]": {
-          required: "ライセンスを一つ選択してください。"
-        },
-        "worker[worker_licenses_attributes][0][got_on]": {
-          required: "取得年月日を入力してください。"
-        },
-        "worker[worker_skill_trainings_attributes][0][skill_training_id]": {
-          required: "技能講習を選択してください。"
-        },
-        "worker[worker_skill_trainings_attributes][0][got_on]": {
-          required: "取得年月日を入力してください。"
-        },
-        "worker[worker_special_educations_attributes][0][special_education_id]": {
-          required: "特別教育を選択してください。"
-        },
-        "worker[worker_special_educations_attributes][0][got_on]": {
-          required: "取得年月日を入力してください。"
-        },
-        "worker[worker_medical_attributes][med_exam_on]": {
-          required: "健康診断日を入力してください。"
-        },
-        "worker[worker_medical_attributes][max_blood_pressure]": {
-          required: "最高血圧を入力してください。"
-        },
-        "worker[worker_medical_attributes][min_blood_pressure]": {
-          required: "最低血圧を入力してください。"
-        },
-        "worker[worker_medical_attributes][worker_exams_attributes][0][special_med_exam_id]": {
-          required: "特別健康診断を選択してください。"
-        },
-        "worker[worker_medical_attributes][worker_exams_attributes][0][got_on]": {
-          required: "取得年月日を入力してください。"
-        },
         "worker[worker_insurance_attributes][health_insurance_type]": {
           required: "健康保険のタイプを選択してください。"
+        },
+         "worker[worker_insurance_attributes][health_insurance_name]": {
+           required: "健康保険の名前を入力してください。"
         },
         "worker[worker_insurance_attributes][pension_insurance_type]": {
           required: "年金保険のタイプを選択してください。"
@@ -405,10 +376,21 @@
         "worker[worker_insurance_attributes][employment_insurance_type]": {
           required: "雇用保険のタイプを選択してください。"
         },
+         "worker[worker_insurance_attributes][employment_insurance_number]": {
+          required: "被保険者番号の下4桁を入力してください。"
+        },
         "worker[worker_insurance_attributes][severance_pay_mutual_aid_type]": {
           required: "建設業退職金共済制度を選択してください。"
         },
-      }
+         "worker[worker_insurance_attributes][severance_pay_mutual_aid_name]": {
+          required: "建設業退職金共済制度名前を入力してください。"
+        },
+      },
+      errorClass: "input_form_error"
+    });
+     // 入力欄を変更したときにバリデーションを実行
+    $(".worker-form-validation").change(function () {
+      $(this).valid();
     });
   });
 </script>
