@@ -41,15 +41,9 @@ RSpec.describe 'Cars', type: :system do
         # 車両番号
         fill_in 'car[vehicle_number]', with: car.vehicle_number
         # 車検初め
-        # fill_in 'car[vehicle_inspection_start_on]', with: car.vehicle_inspection_start_on
-        select Time.now.year, from: 'car[vehicle_inspection_start_on(1i)]'
-        select Time.now.month, from: 'car[vehicle_inspection_start_on(2i)]'
-        select Time.now.day, from: 'car[vehicle_inspection_start_on(3i)]'
+        fill_in 'car[vehicle_inspection_start_on]', with: car.vehicle_inspection_start_on
         # 車検終わり
-        # fill_in 'car[vehicle_inspection_end_on]', with: car.vehicle_inspection_end_on
-        select Time.now.year + 3, from: 'car[vehicle_inspection_end_on(1i)]'
-        select Time.now.month, from: 'car[vehicle_inspection_end_on(2i)]'
-        select Time.now.day, from: 'car[vehicle_inspection_end_on(3i)]'
+        fill_in 'car[vehicle_inspection_end_on]', with: car.vehicle_inspection_end_on
 
         # ========== 自賠責保険ここから ==========
         # 自賠責保険会社
@@ -57,15 +51,9 @@ RSpec.describe 'Cars', type: :system do
         # 自賠責証券番号
         fill_in 'car[liability_securities_number]', with: car.liability_securities_number
         # 自賠責保険初め
-        # fill_in 'car[liability_insurance_start_on]', with: car.liability_insurance_start_on
-        select Time.now.year, from: 'car[liability_insurance_start_on(1i)]'
-        select Time.now.month, from: 'car[liability_insurance_start_on(2i)]'
-        select Time.now.day, from: 'car[liability_insurance_start_on(3i)]'
+        fill_in 'car[liability_insurance_start_on]', with: car.liability_insurance_start_on
         # 自賠責保険終わり
-        # fill_in 'car[liability_insurance_end_on]', with: car.liability_insurance_end_on
-        select Time.now.year + 2, from: 'car[liability_insurance_end_on(1i)]'
-        select Time.now.month, from: 'car[liability_insurance_end_on(2i)]'
-        select Time.now.day, from: 'car[liability_insurance_end_on(3i)]'
+        fill_in 'car[liability_insurance_end_on]', with: car.liability_insurance_end_on
 
         # ========== 自賠責保険ここまで ==========
 
@@ -79,15 +67,9 @@ RSpec.describe 'Cars', type: :system do
         # 任意保険証券番号
         fill_in 'car[car_voluntary_insurances_attributes][0][voluntary_securities_number]', with: car_voluntary_insurance.voluntary_securities_number.to_i
         # 任意保険初め
-        # fill_in 'car[car_voluntary_insurances_attributes][0][voluntary_insurance_start_on]', with: car_voluntary_insurance.voluntary_insurance_start_on
-        select Time.now.year, from: 'car[car_voluntary_insurances_attributes][0][voluntary_insurance_start_on(1i)]'
-        select Time.now.month, from: 'car[car_voluntary_insurances_attributes][0][voluntary_insurance_start_on(2i)]'
-        select Time.now.day, from: 'car[car_voluntary_insurances_attributes][0][voluntary_insurance_start_on(3i)]'
+        fill_in 'car[car_voluntary_insurances_attributes][0][voluntary_insurance_start_on]', with: car_voluntary_insurance.voluntary_insurance_start_on
         # 任意保険終わり
-        # fill_in 'car[car_voluntary_insurances_attributes][0][voluntary_insurance_end_on]', with: car_voluntary_insurance.voluntary_insurance_end_on
-        select Time.now.year, from: 'car[car_voluntary_insurances_attributes][0][voluntary_insurance_end_on(1i)]'
-        select Time.now.month, from: 'car[car_voluntary_insurances_attributes][0][voluntary_insurance_end_on(2i)]'
-        select Time.now.day, from: 'car[car_voluntary_insurances_attributes][0][voluntary_insurance_end_on(3i)]'
+        fill_in 'car[car_voluntary_insurances_attributes][0][voluntary_insurance_end_on]', with: car_voluntary_insurance.voluntary_insurance_end_on
         # ========== 任意保険ここまで ==========
 
         click_button '登録'

@@ -6,7 +6,7 @@
     </div>
     <div class="col-md-2">
       <%= f.label :got_on %>
-      <%=f.date_select :got_on, {start_year:Time.now.year-60, end_year:Time.now.year, year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %><br>
+      <%= f.date_field :got_on, class: "form-control" %>
     </div>
     <div class="col-md-3">
       <%= f.label :images %>

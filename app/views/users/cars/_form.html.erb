@@ -18,11 +18,11 @@
 <br>
 <%= f.label :vehicle_inspection_start_on %>
 <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
-<%= f.date_select :vehicle_inspection_start_on, {start_year:Time.now.year-3, end_year:Time.now.year, year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %>
+<%= f.date_field :vehicle_inspection_start_on, class: "form-control" %>
 <br>
 <%= f.label :vehicle_inspection_end_on %>
 <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
-<%= f.date_select :vehicle_inspection_end_on, {start_year:Time.now.year, end_year:Time.now.year+3, year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %>
+<%= f.date_field :vehicle_inspection_end_on, class: "form-control" %>
 <br>
 <!-- 自賠責保険ここから -->
 <%= f.label :car_insurance_company_id %>
@@ -35,11 +35,11 @@
 <br>
 <%= f.label :liability_insurance_start_on %>
 <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
-<%=f.date_select :liability_insurance_start_on, {start_year:Time.now.year-4, end_year:Time.now.year, year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %>
+<%= f.date_field :liability_insurance_start_on, class: "form-control" %>
 <br>
 <%= f.label :liability_insurance_end_on %>
 <span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
-<%=f.date_select :liability_insurance_end_on, {start_year:Time.now.year, end_year:Time.now.year+4, year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %>
+<%= f.date_field :liability_insurance_end_on, class: "form-control" %>
 <!-- 自賠責保険ここまで -->
 <br>
 <!-- 任意保険ここから -->
@@ -57,10 +57,10 @@
   <%= voluntary.text_field :voluntary_securities_number, class: "form-control", placeholder: Car.human_attribute_name(:voluntary_securities_number) %>
   <br>
   <%= voluntary.label :voluntary_insurance_start_on %>
-  <%= voluntary.date_select :voluntary_insurance_start_on, {start_year:Time.now.year-7, end_year:Time.now.year, year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %>
+  <%= voluntary.date_field :voluntary_insurance_start_on, class: "form-control" %>
   <br>
   <%= voluntary.label :voluntary_insurance_end_on %>
-  <%= voluntary.date_select :voluntary_insurance_end_on, {start_year:Time.now.year, end_year:Time.now.year+7, year_format: ->(year) { "#{year}年" }, day_format: ->(day) { "#{day}日" }}, {class: "form-control"} %>
+  <%= voluntary.date_field :voluntary_insurance_end_on, class: "form-control" %>
 <% end %>
 <br>
 <!-- 任意保険ここまで -->
