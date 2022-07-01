@@ -19,15 +19,36 @@
 
 .second_request_orders {
     margin-left: 50px;
-    // border-left: solid;
 }
 
 .third_request_orders {
     margin-left: 100px;
-    // border-left: solid;
 }
 
 .forth_request_orders {
     margin-left: 150px;
-    // border-left: solid;
+
+}
+
+label.input_form_error {
+    color: red;
+    font-weight: normal !important;
+    text-indent: 2rem
+}
+
+.rounded {
+    font-size: 0.8rem;
+    width: 2rem;
+}
+
+.p-1 {
+    padding: 0.1rem !important;
+}
+
+.mb-2 {
+    padding: 0.1rem !important;
+}
+
+label {
+    margin-right: 2rem;
 }
