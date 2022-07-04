@@ -13,12 +13,15 @@ module Users
         format.html
         format.pdf do
           case @document.document_type
-          when 'cover_document', 'table_of_contents_document', 'doc_2nd', 'doc_8th'
+          when 'cover_document', 'table_of_contents_document', 'doc_3rd', 'doc_4th', 'doc_5th', 'doc_6th',
+                'doc_7th', 'doc_9th', 'doc_10th', 'doc_11th', 'doc_12th',
+                'doc_13th', 'doc_14th', 'doc_15th', 'doc_16th', 'doc_17th', 'doc_18th',
+                'doc_19th', 'doc_20th', 'doc_21st', 'doc_22nd', 'doc_23rd', 'doc_24th'
             render pdf: '書類',
               layout: 'pdf',
               encording: 'UTF-8',
               page_size: 'A4'
-          when 'doc_5th'
+          when 'doc_8th'
             render pdf: '書類',
               layout: 'pdf',
               encording: 'UTF-8',
@@ -59,9 +62,9 @@ module Users
       case document.document_type
       when 'cover_document'
         document.update(cover_params)
-      when 'doc_2nd'
-        document.update(doc_2nd_params)
-      when 'doc_5th'
+      when 'doc_3rd'
+        document.update(doc_3rd_params)
+      when 'doc_8th'
         if params[:document][:content][:worker]
           # formから作業員idを受け取る。
           @worker_ids = params[:document][:content][:worker]
@@ -100,9 +103,9 @@ module Users
             }"
           ]
         end
-        document.update(doc_5th_params)
-      when 'doc_8th'
         document.update(doc_8th_params)
+      when 'doc_12th'
+        document.update(doc_12th_params)
       end
     end
 
@@ -116,7 +119,7 @@ module Users
     end
 
     # 施工体制台帳作成建設工事の通知
-    def doc_2nd_params
+    def doc_3rd_params
       params.require(:document).permit.merge(
         content: {
           submitted_on:           params[:document][:content][0],
@@ -133,7 +136,7 @@ module Users
     end
 
     # 作業員名簿
-    def doc_5th_params
+    def doc_8th_params
       params.require(:document).permit.merge(
         content: {
           doc5_8_001_business_name:         params.dig(:document, :content, :doc5_8_001_business_name),
@@ -154,7 +157,7 @@ module Users
     end
 
     # 工事用・通勤用車両届
-    def doc_8th_params
+    def doc_12th_params
       params.require(:document).permit.merge(
         content: {
           prime_contractor_confirmation:                        params[:document][:content][0],  # 「元請会社の確認欄」12-001

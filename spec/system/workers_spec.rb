@@ -57,6 +57,7 @@ RSpec.describe 'Workers', type: :system do
             select 'A型', from: 'worker[abo_blood_type]'
             select '−', from: 'worker[rh_blood_type]'
             fill_in 'worker[job_type]', with: 1
+            fill_in 'worker[job_title]', with: '役職'
             fill_in 'worker[hiring_on]', with: '2022-01-28'
             fill_in 'worker[experience_term_before_hiring]', with: 1
             fill_in 'worker[blank_term]', with: 1
@@ -110,6 +111,7 @@ RSpec.describe 'Workers', type: :system do
           select 'A型', from: 'worker[abo_blood_type]'
           select '−', from: 'worker[rh_blood_type]'
           fill_in 'worker[job_type]', with: 1
+          fill_in 'worker[job_title]', with: ''
           fill_in 'worker[hiring_on]', with: '2022-01-28'
           fill_in 'worker[experience_term_before_hiring]', with: 1
           fill_in 'worker[blank_term]', with: 1

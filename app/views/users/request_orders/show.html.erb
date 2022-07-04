@@ -43,10 +43,12 @@
   </div>
 </section>
 
+<!-- 元請（自身の情報） -->
 <section class="content">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
+        <h5 class="first_request_orders">元請（自身の情報）</h5>
         <div class="card card-primary card-outline">
           <div class="card-body">
             <div class="row">
@@ -66,53 +68,112 @@
 </section>
 
 <!-- 下請け依頼一覧 -->
-<div class="content-header">
-  <div class="container-fluid">
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h1 class="m-0"><%= '下請け依頼一覧' %></h1>
-      </div>
+<div>
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <span class="navbar-brand" style="font-size: 175%;">下請け依頼一覧</span>
+      <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="ナビゲーションの切替">
+        <span class="navbar-brand">全表示</span>
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
-  </div>
+  </nav>
 </div>
 
 <section class="content">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <% @sub_request_orders.each do |sub_request_order| %>
-        <div class="card card-secondary card-outline">
-          <div class="card-body">
-            <div class="row">
-            <div class="col-md-2 mb-2">
-              <%= RequestOrder.human_attribute_name(:status) %>：<%= sub_request_order.status_i18n %>
-            </div>
-            <% if sub_request_order.submitted? %>
-              <div class="col-md-1 mb-2">
-                <% if sub_request_order.fix_requested? %>
-                  <button class="btn btn-default"disabled>差し戻し済</button>
+        <% @sub_request_orders.each do |first_request_order| %>
+          <h5 class="first_request_orders">一次下請け</h5>
+          <div class="card card-secondary card-outline first-request-orders">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-2 mb-2">
+                  <%= RequestOrder.human_attribute_name(:status) %>：<%= first_request_order.status_i18n %>
+                </div>
+                <% if first_request_order.submitted? %>
+                  <div class="col-md-1 mb-2">
+                    <% if first_request_order.fix_requested? %>
+                      <button class="btn btn-default"disabled>差し戻し済</button>
+                    <% else %>
+                      <%= link_to "差し戻しする", users_request_order_fix_request_path(@request_order.uuid, first_request_order), method: :post, data: { confirm: "差し戻しをして宜しいですか？" }, class: "btn btn-warning" %>
+                    <% end %>
+                  </div>
+                  <div class="col-md-1 mb-2">
+                    <% if first_request_order.approved? %>
+                      <button class="btn btn-default"disabled>承認済</button>
+                    <% else %>
+                      <%= link_to "承認する", users_request_order_approve_path(@request_order.uuid, first_request_order), method: :post, data: { confirm: "承認して宜しいでしょうか？" }, class: "btn btn-success" %>
+                    <% end%>
+                  </div>
                 <% else %>
-                  <%= link_to "差し戻しする", users_request_order_fix_request_path(@request_order.uuid, sub_request_order), method: :post, data: { confirm: "差し戻しをして宜しいですか？" }, class: "btn btn-warning" %>
+                  <div class="col-md-1 mb-2"></div>
+                  <div class="col-md-1 mb-2"></div>
                 <% end %>
+                <div class="col-md-8 mb-2">
+                  <%= Business.human_attribute_name(:name) %>：<%= first_request_order.business.name %>
+                  <%= link_to "(書類一覧)", users_request_order_sub_request_order_documents_path(@request_order, first_request_order) %>
+                </div>
               </div>
-              <div class="col-md-1 mb-2">
-                <% if sub_request_order.approved? %>
-                  <button class="btn btn-default"disabled>承認済</button>
-                <% else %>
-                  <%= link_to "承認する", users_request_order_approve_path(@request_order.uuid, sub_request_order), method: :post, data: { confirm: "承認して宜しいでしょうか？" }, class: "btn btn-success" %>
-                <% end%>
-              </div>
-            <% else %>
-              <div class="col-md-1 mb-2"></div>
-              <div class="col-md-1 mb-2"></div>
-            <% end %>
-            <div class="col-md-8 mb-2">
-              <%= Business.human_attribute_name(:name) %>：<%= sub_request_order.business.name %>
-              <%= link_to "(書類一覧)", users_request_order_sub_request_order_documents_path(@request_order, sub_request_order) %>
-            </div>
             </div>
           </div>
-        </div>
+          <div class="collapse navbar-collapse" id="navbarNav">
+          <% first_request_order.children.each do |second_request_order| %>
+            <h5 class="second_request_orders">二次下請け</h5>
+            <div class="card card-secondary card-outline second_request_orders">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-2 mb-2">
+                    <%= RequestOrder.human_attribute_name(:status) %>：<%= second_request_order.status_i18n %>
+                  </div>
+                  <div class="col-md-1 mb-2"></div>
+                  <div class="col-md-1 mb-2"></div>
+                  <div class="col-md-8 mb-2">
+                    <%= Business.human_attribute_name(:name) %>：<%= second_request_order.business.name %>
+                    <%= link_to "(書類一覧)", users_request_order_sub_request_order_documents_path(@request_order, second_request_order) %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% second_request_order.children.each do |third_request_order| %>
+              <h5 class="third_request_orders">三次下請け</h5>
+              <div class="card card-secondary card-outline third_request_orders">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-2 mb-2">
+                      <%= RequestOrder.human_attribute_name(:status) %>：<%= third_request_order.status_i18n %>
+                    </div>
+                    <div class="col-md-1 mb-2"></div>
+                    <div class="col-md-1 mb-2"></div>
+                    <div class="col-md-8 mb-2">
+                      <%= Business.human_attribute_name(:name) %>：<%= third_request_order.business.name %>
+                      <%= link_to "(書類一覧)", users_request_order_sub_request_order_documents_path(@request_order, third_request_order) %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% third_request_order.children.each do |forth_request_order| %>
+                <h5 class="forth_request_orders">四次下請け</h5>
+                <div class="card card-secondary card-outline forth_request_orders">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-2 mb-2">
+                        <%= RequestOrder.human_attribute_name(:status) %>：<%= forth_request_order.status_i18n %>
+                      </div>
+                      <div class="col-md-1 mb-2"></div>
+                      <div class="col-md-1 mb-2"></div>
+                      <div class="col-md-8 mb-2">
+                        <%= Business.human_attribute_name(:name) %>：<%= forth_request_order.business.name %>
+                        <%= link_to "(書類一覧)", users_request_order_sub_request_order_documents_path(@request_order, forth_request_order) %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+          </div>
         <% end %>
       </div>
     </div>

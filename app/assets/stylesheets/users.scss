@@ -12,3 +12,43 @@
 .brand-link {
     text-decoration: none;
 }
+
+.first-request-orders {
+    background-color: rgba(0,0,0,.05);
+}
+
+.second_request_orders {
+    margin-left: 50px;
+}
+
+.third_request_orders {
+    margin-left: 100px;
+}
+
+.forth_request_orders {
+    margin-left: 150px;
+
+}
+
+label.input_form_error {
+    color: red;
+    font-weight: normal !important;
+    text-indent: 2rem
+}
+
+.rounded {
+    font-size: 0.8rem;
+    width: 2rem;
+}
+
+.p-1 {
+    padding: 0.1rem !important;
+}
+
+.mb-2 {
+    padding: 0.1rem !important;
+}
+
+label {
+    margin-right: 2rem;
+}
