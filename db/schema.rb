@@ -273,8 +273,6 @@ ActiveRecord::Schema.define(version: 2022_06_28_093612) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "parent_id"
     t.string "uuid", null: false
-    t.string "primary_subcontractor"
-    t.string "sub_company"
     t.string "construction_name"
     t.string "construction_details"
     t.date "start_date"

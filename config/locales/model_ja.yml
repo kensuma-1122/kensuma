@@ -113,8 +113,6 @@ ja:
         business_id: 事業所
         status: ステータス
         # 下請会社
-        primary_subcontractor: 一次下請会社
-        sub_company: 直近下位の会社
         construction_name: 工事名
         construction_details: 工事内容
         start_date: 工期(自)

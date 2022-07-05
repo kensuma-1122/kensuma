@@ -3,14 +3,6 @@
 <!-- 下請会社 -->
 <div class="list-group">
   <div class="list-group-item">
-    <%= f.label :primary_subcontractor %> <!-- 一次下請会社 -->
-    <span class="text-danger">※必須</span>
-    <%= f.text_field :primary_subcontractor, class: "form-control", placeholder: RequestOrder.human_attribute_name(:primary_subcontractor) %>
-    <br>
-    <%= f.label :sub_company %> <!-- 直近下位の会社 -->
-    <span class="text-danger">※必須</span>
-    <%= f.text_field :sub_company, class: "form-control", placeholder: RequestOrder.human_attribute_name(:sub_company) %>
-    <br>
     <%= f.label :construction_name %> <!-- 工事名 -->
     <span class="text-danger">※必須</span>
     <%= f.text_field :construction_name, class: "form-control", placeholder: RequestOrder.human_attribute_name(:construction_name) %>

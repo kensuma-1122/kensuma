@@ -2,8 +2,6 @@ class AddSitesToRequestOrders < ActiveRecord::Migration[6.1]
   def change
 
     ## 下請会社
-    add_column :request_orders, :primary_subcontractor,              :string  # 一次下請会社
-    add_column :request_orders, :sub_company,                        :string  # 直近下位の会社
     add_column :request_orders, :construction_name,                  :string  # 工事名
     add_column :request_orders, :construction_details,               :string  # 工事内容
     add_column :request_orders, :start_date,                         :date    # 工期(自)

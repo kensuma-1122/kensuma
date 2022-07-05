@@ -36,6 +36,18 @@
                 <%= link_to "発注依頼一覧", users_request_orders_path, class: "btn btn-block btn-default" %>
               </div>
             </div>
+            <% unless @request_order.parent_id.nil? %>
+              <div class="row">
+                <div class="col-md-12 mb-2">
+                  <%= link_to "編集", edit_users_request_order_path, class: "btn btn-md btn-block btn-success" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 mb-2">
+                  <%= link_to "一覧画面へ", users_request_orders_path, class: "btn btn-md btn-block btn-default" %>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -179,10 +191,3 @@
     </div>
   </div>
 </section>
-
-<div class="card">
-  <div class="card-footer">
-    <%= link_to "編集", edit_users_request_order_path, class: "btn btn-md btn-block btn-success" %>
-    <%= link_to "一覧画面へ", users_request_orders_path, class: "btn btn-md btn-block btn-default" %>
-  </div>
-</div>
