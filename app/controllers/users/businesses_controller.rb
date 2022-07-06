@@ -6,6 +6,7 @@ module Users
 
     def new
       @business = Business.new(
+        # テスト用デフォルト値 ==========================
         uuid:                '1',
         name:                'test企業',
         name_kana:           'テストキギョウ',
@@ -17,6 +18,7 @@ module Users
         phone_number:        '01234567898',
         carrier_up_id:       'test',
         business_type:       0
+        # =============================================
       )
       @business.business_occupations.build
     end

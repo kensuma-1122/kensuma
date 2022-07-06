@@ -39,7 +39,8 @@
     %><br><br>
     <%= f.label :supervisor_apply %> <!-- 監督員(権限及び意見の申出方法) -->
     <span class="text-danger">※必須</span>
-    <%= f.select :supervisor_apply,
+    <%= f.text_field :supervisor_apply, class: "form-control", placeholder: Order.human_attribute_name(:supervisor_apply) %>
+    <%#= f.select :supervisor_apply,
                   (@current_business.request_orders.map { |request_order|request_order.supervisor_apply }).uniq,
                   { include_blank: true },
                   { class: "single-select", style: "width: 100%" }
@@ -51,7 +52,8 @@
                   { class: "single-select", style: "width: 100%" }
     %><br><br>
     <%= f.label :professional_engineer_details %> <!-- 専門技術者(担当工事内容) -->
-    <%= f.select :professional_engineer_details,
+    <%= f.text_field :professional_engineer_details, class: "form-control", placeholder: Order.human_attribute_name(:professional_engineer_details) %>
+    <%#= f.select :professional_engineer_details,
                   (@current_business.request_orders.map { |request_order|request_order.professional_engineer_details }).uniq,
                   { include_blank: true },
                   { class: "single-select", style: "width: 100%" }
@@ -79,7 +81,8 @@
     %><br><br>
     <%= f.label :site_agent_apply %> <!-- 現場代理人(権限及び意見の申出方法) -->
     <span class="text-danger">※必須</span>
-    <%= f.select :site_agent_apply,
+    <%= f.text_field :site_agent_apply, class: "form-control", placeholder: Order.human_attribute_name(:site_agent_apply) %>
+    <%#= f.select :site_agent_apply,
                   (@current_business.request_orders.map { |request_order|request_order.site_agent_apply }).uniq,
                   { include_blank: true },
                   { class: "single-select", style: "width: 100%" }
