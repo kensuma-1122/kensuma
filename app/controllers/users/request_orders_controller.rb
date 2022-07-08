@@ -3,6 +3,7 @@ module Users
     before_action :set_business_workers_name, only: %i[edit update]
     before_action :set_request_order, except: :index
     before_action :set_sub_request_order, only: %i[fix_request approve]
+    before_action :exclude_prime_contractor, only: %i[edit update]
 
     def index
       @request_orders = current_business.request_orders
@@ -86,6 +87,11 @@ module Users
 
     def set_sub_request_order
       @sub_request_order = RequestOrder.find_by(uuid: params[:sub_request_uuid])
+    end
+
+    # 元請けは除外
+    def exclude_prime_contractor
+      redirect_to users_request_order_url if @request_order.parent_id.nil?
     end
 
     def request_order_params
