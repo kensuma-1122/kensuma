@@ -3,8 +3,6 @@
   overflow: hidden;
   position: relative;
   background-color: white;
-  // width: 909px;
-  // height: 1286px;
   padding: 10px;
 }
 
@@ -13,7 +11,8 @@
 }
 
 // 背景セル
-.s_15_00{
+.s_15_00 {
+  border:0px SOLID #ffffff;
   background-color:#ffffff;
   text-align:center;
   font-size:12pt;
@@ -23,18 +22,19 @@
   height: 19.5px;
 }
 
-.s_15_01{
+.s_15_01 {
+  border:0px SOLID #ffffff;
   background-color:#ffffff;
   text-align:center;
   font-size:12pt;
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 15px;
+  height: 14px;
 }
 
 // 様式・元請確認欄
-.s_15_1{
+.s_15_1 {
   border:1px SOLID #000000;
   background-color:#ffffff;
   text-align:center;
@@ -45,7 +45,8 @@
   height: 19.5px;
 }
 
-.s_15_2{
+.s_15_2 {
+  border:0px SOLID #ffffff;
   background-color:#ffffff;
   text-align:center;
   font-size:11pt;
@@ -56,7 +57,8 @@
 }
 
 // 見出し
-.s_15_3{
+.s_15_3 {
+  border:0px SOLID #ffffff;
   background-color:#ffffff;
   text-align:center;
   font-size:22pt;
@@ -65,10 +67,12 @@
   direction:ltr;
   width: 25.25px;
   height: 19.5px;
+  padding: 0px;
 }
 
 // 事業所名称〜現場代理人
-.s_15_4{
+.s_15_4 {
+  border:0px SOLID #ffffff;
   background-color:#ffffff;
   text-align:center;
   font-size:11pt;
@@ -78,8 +82,11 @@
   height: 19.5px;
 }
 
-.s_15_5{
+.s_15_5 {
+  border-top:0px SOLID #ffffff;
+  border-right:0px SOLID #ffffff;
   border-bottom:1px SOLID #000000;
+  border-left:0px SOLID #ffffff;
   background-color:#ffffff;
   text-align:center;
   font-size:11pt;
@@ -89,7 +96,50 @@
   height: 19.5px;
 }
 
-.s_15_6{
+.s_15_6 {
+  border:0px SOLID #ffffff;
+  background-color:#ffffff;
+  text-align:center;
+  font-size:10pt;
+  vertical-align:middle;
+  direction:ltr;
+  width: 25.25px;
+  height: 19.5px;
+  padding: 0px;
+}
+
+.s_15_7 {
+  border-top:0px SOLID #ffffff;
+  border-right:0px SOLID #ffffff;
+  border-bottom:1px SOLID #000000;
+  border-left:0px SOLID #ffffff;
+  background-color:#ffffff;
+  text-align:center;
+  font-size:9pt;
+  vertical-align:middle;
+  direction:ltr;
+  width: 25.25px;
+  height: 19.5px;
+  padding: 0px;
+}
+
+.s_15_8 {
+  border:0px SOLID #ffffff;
+  background-color:#ffffff;
+  text-align:center;
+  font-size:9pt;
+  vertical-align:middle;
+  direction:ltr;
+  width: 25.25px;
+  height: 19.5px;
+  padding: 0px;
+}
+
+.s_15_9 {
+  border-top:0px SOLID #ffffff;
+  border-right:0px SOLID #ffffff;
+  border-bottom:1px SOLID #000000;
+  border-left:0px SOLID #ffffff;
   background-color:#ffffff;
   text-align:center;
   font-size:11pt;
@@ -97,31 +147,12 @@
   direction:ltr;
   width: 25.25px;
   height: 19.5px;
-}
-
-.s_15_7{
-  border-bottom:1px SOLID #000000;
-  background-color:#ffffff;
-  text-align:center;
-  font-size:9pt;
-  vertical-align:middle;
-  direction:ltr;
-  width: 25.25px;
-  height: 19.5px;
-}
-
-.s_15_8{
-  background-color:#ffffff;
-  text-align:center;
-  font-size:9pt;
-  vertical-align:middle;
-  direction:ltr;
-  width: 25.25px;
-  height: 19.5px;
+  padding: 0px;
 }
 
 // このたび〜遵守します。
-.s_15_10{
+.s_15_10 {
+  border:0px SOLID #ffffff;
   background-color:#ffffff;
   text-align:left;
   font-size:11pt;
@@ -133,7 +164,7 @@
 }
 
 // 表　使用材料
-.s_15_11{
+.s_15_11 {
   border:1px SOLID #000000;
   background-color:#ffffff;
   text-align:center;
@@ -141,10 +172,10 @@
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 234px;
+  height: 222px;
 }
 
-.s_15_12{
+.s_15_12 {
   border:1px SOLID #000000;
   background-color:#ffffff;
   text-align:center;
@@ -152,10 +183,10 @@
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 39px;
+  height: 37px;
 }
 
-.s_15_13{
+.s_15_13 {
   border:1px SOLID #000000;
   background-color:#ffffff;
   text-align:center;
@@ -163,24 +194,24 @@
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 39px;
+  height: 37px;
 }
 
-.s_15_14{
+.s_15_14 {
   border:1px SOLID #000000;
   background-color:#ffffff;
   text-align:center;
-  font-size:1pt;
+  font-size:7pt;
   vertical-align:middle;
   direction:ltr;
   letter-spacing: -1.5px;
   width: 25.25px;
-  height: 39px;
+  height: 37px;
   padding: 0px;
 }
 
 // 使用場所
-.s_15_20{
+.s_15_20 {
   border:1px SOLID #000000;
   background-color:#ffffff;
   text-align:center;
@@ -188,10 +219,10 @@
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 78px;
+  height: 74px;
 }
 
-.s_15_21{
+.s_15_21 {
   border:1px SOLID #000000;
   background-color:#ffffff;
   text-align:center;
@@ -199,11 +230,11 @@
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 78px;
+  height: 74px;
 }
 
 // 保管場所
-.s_15_30{
+.s_15_30 {
   border:1px SOLID #000000;
   background-color:#ffffff;
   text-align:center;
@@ -211,10 +242,10 @@
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 78px;
+  height: 74px;
 }
 
-.s_15_31{
+.s_15_31 {
   border:1px SOLID #000000;
   background-color:#ffffff;
   text-align:center;
@@ -222,11 +253,11 @@
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 78px;
+  height: 74px;
 }
 
 // 使用期間
-.s_15_40{
+.s_15_40 {
   border:1px SOLID #000000;
   background-color:#ffffff;
   text-align:center;
@@ -234,11 +265,12 @@
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 78px;
+  height: 74px;
 }
 
-.s_15_41{
+.s_15_41 {
   border-top:1px SOLID #000000;
+  border-right:0px SOLID #ffffff;
   border-bottom:1px SOLID #000000;
   border-left:1px SOLID #000000;
   background-color:#ffffff;
@@ -247,47 +279,53 @@
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 78px;
+  height: 74px;
 }
 
-.s_15_42{
+.s_15_42 {
   border-top:1px SOLID #000000;
+  border-right:0px SOLID #ffffff;
   border-bottom:1px SOLID #000000;
+  border-left:0px SOLID #ffffff;
   background-color:#ffffff;
   text-align:center;
   font-size:11pt;
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 78px;
-}
-.s_15_43{
-  border-top:1px SOLID #000000;
-  border-bottom:1px SOLID #000000;
-  background-color:#ffffff;
-  text-align:center;
-  font-size:11pt;
-  vertical-align:middle;
-  direction:ltr;
-  width: 25.25px;
-  height: 78px;
+  height: 74px;
 }
 
-.s_15_44{
+.s_15_43 {
   border-top:1px SOLID #000000;
-  border-right: SOLID #000000;
+  border-right:0px SOLID #ffffff;
   border-bottom:1px SOLID #000000;
+  border-left:0px SOLID #ffffff;
   background-color:#ffffff;
   text-align:center;
   font-size:11pt;
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 78px;
+  height: 74px;
+}
+
+.s_15_44 {
+  border-top:1px SOLID #000000;
+  border-right:1px SOLID #000000;
+  border-bottom:1px SOLID #000000;
+  border-left:0px SOLID #ffffff;
+  background-color:#ffffff;
+  text-align:center;
+  font-size:11pt;
+  vertical-align:middle;
+  direction:ltr;
+  width: 25.25px;
+  height: 74px;
 }
 
 // 作業主任者
-.s_15_50{
+.s_15_50 {
   border:1px SOLID #000000;
   background-color:#ffffff;
   text-align:center;
@@ -295,11 +333,13 @@
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 78px;
+  height: 74px;
 }
 
-.s_15_51{
+.s_15_51 {
   border-top:1px SOLID #000000;
+  border-right:0px SOLID #ffffff;
+  border-bottom:0px SOLID #ffffff;
   border-left:1px SOLID #000000;
   background-color:#ffffff;
   text-align:center;
@@ -307,22 +347,26 @@
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 39px;
+  height: 37px;
 }
 
-.s_15_52{
+.s_15_52 {
   border-top:1px SOLID #000000;
   border-right:1px SOLID #000000;
+  border-bottom:0px SOLID #ffffff;
+  border-left:0px SOLID #ffffff;
   background-color:#ffffff;
   text-align:center;
   font-size:11pt;
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 39px;
+  height: 37px;
 }
 
-.s_15_53{
+.s_15_53 {
+  border-top:0px SOLID #ffffff;
+  border-right:0px SOLID #ffffff;
   border-bottom:1px SOLID #000000;
   border-left:1px SOLID #000000;
   background-color:#ffffff;
@@ -331,45 +375,53 @@
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 39px;
+  height: 37px;
 }
 
-.s_15_54{
+.s_15_54 {
+  border-top:0px SOLID #ffffff;
+  border-right:0px SOLID #ffffff;
   border-bottom:1px SOLID #000000;
+  border-left:0px SOLID #ffffff;
   background-color:#ffffff;
   text-align:center;
   font-size:11pt;
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 39px;
+  height: 37px;
 }
 
-.s_15_55{
+.s_15_55 {
+  border-top:0px SOLID #ffffff;
+  border-right:0px SOLID #ffffff;
   border-bottom:1px SOLID #000000;
+  border-left:0px SOLID #ffffff;
   background-color:#ffffff;
   text-align:center;
   font-size:11pt;
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 39px;
+  height: 37px;
 }
 
-.s_15_56{
+.s_15_56 {
+  border-top:0px SOLID #ffffff;
   border-bottom:1px SOLID #000000;
   border-right:1px SOLID #000000;
+  border-left:0px SOLID #ffffff;
   background-color:#ffffff;
   text-align:center;
   font-size:11pt;
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 39px;
+  height: 37px;
 }
 
 // SDS
-.s_15_60{
+.s_15_60 {
   border:1px SOLID #000000;
   background-color:#ffffff;
   text-align:center;
@@ -377,11 +429,12 @@
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 78px;
+  height: 74px;
 }
 
-.s_15_61{
+.s_15_61 {
   border-top:1px SOLID #000000;
+  border-right:0px SOLID #ffffff;
   border-bottom:1px SOLID #000000;
   border-left:1px SOLID #000000;
   background-color:#ffffff;
@@ -390,60 +443,67 @@
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 39px;
+  height: 37px;
 }
 
-.s_15_62{
+.s_15_62 {
   border-top:1px SOLID #000000;
+  border-right:0px SOLID #ffffff;
   border-bottom:1px SOLID #000000;
+  border-left:0px SOLID #ffffff;
   background-color:#ffffff;
   text-align:center;
   font-size:11pt;
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 39px;
+  height: 37px;
 }
 
-.s_15_63{
+.s_15_63 {
   border-top:1px SOLID #000000;
+  border-right:0px SOLID #ffffff;
   border-bottom:1px SOLID #000000;
+  border-left:0px SOLID #ffffff;
   background-color:#ffffff;
   text-align:center;
   font-size:11pt;
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 39px;
+  height: 37px;
 }
 
-.s_15_64{
+.s_15_64 {
   border-top:1px SOLID #000000;
+  border-right:0px SOLID #ffffff;
   border-bottom:1px SOLID #000000;
+  border-left:0px SOLID #ffffff;
   background-color:#ffffff;
   text-align:center;
   font-size:11pt;
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 39px;
+  height: 37px;
 }
 
-.s_15_65{
+.s_15_65 {
   border-top:1px SOLID #000000;
   border-right:1px SOLID #000000;
   border-bottom:1px SOLID #000000;
+  border-left:0px SOLID #ffffff;
   background-color:#ffffff;
   text-align:center;
   font-size:11pt;
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 39px;
+  height: 37px;
 }
 
 // 換気等対策
-.s_15_70{
+.s_15_70 {
   border:1px SOLID #000000;
   background-color:#ffffff;
   text-align:center;
@@ -451,10 +511,10 @@
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 78px;
+  height: 74px;
 }
 
-.s_15_71{
+.s_15_71 {
   border:1px SOLID #000000;
   background-color:#ffffff;
   text-align:center;
@@ -462,11 +522,12 @@
   vertical-align:middle;
   direction:ltr;
   width: 25.25px;
-  height: 39px;
+  height: 37px;
 }
 
 // （注）
-.s_15_80{
+.s_15_80 {
+  border:0px SOLID #ffffff;
   background-color:#ffffff;
   text-align:center;
   font-size:11pt;
@@ -477,7 +538,8 @@
   padding: 0px;
 }
 
-.s_15_81{
+.s_15_81 {
+  border:0px SOLID #ffffff;
   background-color:#ffffff;
   text-align:left;
   font-size:11pt;
@@ -486,4 +548,10 @@
   width: 25.25px;
   height: 16px;
   padding: 0px;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .s_15_text-container {
+    white-space: normal;
+  }
 }
