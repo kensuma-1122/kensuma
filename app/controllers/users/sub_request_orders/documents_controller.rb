@@ -45,7 +45,7 @@ module Users::SubRequestOrders
     def validate_request_order!
       request_order = current_business.request_orders.find_by!(uuid: params[:request_order_uuid])
       sub_request_order = RequestOrder.find_by!(uuid: params[:sub_request_order_uuid])
-      unless sub_request_order.child_of?(request_order)
+      unless sub_request_order.child_of?(request_order) || sub_request_order.descendant_of?(request_order)
         raise 'だめ'
       end
 

@@ -1,0 +1,65 @@
+.container {
+  font-size: 14px;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: grid;
+  grid-template:
+    ".. .. .. .. .. .. .." 20px
+    ".. .. c1 c1 c1 .. .."
+    ".. .. .. .. .. .. .." 16px
+    ".. .. .. .. c2 c2 .."
+    ".. c3 c3 .. .. .. .."
+    ".. .. .. .. .. .. .." 16px
+    ".. c4 c4 .. .. .. .."
+    ".. .. .. .. c5 c5 .."
+    ".. .. .. .. c6 c6 .."
+    ".. .. .. .. c7 c7 .."
+    ".. .. .. .. .. .. .." 16px
+    ".. .. c8 c8 c8 .. .."
+    ".. .. .. .. .. .. .." 16px
+    ".. c9 c9 c9 c9 c9 .." /* テーブルエリア */
+    ".. .. .. .. .. .. .." 20px
+    / 20px auto auto auto auto auto 20px;
+}
+.title {
+  grid-area: c1;
+}
+.submission_date {
+  grid-area: c2;
+}
+.office_name {
+  grid-area: c3;
+}
+.chief_name {
+  grid-area: c4;
+}
+.company_name {
+  grid-area: c5;
+}
+.subcontractor {
+  grid-area: c6;
+}
+.representative {
+  grid-area: c7;
+}
+.description {
+  grid-area: c8;
+}
+.described_detail {
+  grid-area: c9;
+}
+
+div span {
+  // float: right;
+}
+.table-title {
+  text-align: center;
+}
+.t-content tr {
+  height: 50px;
+}
+.office_name p, .chief_name p {
+  border-bottom:1px solid;
+  margin: 0;
+}

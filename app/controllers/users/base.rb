@@ -29,5 +29,10 @@ module Users
         @current_business ||= current_user&.admin_user&.business
       end
     end
+
+    # 自社(事業所)の作業員名を取得
+    def set_business_workers_name
+      @business_workers_name = current_business.workers.pluck(:name)
+    end
   end
 end

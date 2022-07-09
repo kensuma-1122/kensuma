@@ -8,6 +8,7 @@ module Users
 
     def show
       @order_info = current_business.request_orders.find_by(uuid: params[:request_order_uuid])
+      @request_order_info = current_business.request_orders.find_by(uuid: params[:request_order_uuid])
       respond_to do |format|
         format.html
         format.pdf do
