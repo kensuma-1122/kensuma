@@ -36,6 +36,11 @@
                 <%= link_to "発注依頼一覧", users_request_orders_path, class: "btn btn-block btn-default" %>
               </div>
             </div>
+            <div class="row">
+              <div class="col-md-12 mb-2">
+                <%= link_to "一覧画面へ", users_request_orders_path, class: "btn btn-md btn-block btn-default" %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -43,10 +48,145 @@
   </div>
 </section>
 
+<% unless @request_order.parent_id.nil? %>
+  <section class="content">
+    <div class="col-md-12">
+      <div class="card card-outline card-primary">
+        <div class="card-header">
+          <h3 class="card-title">現場情報(<%= sc_hierarchy(@request_order) %>)</h3>
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="card-body table-responsive p-0">
+          <% unless @request_order.parent_id.nil? || @request_order.construction_name.nil? %>
+            <table class="table table-hover text-nowrap">
+              <tbody>
+                <tr>
+                  <td>
+                    <%= link_to "現場情報修正", edit_users_request_order_path, class: "btn btn-sm btn-success" %>
+                  </td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:construction_name) %></th> <!-- 工事名 -->
+                  <td><%= @request_order.construction_name %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:construction_details) %></th> <!-- 工事内容 -->
+                  <td><%= @request_order.construction_details %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:start_date) %></th> <!-- 工期(自) -->
+                  <td><%= @request_order.start_date %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:end_date) %></th> <!-- 工期(至) -->
+                  <td><%= @request_order.end_date %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:contract_date) %></th> <!-- 契約日 -->
+                  <td><%= @request_order.contract_date %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:supervisor_name) %></th> <!-- 監督員(氏名) -->
+                  <td><%= @request_order.supervisor_name %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:supervisor_apply) %></th> <!-- 監督員(権限及び意見の申出方法) -->
+                  <td><%= @request_order.supervisor_apply %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:professional_engineer_name) %></th> <!-- 専門技術者(氏名) -->
+                  <td><%= @request_order.professional_engineer_name %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:professional_engineer_details) %></th> <!-- 専門技術者(担当工事内容) -->
+                  <td><%= @request_order.professional_engineer_details %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:professional_construction) %></th> <!-- 特定専門工事(有無) -->
+                  <td><%= @request_order.professional_construction_i18n %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:construction_manager_name) %></th> <!-- 工事担任責任者(氏名) -->
+                  <td><%= @request_order.construction_manager_name %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:construction_manager_position_name) %></th> <!-- 工事担任責任者(役職名) -->
+                  <td><%= @request_order.construction_manager_position_name %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:site_agent_name) %></th> <!-- 現場代理人(氏名) -->
+                  <td><%= @request_order.site_agent_name %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:site_agent_apply) %></th> <!-- 現場代理人(権限及び意見の申出方法) -->
+                  <td><%= @request_order.site_agent_apply %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:lead_engineer_name) %></th> <!-- 主任技術者(氏名) -->
+                  <td><%= @request_order.lead_engineer_name %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:lead_engineer_check) %></th> <!-- 主任技術者(専任or非専任) -->
+                  <td><%= @request_order.lead_engineer_check %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:work_chief_name) %></th> <!-- 作業主任者(氏名) -->
+                  <td><%= @request_order.work_chief_name %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:work_conductor_name) %></th> <!-- 作業指揮者名(氏名) -->
+                  <td><%= @request_order.work_conductor_name %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:safety_officer_name) %></th> <!-- 安全衛生担当責任者(氏名) -->
+                  <td><%= @request_order.safety_officer_name %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:safety_manager_name) %></th> <!-- 安全衛生責任者(氏名) -->
+                  <td><%= @request_order.safety_manager_name %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:safety_promoter_name) %></th> <!-- 安全推進者(氏名) -->
+                  <td><%= @request_order.safety_promoter_name %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:foreman_name) %></th> <!-- 職長(氏名) -->
+                  <td><%= @request_order.foreman_name %></td>
+                </tr>
+                <tr>
+                  <th><%= RequestOrder.human_attribute_name(:registered_core_engineer_name) %></th> <!-- 登録基幹技能者(氏名) -->
+                  <td><%= @request_order.registered_core_engineer_name %></td>
+                </tr>
+              </tbody>
+            </table>
+          <% else %>
+          <table class="table table-hover text-nowrap">
+            <tbody>
+              <tr>
+                <td>
+                  現場情報を登録してください。
+                  <%= link_to "現場情報登録", edit_users_request_order_path, class: "btn btn-sm btn-success" %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <% end %>
+        </div>
+      </div>
+  </section>
+<% end %>
+
+<!-- 元請（自身の情報） -->
 <section class="content">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
+        <h5 class="first_request_orders">元請（自身の情報）</h5>
         <div class="card card-primary card-outline">
           <div class="card-body">
             <div class="row">
@@ -66,53 +206,112 @@
 </section>
 
 <!-- 下請け依頼一覧 -->
-<div class="content-header">
-  <div class="container-fluid">
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h1 class="m-0"><%= '下請け依頼一覧' %></h1>
-      </div>
+<div>
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <span class="navbar-brand" style="font-size: 175%;">下請け依頼一覧</span>
+      <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="ナビゲーションの切替">
+        <span class="navbar-brand">全表示</span>
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
-  </div>
+  </nav>
 </div>
 
 <section class="content">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <% @sub_request_orders.each do |sub_request_order| %>
-        <div class="card card-secondary card-outline">
-          <div class="card-body">
-            <div class="row">
-            <div class="col-md-2 mb-2">
-              <%= RequestOrder.human_attribute_name(:status) %>：<%= sub_request_order.status_i18n %>
-            </div>
-            <% if sub_request_order.submitted? %>
-              <div class="col-md-1 mb-2">
-                <% if sub_request_order.fix_requested? %>
-                  <button class="btn btn-default"disabled>差し戻し済</button>
+        <% @sub_request_orders.each do |first_request_order| %>
+          <h5 class="first_request_orders">一次下請け</h5>
+          <div class="card card-secondary card-outline first-request-orders">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-2 mb-2">
+                  <%= RequestOrder.human_attribute_name(:status) %>：<%= first_request_order.status_i18n %>
+                </div>
+                <% if first_request_order.submitted? %>
+                  <div class="col-md-1 mb-2">
+                    <% if first_request_order.fix_requested? %>
+                      <button class="btn btn-default"disabled>差し戻し済</button>
+                    <% else %>
+                      <%= link_to "差し戻しする", users_request_order_fix_request_path(@request_order.uuid, first_request_order), method: :post, data: { confirm: "差し戻しをして宜しいですか？" }, class: "btn btn-warning" %>
+                    <% end %>
+                  </div>
+                  <div class="col-md-1 mb-2">
+                    <% if first_request_order.approved? %>
+                      <button class="btn btn-default"disabled>承認済</button>
+                    <% else %>
+                      <%= link_to "承認する", users_request_order_approve_path(@request_order.uuid, first_request_order), method: :post, data: { confirm: "承認して宜しいでしょうか？" }, class: "btn btn-success" %>
+                    <% end%>
+                  </div>
                 <% else %>
-                  <%= link_to "差し戻しする", users_request_order_fix_request_path(@request_order.uuid, sub_request_order), method: :post, data: { confirm: "差し戻しをして宜しいですか？" }, class: "btn btn-warning" %>
+                  <div class="col-md-1 mb-2"></div>
+                  <div class="col-md-1 mb-2"></div>
                 <% end %>
+                <div class="col-md-8 mb-2">
+                  <%= Business.human_attribute_name(:name) %>：<%= first_request_order.business.name %>
+                  <%= link_to "(書類一覧)", users_request_order_sub_request_order_documents_path(@request_order, first_request_order) %>
+                </div>
               </div>
-              <div class="col-md-1 mb-2">
-                <% if sub_request_order.approved? %>
-                  <button class="btn btn-default"disabled>承認済</button>
-                <% else %>
-                  <%= link_to "承認する", users_request_order_approve_path(@request_order.uuid, sub_request_order), method: :post, data: { confirm: "承認して宜しいでしょうか？" }, class: "btn btn-success" %>
-                <% end%>
-              </div>
-            <% else %>
-              <div class="col-md-1 mb-2"></div>
-              <div class="col-md-1 mb-2"></div>
-            <% end %>
-            <div class="col-md-8 mb-2">
-              <%= Business.human_attribute_name(:name) %>：<%= sub_request_order.business.name %>
-              <%= link_to "(書類一覧)", users_request_order_sub_request_order_documents_path(@request_order, sub_request_order) %>
-            </div>
             </div>
           </div>
-        </div>
+          <div class="collapse navbar-collapse" id="navbarNav">
+          <% first_request_order.children.each do |second_request_order| %>
+            <h5 class="second_request_orders">二次下請け</h5>
+            <div class="card card-secondary card-outline second_request_orders">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-2 mb-2">
+                    <%= RequestOrder.human_attribute_name(:status) %>：<%= second_request_order.status_i18n %>
+                  </div>
+                  <div class="col-md-1 mb-2"></div>
+                  <div class="col-md-1 mb-2"></div>
+                  <div class="col-md-8 mb-2">
+                    <%= Business.human_attribute_name(:name) %>：<%= second_request_order.business.name %>
+                    <%= link_to "(書類一覧)", users_request_order_sub_request_order_documents_path(@request_order, second_request_order) %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% second_request_order.children.each do |third_request_order| %>
+              <h5 class="third_request_orders">三次下請け</h5>
+              <div class="card card-secondary card-outline third_request_orders">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-2 mb-2">
+                      <%= RequestOrder.human_attribute_name(:status) %>：<%= third_request_order.status_i18n %>
+                    </div>
+                    <div class="col-md-1 mb-2"></div>
+                    <div class="col-md-1 mb-2"></div>
+                    <div class="col-md-8 mb-2">
+                      <%= Business.human_attribute_name(:name) %>：<%= third_request_order.business.name %>
+                      <%= link_to "(書類一覧)", users_request_order_sub_request_order_documents_path(@request_order, third_request_order) %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% third_request_order.children.each do |forth_request_order| %>
+                <h5 class="forth_request_orders">四次下請け</h5>
+                <div class="card card-secondary card-outline forth_request_orders">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-2 mb-2">
+                        <%= RequestOrder.human_attribute_name(:status) %>：<%= forth_request_order.status_i18n %>
+                      </div>
+                      <div class="col-md-1 mb-2"></div>
+                      <div class="col-md-1 mb-2"></div>
+                      <div class="col-md-8 mb-2">
+                        <%= Business.human_attribute_name(:name) %>：<%= forth_request_order.business.name %>
+                        <%= link_to "(書類一覧)", users_request_order_sub_request_order_documents_path(@request_order, forth_request_order) %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+          </div>
         <% end %>
       </div>
     </div>
