@@ -12,6 +12,7 @@
             <th><%= Order.human_attribute_name(:status) %></th>
             <th></th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -21,6 +22,7 @@
             <td><%= order.status_i18n %></td>
             <td><%= link_to "編集", edit_users_order_path(order), class: "btn btn-md btn-success" %></td>
             <td><%= link_to "削除", users_order_path(order), method: :delete, data: { confirm: "#{order.site_uu_id}を削除します。本当によろしいですか？" }, class: "btn btn-md btn-danger" %></td>
+            <td><%= link_to "入場作業員", "#", class: "btn btn-md btn-success" %></td>
           </tr>
           <% end %>
         </tbody>

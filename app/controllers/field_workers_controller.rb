@@ -1,0 +1,2 @@
+class FieldWorkersController < ApplicationController
+end
