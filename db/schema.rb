@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_28_093612) do
+ActiveRecord::Schema.define(version: 2022_07_11_052443) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "namespace"
@@ -143,6 +143,18 @@ ActiveRecord::Schema.define(version: 2022_06_28_093612) do
     t.bigint "request_order_id", null: false
     t.index ["business_id"], name: "index_documents_on_business_id"
     t.index ["request_order_id"], name: "index_documents_on_request_order_id"
+  end
+
+  create_table "field_workers", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "admission_worker_name", null: false
+    t.date "admission_date_start", null: false
+    t.date "admission_date_end", null: false
+    t.date "education_date", null: false
+    t.string "field_workerable_type"
+    t.bigint "field_workerable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["field_workerable_type", "field_workerable_id"], name: "index_field_workers_on_field_workerable"
   end
 
   create_table "licenses", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
