@@ -40,7 +40,9 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
       patch 'update_workerspecialeducation_images'
       patch 'update_workerexam_images'
     end
-    resources :orders, param: :site_uu_id
+    resources :orders, param: :site_uu_id do
+      resources :field_workers, module: :orders
+    end
     resources :request_orders, only: %i[index show edit update], param: :uuid do
       resources :sub_request_orders, except: %i[edit destroy show], param: :uuid do
         resources :documents, only: %i[index show], param: :uuid, controller: 'sub_request_orders/documents'
