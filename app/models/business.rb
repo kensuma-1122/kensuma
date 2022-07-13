@@ -1,6 +1,7 @@
 class Business < ApplicationRecord
   belongs_to :user
   has_many :cars, dependent: :destroy
+  has_many :machines, dependent: :destroy
   has_many :documents, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :request_orders, dependent: :destroy

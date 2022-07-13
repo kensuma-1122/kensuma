@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_28_093612) do
+ActiveRecord::Schema.define(version: 2022_07_11_152615) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "namespace"
@@ -151,6 +151,23 @@ ActiveRecord::Schema.define(version: 2022_06_28_093612) do
     t.integer "license_type", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "machines", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "uuid", null: false
+    t.string "name", null: false
+    t.string "standards_performance", null: false
+    t.string "control_number", null: false
+    t.string "inspector", null: false
+    t.string "handler", null: false
+    t.string "precautions"
+    t.date "inspection_date", null: false
+    t.string "inspection_note"
+    t.integer "inspection_check"
+    t.bigint "business_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_machines_on_business_id"
   end
 
   create_table "managers", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
@@ -461,6 +478,7 @@ ActiveRecord::Schema.define(version: 2022_06_28_093612) do
   add_foreign_key "cars", "car_insurance_companies"
   add_foreign_key "documents", "businesses"
   add_foreign_key "documents", "request_orders"
+  add_foreign_key "machines", "businesses"
   add_foreign_key "news_users", "news"
   add_foreign_key "news_users", "users"
   add_foreign_key "orders", "businesses"
