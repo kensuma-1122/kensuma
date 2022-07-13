@@ -1,6 +1,7 @@
 module Users::Orders
   class FieldWorkersController < Users::Base
     before_action :set_order
+    before_action :set_field_worker, only: %i[edit update destroy]
 
     def index
       @field_workers = @order.field_workers
@@ -23,12 +24,29 @@ module Users::Orders
 
     def edit; end
 
-    def update; end
+    def update
+      if @field_worker.update(field_worker_params)
+        flash[:success] = "#{@field_worker.admission_worker_name}を更新しました"
+        redirect_to users_order_field_workers_url
+      else
+        render 'edit'
+      end
+    end
+
+    def destroy
+      @field_worker.destroy!
+      flash[:danger] = "#{@field_worker.admission_worker_name}を削除しました"
+      redirect_to users_order_field_workers_url
+    end
 
     private
 
     def set_order
       @order = current_business.orders.find_by(site_uu_id: params[:order_site_uu_id])
+    end
+
+    def set_field_worker
+      @field_worker = @order.field_workers.find_by(uuid: params[:uuid])
     end
 
     def field_worker_params

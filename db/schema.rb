@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(version: 2022_07_11_052443) do
   end
 
   create_table "field_workers", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "uuid", null: false
     t.string "admission_worker_name", null: false
     t.date "admission_date_start", null: false
     t.date "admission_date_end", null: false

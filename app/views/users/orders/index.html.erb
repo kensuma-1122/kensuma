@@ -21,8 +21,8 @@
             <td><%= link_to order.site_name, users_order_path(order) %></td>
             <td><%= order.status_i18n %></td>
             <td><%= link_to "編集", edit_users_order_path(order), class: "btn btn-md btn-success" %></td>
+            <td><%= link_to "入場作業員", users_order_field_workers_path(order), class: "btn btn-md btn-success" %></td>
             <td><%= link_to "削除", users_order_path(order), method: :delete, data: { confirm: "#{order.site_uu_id}を削除します。本当によろしいですか？" }, class: "btn btn-md btn-danger" %></td>
-            <td><%= link_to "入場作業員", "#", class: "btn btn-md btn-success" %></td>
           </tr>
           <% end %>
         </tbody>
