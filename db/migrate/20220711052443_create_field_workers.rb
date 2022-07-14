@@ -6,6 +6,7 @@ class CreateFieldWorkers < ActiveRecord::Migration[6.1]
       t.date :admission_date_start,    null: false # 入場年月日(始期)
       t.date :admission_date_end,      null: false # 入場年月日(終期)
       t.date :education_date,          null: false # 新規入場時教育(年月日)
+      t.json :content
       t.references :field_workerable, polymorphic: true
 
       t.timestamps

@@ -10,7 +10,27 @@ module Users::RequestOrders
     def show; end
 
     def new
-      @field_worker = @request_order.field_workers.new
+      @worker_info = work_info.to_json(
+        except:  %i[images created_at updated_at], # 作業員
+        include: {
+          worker_medical:            {
+            except: %i[id worker_id created_at updated_at] # 作業員の健康情報
+          },
+          worker_insurance:          {
+            except: %i[id worker_id created_at updated_at] # 保険情報
+          },
+          worker_skill_trainings:    {
+            only: [:skill_training_id] # 中間テーブル(技能講習マスタ)
+          },
+          worker_special_educations: {
+            only: [:special_education_id] # 中間テーブル(特別教育マスタ)
+          },
+          worker_licenses:           {
+            only: [:license_id] # 中間テーブル(免許マスタ)
+          }
+        }
+      )
+      @field_worker = @request_order.field_workers.new(admission_worker_name: @aaa)
     end
 
     def create
@@ -49,8 +69,31 @@ module Users::RequestOrders
       @field_worker = @request_order.field_workers.find_by(uuid: params[:uuid])
     end
 
+    def worker_info(worker)
+      worker.to_json(
+        except:  %i[images created_at updated_at], # 作業員
+        include: {
+          worker_medical:            {
+            except: %i[id worker_id created_at updated_at] # 作業員の健康情報
+          },
+          worker_insurance:          {
+            except: %i[id worker_id created_at updated_at] # 保険情報
+          },
+          worker_skill_trainings:    {
+            only: [:skill_training_id] # 中間テーブル(技能講習マスタ)
+          },
+          worker_special_educations: {
+            only: [:special_education_id] # 中間テーブル(特別教育マスタ)
+          },
+          worker_licenses:           {
+            only: [:license_id] # 中間テーブル(免許マスタ)
+          }
+        }
+      )
+    end
+
     def field_worker_params
-      params.require(:field_worker).permit(:admission_worker_name, :admission_date_start, :admission_date_end, :education_date)
+      params.require(:field_worker).permit(:admission_worker_name, :admission_date_start, :admission_date_end, :education_date,).merge(content: worker_info(Worker.find(1)))
     end
   end
 end

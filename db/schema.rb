@@ -151,6 +151,7 @@ ActiveRecord::Schema.define(version: 2022_07_11_052443) do
     t.date "admission_date_start", null: false
     t.date "admission_date_end", null: false
     t.date "education_date", null: false
+    t.json "content"
     t.string "field_workerable_type"
     t.bigint "field_workerable_id"
     t.datetime "created_at", precision: 6, null: false
