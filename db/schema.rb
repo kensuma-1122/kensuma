@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_28_093612) do
+ActiveRecord::Schema.define(version: 2022_07_14_073348) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "namespace"
@@ -308,6 +308,18 @@ ActiveRecord::Schema.define(version: 2022_06_28_093612) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "solvents", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "uuid", null: false
+    t.string "name", null: false
+    t.string "maker", null: false
+    t.string "classification", null: false
+    t.string "ingredients", null: false
+    t.bigint "business_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_solvents_on_business_id"
+  end
+
   create_table "special_educations", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "description"
@@ -466,6 +478,7 @@ ActiveRecord::Schema.define(version: 2022_06_28_093612) do
   add_foreign_key "orders", "businesses"
   add_foreign_key "request_orders", "businesses"
   add_foreign_key "request_orders", "orders"
+  add_foreign_key "solvents", "businesses"
   add_foreign_key "worker_exams", "special_med_exams"
   add_foreign_key "worker_exams", "worker_medicals"
   add_foreign_key "worker_insurances", "workers"
