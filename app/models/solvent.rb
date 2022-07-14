@@ -1,6 +1,8 @@
 class Solvent < ApplicationRecord
   belongs_to :business
 
+  before_create -> { self.uuid = SecureRandom.uuid }
+
   validates :uuid, presence: true
   validates :name, presence: true
   validates :maker, presence: true
