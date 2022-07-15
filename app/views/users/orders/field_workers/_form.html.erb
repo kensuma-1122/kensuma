@@ -1,26 +1,27 @@
-<%= render 'shared/error_massages', object: f.object %>
+<%#= render 'shared/error_massages', object: f.object %>
 
 <div class="row">
   <div class="col-md-3">
     <%= f.label :admission_worker_name %> <!-- 作業員名 -->
     <span class="text-danger">※必須</span>
-    <%= f.text_field :admission_worker_name, class: "form-control" %>
+    <%#= f.text_field :admission_worker_name, class: "form-control" %>
+    <%= f.collection_select :worker_ids, @worker, :id, :name, { include_hidden: false }, { required: true, multiple: true, class: "multiple-select", style: "width: 100%" } %>
   </div>
 </div><br>
 <div class="row">
   <div class="col-md-3">
     <%= f.label :admission_date_start %> <!-- 入場年月日(始期) -->
     <span class="text-danger">※必須</span>
-    <%= f.date_field :admission_date_start, class: "form-control" %>
+    <%#= f.date_field :admission_date_start, class: "form-control" %>
   </div>
   <div class="col-md-3">
     <%= f.label :admission_date_end %> <!-- 入場年月日(終期) -->
     <span class="text-danger">※必須</span>
-    <%= f.date_field :admission_date_end, class: "form-control" %>
+    <%#= f.date_field :admission_date_end, class: "form-control" %>
   </div>
   <div class="col-md-3">
     <%= f.label :education_date %> <!-- 新規入場時教育年月日 -->
     <span class="text-danger">※必須</span>
-    <%= f.date_field :education_date, class: "form-control" %>
+    <%#= f.date_field :education_date, class: "form-control" %>
   </div>
 </div><br>

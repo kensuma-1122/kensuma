@@ -6,7 +6,9 @@
       <tbody>
         <tr>
           <th></th>
-          <td><%= link_to "入場作業員", users_order_field_workers_path(@order), class: "btn btn-sm btn-success" %></td>
+          <td>
+            <%= link_to "入場作業員", users_order_field_workers_path(@order), class: "btn btn-sm btn-success" %>
+          </td>
         </tr>
         <tr>
           <th><%= Order.human_attribute_name(:status) %></th>

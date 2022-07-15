@@ -10,27 +10,13 @@ module Users::RequestOrders
     def show; end
 
     def new
-      @worker_info = work_info.to_json(
-        except:  %i[images created_at updated_at], # 作業員
-        include: {
-          worker_medical:            {
-            except: %i[id worker_id created_at updated_at] # 作業員の健康情報
-          },
-          worker_insurance:          {
-            except: %i[id worker_id created_at updated_at] # 保険情報
-          },
-          worker_skill_trainings:    {
-            only: [:skill_training_id] # 中間テーブル(技能講習マスタ)
-          },
-          worker_special_educations: {
-            only: [:special_education_id] # 中間テーブル(特別教育マスタ)
-          },
-          worker_licenses:           {
-            only: [:license_id] # 中間テーブル(免許マスタ)
-          }
-        }
+      @field_worker = @request_order.field_workers.new(
+        # テスト用デフォルト値 ==============
+        admission_date_start: "2022-02-01",
+        admission_date_end:   "2022-03-01",
+        education_date:       "2022-01-01"
+        # =================================
       )
-      @field_worker = @request_order.field_workers.new(admission_worker_name: @aaa)
     end
 
     def create
@@ -70,30 +56,32 @@ module Users::RequestOrders
     end
 
     def worker_info(worker)
-      worker.to_json(
-        except:  %i[images created_at updated_at], # 作業員
-        include: {
-          worker_medical:            {
-            except: %i[id worker_id created_at updated_at] # 作業員の健康情報
-          },
-          worker_insurance:          {
-            except: %i[id worker_id created_at updated_at] # 保険情報
-          },
-          worker_skill_trainings:    {
-            only: [:skill_training_id] # 中間テーブル(技能講習マスタ)
-          },
-          worker_special_educations: {
-            only: [:special_education_id] # 中間テーブル(特別教育マスタ)
-          },
-          worker_licenses:           {
-            only: [:license_id] # 中間テーブル(免許マスタ)
+      JSON.parse(
+        worker.to_json(
+          except:  %i[uuid images created_at updated_at], # 作業員
+          include: {
+            worker_medical:            {
+              except: %i[id worker_id created_at updated_at] # 作業員の健康情報
+            },
+            worker_insurance:          {
+              except: %i[id worker_id created_at updated_at] # 保険情報
+            },
+            worker_skill_trainings:    {
+              only: [:skill_training_id] # 中間テーブル(技能講習マスタ)
+            },
+            worker_special_educations: {
+              only: [:special_education_id] # 中間テーブル(特別教育マスタ)
+            },
+            worker_licenses:           {
+              only: [:license_id] # 中間テーブル(免許マスタ)
+            }
           }
-        }
+        )
       )
     end
 
     def field_worker_params
-      params.require(:field_worker).permit(:admission_worker_name, :admission_date_start, :admission_date_end, :education_date,).merge(content: worker_info(Worker.find(1)))
+      params.require(:field_worker).permit(:admission_worker_name, :admission_date_start, :admission_date_end, :education_date).merge(content: worker_info(Worker.first))
     end
   end
 end

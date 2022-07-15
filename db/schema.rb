@@ -147,10 +147,10 @@ ActiveRecord::Schema.define(version: 2022_07_11_052443) do
 
   create_table "field_workers", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "uuid", null: false
-    t.string "admission_worker_name", null: false
-    t.date "admission_date_start", null: false
-    t.date "admission_date_end", null: false
-    t.date "education_date", null: false
+    t.string "admission_worker_name"
+    t.date "admission_date_start"
+    t.date "admission_date_end"
+    t.date "education_date"
     t.json "content"
     t.string "field_workerable_type"
     t.bigint "field_workerable_id"
