@@ -1,56 +1,45 @@
 module Users::Orders
   class FieldWorkersController < Users::Base
     before_action :set_order
-    before_action :set_field_worker, only: %i[edit update destroy]
+    before_action :set_field_worker, only: :destroy
+    before_action :set_field_workers, only: %i[index edit_workers update_workers]
 
     def index
-      @worker = current_business.workers.where.not(id: current_user)
-      @field_workers = @order.field_workers
+      field_worker_ids = @field_workers.map {|field_worker| field_worker.content["id"]}
+      @worker = current_business.workers.where.not(id: current_user).where.not(id: field_worker_ids)
     end
 
-    def show; end
-
-    def new
-      # @worker = current_business.workers.where.not(id: current_user)
-      # @field_worker = @order.field_workers.new
-    end
+    def new; end
 
     def create
-      @worker = current_business.workers.where.not(id: current_user)
       ActiveRecord::Base.transaction do
         params[:worker_ids].each do |worker_id|
-          @order.field_workers.create!(admission_worker_name: Worker.find(worker_id).name)
+          @order.field_workers.create!(
+            admission_worker_name: Worker.find(worker_id).name,
+            content: worker_info(Worker.find(worker_id))
+          )
         end
-        flash[:success] = "#{params[:worker_ids].count}名作成しました。"
+        flash[:success] = "#{params[:worker_ids].count}名追加しました。"
         redirect_to users_order_field_workers_url
       end
     rescue ActiveRecord::RecordInvalid
       flash[:danger] = '登録に失敗しました。再度登録してください。'
       redirect_to new_users_request_order_sub_request_order_path
-      # @field_worker = @order.field_workers.build(field_worker_params)
-      # if @field_worker.save
-      #   redirect_to users_order_field_workers_url
-      # else
-      #   render :new
-      # end
-    end
-
-    def edit
-      @field_workers = @order.field_workers
-    end
-
-    def update
-      if @field_worker.update(field_worker_params)
-        flash[:success] = "#{@field_worker.admission_worker_name}を更新しました"
-        redirect_to users_order_field_workers_url
-      else
-        render 'edit'
-      end
     end
 
     def destroy
       @field_worker.destroy!
       flash[:danger] = "#{@field_worker.admission_worker_name}を削除しました"
+      redirect_to users_order_field_workers_url
+    end
+
+    def edit_workers; end
+
+    def update_workers
+      field_workers_params.each do |id, item|
+        field_worker = FieldWorker.find(id)
+        field_worker.update(item)
+      end
       redirect_to users_order_field_workers_url
     end
 
@@ -64,8 +53,37 @@ module Users::Orders
       @field_worker = @order.field_workers.find_by(uuid: params[:uuid])
     end
 
-    def field_worker_params
-      params.require(:field_worker).permit(:admission_worker_name, :admission_date_start, :admission_date_end, :education_date)
+    def set_field_workers
+      @field_workers = @order.field_workers
+    end
+
+    def field_workers_params
+      params.require(:order).permit(field_workers: [:admission_date_start, :admission_date_end, :education_date])[:field_workers]
+    end
+
+    def worker_info(worker)
+      JSON.parse(
+        worker.to_json(
+          except:  %i[uuid images created_at updated_at], # 作業員
+          include: {
+            worker_medical:            {
+              except: %i[id worker_id created_at updated_at] # 作業員の健康情報
+            },
+            worker_insurance:          {
+              except: %i[id worker_id created_at updated_at] # 保険情報
+            },
+            worker_skill_trainings:    {
+              only: [:skill_training_id] # 中間テーブル(技能講習マスタ)
+            },
+            worker_special_educations: {
+              only: [:special_education_id] # 中間テーブル(特別教育マスタ)
+            },
+            worker_licenses:           {
+              only: [:license_id] # 中間テーブル(免許マスタ)
+            }
+          }
+        )
+      )
     end
   end
 end
