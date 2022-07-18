@@ -30,7 +30,7 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     resources :articles, only: %i[index show]
     resources :news, only: %i[index show], param: :uuid
     resource :profile, except: %i[create new]
-    resources :solvents
+    resources :solvents, param: :uuid
     resource :business, except: %i[index destroy] do
       patch 'update_images'
     end

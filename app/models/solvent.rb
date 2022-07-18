@@ -6,5 +6,9 @@ class Solvent < ApplicationRecord
   validates :name, presence: true
   validates :maker, presence: true
   validates :classification, presence: true
-  validates :ingredients, presence: true  
+  validates :ingredients, presence: true
+
+  def to_param
+    uuid
+  end
 end

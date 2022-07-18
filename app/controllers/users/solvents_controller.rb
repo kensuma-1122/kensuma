@@ -48,7 +48,7 @@ module Users
     private
 
     def set_solvent
-      @solvent = current_business.solvents.find_by(id: params[:id])
+      @solvent = current_business.solvents.find_by(uuid: params[:uuid])
     end
 
     def solvent_params
