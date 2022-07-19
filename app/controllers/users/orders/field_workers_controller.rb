@@ -5,7 +5,7 @@ module Users::Orders
     before_action :set_field_workers, only: %i[index edit_workers update_workers]
 
     def index
-      field_worker_ids = @field_workers.map {|field_worker| field_worker.content["id"]}
+      field_worker_ids = @field_workers.map { |field_worker| field_worker.content['id'] }
       @worker = current_business.workers.where.not(id: current_user).where.not(id: field_worker_ids)
     end
 
@@ -15,8 +15,8 @@ module Users::Orders
       ActiveRecord::Base.transaction do
         params[:worker_ids].each do |worker_id|
           @order.field_workers.create!(
-            admission_worker_name: Worker.find(worker_id).name,
-            content: worker_info(Worker.find(worker_id))
+            admission_worker_name: nil,
+            content:               worker_info(Worker.find(worker_id))
           )
         end
         flash[:success] = "#{params[:worker_ids].count}名追加しました。"
@@ -24,7 +24,7 @@ module Users::Orders
       end
     rescue ActiveRecord::RecordInvalid
       flash[:danger] = '登録に失敗しました。再度登録してください。'
-      redirect_to new_users_request_order_sub_request_order_path
+      redirect_to users_order_field_workers_url
     end
 
     def destroy
@@ -58,7 +58,7 @@ module Users::Orders
     end
 
     def field_workers_params
-      params.require(:order).permit(field_workers: [:admission_date_start, :admission_date_end, :education_date])[:field_workers]
+      params.require(:order).permit(field_workers: %i[admission_date_start admission_date_end education_date])[:field_workers]
     end
 
     def worker_info(worker)

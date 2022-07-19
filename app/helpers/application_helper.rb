@@ -25,6 +25,6 @@ module ApplicationHelper
 
   # 未入力表示
   def not_input_display(text)
-    text.nil? ? '未入力' : text
+    text.nil? ? '未登録' : text
   end
 end
