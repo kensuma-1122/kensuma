@@ -160,7 +160,6 @@ ActiveRecord::Schema.define(version: 2022_07_11_152615) do
     t.string "control_number", null: false
     t.string "inspector", null: false
     t.string "handler", null: false
-    t.string "precautions"
     t.date "inspection_date", null: false
     t.string "inspection_note"
     t.integer "inspection_check"

@@ -7,7 +7,6 @@ class CreateMachines < ActiveRecord::Migration[6.1]
       t.string      :control_number,        null: false # 管理番号
       t.string      :inspector,             null: false # 点検者
       t.string      :handler,               null: false # 取扱者
-      t.string      :precautions                        # 機械の特性･使用上注意すべき事項
       t.date        :inspection_date,       null: false # 点検年月日
       t.string      :inspection_note                    # 点検事項(追加項目)
       t.integer     :inspection_check                   # 機械名 × 点検事項(✓を記載)

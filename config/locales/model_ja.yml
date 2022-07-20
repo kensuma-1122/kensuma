@@ -222,7 +222,6 @@ ja:
         control_number: 管理番号
         inspector: 点検者
         handler: 取扱者
-        precautions: 機械の特性･使用上注意すべき事項
         inspection_date: 点検年月日
         inspection_note: 点検事項(追加項目)
         inspection_check: 機械名(点検事項)
