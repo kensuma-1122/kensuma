@@ -3,14 +3,17 @@
 
 <div class="card">
   <div class="card-body table-responsive p-0">
-    <table class="table table-hover text-nowrap">
+    <table class="table text-nowrap">
       <tbody>
         <td>
-          <%= link_to "入場作業員", users_order_field_workers_path(@order), class: "btn btn-sm btn-success" %>
-          <%= link_to "車両", "#", class: "btn btn-sm btn-success" %>
-          <%= link_to "特殊車両", "#", class: "btn btn-sm btn-success" %>
-          <%= link_to "機械", "#", class: "btn btn-sm btn-success" %>
-          <%= link_to "溶剤", "#", class: "btn btn-sm btn-success" %>
+          <%= link_to "戻る", users_request_order_field_workers_path, class: "btn btn-md btn-default" %>
+        </td>
+        <td>
+          <%= link_to "入場作業員", users_request_order_field_workers_path(@request_order), class: "btn btn-md btn-success" %>
+          <%= link_to "車両", "#", class: "btn btn-md btn-success" %>
+          <%= link_to "特殊車両", "#", class: "btn btn-md btn-success" %>
+          <%= link_to "機械", "#", class: "btn btn-md btn-success" %>
+          <%= link_to "溶剤", "#", class: "btn btn-md btn-success" %>
         </td>
       </tbody>
     </table>
@@ -53,8 +56,3 @@
     <% end %>
   </div>
 </section>
-
-<div class="card-footer">
-  <%#= link_to "詳細画面へ", users_request_order_field_worker_path, class: "btn btn-md btn-block btn-default" %>
-  <%= link_to "一覧画面へ", users_request_order_field_workers_path, class: "btn btn-md btn-block btn-default" %>
-</div>

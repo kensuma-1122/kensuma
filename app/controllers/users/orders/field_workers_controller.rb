@@ -15,7 +15,7 @@ module Users::Orders
       ActiveRecord::Base.transaction do
         params[:worker_ids].each do |worker_id|
           @order.field_workers.create!(
-            admission_worker_name: nil,
+            admission_worker_name: Worker.find(worker_id).name,
             content:               worker_info(Worker.find(worker_id))
           )
         end

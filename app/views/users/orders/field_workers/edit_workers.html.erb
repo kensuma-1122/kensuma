@@ -1,6 +1,25 @@
 <% provide(:title, "入場作業員編集") %>
 <% provide(:btn_text, "更新") %>
 
+<div class="card">
+  <div class="card-body table-responsive p-0">
+    <table class="table text-nowrap">
+      <tbody>
+        <td>
+          <%= link_to "戻る", users_order_field_workers_path, class: "btn btn-md btn-default" %>
+        </td>
+        <td>
+          <%= link_to "入場作業員", users_order_field_workers_path(@order), class: "btn btn-md btn-success" %>
+          <%= link_to "車両", "#", class: "btn btn-md btn-success" %>
+          <%= link_to "特殊車両", "#", class: "btn btn-md btn-success" %>
+          <%= link_to "機械", "#", class: "btn btn-md btn-success" %>
+          <%= link_to "溶剤", "#", class: "btn btn-md btn-success" %>
+        </td>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 <section class="content">
   <div class="col-md-12">
     <%= form_with model: @order, url: update_workers_users_order_field_workers_path, method: :patch, local: true do |f| %>
@@ -37,8 +56,3 @@
     <% end %>
   </div>
 </section>
-
-<div class="card-footer">
-  <%#= link_to "詳細画面へ", users_order_field_worker_path, class: "btn btn-md btn-block btn-default" %>
-  <%= link_to "一覧画面へ", users_order_field_workers_path, class: "btn btn-md btn-block btn-default" %>
-</div>
