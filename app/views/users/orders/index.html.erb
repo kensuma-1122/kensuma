@@ -1,6 +1,6 @@
-<% provide(:title,  "発注一覧") %>
+<% provide(:title,  "発注一覧(元請)") %>
 
-<%= link_to "発注新規作成画面へ", new_users_order_path, class: "btn btn-lg btn-block btn-outline-primary" %>
+<%= link_to "発注情報作成", new_users_order_path, class: "btn btn-lg btn-block btn-outline-primary" %>
 <br>
 <% if @orders.present? %>
   <div class="card">
