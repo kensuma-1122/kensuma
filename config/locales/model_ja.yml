@@ -21,6 +21,7 @@ ja:
       worker_medical: 作業員の健康情報
       worker_exam: 中間テーブル(特別健康診断種類マスタ)
       special_med_exam: 特別健康診断種類マスタ
+      machine: 機械情報
     attributes:
       business:
         uuid: 事業所ID

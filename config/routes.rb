@@ -25,7 +25,7 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     resources :cars, except: %i[index create new show edit update destroy] do
       patch 'update_images'
     end
-    resources :machines
+    resources :machines, param: :uuid
     resources :general_users
     resources :dash_boards, only: [:index]
     resources :articles, only: %i[index show]
