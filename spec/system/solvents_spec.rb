@@ -50,7 +50,6 @@ RSpec.describe 'Solvents', type: :system do
 
         click_button '登録'
 
-        # visit new_users_solvent_path
         expect(page).to have_content '有機溶剤情報登録'
         expect(page).to have_content '商品名を入力してください'
       end
@@ -60,12 +59,24 @@ RSpec.describe 'Solvents', type: :system do
       it '更新したあと詳細画面へ遷移すること' do
         visit edit_users_solvent_path(solvent_a)
 
-        fill_in 'solvent[name]', with: 'edit name'
+        fill_in 'solvent[name]', with: 'TESTシンナー_2' # 商品名
         click_button '更新'
 
         visit users_solvent_path(solvent_a)
         expect(page).to have_content '有機溶剤情報詳細'
-        expect(page).to have_content 'edit name'
+        expect(page).to have_content 'TESTシンナー_2'
+      end
+    end
+
+    context '有機溶剤情報編集(異常系)' do
+      it '更新したあと詳細画面へ遷移すること(異常系)' do
+        visit edit_users_solvent_path(solvent_a)
+
+        fill_in 'solvent[name]', with: '' # 商品名
+        click_button '更新'
+
+        expect(page).to have_content '有機溶剤情報編集'
+        expect(page).to have_content '商品名を入力してください'
       end
     end
 

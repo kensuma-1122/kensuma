@@ -17,7 +17,7 @@
 <%= f.text_field :ingredients, class: "form-control", placeholder: Solvent.human_attribute_name(:ingredients) %>
 <br>
 
-<%# <script>
+<script>
   $(function(){
     $.each(function(key){
       $.validator.addMethod(key, this);
@@ -59,4 +59,4 @@
       $(this).valid();
     });
   });
-</script> %>
+</script>
