@@ -2,9 +2,10 @@ ja:
   activerecord:
     models:
       business: 事業部
+      car: 車両情報
       car_insurance_company: ⾃動⾞保険会社
       car_voluntary_insurance: 任意保険
-      car: 車両情報
+      field_worker: 現場作業員情報
       order: 発注
       request_order: 発注依頼
       worker: 作業員
@@ -60,6 +61,11 @@ ja:
         voluntary_securities_number: 任意保険証券番号
         voluntary_insurance_start_on: 任意保険初め
         voluntary_insurance_end_on: 任意保険終わり
+      field_worker:
+        admission_worker_name: 作業員名
+        admission_date_start: 入場年月日(始期)
+        admission_date_end: 入場年月日(終期)
+        education_date: 新規入場時教育年月日
       order:
         status: ステータス
         # 現場

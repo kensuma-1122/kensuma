@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_07_14_073348) do
+=======
+ActiveRecord::Schema.define(version: 2022_07_11_052443) do
+>>>>>>> main
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "namespace"
@@ -143,6 +147,20 @@ ActiveRecord::Schema.define(version: 2022_07_14_073348) do
     t.bigint "request_order_id", null: false
     t.index ["business_id"], name: "index_documents_on_business_id"
     t.index ["request_order_id"], name: "index_documents_on_request_order_id"
+  end
+
+  create_table "field_workers", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "uuid", null: false
+    t.string "admission_worker_name", null: false
+    t.json "content", null: false
+    t.date "admission_date_start"
+    t.date "admission_date_end"
+    t.date "education_date"
+    t.string "field_workerable_type"
+    t.bigint "field_workerable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["field_workerable_type", "field_workerable_id"], name: "index_field_workers_on_field_workerable"
   end
 
   create_table "licenses", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
