@@ -1,7 +1,7 @@
 <%= render 'shared/error_massages', object: f.object %>
 
 <%= f.label :name %><span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
-<%= f.text_field :name, class: "form-control", placeholder: Machine.human_attribute_name(:name) %>
+<%= f.select :name, Machine.machine_names_i18n.invert, { include_blank: true, prompt: "選択してください" }, { class: "form-control single-select" } %>
 
 <%= f.label :standards_performance %><span class="p-1 mb-2 rounded bg-danger text-white">必須</span>
 <%= f.text_field :standards_performance, class: "form-control", placeholder: Machine.human_attribute_name(:standards_performance) %>
